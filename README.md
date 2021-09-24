@@ -46,5 +46,6 @@ rmd2pdf(c("file1", "file2"), doc = "template.docx")
 ```
 
 A path to the Word template document can be provided using the `doc`
-argument. A path to the `officetopdf.exe` file can be provided using an
-argument `dir`.
+argument. If `doc` is not provided then a default template is used. A
+path to the `officetopdf.exe` file can be provided using an argument
+`dir`.
