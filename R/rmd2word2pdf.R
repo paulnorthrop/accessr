@@ -9,8 +9,9 @@
 #'   (no extension).
 #' @param dir The directory in which the file officetopdf.exe sits. See
 #'   \strong{Details}.
-#' @param doc The name of a template Word file on which to base the output.
-#'         If this is not in the working directory then also give the path.
+#' @param doc The name of a template Word document from which the fonts,
+#'   margins etc in the output Word document will based.  If this is not in the
+#'   working directory then also give the path.
 #' @param ... Additional arguments to be passed to \code{\link{system}}.
 #'   The argument \code{wait} determines whether or not R will wait for the
 #'   PDF files to be produced.  In the default \code{wait = TRUE} case a
