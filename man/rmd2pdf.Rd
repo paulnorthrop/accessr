@@ -6,25 +6,35 @@
 \alias{pnd}
 \title{Converts rmarkdown code to Word and PDF documents}
 \usage{
-rmd2pdf(x, dir = NULL, doc = NULL, ...)
+rmd2pdf(x, doc = NULL, dir = NULL, ...)
 
 pns(x, ...)
 
 pnd(x, ...)
 }
 \arguments{
-\item{x}{A logical vector containing the names of the files to convert
-(no extension).  May be a path and filename relative to the current
-working directory, e.g., `DIRECTORY/file1`.}
+\item{x}{A character vector containing the names of the \code{.Rmd} files to
+convert (no extension) if they are in the current working directory, or
+paths to the files, either absolute or relative to the current working
+directory, e.g., \code{DIRECTORY/file1}.  The \code{.docx} and \code{.pdf}
+files are created in the same directory as their respective \code{.Rmd}
+file.}
+
+\item{doc}{An optional argument to identify a template Word document, or
+respective documents for the files in \code{x}, from which the fonts,
+margins etc in the output Word documents will based.  If \code{doc} is not
+supplied then a default is used.  Different templates may be used for
+different files.  \code{rep_len(doc, length(x))} is used to force
+\code{length(doc)} to have the same length as \code{x}. A component equal
+to \code{"default"} may be used to use the default Word template.
+See \strong{Details} for information about how to identify the locations
+of the Word template files.}
 
 \item{dir}{A path to the directory in which the file \code{officetopdf.exe}
 sits.  This is not needed if this file sits in the current working
 directory or a directory in the list returned by \code{searchpaths()}.
-See \strong{Details}.}
-
-\item{doc}{The name of a template Word document from which the fonts,
-margins etc in the output Word document will based.  If this is not in the
-working directory then also give the path.}
+Otherwise, it may be a path relative to the current working directory
+or an absolute path.}
 
 \item{...}{Additional arguments to be passed to \code{\link{system}}.
 The argument \code{wait} determines whether or not R will wait for the
@@ -46,10 +56,22 @@ Creates accessible PDF documents by creating Word documents using
 rmarkdown code and then producing PDF files.
 }
 \details{
-The \code{\link[rmarkdown]{render}} function is used to create
-  a Word file in the current working directory.
+The simplest setup is to have the \code{.Rmd} files and the Word
+  template (if used) and \code{officetopdf.exe} in the current working
+  directory.
 
-  Then
+  It is possible to have the \code{.Rmd} files in different
+  directories, but if any non-\code{"default"} values in \code{doc} must be
+  such that the \code{reference_docx} argument of
+  \code{\link[rmarkdown]{word_document}} finds a template Word file.
+  If the template is in the same directory as its respective \code{.Rmd}
+  component in  \code{x} then the filename, e.g. \code{template.docx} will
+  suffice.  Otherwise, a path to the template should be given, either
+  relative to the directory in which the \code{.Rmd} file sits, or an
+  absolute path.
+
+  The \code{\link[rmarkdown]{render}} function creates a Word file from
+  each input \code{.Rmd} file.  Then
   \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF} is used to
   convert the Word file to a PDF file.  The file \code{officetopdf.exe}
   needs to be downloaded from the
@@ -58,11 +80,12 @@ The \code{\link[rmarkdown]{render}} function is used to create
   in a directory that is in the list returned by \code{\link{searchpaths}}.
   If \code{officetopdf.exe} cannot be found then an error is thrown.
 
-  \code{pns} and \code{pnd} are convenience functions for useonly by the
+  \code{pns} and \code{pnd} are convenience functions for the
   package maintainer.
 }
 \examples{
 \dontrun{
-  rmd2pdf(c("file1", "file2"), doc = "template.docx")
+# All files in the current working directory
+rmd2pdf(c("file1", "file2"), doc = "template.docx")
 }
 }
