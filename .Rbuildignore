@@ -1,2 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^file1\.Rmd$
+^file2\.Rmd$
+^template\.docx$
+^README\.Rmd$
+^appveyor\.yml$
