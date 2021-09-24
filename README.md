@@ -35,7 +35,7 @@ library(accessr)
 ?accessr
 ```
 
-## An example
+### An example
 
 Suppose that in your current working directory you have the R markdown
 files `file1.Rmd` and `file2.Rmd`, a template Word file `template.docx`

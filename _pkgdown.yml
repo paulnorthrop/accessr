@@ -1,0 +1,18 @@
+destination: docs
+
+development:
+  mode: release
+
+template:
+  params:
+    bootswatch: paper
+
+reference:
+  - title: Package
+    desc: ~
+    contents:
+      - "accessr"
+  - title: Functions
+    desc: ~
+    contents:
+      - "rmd2pdf"
