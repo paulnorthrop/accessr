@@ -5,3 +5,7 @@
 ^template\.docx$
 ^README\.Rmd$
 ^appveyor\.yml$
+^file1\.docx$
+^file2\.docx$
+^file2\.pdf$
+^file1\.pdf$
