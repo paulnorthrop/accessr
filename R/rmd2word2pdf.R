@@ -67,6 +67,7 @@ rmd2pdf <- function(x, dir = NULL, doc = NULL, ...) {
                       rmarkdown::word_document(reference_docx = doc))
     # Convert Word document to PDF document
     print(exefile)
+    print(paste(exefile, paste0(x, ".docx"), paste0(x, ".pdf")))
     system(paste(exefile, paste0(x, ".docx"), paste0(x, ".pdf")), ...)
   }
   res <- sapply(x, fun)

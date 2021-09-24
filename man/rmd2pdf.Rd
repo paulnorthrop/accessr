@@ -17,9 +17,9 @@ pnd(x, ...)
 (no extension).  May be a path and filename relative to the current
 working directory, e.g., `DIRECTORY/file1`.}
 
-\item{dir}{A apth to the directory in which the file \code{officetopdf.exe} sits.
-This is not needed if this file sits in the current working directory
-or a directory in the list returned by \code{searchpaths()}.
+\item{dir}{A path to the directory in which the file \code{officetopdf.exe}
+sits.  This is not needed if this file sits in the current working
+directory or a directory in the list returned by \code{searchpaths()}.
 See \strong{Details}.}
 
 \item{doc}{The name of a template Word document from which the fonts,
