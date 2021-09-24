@@ -10,7 +10,7 @@ Accessible PDF documents are produced by creating Word documents from R
 markdown files and then PDF documents from these Word documents. The
 first step uses the `render` function from the [rmarkdown
 package](https://cran.r-project.org/package=rmarkdown). The second step
-uses [https://github.com/cognidox/OfficeToPDF](OfficetoPDF).
+uses [OfficetoPDF](https://github.com/cognidox/OfficeToPDF).
 
 ### Installation
 
@@ -39,11 +39,11 @@ library(accessr)
 
 Suppose that in your current working directory you have the R markdown
 files `file1.Rmd` and `file2.Rmd`, a template Word file `template.docx`
-and that the file `officetopdf.exe` downloaded from
-[https://github.com/cognidox/OfficeToPDF/releases](OfficeToPDF%20releases)
-is either in your working directory or in a directory listed in
-`searchpaths()`. Then the following will create files `file1.docx`,
-`file2.docx`, `file1.pdf` and `file2.pdf` in your working directory.
+and that the file `officetopdf.exe` downloaded from [OfficeToPDF
+releases](https://github.com/cognidox/OfficeToPDF/releases) is either in
+your working directory or in a directory listed in `searchpaths()`. Then
+the following will create files `file1.docx`, `file2.docx`, `file1.pdf`
+and `file2.pdf` in your working directory.
 
 ``` r
 rmd2pdf(c("file1", "file2"), doc = "template.docx")
