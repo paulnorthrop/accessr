@@ -16,11 +16,14 @@ pnd(x, ...)
 \item{x}{A logical vector containing the names of the files to convert
 (no extension).}
 
-\item{dir}{The directory in which the file officetopdf.exe sits. See
-\strong{Details}.}
+\item{dir}{The directory in which the file \code{officetopdf.exe} sits.
+This is not needed if this file sits in the current working directory
+or a directory in the list returned by \code{searchpaths()}.
+See \strong{Details}.}
 
-\item{doc}{The name of a template Word file on which to base the output.
-If this is not in the working directory then also give the path.}
+\item{doc}{The name of a template Word document from which the fonts,
+margins etc in the output Word document will based.  If this is not in the
+working directory then also give the path.}
 
 \item{...}{Additional arguments to be passed to \code{\link{system}}.
 The argument \code{wait} determines whether or not R will wait for the
@@ -51,7 +54,7 @@ The \code{\link[rmarkdown]{render}} function is used to create
   needs to be downloaded from the
   \href{https://github.com/cognidox/OfficeToPDF/releases}{OfficeToPDF releases}
   page and placed in the directory specified by the argument \code{dir}, or
-  in a directory that is on the list returned by \code{\link{searchpaths}}.
+  in a directory that is in the list returned by \code{\link{searchpaths}}.
   If \code{officetopdf.exe} cannot be found then an error is thrown.
 
   \code{pns} and \code{pnd} are convenience functions for useonly by the
@@ -59,7 +62,6 @@ The \code{\link[rmarkdown]{render}} function is used to create
 }
 \examples{
 \dontrun{
-  rmd2pdf(c("file1", "file2"), dir = "C:/Users/paul/Documents/R_PACKAGES/",
-          doc = "template.docx")
+  rmd2pdf(c("file1", "file2"), doc = "template.docx")
 }
 }
