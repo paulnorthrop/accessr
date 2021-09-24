@@ -6,10 +6,11 @@
 #' rmarkdown code and then producing PDF files.
 #'
 #' @param x A logical vector containing the names of the files to convert
-#'   (no extension).
-#' @param dir The directory in which the file \code{officetopdf.exe} sits.
-#'   This is not needed if this file sits in the current working directory
-#'   or a directory in the list returned by \code{searchpaths()}.
+#'   (no extension).  May be a path and filename relative to the current
+#'   working directory, e.g., `DIRECTORY/file1`.
+#' @param dir A path to the directory in which the file \code{officetopdf.exe}
+#'   sits.  This is not needed if this file sits in the current working
+#'   directory or a directory in the list returned by \code{searchpaths()}.
 #'   See \strong{Details}.
 #' @param doc The name of a template Word document from which the fonts,
 #'   margins etc in the output Word document will based.  If this is not in the
@@ -53,7 +54,7 @@ rmd2pdf <- function(x, dir = NULL, doc = NULL, ...) {
   if (is.null(dir)) {
     exefile <- "officetopdf.exe"
   } else {
-    exefile <- paste0(dir, "officetopdf.exe")
+    exefile <- paste0(dir, "/officetopdf.exe")
   }
   # If no template word document has been supplied then use the default
   if (is.null(doc)) {
@@ -65,6 +66,7 @@ rmd2pdf <- function(x, dir = NULL, doc = NULL, ...) {
     rmarkdown::render(paste0(x, ".Rmd"),
                       rmarkdown::word_document(reference_docx = doc))
     # Convert Word document to PDF document
+    print(exefile)
     system(paste(exefile, paste0(x, ".docx"), paste0(x, ".pdf")), ...)
   }
   res <- sapply(x, fun)

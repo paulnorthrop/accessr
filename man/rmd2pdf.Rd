@@ -14,9 +14,10 @@ pnd(x, ...)
 }
 \arguments{
 \item{x}{A logical vector containing the names of the files to convert
-(no extension).}
+(no extension).  May be a path and filename relative to the current
+working directory, e.g., `DIRECTORY/file1`.}
 
-\item{dir}{The directory in which the file \code{officetopdf.exe} sits.
+\item{dir}{A apth to the directory in which the file \code{officetopdf.exe} sits.
 This is not needed if this file sits in the current working directory
 or a directory in the list returned by \code{searchpaths()}.
 See \strong{Details}.}
