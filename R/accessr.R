@@ -1,4 +1,4 @@
-#' accessr: Produce accessible PDF documents using R markdown
+#' accessr: Produce Accessible PDF Documents using R markdown
 #'
 #' Accessible PDF documents are produced by creating Word documents from R
 #' markdown files and then PDF documents from these Word documents.  The first
