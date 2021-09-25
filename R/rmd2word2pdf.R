@@ -110,7 +110,7 @@ rmd2pdf <- function(x, doc, dir, zip = TRUE, add = FALSE, rm_word = FALSE,
   doc <- rep_len(doc, lenx)
   # Function for Rmd to Word to PDF
   fun <- function(i) {
-    # Convert .Rmd file to Word document
+    # Convert .Rmd file to a Word document
     rmarkdown::render(rmd_files[i],
                       rmarkdown::word_document(reference_docx = doc[i]))
     # Convert Word document to PDF document
@@ -128,10 +128,6 @@ rmd2pdf <- function(x, doc, dir, zip = TRUE, add = FALSE, rm_word = FALSE,
   }
   # Remove the Word files, if requested to do so
   if (rm_word) {
-#    rm_word_fn <- function(i) {
-#      file.remove(word_files[i])
-#    }
-#    sapply(1:lenx, rm_word_fn)
     sapply(word_files, file.remove)
   }
   # Identify the different directories in x
