@@ -107,15 +107,3 @@ rmd2pdf <- function(x, doc = NULL, dir = NULL, ...) {
   invisible(res)
 }
 
-#' @name rmd2pdf
-#' @export
-pns <- function(x, ...) {
-  rmd2pdf(x, doc = "template.docx", dir = "C:/Users/Paul/", ...)
-}
-
-#' @name rmd2pdf
-#' @export
-pnd <- function(x, ...) {
-  rmd2pdf(x, doc = "template.docx",
-          dir = "C:/Users/paul/Documents/R_PACKAGES/", ...)
-}

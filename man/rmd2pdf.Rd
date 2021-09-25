@@ -2,15 +2,9 @@
 % Please edit documentation in R/rmd2word2pdf.R
 \name{rmd2pdf}
 \alias{rmd2pdf}
-\alias{pns}
-\alias{pnd}
 \title{Converts rmarkdown code to Word and PDF documents}
 \usage{
 rmd2pdf(x, doc = NULL, dir = NULL, ...)
-
-pns(x, ...)
-
-pnd(x, ...)
 }
 \arguments{
 \item{x}{A character vector containing the names of the \code{.Rmd} files to
