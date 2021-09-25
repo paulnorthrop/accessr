@@ -10,7 +10,8 @@
 #'   paths to the files, either absolute or relative to the current working
 #'   directory, e.g., \code{DIRECTORY/file1}.  The \code{.docx} and \code{.pdf}
 #'   files are created in the same directory as their respective \code{.Rmd}
-#'   file.
+#'   file.  If \code{x} is missing then a PDF file is created from each of the
+#'   \code{.Rmd} files in the current working directory.
 #' @param doc An optional character vector to identify a template Word
 #'   document, or respective documents for the files in \code{x}, from which
 #'   the fonts, margins etc in the output Word documents will based.  If
@@ -25,24 +26,20 @@
 #'   directory or a directory in the list returned by \code{searchpaths()}.
 #'   Otherwise, it may be a path relative to the current working directory
 #'   or an absolute path.
-#' @param zip A logical scalar or character vector indicating whether the PDF
+#' @param zip A logical scalar or character vector indicating whether PDF
 #'   files should be put into a zip archive.  If \code{zip = FALSE} then no
 #'   zip archive is created.  Otherwise, an archive is created in each unique
 #'   directory involved in \code{x}.  If \code{zip = TRUE} then any archive
 #'   created has the name \code{accessr.zip}.  If \code{zip} is a character
 #'   vector of zip file names (no extension) then these names are used to name
-#'   the zip archives.  The names are recycled if necessary.
-#' @param add A logical scalare that determines what happens if the output
+#'   the zip archives.  The names are recycled to the length of the number
+#'   of unique directories if necessary.
+#' @param add A logical scalar that determines what happens if the output
 #'   zip file already exists.  If \code{add = TRUE} then files are added to the
 #'   zip file and if \code{add = FALSE} then the zip file is deleted and will
 #'   only contain newly-created files.
-#' @param ... Additional arguments to be passed to \code{\link{system}}.
-#'   The argument \code{wait} determines whether or not R will wait for the
-#'   PDF files to be produced.  In the default \code{wait = TRUE} case a
-#'   warning will be given if any of the PDF files could not be produced.
-#'   This will occur if there is an existing PDF file of the same name open
-#'   in another application.  If \code{wait = FALSE} then no warnings will be
-#'   produced.
+#' @param rm_word A logical scalar.  If \code{rm_word = TRUE} then all the Word
+#'   files created are deleted.  Otherwise,they are not deleted.
 #' @details The simplest setup is to have the \code{.Rmd} files and the Word
 #'   template (if used) and \code{officetopdf.exe} in the current working
 #'   directory.
@@ -66,9 +63,9 @@
 #'   page and placed in the directory specified by the argument \code{dir}, or
 #'   in a directory that is in the list returned by \code{\link{searchpaths}}.
 #'   If \code{officetopdf.exe} cannot be found then an error is thrown.
-#'
-#'   \code{pns} and \code{pnd} are convenience functions for the
-#'   package maintainer.
+#'   A warning will be given if any of the PDF files could not be produced.
+#'   This will occur if there is an existing PDF file of the same name open
+#'   in another application.
 #' @return A vector containing the values returned from \code{\link{system}}
 #'   is returned invisibly. Note that if \code{wait = FALSE} then these values
 #'   will be 0 (the success value) even if some of the PDF files could not be
@@ -81,7 +78,18 @@
 #' }
 #' @name rmd2pdf
 #' @export
-rmd2pdf <- function(x, doc, dir, zip = TRUE, add = FALSE, ...) {
+rmd2pdf <- function(x, doc, dir, zip = TRUE, add = FALSE, rm_word = FALSE) {
+  # If x is missing then find all the .Rmd files in the working directory
+  if (missing(x)) {
+    rmd_files <- list.files(pattern = "Rmd")
+    word_files <- sub(".Rmd", ".docx", rmd_files)
+    pdf_files <- sub(".Rmd", ".pdf", rmd_files)
+    x <- sub(".Rmd", "", rmd_files)
+  } else {
+    rmd_files <- paste0(x, ".Rmd")
+    word_files <- paste0(x, ".docx")
+    pdf_files <- paste0(x, ".pdf")
+  }
   # Path to the officetopdf executable
   if (missing(dir)) {
     exefile <- "officetopdf.exe"
@@ -98,10 +106,10 @@ rmd2pdf <- function(x, doc, dir, zip = TRUE, add = FALSE, ...) {
   # Function for Rmd to Word to PDF
   fun <- function(i) {
     # Convert .Rmd file to Word document
-    rmarkdown::render(paste0(x[i], ".Rmd"),
+    rmarkdown::render(rmd_files[i],
                       rmarkdown::word_document(reference_docx = doc[i]))
     # Convert Word document to PDF document
-    system(paste(exefile, paste0(x[i], ".docx"), paste0(x[i], ".pdf")), ...)
+    system(paste(exefile, word_files[i], pdf_files[i]))
   }
   res <- sapply(1:lenx, fun)
   # Error codes
@@ -110,30 +118,35 @@ rmd2pdf <- function(x, doc, dir, zip = TRUE, add = FALSE, ...) {
   if (any(res == 127)) {
     stop("officetopdf.exe could not be found")
   }
-  if (any(res) != 0) {
-    which(res != 0)
-    x[res != 0]
-    warning(paste0(x[res != 0], ".pdf "), "could not be written")
+  if (any(res != 0)) {
+    warning(pdf_files[res != 0], "could not be written")
   }
+  #
+  if (rm_word) {
+    rm_word_fn <- function(i) {
+      file.remove(word_files[i])
+    }
+    sapply(1:lenx, rm_word_fn)
+  }
+  # Identify the different directories in x
+  dnames <- dirname(rmd_files)
+  # Unique directories
+  udnames <- unique(dirname(rmd_files))
   # Create zip file(s), if required
   if (is.character(zip)) {
-    zipfile <- zip
+    zipfile <- rep_len(zip, length(udnames))
     zip <- TRUE
   } else if (is.logical(zip) && zip) {
-    zipfile <- "accessr.zip"
+    zipfile <- rep_len("accessr", length(udnames))
   }
   if (zip) {
-    # Identify the different directories in x
-    dnames <- dirname(x)
-    # Unique directories
-    udnames <- unique(dirname(x))
     # Directory identifiers for the files
     which_dir <- charmatch(dnames, udnames)
     for (i in unique(which_dir)) {
       # Set the directory and filename
       d <- dnames[which(which_dir == i)]
       f <- basename(x[which(which_dir == i)])
-      zipname <- paste0(d[1], "/", zipfile)
+      zipname <- paste0(d[1], "/", zipfile[i], ".zip")
       if (!add) {
         if (file.exists(zipname)) {
           file.remove(zipname)

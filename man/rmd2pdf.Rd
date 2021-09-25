@@ -4,7 +4,7 @@
 \alias{rmd2pdf}
 \title{Converts rmarkdown code to Word and PDF documents}
 \usage{
-rmd2pdf(x, doc, dir, zip = TRUE, add = FALSE, ...)
+rmd2pdf(x, doc, dir, zip = TRUE, add = FALSE, rm_word = FALSE)
 }
 \arguments{
 \item{x}{A character vector containing the names of the \code{.Rmd} files to
@@ -12,7 +12,8 @@ convert (no extension) if they are in the current working directory, or
 paths to the files, either absolute or relative to the current working
 directory, e.g., \code{DIRECTORY/file1}.  The \code{.docx} and \code{.pdf}
 files are created in the same directory as their respective \code{.Rmd}
-file.}
+file.  If \code{x} is missing then a PDF file is created from each of the
+\code{.Rmd} files in the current working directory.}
 
 \item{doc}{An optional character vector to identify a template Word
 document, or respective documents for the files in \code{x}, from which
@@ -30,26 +31,22 @@ directory or a directory in the list returned by \code{searchpaths()}.
 Otherwise, it may be a path relative to the current working directory
 or an absolute path.}
 
-\item{zip}{A logical scalar or character vector indicating whether the PDF
+\item{zip}{A logical scalar or character vector indicating whether PDF
 files should be put into a zip archive.  If \code{zip = FALSE} then no
 zip archive is created.  Otherwise, an archive is created in each unique
 directory involved in \code{x}.  If \code{zip = TRUE} then any archive
 created has the name \code{accessr.zip}.  If \code{zip} is a character
 vector of zip file names (no extension) then these names are used to name
-the zip archives.  The names are recycled if necessary.}
+the zip archives.  The names are recycled to the length of the number
+of unique directories if necessary.}
 
-\item{add}{A logical scalare that determines what happens if the output
+\item{add}{A logical scalar that determines what happens if the output
 zip file already exists.  If \code{add = TRUE} then files are added to the
 zip file and if \code{add = FALSE} then the zip file is deleted and will
 only contain newly-created files.}
 
-\item{...}{Additional arguments to be passed to \code{\link{system}}.
-The argument \code{wait} determines whether or not R will wait for the
-PDF files to be produced.  In the default \code{wait = TRUE} case a
-warning will be given if any of the PDF files could not be produced.
-This will occur if there is an existing PDF file of the same name open
-in another application.  If \code{wait = FALSE} then no warnings will be
-produced.}
+\item{rm_word}{A logical scalar.  If \code{rm_word = TRUE} then all the Word
+files created are deleted.  Otherwise,they are not deleted.}
 }
 \value{
 A vector containing the values returned from \code{\link{system}}
@@ -86,9 +83,9 @@ The simplest setup is to have the \code{.Rmd} files and the Word
   page and placed in the directory specified by the argument \code{dir}, or
   in a directory that is in the list returned by \code{\link{searchpaths}}.
   If \code{officetopdf.exe} cannot be found then an error is thrown.
-
-  \code{pns} and \code{pnd} are convenience functions for the
-  package maintainer.
+  A warning will be given if any of the PDF files could not be produced.
+  This will occur if there is an existing PDF file of the same name open
+  in another application.
 }
 \examples{
 \dontrun{
