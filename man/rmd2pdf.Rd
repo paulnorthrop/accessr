@@ -4,7 +4,7 @@
 \alias{rmd2pdf}
 \title{Converts rmarkdown code to Word and PDF documents}
 \usage{
-rmd2pdf(x, doc, dir, zip = TRUE, ...)
+rmd2pdf(x, doc, dir, zip = TRUE, add = FALSE, ...)
 }
 \arguments{
 \item{x}{A character vector containing the names of the \code{.Rmd} files to
@@ -30,7 +30,18 @@ directory or a directory in the list returned by \code{searchpaths()}.
 Otherwise, it may be a path relative to the current working directory
 or an absolute path.}
 
-\item{zip}{g}
+\item{zip}{A logical scalar or character vector indicating whether the PDF
+files should be put into a zip archive.  If \code{zip = FALSE} then no
+zip archive is created.  Otherwise, an archive is created in each unique
+directory involved in \code{x}.  If \code{zip = TRUE} then any archive
+created has the name \code{accessr.zip}.  If \code{zip} is a character
+vector of zip file names (no extension) then these names are used to name
+the zip archives.  The names are recycled if necessary.}
+
+\item{add}{A logical scalare that determines what happens if the output
+zip file already exists.  If \code{add = TRUE} then files are added to the
+zip file and if \code{add = FALSE} then the zip file is deleted and will
+only contain newly-created files.}
 
 \item{...}{Additional arguments to be passed to \code{\link{system}}.
 The argument \code{wait} determines whether or not R will wait for the

@@ -25,7 +25,17 @@
 #'   directory or a directory in the list returned by \code{searchpaths()}.
 #'   Otherwise, it may be a path relative to the current working directory
 #'   or an absolute path.
-#' @param zip g
+#' @param zip A logical scalar or character vector indicating whether the PDF
+#'   files should be put into a zip archive.  If \code{zip = FALSE} then no
+#'   zip archive is created.  Otherwise, an archive is created in each unique
+#'   directory involved in \code{x}.  If \code{zip = TRUE} then any archive
+#'   created has the name \code{accessr.zip}.  If \code{zip} is a character
+#'   vector of zip file names (no extension) then these names are used to name
+#'   the zip archives.  The names are recycled if necessary.
+#' @param add A logical scalare that determines what happens if the output
+#'   zip file already exists.  If \code{add = TRUE} then files are added to the
+#'   zip file and if \code{add = FALSE} then the zip file is deleted and will
+#'   only contain newly-created files.
 #' @param ... Additional arguments to be passed to \code{\link{system}}.
 #'   The argument \code{wait} determines whether or not R will wait for the
 #'   PDF files to be produced.  In the default \code{wait = TRUE} case a
@@ -71,7 +81,7 @@
 #' }
 #' @name rmd2pdf
 #' @export
-rmd2pdf <- function(x, doc, dir, zip = TRUE, ...) {
+rmd2pdf <- function(x, doc, dir, zip = TRUE, add = FALSE, ...) {
   # Path to the officetopdf executable
   if (missing(dir)) {
     exefile <- "officetopdf.exe"
@@ -123,7 +133,13 @@ rmd2pdf <- function(x, doc, dir, zip = TRUE, ...) {
       # Set the directory and filename
       d <- dnames[which(which_dir == i)]
       f <- basename(x[which(which_dir == i)])
-      utils::zip(paste0(d, "/", zipfile), paste0(f, ".pdf"))
+      zipname <- paste0(d[1], "/", zipfile)
+      if (!add) {
+        if (file.exists(zipname)) {
+          file.remove(zipname)
+        }
+      }
+      utils::zip(zipname, paste0(f, ".pdf"))
     }
   }
   invisible(res)
