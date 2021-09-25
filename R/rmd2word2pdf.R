@@ -80,7 +80,6 @@
 #' # All files in the current working directory
 #' rmd2pdf(c("file1", "file2"), doc = "template.docx")
 #' }
-#' @name rmd2pdf
 #' @export
 rmd2pdf <- function(x, doc, dir, zip = TRUE, add = FALSE, rm_word = FALSE,
                     rm_pdf = FALSE) {
@@ -111,8 +110,8 @@ rmd2pdf <- function(x, doc, dir, zip = TRUE, add = FALSE, rm_word = FALSE,
   # Function for Rmd to Word to PDF
   fun <- function(i) {
     # Convert .Rmd file to a Word document
-    rmarkdown::render(rmd_files[i],
-                      rmarkdown::word_document(reference_docx = doc[i]))
+    rmarkdown::render(input = rmd_files[i], output_format =
+                        rmarkdown::word_document(reference_docx = doc[i]))
     # Convert Word document to PDF document
     system(paste(exefile, word_files[i], pdf_files[i]))
   }
