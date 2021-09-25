@@ -4,7 +4,7 @@
 \alias{rmd2pdf}
 \title{Converts rmarkdown code to Word and PDF documents}
 \usage{
-rmd2pdf(x, doc = NULL, dir = NULL, ...)
+rmd2pdf(x, doc, dir, zip = TRUE, ...)
 }
 \arguments{
 \item{x}{A character vector containing the names of the \code{.Rmd} files to
@@ -14,21 +14,23 @@ directory, e.g., \code{DIRECTORY/file1}.  The \code{.docx} and \code{.pdf}
 files are created in the same directory as their respective \code{.Rmd}
 file.}
 
-\item{doc}{An optional argument to identify a template Word document, or
-respective documents for the files in \code{x}, from which the fonts,
-margins etc in the output Word documents will based.  If \code{doc} is not
-supplied then a default is used.  Different templates may be used for
-different files.  \code{rep_len(doc, length(x))} is used to force
-\code{length(doc)} to have the same length as \code{x}. A component equal
-to \code{"default"} may be used to use the default Word template.
-See \strong{Details} for information about how to identify the locations
-of the Word template files.}
+\item{doc}{An optional character vector to identify a template Word
+document, or respective documents for the files in \code{x}, from which
+the fonts, margins etc in the output Word documents will based.  If
+\code{doc} is not supplied then a default is used.  Different templates
+may be used for different files.  \code{rep_len(doc, length(x))} is used
+to force \code{length(doc)} to have the same length as \code{x}. A
+component equal to \code{"default"} may be used to use the default Word
+template. See \strong{Details} for information about how to identify the
+locations of the Word template files.}
 
 \item{dir}{A path to the directory in which the file \code{officetopdf.exe}
 sits.  This is not needed if this file sits in the current working
 directory or a directory in the list returned by \code{searchpaths()}.
 Otherwise, it may be a path relative to the current working directory
 or an absolute path.}
+
+\item{zip}{g}
 
 \item{...}{Additional arguments to be passed to \code{\link{system}}.
 The argument \code{wait} determines whether or not R will wait for the

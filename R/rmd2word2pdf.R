@@ -11,20 +11,21 @@
 #'   directory, e.g., \code{DIRECTORY/file1}.  The \code{.docx} and \code{.pdf}
 #'   files are created in the same directory as their respective \code{.Rmd}
 #'   file.
-#' @param doc An optional argument to identify a template Word document, or
-#'   respective documents for the files in \code{x}, from which the fonts,
-#'   margins etc in the output Word documents will based.  If \code{doc} is not
-#'   supplied then a default is used.  Different templates may be used for
-#'   different files.  \code{rep_len(doc, length(x))} is used to force
-#'   \code{length(doc)} to have the same length as \code{x}. A component equal
-#'   to \code{"default"} may be used to use the default Word template.
-#'   See \strong{Details} for information about how to identify the locations
-#'   of the Word template files.
+#' @param doc An optional character vector to identify a template Word
+#'   document, or respective documents for the files in \code{x}, from which
+#'   the fonts, margins etc in the output Word documents will based.  If
+#'   \code{doc} is not supplied then a default is used.  Different templates
+#'   may be used for different files.  \code{rep_len(doc, length(x))} is used
+#'   to force \code{length(doc)} to have the same length as \code{x}. A
+#'   component equal to \code{"default"} may be used to use the default Word
+#'   template. See \strong{Details} for information about how to identify the
+#'   locations of the Word template files.
 #' @param dir A path to the directory in which the file \code{officetopdf.exe}
 #'   sits.  This is not needed if this file sits in the current working
 #'   directory or a directory in the list returned by \code{searchpaths()}.
 #'   Otherwise, it may be a path relative to the current working directory
 #'   or an absolute path.
+#' @param zip g
 #' @param ... Additional arguments to be passed to \code{\link{system}}.
 #'   The argument \code{wait} determines whether or not R will wait for the
 #'   PDF files to be produced.  In the default \code{wait = TRUE} case a
@@ -70,15 +71,15 @@
 #' }
 #' @name rmd2pdf
 #' @export
-rmd2pdf <- function(x, doc = NULL, dir = NULL, ...) {
+rmd2pdf <- function(x, doc, dir, zip = TRUE, ...) {
   # Path to the officetopdf executable
-  if (is.null(dir)) {
+  if (missing(dir)) {
     exefile <- "officetopdf.exe"
   } else {
     exefile <- paste0(dir, "/officetopdf.exe")
   }
   # If no template word document has been supplied then use the default
-  if (length(doc) == 0 && is.null(doc)) {
+  if (missing(doc)) {
     doc <- "default"
   }
   # Make doc the same length as x
@@ -103,6 +104,27 @@ rmd2pdf <- function(x, doc = NULL, dir = NULL, ...) {
     which(res != 0)
     x[res != 0]
     warning(paste0(x[res != 0], ".pdf "), "could not be written")
+  }
+  # Create zip file(s), if required
+  if (is.character(zip)) {
+    zipfile <- zip
+    zip <- TRUE
+  } else if (is.logical(zip) && zip) {
+    zipfile <- "accessr.zip"
+  }
+  if (zip) {
+    # Identify the different directories in x
+    dnames <- dirname(x)
+    # Unique directories
+    udnames <- unique(dirname(x))
+    # Directory identifiers for the files
+    which_dir <- charmatch(dnames, udnames)
+    for (i in unique(which_dir)) {
+      # Set the directory and filename
+      d <- dnames[which(which_dir == i)]
+      f <- basename(x[which(which_dir == i)])
+      utils::zip(paste0(d, "/", zipfile), paste0(f, ".pdf"))
+    }
   }
   invisible(res)
 }
