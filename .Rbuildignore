@@ -1,13 +1,9 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^file1\.Rmd$
-^file2\.Rmd$
-^template\.docx$
 ^README\.Rmd$
 ^appveyor\.yml$
-^file1\.docx$
-^file2\.docx$
-^file2\.pdf$
-^file1\.pdf$
 ^OfficeToPDF\.exe$
 [.]zip$
+[.]docx$
+[.]pdf$
+[.]Rmd$

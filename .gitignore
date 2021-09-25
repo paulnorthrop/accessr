@@ -4,10 +4,7 @@
 .Ruserdata
 file1.Rmd
 file2.Rmd
-template.docx
-file1.docx
-file2.docx
-file2.pdf
-file1.pdf
 OfficeToPDF.exe
 *.zip
+*.docx
+*.pdf
