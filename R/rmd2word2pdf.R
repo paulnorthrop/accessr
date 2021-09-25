@@ -1,9 +1,10 @@
 # ================================ rmd2pdf ====================================
 
-#' Converts rmarkdown code to Word and PDF documents
+#' Converts R markdown code to Word and PDF documents
 #'
 #' Creates accessible PDF documents by creating Word documents using
-#' rmarkdown code and then producing PDF files.
+#' R markdown code and then producing PDF files.  Zip archives of the PDF files
+#' may be created.
 #'
 #' @param x A character vector containing the names of the \code{.Rmd} files to
 #'   convert (no extension) if they are in the current working directory, or
@@ -39,7 +40,10 @@
 #'   zip file and if \code{add = FALSE} then the zip file is deleted and will
 #'   only contain newly-created files.
 #' @param rm_word A logical scalar.  If \code{rm_word = TRUE} then all the Word
-#'   files created are deleted.  Otherwise,they are not deleted.
+#'   files created are deleted.  Otherwise, they are not deleted.
+#' @param rm_pdf A logical scalar.  If \code{rm_pdf = TRUE} and a zip archive
+#'   of PDF files is produced then the individual PDF files are deleted.
+#'   Otherwise, they are not deleted.
 #' @details The simplest setup is to have the \code{.Rmd} files and the Word
 #'   template (if used) and \code{officetopdf.exe} in the current working
 #'   directory.
@@ -78,7 +82,8 @@
 #' }
 #' @name rmd2pdf
 #' @export
-rmd2pdf <- function(x, doc, dir, zip = TRUE, add = FALSE, rm_word = FALSE) {
+rmd2pdf <- function(x, doc, dir, zip = TRUE, add = FALSE, rm_word = FALSE,
+                    rm_pdf = FALSE) {
   # If x is missing then find all the .Rmd files in the working directory
   if (missing(x)) {
     rmd_files <- list.files(pattern = "Rmd")
@@ -121,12 +126,13 @@ rmd2pdf <- function(x, doc, dir, zip = TRUE, add = FALSE, rm_word = FALSE) {
   if (any(res != 0)) {
     warning(pdf_files[res != 0], "could not be written")
   }
-  #
+  # Remove the Word files, if requested to do so
   if (rm_word) {
-    rm_word_fn <- function(i) {
-      file.remove(word_files[i])
-    }
-    sapply(1:lenx, rm_word_fn)
+#    rm_word_fn <- function(i) {
+#      file.remove(word_files[i])
+#    }
+#    sapply(1:lenx, rm_word_fn)
+    sapply(word_files, file.remove)
   }
   # Identify the different directories in x
   dnames <- dirname(rmd_files)
@@ -153,6 +159,9 @@ rmd2pdf <- function(x, doc, dir, zip = TRUE, add = FALSE, rm_word = FALSE) {
         }
       }
       utils::zip(zipname, paste0(f, ".pdf"))
+    }
+    if (rm_pdf) {
+      sapply(pdf_files, file.remove)
     }
   }
   invisible(res)

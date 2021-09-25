@@ -2,9 +2,9 @@
 % Please edit documentation in R/rmd2word2pdf.R
 \name{rmd2pdf}
 \alias{rmd2pdf}
-\title{Converts rmarkdown code to Word and PDF documents}
+\title{Converts R markdown code to Word and PDF documents}
 \usage{
-rmd2pdf(x, doc, dir, zip = TRUE, add = FALSE, rm_word = FALSE)
+rmd2pdf(x, doc, dir, zip = TRUE, add = FALSE, rm_word = FALSE, rm_pdf = FALSE)
 }
 \arguments{
 \item{x}{A character vector containing the names of the \code{.Rmd} files to
@@ -46,7 +46,11 @@ zip file and if \code{add = FALSE} then the zip file is deleted and will
 only contain newly-created files.}
 
 \item{rm_word}{A logical scalar.  If \code{rm_word = TRUE} then all the Word
-files created are deleted.  Otherwise,they are not deleted.}
+files created are deleted.  Otherwise, they are not deleted.}
+
+\item{rm_pdf}{A logical scalar.  If \code{rm_pdf = TRUE} and a zip archive
+of PDF files is produced then the individual PDF files are deleted.
+Otherwise, they are not deleted.}
 }
 \value{
 A vector containing the values returned from \code{\link{system}}
@@ -57,7 +61,8 @@ A vector containing the values returned from \code{\link{system}}
 }
 \description{
 Creates accessible PDF documents by creating Word documents using
-rmarkdown code and then producing PDF files.
+R markdown code and then producing PDF files.  Zip archives of the PDF files
+may be created.
 }
 \details{
 The simplest setup is to have the \code{.Rmd} files and the Word
