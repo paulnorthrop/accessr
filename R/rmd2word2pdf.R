@@ -1,3 +1,6 @@
+# ... arguments to render() or word_document() ?
+# quiet = TRUE?
+
 # ================================ rmd2pdf ====================================
 
 #' Converts R markdown code to Word and PDF documents
@@ -110,8 +113,10 @@ rmd2pdf <- function(x, doc, dir, zip = TRUE, add = FALSE, rm_word = FALSE,
   # Function for Rmd to Word to PDF
   fun <- function(i) {
     # Convert .Rmd file to a Word document
-    rmarkdown::render(input = rmd_files[i], output_format =
-                        rmarkdown::word_document(reference_docx = doc[i]))
+#    rmarkdown::render(input = rmd_files[i], output_format =
+#                        rmarkdown::word_document(reference_docx = doc[i]),
+#                      quiet = TRUE)
+    rmarkdown::pandoc_convert(input = rmd_files[i], to = "docx")
     # Convert Word document to PDF document
     system(paste(exefile, word_files[i], pdf_files[i]))
   }
@@ -123,7 +128,7 @@ rmd2pdf <- function(x, doc, dir, zip = TRUE, add = FALSE, rm_word = FALSE,
     stop("officetopdf.exe could not be found")
   }
   if (any(res != 0)) {
-    warning(pdf_files[res != 0], "could not be written")
+    warning(pdf_files[res != 0], " could not be written")
   }
   # Remove the Word files, if requested to do so
   if (rm_word) {
