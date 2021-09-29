@@ -9,3 +9,6 @@
 [.]Rmd$
 [.]pptx$
 [.]html$
+^TEST$
+^_pkgdown\.yml$
+^docs$
