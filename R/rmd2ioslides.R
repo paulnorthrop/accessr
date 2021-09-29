@@ -1,9 +1,9 @@
-# ============================= rmd2isoslides =================================
+# ============================== rmd2ioslides =================================
 
-#' Converts R markdown code to isoslides html presentations
+#' Converts R markdown code to ioslides html presentations
 #'
 #' Creates accessible html ioslides presentations using R markdown's
-#' \code{\link[rmarkdown]{isoslides_presentation}} argument to
+#' \code{\link[rmarkdown]{ioslides_presentation}} argument to
 #' \code{\link[rmarkdown]{render}}. Zip archives of the html files may be
 #' created.
 #'
@@ -36,7 +36,7 @@
 #'   different directories.
 #'
 #'   The \code{\link[rmarkdown]{render}} function, with the argument
-#'   \code{output_file =} \code{\link[rmarkdown]{isoslides_presentaion}}
+#'   \code{output_file =} \code{\link[rmarkdown]{ioslides_presentation}}
 #'   creates the ioslides html files.
 #' @return A character vector containing the paths of the output html files.
 #' @examples

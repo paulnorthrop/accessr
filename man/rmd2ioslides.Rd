@@ -2,7 +2,7 @@
 % Please edit documentation in R/rmd2ioslides.R
 \name{rmd2ioslides}
 \alias{rmd2ioslides}
-\title{Converts R markdown code to isoslides html presentations}
+\title{Converts R markdown code to ioslides html presentations}
 \usage{
 rmd2ioslides(x, zip = TRUE, add = FALSE, quiet = TRUE, ...)
 }
@@ -41,7 +41,7 @@ A character vector containing the paths of the output html files.
 }
 \description{
 Creates accessible html ioslides presentations using R markdown's
-\code{\link[rmarkdown]{isoslides_presentation}} argument to
+\code{\link[rmarkdown]{ioslides_presentation}} argument to
 \code{\link[rmarkdown]{render}}. Zip archives of the html files may be
 created.
 }
@@ -51,7 +51,7 @@ The simplest setup is to have the \code{.Rmd} files in the current
   different directories.
 
   The \code{\link[rmarkdown]{render}} function, with the argument
-  \code{output_file =} \code{\link[rmarkdown]{isoslides_presentaion}}
+  \code{output_file =} \code{\link[rmarkdown]{ioslides_presentation}}
   creates the ioslides html files.
 }
 \examples{
