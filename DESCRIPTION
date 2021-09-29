@@ -15,7 +15,7 @@ License: GPL (>= 2)
 Encoding: UTF-8
 RoxygenNote: 7.1.1
 Imports: rmarkdown,
-    utils
+    zip
 SystemRequirements: OfficeToPDF,
     pandoc (>= 1.14) - http://pandoc.org
 URL: https://paulnorthrop.github.io/accessr/,
