@@ -1,9 +1,9 @@
-# ============================= rmd2isoslides =================================
+# =============================== rmd2html ====================================
 
-#' Converts R markdown code to isoslides html presentations
+#' Converts R markdown code to html documents
 #'
-#' Creates accessible html ioslides presentations using R markdown's
-#' \code{\link[rmarkdown]{isoslides_presentation}} argument to
+#' Creates accessible html documents using R markdown's
+#' \code{\link[rmarkdown]{html_document}} argument to
 #' \code{\link[rmarkdown]{render}}. Zip archives of the html files may be
 #' created.
 #'
@@ -18,7 +18,7 @@
 #'   files should be put into a zip archive.  If \code{zip = FALSE} then no
 #'   zip archive is created.  Otherwise, an archive is created in each unique
 #'   directory involved in \code{x}.  If \code{zip = TRUE} then any archive
-#'   created has the name \code{accessr_ioslides.zip}.  If \code{zip} is a
+#'   created has the name \code{accessr_html.zip}.  If \code{zip} is a
 #'   character vector of zip file names (no extension) then these names are
 #'   used to name the zip archives.  The names are recycled to the length of
 #'   the number of unique directories, if necessary.
@@ -30,22 +30,22 @@
 #'   \code{\link[rmarkdown]{render}} to determine what is printed during
 #'   rendering from knitr.
 #' @param ... Additional arguments to be passed to
-#'   \code{\link[rmarkdown]{ioslides_presentation}}.
+#'   \code{\link[rmarkdown]{html_document}}.
 #' @details The simplest setup is to have the \code{.Rmd} files in the current
 #'   working directory, but it is possible to have the \code{.Rmd} files in
 #'   different directories.
 #'
 #'   The \code{\link[rmarkdown]{render}} function, with the argument
-#'   \code{output_file =} \code{\link[rmarkdown]{isoslides_presentaion}}
-#'   creates the ioslides html files.
+#'   \code{output_file =} \code{\link[rmarkdown]{html_document}}
+#'   creates the html files.
 #' @return A character vector containing the paths of the output html files.
 #' @examples
 #' \dontrun{
 #' # All files in the current working directory
-#' rmd2ioslides(c("file1", "file2"))
+#' rmd2html(c("file1", "file2"))
 #' }
 #' @export
-rmd2ioslides <- function(x, zip = TRUE, add = FALSE, quiet = TRUE, ...) {
+rmd2html <- function(x, zip = TRUE, add = FALSE, quiet = TRUE, ...) {
   # If x is missing then find all the .Rmd files in the working directory
   if (missing(x)) {
     rmd_files <- list.files(pattern = "Rmd")
@@ -59,11 +59,11 @@ rmd2ioslides <- function(x, zip = TRUE, add = FALSE, quiet = TRUE, ...) {
   }
   # Make doc the same length as x
   lenx <- length(x)
-  # Function for Rmd to ioslides
+  # Function for Rmd to html
   fun <- function(i) {
-    # Render the .Rmd file as an ioslides presentation
+    # Render the .Rmd file as an html document
     rmarkdown::render(input = rmd_files[i],
-                      output_format = rmarkdown::ioslides_presentation(...),
+                      output_format = rmarkdown::html_document(...),
                       quiet = quiet)
   }
   res <- sapply(1:lenx, fun)
@@ -76,7 +76,7 @@ rmd2ioslides <- function(x, zip = TRUE, add = FALSE, quiet = TRUE, ...) {
     zipfile <- rep_len(zip, length(udnames))
     zip <- TRUE
   } else if (is.logical(zip) && zip) {
-    zipfile <- rep_len("accessr_ioslides", length(udnames))
+    zipfile <- rep_len("accessr_html", length(udnames))
   }
   if (zip) {
     # Directory identifiers for the files
