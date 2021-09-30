@@ -29,6 +29,9 @@
 #' @param quiet Argument of the same name passed to
 #'   \code{\link[rmarkdown]{render}} to determine what is printed during
 #'   rendering from knitr.
+#' @param rm_html A logical scalar.  If \code{rm_html = TRUE} and a zip archive
+#'   of html files is produced then the individual html files are deleted.
+#'   Otherwise, they are not deleted.
 #' @param ... Additional arguments to be passed to
 #'   \code{\link[rmarkdown]{html_document}}.
 #' @details The simplest setup is to have the \code{.Rmd} files in the current
@@ -48,17 +51,21 @@
 #' rmd2html(c("file1", "file2"))
 #' }
 #' @export
-rmd2html <- function(x, zip = TRUE, add = FALSE, quiet = TRUE, ...) {
+rmd2html <- function(x, zip = TRUE, add = FALSE, quiet = TRUE, rm_html = FALSE,
+                     ...) {
   # If x is missing then find all the .Rmd files in the working directory
   if (missing(x)) {
     rmd_files <- list.files(pattern = "Rmd")
     x <- sub(".Rmd", "", rmd_files)
+    html_files <- sub(".Rmd", ".html", rmd_files)
   } else if (length(x) == 1 && dir.exists(x)) {
     rmd_files <- list.files(x, pattern = "Rmd")
     rmd_files <- paste0(x, "/", rmd_files)
     x <- sub(".Rmd", "", rmd_files)
+    html_files <- paste0(x, ".html")
   } else {
     rmd_files <- paste0(x, ".Rmd")
+    html_files <- paste0(x, ".html")
   }
   # Make doc the same length as x
   lenx <- length(x)
@@ -85,6 +92,9 @@ rmd2html <- function(x, zip = TRUE, add = FALSE, quiet = TRUE, ...) {
     res_zip <- accessr_zip(x, dnames, udnames, zipfile, zipname, add,
                            extension = ".html")
     res <- list(files = res, zips = res_zip)
+    if (rm_html) {
+      sapply(html_files, file.remove)
+    }
   }
   invisible(res)
 }

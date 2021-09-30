@@ -4,7 +4,7 @@
 \alias{rmd2html}
 \title{Converts R markdown code to html documents}
 \usage{
-rmd2html(x, zip = TRUE, add = FALSE, quiet = TRUE, ...)
+rmd2html(x, zip = TRUE, add = FALSE, quiet = TRUE, rm_html = FALSE, ...)
 }
 \arguments{
 \item{x}{A character vector containing the names (no extension) of the
@@ -32,6 +32,10 @@ only contain newly-created files.}
 \item{quiet}{Argument of the same name passed to
 \code{\link[rmarkdown]{render}} to determine what is printed during
 rendering from knitr.}
+
+\item{rm_html}{A logical scalar.  If \code{rm_html = TRUE} and a zip archive
+of html files is produced then the individual html files are deleted.
+Otherwise, they are not deleted.}
 
 \item{...}{Additional arguments to be passed to
 \code{\link[rmarkdown]{html_document}}.}
