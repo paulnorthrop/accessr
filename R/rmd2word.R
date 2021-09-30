@@ -75,11 +75,15 @@
 #'   A warning will be given if any of the PDF files could not be produced.
 #'   This will occur if there is an existing PDF file of the same name open
 #'   in another application.
-#' @return A vector containing the values returned from \code{\link{system}}
-#'   is returned invisibly. Note that if \code{wait = FALSE} then these values
-#'   will be 0 (the success value) even if some of the PDF files could not be
-#'   produced.  The error code 17234 indicates that a PDF file was open in
-#'   another application.
+#' @return A list containing the following vector components is returned
+#'   invisibly:
+#'   \item{error_codes }{numeric values returned from \code{\link{system}}.
+#'   If \code{wait = FALSE} then these values will be 0 (the success value)
+#'   even if some of the PDF files could not be produced.  The error code 17234
+#'   indicates that a PDF file was open in another application.}
+#'   \item{files }{(absolute) paths and file names of the files added to a zip
+#'     file.}
+#'   \item{zips }{(relative) paths and names of all the zip files.}
 #' @examples
 #' \dontrun{
 #' # All files in the current working directory
@@ -115,22 +119,25 @@ rmd2word <- function(x, doc, dir, zip = TRUE, add = FALSE, quiet = TRUE,
   # Function for Rmd to Word to PDF
   render_fun <- function(i) {
     # Convert .Rmd file to a Word document
-    rmarkdown::render(input = rmd_files[i], output_format =
-                        rmarkdown::word_document(reference_docx = doc[i], ...),
-                      quiet = quiet)
+    res1 <- rmarkdown::render(input = rmd_files[i], output_format =
+                       rmarkdown::word_document(reference_docx = doc[i], ...),
+                       quiet = quiet)
 #    rmarkdown::pandoc_convert(input = rmd_files[i], to = "docx")
     # Convert Word document to PDF document
-    system(paste(exefile, word_files[i], pdf_files[i]))
+    res2 <- system(paste(exefile, word_files[i], pdf_files[i]))
+    return(c(res1, res2))
   }
   res <- sapply(1:lenx, render_fun)
+  files <- res[1, ]
+  error_codes <- as.numeric(res[2, ])
   # Error codes
   # 127 officetopdf.exe could not be found
   # 17234 file open in another application
-  if (any(res == 127)) {
+  if (any(error_codes == 127)) {
     stop("officetopdf.exe could not be found")
   }
-  if (any(res != 0)) {
-    warning(pdf_files[res != 0], " could not be written")
+  if (any(error_codes != 0)) {
+    warning(pdf_files[error_codes != 0], " could not be written")
   }
   # Remove the Word files, if requested to do so
   if (rm_word) {
@@ -148,20 +155,9 @@ rmd2word <- function(x, doc, dir, zip = TRUE, add = FALSE, quiet = TRUE,
     zipfile <- rep_len("accessr_word", length(udnames))
   }
   if (zip) {
-    # Directory identifiers for the files
-    which_dir <- charmatch(dnames, udnames)
-    for (i in unique(which_dir)) {
-      # Set the directory and filename
-      d <- dnames[which(which_dir == i)]
-      f <- basename(x[which(which_dir == i)])
-      zipname <- paste0(d[1], "/", zipfile[i], ".zip")
-      if (!add) {
-        if (file.exists(zipname)) {
-          file.remove(zipname)
-        }
-      }
-      utils::zip(zipname, paste0(f, ".pdf"))
-    }
+    res_zip <- accessr_zip(x, dnames, udnames, zipfile, zipname, add,
+                           extension = ".pdf")
+    res <- list(error_codes = error_codes, files = files, zips = res_zip)
     if (rm_pdf) {
       sapply(pdf_files, file.remove)
     }
