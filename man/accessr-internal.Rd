@@ -2,11 +2,22 @@
 % Please edit documentation in R/accessr-internal.R
 \name{accessr-internal}
 \alias{accessr-internal}
+\alias{rmd2presentation}
 \alias{accessr_zip}
 \alias{pns}
 \alias{pnd}
 \title{Internal accessr functions}
 \usage{
+rmd2presentation(
+  x,
+  format = c("ioslides", "slidy"),
+  zip = TRUE,
+  add = FALSE,
+  quiet = TRUE,
+  rm_html = FALSE,
+  ...
+)
+
 accessr_zip(x, dnames, udnames, zipfile, zipname, add, extension)
 
 pns(x, ...)

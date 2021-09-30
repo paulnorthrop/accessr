@@ -1,9 +1,9 @@
-# ============================== rmd2ioslides =================================
+# =============================== rmd2slidy ==================================
 
-#' Converts R markdown code to ioslides html presentations
+#' Converts R markdown code to slidy html presentations
 #'
-#' Creates accessible html ioslides presentations using R markdown's
-#' \code{\link[rmarkdown]{ioslides_presentation}} argument to
+#' Creates accessible html slidy presentations using R markdown's
+#' \code{\link[rmarkdown]{slidy_presentation}} argument to
 #' \code{\link[rmarkdown]{render}}. Zip archives of the html files may be
 #' created.
 #'
@@ -18,7 +18,7 @@
 #'   files should be put into a zip archive.  If \code{zip = FALSE} then no
 #'   zip archive is created.  Otherwise, an archive is created in each unique
 #'   directory involved in \code{x}.  If \code{zip = TRUE} then any archive
-#'   created has the name \code{accessr_ioslides.zip}.  If \code{zip} is a
+#'   created has the name \code{accessr_slidy.zip}.  If \code{zip} is a
 #'   character vector of zip file names (no extension) then these names are
 #'   used to name the zip archives.  The names are recycled to the length of
 #'   the number of unique directories, if necessary.
@@ -33,14 +33,14 @@
 #'   of html files is produced then the individual html files are deleted.
 #'   Otherwise, they are not deleted.
 #' @param ... Additional arguments to be passed to
-#'   \code{\link[rmarkdown]{ioslides_presentation}}.
+#'   \code{\link[rmarkdown]{slidy_presentation}}.
 #' @details The simplest setup is to have the \code{.Rmd} files in the current
 #'   working directory, but it is possible to have the \code{.Rmd} files in
 #'   different directories.
 #'
 #'   The \code{\link[rmarkdown]{render}} function, with the argument
-#'   \code{output_file =} \code{\link[rmarkdown]{ioslides_presentation}}
-#'   creates the ioslides html files.
+#'   \code{output_file =} \code{\link[rmarkdown]{slidy_presentation}}
+#'   creates the slidy html files.
 #' @return A list containing the following (character vector) components:
 #'   \item{files }{(absolute) paths and file names of the files added to a zip
 #'     file.}
@@ -48,12 +48,12 @@
 #' @examples
 #' \dontrun{
 #' # All files in the current working directory
-#' rmd2ioslides(c("file1", "file2"))
+#' rmd2slidy(c("file1", "file2"))
 #' }
 #' @export
-rmd2ioslides <- function(x, zip = TRUE, add = FALSE, quiet = TRUE,
+rmd2slidy <- function(x, zip = TRUE, add = FALSE, quiet = TRUE,
                          rm_html = FALSE, ...) {
-  rmd2presentation(x = x, format = "ioslides", zip = zip, add = add,
+  rmd2presentation(x = x, format = "slidy", zip = zip, add = add,
                    quiet = quiet, rm_html = rm_html, ...)
 }
 
