@@ -37,7 +37,10 @@ rendering from knitr.}
 \code{\link[rmarkdown]{html_document}}.}
 }
 \value{
-A character vector containing the paths of the output html files.
+A list containing the following (character vector) components:
+  \item{files }{(absolute) paths and file names of the files added to a zip
+    file.}
+  \item{zips }{(relative) paths and names of all the zip files.}
 }
 \description{
 Creates accessible html documents using R markdown's

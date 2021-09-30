@@ -38,7 +38,10 @@
 #'   The \code{\link[rmarkdown]{render}} function, with the argument
 #'   \code{output_file =} \code{\link[rmarkdown]{ioslides_presentation}}
 #'   creates the ioslides html files.
-#' @return A character vector containing the paths of the output html files.
+#' @return A list containing the following (character vector) components:
+#'   \item{files }{(absolute) paths and file names of the files added to a zip
+#'     file.}
+#'   \item{zips }{(relative) paths and names of all the zip files.}
 #' @examples
 #' \dontrun{
 #' # All files in the current working directory
@@ -60,13 +63,13 @@ rmd2ioslides <- function(x, zip = TRUE, add = FALSE, quiet = TRUE, ...) {
   # Make doc the same length as x
   lenx <- length(x)
   # Function for Rmd to ioslides
-  fun <- function(i) {
+  render_fun <- function(i) {
     # Render the .Rmd file as an ioslides presentation
     rmarkdown::render(input = rmd_files[i],
                       output_format = rmarkdown::ioslides_presentation(...),
                       quiet = quiet)
   }
-  res <- sapply(1:lenx, fun)
+  res <- sapply(1:lenx, render_fun)
   # Identify the different directories in x
   dnames <- dirname(rmd_files)
   # Unique directories
@@ -79,23 +82,9 @@ rmd2ioslides <- function(x, zip = TRUE, add = FALSE, quiet = TRUE, ...) {
     zipfile <- rep_len("accessr_ioslides", length(udnames))
   }
   if (zip) {
-    # Directory identifiers for the files
-    which_dir <- charmatch(dnames, udnames)
-    for (i in unique(which_dir)) {
-      # Set the directory and filename
-      d <- dnames[which(which_dir == i)]
-      f <- basename(x[which(which_dir == i)])
-      zipname <- paste0(d[1], "/", zipfile[i], ".zip")
-      if (!add) {
-        if (file.exists(zipname)) {
-          file.remove(zipname)
-        }
-        zip::zip(zipname, paste0(d, "/", f, ".html"), mode = "cherry-pick")
-      } else {
-        zip::zip_append(zipname, paste0(d, "/", f, ".html"),
-                        mode = "cherry-pick")
-      }
-    }
+    res_zip <- accessr_zip(x, dnames, udnames, zipfile, zipname, add,
+                           extension = ".html")
+    res <- list(files = res, zips = res_zip)
   }
   invisible(res)
 }
