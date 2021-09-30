@@ -41,7 +41,8 @@ Otherwise, they are not deleted.}
 \code{\link[rmarkdown]{html_document}}.}
 }
 \value{
-A list containing the following (character vector) components:
+A list containing the following (character vector) components is
+  returned invisibly:
   \item{files }{(absolute) paths and file names of the files added to a zip
     file.}
   \item{zips }{(relative) paths and names of all the zip files.}

@@ -41,7 +41,8 @@
 #'   The \code{\link[rmarkdown]{render}} function, with the argument
 #'   \code{output_file =} \code{\link[rmarkdown]{ioslides_presentation}}
 #'   creates the ioslides html files.
-#' @return A list containing the following (character vector) components:
+#' @return A list containing the following (character vector) components is
+#'   returned invisibly:
 #'   \item{files }{(absolute) paths and file names of the files added to a zip
 #'     file.}
 #'   \item{zips }{(relative) paths and names of all the zip files.}
