@@ -2,6 +2,5 @@
 
 export(rmd2html)
 export(rmd2ioslides)
-export(rmd2ppt2pdf)
 export(rmd2slidy)
 export(rmd2word)
