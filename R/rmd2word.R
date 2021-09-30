@@ -1,7 +1,4 @@
-# ... arguments to render() or word_document() ?
-# quiet = TRUE?
-
-# ================================ rmd2pdf ====================================
+# ================================ rmd2word ===================================
 
 #' Converts R markdown code to Word and PDF documents
 #'
@@ -9,22 +6,25 @@
 #' R markdown code and then producing PDF files.  Zip archives of the PDF files
 #' may be created.
 #'
-#' @param x A character vector containing the names of the \code{.Rmd} files to
-#'   convert (no extension) if they are in the current working directory, or
-#'   paths to the files, either absolute or relative to the current working
-#'   directory, e.g., \code{DIRECTORY/file1}.  The \code{.docx} and \code{.pdf}
-#'   files are created in the same directory as their respective \code{.Rmd}
-#'   file.  If \code{x} is missing then a PDF file is created from each of the
-#'   \code{.Rmd} files in the current working directory.
-#' @param doc An optional character vector to identify a template Word
-#'   document, or respective documents for the files in \code{x}, from which
-#'   the fonts, margins etc in the output Word documents will based.  If
-#'   \code{doc} is not supplied then a default is used.  Different templates
-#'   may be used for different files.  \code{rep_len(doc, length(x))} is used
-#'   to force \code{length(doc)} to have the same length as \code{x}. A
-#'   component equal to \code{"default"} may be used to use the default Word
-#'   template. See \strong{Details} for information about how to identify the
-#'   locations of the Word template files.
+#' @param x A character vector containing the names (no extension) of the
+#'   \code{.Rmd} files to convert  if they are in the current working
+#'   directory, or paths to the files, either absolute or relative to the
+#'   current working directory, e.g., \code{DIRECTORY/file1}.  The \code{.docx}
+#'   and \code{.pdf} files are created in the same directory as their
+#'   respective \code{.Rmd} file.  If \code{x} is missing then a PDF file is
+#'   created from each of the \code{.Rmd} files in the current working
+#'   directory.
+#' @param doc An optional character vector to be passed as the argument
+#'   \code{reference_docx} to \code{\link[rmarkdown]{word_document}} to
+#'   identify a template Word document, or respective documents for the files
+#'   in \code{x}, from which the fonts, margins etc in the output Word
+#'   documents will based.  If \code{doc} is not supplied then a default is
+#'   used.  Different templates may be used for different files.
+#'   \code{rep_len(doc, length(x))} is used to force \code{length(doc)} to have
+#'   the same length as \code{x}. A component equal to \code{"default"} may be
+#'   used to use the default Word template. See \strong{Details} for
+#'   information about how to identify the locations of the Word template
+#'   files.
 #' @param dir A path to the directory in which the file \code{officetopdf.exe}
 #'   sits.  This is not needed if this file sits in the current working
 #'   directory or a directory in the list returned by \code{searchpaths()}.
@@ -47,12 +47,14 @@
 #' @param rm_pdf A logical scalar.  If \code{rm_pdf = TRUE} and a zip archive
 #'   of PDF files is produced then the individual PDF files are deleted.
 #'   Otherwise, they are not deleted.
+#' @param ... Additional arguments to be passed to
+#'   \code{\link[rmarkdown]{word_document}}.
 #' @details The simplest setup is to have the \code{.Rmd} files and the Word
 #'   template (if used) and \code{officetopdf.exe} in the current working
 #'   directory.
 #'
 #'   It is possible to have the \code{.Rmd} files in different
-#'   directories, but if any non-\code{"default"} values in \code{doc} must be
+#'   directories, but any non-\code{"default"} values in \code{doc} must be
 #'   such that the \code{reference_docx} argument of
 #'   \code{\link[rmarkdown]{word_document}} finds a template Word file.
 #'   If the template is in the same directory as its respective \code{.Rmd}
@@ -81,11 +83,11 @@
 #' @examples
 #' \dontrun{
 #' # All files in the current working directory
-#' rmd2pdf(c("file1", "file2"), doc = "template.docx")
+#' rmd2word(c("file1", "file2"), doc = "template.docx")
 #' }
 #' @export
-rmd2pdf <- function(x, doc, dir, zip = TRUE, add = FALSE, rm_word = FALSE,
-                    rm_pdf = FALSE) {
+rmd2word <- function(x, doc, dir, zip = TRUE, add = FALSE, quiet = TRUE,
+                     rm_word = FALSE, rm_pdf = FALSE, ...) {
   # If x is missing then find all the .Rmd files in the working directory
   if (missing(x)) {
     rmd_files <- list.files(pattern = "Rmd")
@@ -111,16 +113,16 @@ rmd2pdf <- function(x, doc, dir, zip = TRUE, add = FALSE, rm_word = FALSE,
   lenx <- length(x)
   doc <- rep_len(doc, lenx)
   # Function for Rmd to Word to PDF
-  fun <- function(i) {
+  render_fun <- function(i) {
     # Convert .Rmd file to a Word document
-#    rmarkdown::render(input = rmd_files[i], output_format =
-#                        rmarkdown::word_document(reference_docx = doc[i]),
-#                      quiet = TRUE)
-    rmarkdown::pandoc_convert(input = rmd_files[i], to = "docx")
+    rmarkdown::render(input = rmd_files[i], output_format =
+                        rmarkdown::word_document(reference_docx = doc[i], ...),
+                      quiet = quiet)
+#    rmarkdown::pandoc_convert(input = rmd_files[i], to = "docx")
     # Convert Word document to PDF document
     system(paste(exefile, word_files[i], pdf_files[i]))
   }
-  res <- sapply(1:lenx, fun)
+  res <- sapply(1:lenx, render_fun)
   # Error codes
   # 127 officetopdf.exe could not be found
   # 17234 file open in another application
@@ -143,7 +145,7 @@ rmd2pdf <- function(x, doc, dir, zip = TRUE, add = FALSE, rm_word = FALSE,
     zipfile <- rep_len(zip, length(udnames))
     zip <- TRUE
   } else if (is.logical(zip) && zip) {
-    zipfile <- rep_len("accessr", length(udnames))
+    zipfile <- rep_len("accessr_word", length(udnames))
   }
   if (zip) {
     # Directory identifiers for the files
