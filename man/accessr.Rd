@@ -3,7 +3,8 @@
 \docType{package}
 \name{accessr}
 \alias{accessr}
-\title{accessr: Produce Accessible PDF Documents using R markdown}
+\title{accessr: Command Line Tools to Produce Accessible PDF Documents using R
+markdown}
 \description{
 Accessible PDF documents are produced by creating Word documents from R
 markdown files and then PDF documents from these Word documents.  The first
@@ -13,7 +14,10 @@ The second step uses
 \href{https://github.com/cognidox/OfficeToPDF}{OfficetoPDF}.
 }
 \details{
-See \code{\link{rmd2pdf}}.
+\itemize{\code{\link{rmd2word}} }{Create word documents and PDF files.}
+  \itemize{\code{\link{rmd2html}} }{Create html documents.}
+  \itemize{\code{\link{rmd2ioslides}} }{Create isoslides presentations.}
+  \itemize{\code{\link{rmd2slidy}} }{Create slidy presentations.}
 }
 \references{
 JJ Allaire, Yihui Xie, Jonathan McPherson, Javier Luraschi,
@@ -22,5 +26,6 @@ JJ Allaire, Yihui Xie, Jonathan McPherson, Javier Luraschi,
   version 2.9. \url{https://rmarkdown.rstudio.com}.
 }
 \seealso{
-\code{\link{rmd2pdf}}.
+\code{\link{rmd2word}}, \code{\link{rmd2html}},
+  \code{\link{rmd2ioslides}}, \code{\link{rmd2slidy}}.
 }
