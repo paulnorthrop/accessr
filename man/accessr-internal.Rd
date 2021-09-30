@@ -2,10 +2,13 @@
 % Please edit documentation in R/accessr-internal.R
 \name{accessr-internal}
 \alias{accessr-internal}
+\alias{accessr_zip}
 \alias{pns}
 \alias{pnd}
 \title{Internal accessr functions}
 \usage{
+accessr_zip(x, dnames, udnames, zipfile, zipname, add, extension)
+
 pns(x, ...)
 
 pnd(x, ...)
