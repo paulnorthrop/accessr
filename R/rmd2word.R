@@ -117,19 +117,21 @@ rmd2word <- function(x, doc, dir, zip = TRUE, add = FALSE, quiet = TRUE,
   lenx <- length(x)
   doc <- rep_len(doc, lenx)
   # Function for Rmd to Word to PDF
-  render_fun <- function(i) {
+  docx_fun <- function(i) {
     # Convert .Rmd file to a Word document
     res1 <- rmarkdown::render(input = rmd_files[i], output_format =
                        rmarkdown::word_document(reference_docx = doc[i], ...),
                        quiet = quiet)
 #    rmarkdown::pandoc_convert(input = rmd_files[i], to = "docx")
+    return(res1)
+  }
+  pdf_fun <- function(i) {
     # Convert Word document to PDF document
     res2 <- system(paste(exefile, word_files[i], pdf_files[i]))
-    return(c(res1, res2))
+    return(res2)
   }
-  res <- sapply(1:lenx, render_fun)
-  files <- res[1, ]
-  error_codes <- as.numeric(res[2, ])
+  files <- sapply(1:lenx, docx_fun)
+  error_codes <- sapply(1:lenx, pdf_fun)
   # Error codes
   # 127 officetopdf.exe could not be found
   # 17234 file open in another application
