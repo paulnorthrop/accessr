@@ -6,7 +6,6 @@ file1.Rmd
 file2.Rmd
 OfficeToPDF.exe
 *.zip
-*.docx
 *.pdf
 *.pptx
 *.html
