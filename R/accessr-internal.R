@@ -135,13 +135,24 @@ accessr_zip <- function(x, dnames, udnames, zipfile, zipname, add, extension) {
 
 #' @keywords internal
 #' @rdname accessr-internal
-pns <- function(x, ...) {
-  rmd2pdf(x, doc = "template.docx", dir = "C:/Users/Paul/", ...)
+word <- function(x, ...) {
+  rmd2word(x, dir = "C:/Program Files", ...)
 }
 
 #' @keywords internal
 #' @rdname accessr-internal
-pnd <- function(x, ...) {
-  rmd2pdf(x, doc = "template.docx",
-          dir = "C:/Users/paul/Documents/R_PACKAGES/", ...)
+html <- function(x, ...) {
+  rmd2html(x, dir = "C:/Program Files", ...)
+}
+
+#' @keywords internal
+#' @rdname accessr-internal
+ioslides <- function(x, ...) {
+  rmd2ioslides(x, dir = "C:/Program Files", ...)
+}
+
+#' @keywords internal
+#' @rdname accessr-internal
+slidy <- function(x, ...) {
+  rmd2slidy(x, dir = "C:/Program Files", ...)
 }
