@@ -132,27 +132,3 @@ accessr_zip <- function(x, dnames, udnames, zipfile, zipname, add, extension) {
   res_zip <- sapply(unique(which_dir), zip_fun)
   return(res_zip)
 }
-
-#' @keywords internal
-#' @rdname accessr-internal
-word <- function(x, ...) {
-  rmd2word(x, dir = "C:/Program Files", ...)
-}
-
-#' @keywords internal
-#' @rdname accessr-internal
-html <- function(x, ...) {
-  rmd2html(x, dir = "C:/Program Files", ...)
-}
-
-#' @keywords internal
-#' @rdname accessr-internal
-ioslides <- function(x, ...) {
-  rmd2ioslides(x, dir = "C:/Program Files", ...)
-}
-
-#' @keywords internal
-#' @rdname accessr-internal
-slidy <- function(x, ...) {
-  rmd2slidy(x, dir = "C:/Program Files", ...)
-}

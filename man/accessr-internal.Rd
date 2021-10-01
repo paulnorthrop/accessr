@@ -4,10 +4,6 @@
 \alias{accessr-internal}
 \alias{rmd2presentation}
 \alias{accessr_zip}
-\alias{word}
-\alias{html}
-\alias{ioslides}
-\alias{slidy}
 \title{Internal accessr functions}
 \usage{
 rmd2presentation(
@@ -21,14 +17,6 @@ rmd2presentation(
 )
 
 accessr_zip(x, dnames, udnames, zipfile, zipname, add, extension)
-
-word(x, ...)
-
-html(x, ...)
-
-ioslides(x, ...)
-
-slidy(x, ...)
 }
 \description{
 Internal accessr functions
