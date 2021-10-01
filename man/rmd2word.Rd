@@ -6,7 +6,7 @@
 \usage{
 rmd2word(
   x,
-  doc,
+  doc = "accessr",
   dir,
   zip = TRUE,
   add = FALSE,
@@ -26,17 +26,18 @@ respective \code{.Rmd} file.  If \code{x} is missing then a PDF file is
 created from each of the \code{.Rmd} files in the current working
 directory.}
 
-\item{doc}{An optional character vector to be passed as the argument
-\code{reference_docx} to \code{\link[rmarkdown]{word_document}} to
-identify a template Word document, or respective documents for the files
-in \code{x}, from which the fonts, margins etc in the output Word
-documents will based.  If \code{doc} is not supplied then a default is
-used.  Different templates may be used for different files.
-\code{rep_len(doc, length(x))} is used to force \code{length(doc)} to have
-the same length as \code{x}. A component equal to \code{"default"} may be
-used to use the default Word template. See \strong{Details} for
-information about how to identify the locations of the Word template
-files.}
+\item{doc}{An optional character vector to specify template Word documents
+on which to base the style of the respective output Word documents. This
+determines what is passed as the argument\code{reference_docx} to
+\code{\link[rmarkdown]{word_document}}. Different templates may be used
+for different files. \code{rep_len(doc, length(x))} is used to force
+\code{length(doc)} to have the same length as \code{x}.A component equal
+to \code{"default"} specifies \code{word_document}'s default Word
+template. A component equal to \code{"accessr"} specifies \code{accessr}'s
+internal template file, which has narrower margins and darker blue fonts
+for titles and hyperlinks, to avoid contrast issues.  To use your own
+template(s), provide their filnames.  See \strong{Details} for
+more information.}
 
 \item{dir}{A path to the directory in which the file \code{officetopdf.exe}
 sits.  This is not needed if this file sits in the current working
@@ -94,10 +95,13 @@ The simplest setup is to have the \code{.Rmd} files and the Word
   such that the \code{reference_docx} argument of
   \code{\link[rmarkdown]{word_document}} finds a template Word file.
   If the template is in the same directory as its respective \code{.Rmd}
-  component in  \code{x} then the filename, e.g. \code{template.docx} will
+  component in  \code{x} then the filename, e.g. \code{"template.docx"} will
   suffice.  Otherwise, a path to the template should be given, either
   relative to the directory in which the \code{.Rmd} file sits, or an
   absolute path.
+
+  For information on how to create a template Word document
+  \href{https://rmarkdown.rstudio.com/articles_docx.html}{Happy collaboration with Rmd to docx}.
 
   The \code{\link[rmarkdown]{render}} function creates a Word file from
   each input \code{.Rmd} file.  Then
@@ -117,4 +121,9 @@ The simplest setup is to have the \code{.Rmd} files and the Word
 # All files in the current working directory
 rmd2word(c("file1", "file2"), doc = "template.docx")
 }
+}
+\references{
+Layton, Richard. (2015) Happy collaboration with Rmd to docx.
+  R Markdown from RStudio article.
+  \url{https://rmarkdown.rstudio.com/articles_docx.html}
 }

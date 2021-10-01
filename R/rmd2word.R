@@ -14,17 +14,18 @@
 #'   respective \code{.Rmd} file.  If \code{x} is missing then a PDF file is
 #'   created from each of the \code{.Rmd} files in the current working
 #'   directory.
-#' @param doc An optional character vector to be passed as the argument
-#'   \code{reference_docx} to \code{\link[rmarkdown]{word_document}} to
-#'   identify a template Word document, or respective documents for the files
-#'   in \code{x}, from which the fonts, margins etc in the output Word
-#'   documents will based.  If \code{doc} is not supplied then a default is
-#'   used.  Different templates may be used for different files.
-#'   \code{rep_len(doc, length(x))} is used to force \code{length(doc)} to have
-#'   the same length as \code{x}. A component equal to \code{"default"} may be
-#'   used to use the default Word template. See \strong{Details} for
-#'   information about how to identify the locations of the Word template
-#'   files.
+#' @param doc An optional character vector to specify template Word documents
+#'   on which to base the style of the respective output Word documents. This
+#'   determines what is passed as the argument\code{reference_docx} to
+#'   \code{\link[rmarkdown]{word_document}}. Different templates may be used
+#'   for different files. \code{rep_len(doc, length(x))} is used to force
+#'   \code{length(doc)} to have the same length as \code{x}.A component equal
+#'   to \code{"default"} specifies \code{word_document}'s default Word
+#'   template. A component equal to \code{"accessr"} specifies \code{accessr}'s
+#'   internal template file, which has narrower margins and darker blue fonts
+#'   for titles and hyperlinks, to avoid contrast issues.  To use your own
+#'   template(s), provide their filnames.  See \strong{Details} for
+#'   more information.
 #' @param dir A path to the directory in which the file \code{officetopdf.exe}
 #'   sits.  This is not needed if this file sits in the current working
 #'   directory or a directory in the list returned by \code{searchpaths()}.
@@ -58,10 +59,13 @@
 #'   such that the \code{reference_docx} argument of
 #'   \code{\link[rmarkdown]{word_document}} finds a template Word file.
 #'   If the template is in the same directory as its respective \code{.Rmd}
-#'   component in  \code{x} then the filename, e.g. \code{template.docx} will
+#'   component in  \code{x} then the filename, e.g. \code{"template.docx"} will
 #'   suffice.  Otherwise, a path to the template should be given, either
 #'   relative to the directory in which the \code{.Rmd} file sits, or an
 #'   absolute path.
+#'
+#'   For information on how to create a template Word document
+#'   \href{https://rmarkdown.rstudio.com/articles_docx.html}{Happy collaboration with Rmd to docx}.
 #'
 #'   The \code{\link[rmarkdown]{render}} function creates a Word file from
 #'   each input \code{.Rmd} file.  Then
@@ -84,14 +88,17 @@
 #'   \item{files }{(absolute) paths and file names of the files added to a zip
 #'     file.}
 #'   \item{zips }{(relative) paths and names of all the zip files.}
+#' @references Layton, Richard. (2015) Happy collaboration with Rmd to docx.
+#'   R Markdown from RStudio article.
+#'   \url{https://rmarkdown.rstudio.com/articles_docx.html}
 #' @examples
 #' \dontrun{
 #' # All files in the current working directory
 #' rmd2word(c("file1", "file2"), doc = "template.docx")
 #' }
 #' @export
-rmd2word <- function(x, doc, dir, zip = TRUE, add = FALSE, quiet = TRUE,
-                     rm_word = FALSE, rm_pdf = FALSE, ...) {
+rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
+                     quiet = TRUE, rm_word = FALSE, rm_pdf = FALSE, ...) {
   # If x is missing then find all the .Rmd files in the working directory
   if (missing(x)) {
     rmd_files <- list.files(pattern = "Rmd")
@@ -109,10 +116,11 @@ rmd2word <- function(x, doc, dir, zip = TRUE, add = FALSE, quiet = TRUE,
   } else {
     exefile <- paste0(dir, "/officetopdf.exe")
   }
-  # If no template word document has been supplied then use the default
-  if (missing(doc)) {
-    doc <- "default"
-  }
+  # If doc contains any instances of "accessr" then set the correct path
+  # to accessr's template.docx file
+  accessr_doc_path <- paste0(path.package("accessr"),
+                      "/rmarkdown/templates/my_template/template.docx")
+  doc <- ifelse(doc == "accessr", accessr_doc_path, doc)
   # Make doc the same length as x
   lenx <- length(x)
   doc <- rep_len(doc, lenx)
