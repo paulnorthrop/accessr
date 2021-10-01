@@ -13,6 +13,7 @@ rmd2word(
   quiet = TRUE,
   rm_word = FALSE,
   rm_pdf = FALSE,
+  inc_word = FALSE,
   ...
 )
 }
@@ -49,10 +50,10 @@ or an absolute path.}
 files should be put into a zip archive.  If \code{zip = FALSE} then no
 zip archive is created.  Otherwise, an archive is created in each unique
 directory involved in \code{x}.  If \code{zip = TRUE} then any archive
-created has the name \code{accessr.zip}.  If \code{zip} is a character
-vector of zip file names (no extension) then these names are used to name
-the zip archives.  The names are recycled to the length of the number
-of unique directories if necessary.}
+created has the name \code{accessr_word.zip}.  If \code{zip} is a
+character vector of zip file names (no extension) then these names are
+used to name the zip archives.  The names are recycled to the length of
+the number of unique directories if necessary.}
 
 \item{add}{A logical scalar that determines what happens if the output
 zip file already exists.  If \code{add = TRUE} then files are added to the
@@ -65,6 +66,10 @@ files created are deleted.  Otherwise, they are not deleted.}
 \item{rm_pdf}{A logical scalar.  If \code{rm_pdf = TRUE} and a zip archive
 of PDF files is produced then the individual PDF files are deleted.
 Otherwise, they are not deleted.}
+
+\item{inc_word}{A logical scalar.  If \code{inc_word = TRUE} then the Word
+files are included in the zip file created.  Otherwise, they are not
+included.}
 
 \item{...}{Additional arguments to be passed to
 \code{\link[rmarkdown]{word_document}}.}

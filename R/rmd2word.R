@@ -35,10 +35,10 @@
 #'   files should be put into a zip archive.  If \code{zip = FALSE} then no
 #'   zip archive is created.  Otherwise, an archive is created in each unique
 #'   directory involved in \code{x}.  If \code{zip = TRUE} then any archive
-#'   created has the name \code{accessr.zip}.  If \code{zip} is a character
-#'   vector of zip file names (no extension) then these names are used to name
-#'   the zip archives.  The names are recycled to the length of the number
-#'   of unique directories if necessary.
+#'   created has the name \code{accessr_word.zip}.  If \code{zip} is a
+#'   character vector of zip file names (no extension) then these names are
+#'   used to name the zip archives.  The names are recycled to the length of
+#'   the number of unique directories if necessary.
 #' @param add A logical scalar that determines what happens if the output
 #'   zip file already exists.  If \code{add = TRUE} then files are added to the
 #'   zip file and if \code{add = FALSE} then the zip file is deleted and will
@@ -48,6 +48,9 @@
 #' @param rm_pdf A logical scalar.  If \code{rm_pdf = TRUE} and a zip archive
 #'   of PDF files is produced then the individual PDF files are deleted.
 #'   Otherwise, they are not deleted.
+#' @param inc_word A logical scalar.  If \code{inc_word = TRUE} then the Word
+#'   files are included in the zip file created.  Otherwise, they are not
+#'   included.
 #' @param ... Additional arguments to be passed to
 #'   \code{\link[rmarkdown]{word_document}}.
 #' @details The simplest setup is to have the \code{.Rmd} files and the Word
@@ -98,7 +101,8 @@
 #' }
 #' @export
 rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
-                     quiet = TRUE, rm_word = FALSE, rm_pdf = FALSE, ...) {
+                     quiet = TRUE, rm_word = FALSE, rm_pdf = FALSE,
+                     inc_word = FALSE, ...) {
   # If x is missing then find all the .Rmd files in the working directory
   if (missing(x)) {
     rmd_files <- list.files(pattern = "Rmd")
@@ -170,6 +174,10 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
     res <- list(error_codes = error_codes, files = files, zips = res_zip)
     if (rm_pdf) {
       sapply(pdf_files, file.remove)
+    }
+    if (inc_word) {
+      res_zip <- accessr_zip(x, dnames, udnames, zipfile, zipname, add = TRUE,
+                             extension = ".docx")
     }
   }
   invisible(res)
