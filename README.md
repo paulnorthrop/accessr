@@ -24,9 +24,8 @@ You only need to do this once.
 remotes::install_github("paulnorthrop/accessr")
 ```
 
-If you are using RStuidio then it may be a good idea to close RStudio
-and re-open it. I find sometimes that an `install_github` installation
-doesn’t work properyl otherwise.
+If you are using RStudio then it may be a good idea to close RStudio and
+re-open it.
 
 ### Getting started
 
