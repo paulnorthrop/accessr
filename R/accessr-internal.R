@@ -10,7 +10,9 @@ NULL
 #' @keywords internal
 #' @rdname accessr-internal
 rmd2presentation <- function(x, format = c("ioslides", "slidy"), zip = TRUE,
-                             add = FALSE, quiet = TRUE, rm_html = FALSE, ...) {
+                             pdf = FALSE, zip_pdf = zip, pdf_args = list(),
+                             add = FALSE, quiet = TRUE, rm_html = FALSE,
+                             rm_pdf = FALSE, ...) {
   format <- match.arg(format)
   # If x is missing then find all the .Rmd files in the working directory
   if (missing(x)) {
@@ -41,11 +43,21 @@ rmd2presentation <- function(x, format = c("ioslides", "slidy"), zip = TRUE,
                       quiet = quiet)
   }
   res <- sapply(1:lenx, render_fun)
+  res <- list(files = res)
+  # Create pdf files, if required
+  if (pdf) {
+    pdf_fun <- function(i) {
+      # Print to pdf
+      pdf_args$input <- html_files[i]
+      do.call(pagedown::chrome_print, pdf_args)
+    }
+    res_pdf <- sapply(1:lenx, pdf_fun)
+  }
   # Identify the different directories in x
   dnames <- dirname(rmd_files)
   # Unique directories
   udnames <- unique(dirname(rmd_files))
-  # Create zip file(s), if required
+  # Create html zip file(s), if required
   if (is.character(zip)) {
     zipfile <- rep_len(zip, length(udnames))
     zip <- TRUE
@@ -55,9 +67,24 @@ rmd2presentation <- function(x, format = c("ioslides", "slidy"), zip = TRUE,
   if (zip) {
     res_zip <- accessr_zip(x, dnames, udnames, zipfile, zipname, add,
                            extension = ".html")
-    res <- list(files = res, zips = res_zip)
+    res <- c(res, list(zips = res_zip))
     if (rm_html) {
       sapply(html_files, file.remove)
+    }
+  }
+  # Create pdf zip file(s), if required
+  if (is.character(zip_pdf)) {
+    zipfile <- rep_len(zip_pdf, length(udnames))
+    zip_pdf <- TRUE
+  } else if (is.logical(zip_pdf) && zip_pdf) {
+    zipfile <- rep_len(paste0("accessr_", format, "_pdf"), length(udnames))
+  }
+  if (pdf && zip_pdf) {
+    res_zip_pdf <- accessr_zip(x, dnames, udnames, zipfile, zipname, add,
+                               extension = ".pdf")
+    res <- c(res, list(pdf_zips = res_zip_pdf))
+    if (rm_pdf) {
+      sapply(pdf_files, file.remove)
     }
   }
   invisible(res)

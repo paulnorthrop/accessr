@@ -10,9 +10,13 @@ rmd2presentation(
   x,
   format = c("ioslides", "slidy"),
   zip = TRUE,
+  pdf = FALSE,
+  zip_pdf = zip,
+  pdf_args = list(),
   add = FALSE,
   quiet = TRUE,
   rm_html = FALSE,
+  rm_pdf = FALSE,
   ...
 )
 
