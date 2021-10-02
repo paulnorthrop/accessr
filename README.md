@@ -37,18 +37,18 @@ library(accessr)
 ### An example
 
 Suppose that in your current working directory you have the R markdown
-files `file1.Rmd` and `file2.Rmd`, a template Word file `template.docx`
-and that the file `officetopdf.exe` downloaded from [OfficeToPDF
-releases](https://github.com/cognidox/OfficeToPDF/releases) is either in
-your working directory or in a directory listed in `searchpaths()`. Then
-the following will create files `file1.docx`, `file2.docx`, `file1.pdf`
-and `file2.pdf` in your working directory.
+files `file1.Rmd` and `file2.Rmd`, a template Word file
+`your_template.docx` and that the file `OfficeToPDF.exe` downloaded from
+[OfficeToPDF releases](https://github.com/cognidox/OfficeToPDF/releases)
+is either in your working directory or in a directory listed in
+`searchpaths()`. Then the following will create files `file1.docx`,
+`file2.docx`, `file1.pdf` and `file2.pdf` in your working directory.
 
 ``` r
-rmd2pdf(c("file1", "file2"), doc = "template.docx")
+rmd2pdf(c("file1", "file2"), doc = "your_template.docx")
 ```
 
 A path to the Word template document can be provided using the `doc`
 argument. If `doc` is not provided then a default template is used. A
-path to the `officetopdf.exe` file can be provided using an argument
+path to the `OfficeToPDF.exe` file can be provided using an argument
 `dir`.
