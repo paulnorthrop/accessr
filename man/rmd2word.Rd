@@ -124,7 +124,7 @@ The simplest setup is to have the \code{.Rmd} files and the Word
 \examples{
 \dontrun{
 # All files in the current working directory
-rmd2word(c("file1", "file2"), doc = "template.docx")
+rmd2word(c("TEST/file1", "TEST/file2"), doc = "template.docx")
 }
 }
 \references{

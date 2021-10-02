@@ -97,7 +97,7 @@
 #' @examples
 #' \dontrun{
 #' # All files in the current working directory
-#' rmd2word(c("file1", "file2"), doc = "template.docx")
+#' rmd2word(c("TEST/file1", "TEST/file2"), doc = "template.docx")
 #' }
 #' @export
 rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
