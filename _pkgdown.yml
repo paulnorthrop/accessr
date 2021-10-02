@@ -15,4 +15,7 @@ reference:
   - title: Functions
     desc: ~
     contents:
-      - "rmd2pdf"
+      - "rmd2html"
+      - "rmd2ioslides"
+      - "rmd2slidy"
+      - "rmd2word"

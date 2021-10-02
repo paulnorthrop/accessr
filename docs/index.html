@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Produce Accessible PDF Documents using R markdown • accessr</title>
+<title>Command Line Tools to Produce Accessible PDF Documents using R markdown • accessr</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/paper/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Produce Accessible PDF Documents using R markdown">
+<script src="pkgdown.js"></script><meta property="og:title" content="Command Line Tools to Produce Accessible PDF Documents using R markdown">
 <meta property="og:description" content="Accessible PDF documents are produced by creating Word documents 
     from R markdown files and then PDF documents from these Word documents.
     The first step uses the render() function from the rmarkdown package
@@ -84,7 +84,7 @@
 <p>You only need to do this once.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"paulnorthrop/accessr"</span><span class="op">)</span></code></pre></div>
-<p>If you are using RStuidio then it may be a good idea to close RStudio and re-open it. I find sometimes that an <code>install_github</code> installation doesn’t work properyl otherwise.</p>
+<p>If you are using RStudio then it may be a good idea to close RStudio and re-open it.</p>
 </div>
 <div id="getting-started" class="section level3">
 <h3 class="hasAnchor">
@@ -98,7 +98,7 @@
 <a href="#an-example" class="anchor"></a>An example</h3>
 <p>Suppose that in your current working directory you have the R markdown files <code>file1.Rmd</code> and <code>file2.Rmd</code>, a template Word file <code>template.docx</code> and that the file <code>officetopdf.exe</code> downloaded from <a href="https://github.com/cognidox/OfficeToPDF/releases">OfficeToPDF releases</a> is either in your working directory or in a directory listed in <code><a href="https://rdrr.io/r/base/search.html">searchpaths()</a></code>. Then the following will create files <code>file1.docx</code>, <code>file2.docx</code>, <code>file1.pdf</code> and <code>file2.pdf</code> in your working directory.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/rmd2pdf.html">rmd2pdf</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"file1"</span>, <span class="st">"file2"</span><span class="op">)</span>, doc <span class="op">=</span> <span class="st">"template.docx"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">rmd2pdf</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"file1"</span>, <span class="st">"file2"</span><span class="op">)</span>, doc <span class="op">=</span> <span class="st">"template.docx"</span><span class="op">)</span></code></pre></div>
 <p>A path to the Word template document can be provided using the <code>doc</code> argument. If <code>doc</code> is not provided then a default template is used. A path to the <code>officetopdf.exe</code> file can be provided using an argument <code>dir</code>.</p>
 </div>
 </div>
