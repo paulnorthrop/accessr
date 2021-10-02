@@ -24,9 +24,9 @@
 #'   template. A component equal to \code{"accessr"} specifies \code{accessr}'s
 #'   internal template file, which has narrower margins and darker blue fonts
 #'   for titles and hyperlinks, to avoid contrast issues.  To use your own
-#'   template(s), provide their filnames.  See \strong{Details} for
+#'   template(s), provide their filenames.  See \strong{Details} for
 #'   more information.
-#' @param dir A path to the directory in which the file \code{officetopdf.exe}
+#' @param dir A path to the directory in which the file \code{OfficeToPDF.exe}
 #'   sits.  This is not needed if this file sits in the current working
 #'   directory or a directory in the list returned by \code{searchpaths()}.
 #'   Otherwise, it may be a path relative to the current working directory
@@ -54,7 +54,7 @@
 #' @param ... Additional arguments to be passed to
 #'   \code{\link[rmarkdown]{word_document}}.
 #' @details The simplest setup is to have the \code{.Rmd} files and the Word
-#'   template (if used) and \code{officetopdf.exe} in the current working
+#'   template (if used) and \code{OfficeToPDF.exe} in the current working
 #'   directory.
 #'
 #'   It is possible to have the \code{.Rmd} files in different
@@ -73,12 +73,12 @@
 #'   The \code{\link[rmarkdown]{render}} function creates a Word file from
 #'   each input \code{.Rmd} file.  Then
 #'   \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF} is used to
-#'   convert the Word file to a PDF file.  The file \code{officetopdf.exe}
+#'   convert the Word file to a PDF file.  The file \code{OfficeToPDF.exe}
 #'   needs to be downloaded from the
 #'   \href{https://github.com/cognidox/OfficeToPDF/releases}{OfficeToPDF releases}
 #'   page and placed in the directory specified by the argument \code{dir}, or
 #'   in a directory that is in the list returned by \code{\link{searchpaths}}.
-#'   If \code{officetopdf.exe} cannot be found then an error is thrown.
+#'   If \code{OfficeToPDF.exe} cannot be found then an error is thrown.
 #'   A warning will be given if any of the PDF files could not be produced.
 #'   This will occur if there is an existing PDF file of the same name open
 #'   in another application.
@@ -114,11 +114,11 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
     word_files <- paste0(x, ".docx")
     pdf_files <- paste0(x, ".pdf")
   }
-  # Path to the officetopdf executable
+  # Path to the OfficeToPDF executable
   if (missing(dir)) {
-    exefile <- "officetopdf.exe"
+    exefile <- "OfficeToPDF.exe"
   } else {
-    exefile <- paste0(dir, "/officetopdf.exe")
+    exefile <- paste0(dir, "/OfficeToPDF.exe")
   }
   # If doc contains any instances of "accessr" then set the correct path
   # to accessr's template.docx file
@@ -145,10 +145,10 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
   files <- sapply(1:lenx, docx_fun)
   error_codes <- sapply(1:lenx, pdf_fun)
   # Error codes
-  # 127 officetopdf.exe could not be found
+  # 127 OfficeToPDF.exe could not be found
   # 17234 file open in another application
   if (any(error_codes == 127)) {
-    stop("officetopdf.exe could not be found")
+    stop("OfficeToPDF.exe could not be found")
   }
   if (any(error_codes != 0)) {
     warning(pdf_files[error_codes != 0], " could not be written")

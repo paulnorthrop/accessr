@@ -37,10 +37,10 @@ to \code{"default"} specifies \code{word_document}'s default Word
 template. A component equal to \code{"accessr"} specifies \code{accessr}'s
 internal template file, which has narrower margins and darker blue fonts
 for titles and hyperlinks, to avoid contrast issues.  To use your own
-template(s), provide their filnames.  See \strong{Details} for
+template(s), provide their filenames.  See \strong{Details} for
 more information.}
 
-\item{dir}{A path to the directory in which the file \code{officetopdf.exe}
+\item{dir}{A path to the directory in which the file \code{OfficeToPDF.exe}
 sits.  This is not needed if this file sits in the current working
 directory or a directory in the list returned by \code{searchpaths()}.
 Otherwise, it may be a path relative to the current working directory
@@ -92,7 +92,7 @@ may be created.
 }
 \details{
 The simplest setup is to have the \code{.Rmd} files and the Word
-  template (if used) and \code{officetopdf.exe} in the current working
+  template (if used) and \code{OfficeToPDF.exe} in the current working
   directory.
 
   It is possible to have the \code{.Rmd} files in different
@@ -111,12 +111,12 @@ The simplest setup is to have the \code{.Rmd} files and the Word
   The \code{\link[rmarkdown]{render}} function creates a Word file from
   each input \code{.Rmd} file.  Then
   \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF} is used to
-  convert the Word file to a PDF file.  The file \code{officetopdf.exe}
+  convert the Word file to a PDF file.  The file \code{OfficeToPDF.exe}
   needs to be downloaded from the
   \href{https://github.com/cognidox/OfficeToPDF/releases}{OfficeToPDF releases}
   page and placed in the directory specified by the argument \code{dir}, or
   in a directory that is in the list returned by \code{\link{searchpaths}}.
-  If \code{officetopdf.exe} cannot be found then an error is thrown.
+  If \code{OfficeToPDF.exe} cannot be found then an error is thrown.
   A warning will be given if any of the PDF files could not be produced.
   This will occur if there is an existing PDF file of the same name open
   in another application.
