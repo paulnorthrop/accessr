@@ -10,15 +10,8 @@ This package provides functions to produce accessible html and PDF
 documents from input R markdown files. A main aim is to enable documents
 of different formats to be produced from a single R markdown source file
 using a single function call. A zip file containing multiple files can
-be produced to make it easier to send files to others. The option to
-print html output to (non-accessible) PDF files is also available.
-
-[rmarkdown package](https://cran.r-project.org/package=rmarkdown)
-[officedown package](https://cran.r-project.org/package=officedown)
-
-PDF documents are produced from Word documents using
-[OfficeToPDF](https://github.com/cognidox/OfficeToPDF), which must be
-installed if this functionality is required.
+be produced. The option to print html output to (non-accessible) PDF
+files is also available.
 
 ### Installation
 
@@ -45,6 +38,13 @@ library(accessr)
 
 Each function provides the option to create a zip archive containing the
 output files.
+
+[rmarkdown package](https://cran.r-project.org/package=rmarkdown)
+[officedown package](https://cran.r-project.org/package=officedown)
+
+PDF documents are produced from Word documents using
+[OfficeToPDF](https://github.com/cognidox/OfficeToPDF), which must be
+installed if this functionality is required.
 
 ### An example
 
