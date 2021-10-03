@@ -84,7 +84,10 @@ Creates accessible html documents using R markdown's
 created.
 }
 \details{
-The simplest setup is to have the \code{.Rmd} files in the current
+Information such as \code{title}, \code{author}, \code{lang} etc in
+  the YAML header in the Rmd file are used but \code{output} is ignored.
+
+  The simplest setup is to have the \code{.Rmd} files in the current
   working directory, but it is possible to have the \code{.Rmd} files in
   different directories.
 

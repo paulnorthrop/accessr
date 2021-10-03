@@ -19,7 +19,7 @@ rmd2word(
 }
 \arguments{
 \item{x}{A character vector containing the names (no extension) of the
-\code{.Rmd} files to convert  if they are in the current working
+\code{.Rmd} files to convert if they are in the current working
 directory, or paths to the files, either absolute or relative to the
 current working directory, e.g., \code{DIRECTORY/file1}.  The \code{.docx}
 and \code{.pdf} files are created in the same directory as their
@@ -91,7 +91,10 @@ R markdown code and then producing PDF files.  Zip archives of the PDF files
 may be created.
 }
 \details{
-The simplest setup is to have the \code{.Rmd} files and the Word
+Information such as \code{title}, \code{author}, \code{lang} etc in
+  the YAML header in the Rmd file are used but \code{output} is ignored.
+
+  The simplest setup is to have the \code{.Rmd} files and the Word
   template (if used) and \code{OfficeToPDF.exe} in the current working
   directory.
 
