@@ -14,7 +14,9 @@ Depends: R (>= 3.3.0)
 License: GPL (>= 2)
 Encoding: UTF-8
 RoxygenNote: 7.1.1
-Imports: pagedown,
+Imports: officer,
+    officedown,
+    pagedown,
     rmarkdown,
     zip
 SystemRequirements: OfficeToPDF,

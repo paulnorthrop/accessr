@@ -122,19 +122,31 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
   }
   # If doc contains any instances of "accessr" then set the correct path
   # to accessr's template.docx file
-  accessr_doc_path <- paste0(path.package("accessr"),
-                      "/rmarkdown/templates/my_template/template.docx")
+  accessr_doc_path <- system.file(package = "accessr", "rmarkdown",
+                                  "templates", "my_template", "template.docx")
   doc <- ifelse(doc == "accessr", accessr_doc_path, doc)
   # Make doc the same length as x
   lenx <- length(x)
   doc <- rep_len(doc, lenx)
   # Function for Rmd to Word to PDF
   docx_fun <- function(i) {
+    # officedown::rdocx_document() has arguments that will take precedence
+    # over some of the document properties of the argument reference_docx.
+    # We use functions from the officer package to extract these properties
+    # from the reference document and supply them as arguments to
+    # officedown::rdoc_document()
+    odoc <- officer::read_docx(doc[i])
+    ddim <- officer::docx_dim(odoc)
+    page_mar <- as.list(ddim$margins)
+    page_size <- list(width = ddim$page["width"], height = ddim$path["height"],
+                      orient = ifelse(ddim$landscape, "landscape", "portrait"))
     # Convert .Rmd file to a Word document
     res1 <- rmarkdown::render(input = rmd_files[i], output_format =
-                       rmarkdown::word_document(reference_docx = doc[i], ...),
+                       officedown::rdocx_document(
+                         page_margins = do.call(officer::page_mar, page_mar),
+                         page_size = do.call(officer::page_size, page_size),
+                         reference_docx = doc[i], ...),
                        quiet = quiet)
-#    rmarkdown::pandoc_convert(input = rmd_files[i], to = "docx")
     return(res1)
   }
   pdf_fun <- function(i) {
