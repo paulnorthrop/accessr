@@ -59,7 +59,8 @@
 #'   The \code{\link[rmarkdown]{render}} function, with the argument
 #'   \code{output_file =} \code{\link[rmarkdown]{html_document}}
 #'   creates the html files.
-#' @return A list containing the following (character vector) components is
+#' @return In addition to creating the html files, and perhaps zip files,
+#'   a list containing the following (character vector) components is
 #'   returned invisibly:
 #'   \item{files }{(absolute) paths and file names of the files added to a zip
 #'     file.}

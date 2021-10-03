@@ -75,7 +75,8 @@ included.}
 \code{\link[rmarkdown]{word_document}}.}
 }
 \value{
-A list containing the following vector components is returned
+In addition to creating the Word and PDF files, and perhaps zip
+  files, a list containing the following vector components is returned
   invisibly:
   \item{error_codes }{numeric values returned from \code{\link{system}}.
   If \code{wait = FALSE} then these values will be 0 (the success value)

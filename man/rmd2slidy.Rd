@@ -71,7 +71,8 @@ Otherwise, they are not deleted.}
 \code{\link[rmarkdown]{slidy_presentation}}.}
 }
 \value{
-A list containing the following (character vector) components is
+In addition to creating the html files, and perhaps zip files,
+  a list containing the following (character vector) components is
   returned invisibly:
   \item{files }{(absolute) paths and file names of the files added to a zip
     file.}

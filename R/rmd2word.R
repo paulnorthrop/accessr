@@ -85,7 +85,8 @@
 #'   A warning will be given if any of the PDF files could not be produced.
 #'   This will occur if there is an existing PDF file of the same name open
 #'   in another application.
-#' @return A list containing the following vector components is returned
+#' @return In addition to creating the Word and PDF files, and perhaps zip
+#'   files, a list containing the following vector components is returned
 #'   invisibly:
 #'   \item{error_codes }{numeric values returned from \code{\link{system}}.
 #'   If \code{wait = FALSE} then these values will be 0 (the success value)
