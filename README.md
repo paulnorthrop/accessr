@@ -6,21 +6,25 @@ Status](https://ci.appveyor.com/api/projects/status/github/paulnorthrop/stat0002
 
 ## accessr
 
-Accessible PDF documents are produced by creating Word documents from R
-markdown files and then PDF documents from these Word documents. The
-first step uses the `render` function from the [rmarkdown
-package](https://cran.r-project.org/package=rmarkdown). The second step
-uses [OfficetoPDF](https://github.com/cognidox/OfficeToPDF).
+This package provides functions to produce accessible html and PDF
+documents from input R markdown files. A main aim is to enable documents
+of different formats to be produced from a single R markdown source file
+using a single function call. A zip file containing multiple files can
+be produced to make it easier to send files to others. The option to
+print html output to (non-accessible) PDF files is also available.
+
+[rmarkdown package](https://cran.r-project.org/package=rmarkdown)
+[officedown package](https://cran.r-project.org/package=officedown)
+
+PDF documents are produced from Word documents using
+[OfficeToPDF](https://github.com/cognidox/OfficeToPDF), which must be
+installed if this functionality is required.
 
 ### Installation
 
 ``` r
+# Install package remotes, if necessary
 install.packages("remotes")
-```
-
-You only need to do this once.
-
-``` r
 remotes::install_github("paulnorthrop/accessr")
 ```
 
@@ -33,6 +37,14 @@ re-open it.
 library(accessr)
 ?accessr
 ```
+
+-   `rmd2html()`
+-   `rmd2ioslides()`
+-   `rmd2slidy()`
+-   `rmd2word()`
+
+Each function provides the option to create a zip archive containing the
+output files.
 
 ### An example
 

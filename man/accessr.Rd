@@ -3,21 +3,39 @@
 \docType{package}
 \name{accessr}
 \alias{accessr}
-\title{accessr: Command Line Tools to Produce Accessible PDF Documents using R
+\title{accessr: Command Line Tools to Produce Accessible Documents using R
 markdown}
 \description{
+This package provides functions to produce accessible html and PDF documents
+from input R markdown files.  A main aim is to enable documents of different
+formats to be produced from a single R markdown source file using a single
+function call.  A zip file containing multiple files can be produced.
+The option to print html output to (non-accessible) PDF files is also
+available.
+}
+\details{
+\itemize{
+  \item \code{\link{rmd2html}}: create html documents and perhaps print to
+   (non-accessible) PDF documents.
+  \item \code{\link{rmd2ioslides}}: create isoslides presentations and
+   perhaps print to (non-accessible) PDF documents.
+  \item \code{\link{rmd2slidy}}: create slidy presentations and perhaps
+   print to (non-accessible) PDF documents..
+  \item \code{\link{rmd2word}}: create word documents and accessible PDF
+   files.
+}
+
+Each function provides the option to create a zip archive containing the
+output files.
+
 Accessible PDF documents are produced by creating Word documents from R
 markdown files and then PDF documents from these Word documents.  The first
 step uses the \code{\link[rmarkdown]{render}} function from the
 \href{https://cran.r-project.org/package=rmarkdown}{rmarkdown package}
+and the \code{\link[officedown]{rdocx_document}} function from the
+[officedown package](https://cran.r-project.org/package=officedown).
 The second step uses
 \href{https://github.com/cognidox/OfficeToPDF}{OfficetoPDF}.
-}
-\details{
-\itemize{\code{\link{rmd2word}} }{Create word documents and PDF files.}
-  \itemize{\code{\link{rmd2html}} }{Create html documents.}
-  \itemize{\code{\link{rmd2ioslides}} }{Create isoslides presentations.}
-  \itemize{\code{\link{rmd2slidy}} }{Create slidy presentations.}
 }
 \references{
 JJ Allaire, Yihui Xie, Jonathan McPherson, Javier Luraschi,
