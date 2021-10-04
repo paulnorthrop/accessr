@@ -144,6 +144,8 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
     page_mar <- as.list(ddim$margins)
     page_size <- list(width = ddim$page["width"], height = ddim$path["height"],
                       orient = ifelse(ddim$landscape, "landscape", "portrait"))
+    print(page_mar)
+    print(page_size)
     # Convert .Rmd file to a Word document
     res1 <- rmarkdown::render(input = rmd_files[i], output_format =
                        officedown::rdocx_document(
