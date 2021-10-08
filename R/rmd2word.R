@@ -142,7 +142,7 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
     odoc <- officer::read_docx(doc[i])
     ddim <- officer::docx_dim(odoc)
     page_mar <- as.list(ddim$margins)
-    page_size <- list(width = ddim$page["width"], height = ddim$path["height"],
+    page_size <- list(width = ddim$page["width"], height = ddim$page["height"],
                       orient = ifelse(ddim$landscape, "landscape", "portrait"))
     print(page_mar)
     print(page_size)
