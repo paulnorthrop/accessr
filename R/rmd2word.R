@@ -14,18 +14,18 @@
 #'   respective \code{.Rmd} file.  If \code{x} is missing then a PDF file is
 #'   created from each of the \code{.Rmd} files in the current working
 #'   directory.
-#' @param doc An optional character vector to specify template Word documents
-#'   on which to base the style of the respective output Word documents. This
-#'   determines what is passed as the argument \code{reference_docx} to
-#'   \code{\link[rmarkdown]{word_document}}. Different templates may be used
-#'   for different files. \code{rep_len(doc, length(x))} is used to force
-#'   \code{length(doc)} to have the same length as \code{x}. A component equal
-#'   to \code{"default"} specifies \code{word_document}'s default Word
-#'   template. A component equal to \code{"accessr"} specifies \code{accessr}'s
-#'   internal template file, which has narrower margins and darker blue fonts
-#'   for titles and hyperlinks, to avoid contrast issues.  To use your own
-#'   template(s), provide their filenames.  See \strong{Details} for
-#'   more information.
+#' @param doc An optional character vector (including the file extension) to
+#'   specify template Word documents on which to base the style of the
+#'   respective output Word documents. This determines what is passed as the
+#'   argument \code{reference_docx} to \code{\link[rmarkdown]{word_document}}.
+#'   Different templates may be used for different files.
+#'   \code{rep_len(doc, length(x))} is used to force \code{length(doc)} to have
+#'   the same length as \code{x}. A component equal to \code{"default"}
+#'   specifies \code{word_document}'s default Word template. A component equal
+#'   to \code{"accessr"} specifies \code{accessr}'s internal template file,
+#'   which has narrower margins and darker blue fonts for titles and
+#'   hyperlinks, to avoid contrast issues.  To use your own template(s),
+#'   provide their filenames.  See \strong{Details} for more information.
 #' @param dir A path to the directory in which the file \code{OfficeToPDF.exe}
 #'   sits.  This is not needed if this file sits in the current working
 #'   directory or a directory in the list returned by \code{searchpaths()}.
@@ -139,20 +139,33 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
     # We use functions from the officer package to extract these properties
     # from the reference document and supply them as arguments to
     # officedown::rdoc_document()
-    odoc <- officer::read_docx(doc[i])
-    ddim <- officer::docx_dim(odoc)
-    page_mar <- as.list(ddim$margins)
-    page_size <- list(width = ddim$page["width"], height = ddim$page["height"],
-                      orient = ifelse(ddim$landscape, "landscape", "portrait"))
-    print(page_mar)
-    print(page_size)
     # Convert .Rmd file to a Word document
-    res1 <- rmarkdown::render(input = rmd_files[i], output_format =
-                       officedown::rdocx_document(
-                         page_margins = do.call(officer::page_mar, page_mar),
-                         page_size = do.call(officer::page_size, page_size),
-                         reference_docx = doc[i], ...),
-                       quiet = quiet)
+    if (doc[i] == "default") {
+      res1 <- rmarkdown::render(input = rmd_files[i], output_format =
+                                  officedown::rdocx_document(...),
+                                quiet = quiet)
+    } else {
+      odoc <- officer::read_docx(doc[i])
+      ddim <- officer::docx_dim(odoc)
+      page_mar <- as.list(ddim$margins)
+      page_size <- list(width = ddim$page["width"], height = ddim$page["height"],
+                        orient = ifelse(ddim$landscape, "landscape", "portrait"))
+#      print(page_mar)
+#      print(page_size)
+#      print(ls(odoc))
+#      print(ls(ddim))
+#      print(odoc$styles)
+      res1 <- rmarkdown::render(input = rmd_files[i], output_format =
+                                  officedown::rdocx_document(
+                                    page_margins = do.call(officer::page_mar, page_mar),
+                                    page_size = do.call(officer::page_size, page_size),
+                                    reference_docx = doc[i], ...),
+                                quiet = quiet)
+    }
+    # Now knit the .md file generated (if run_pandoc = FALSE given to render above)
+#    print(res1)
+#    stop()
+#    res1 <- rmarkdown::render(res1, knit_meta = attr(res1, "knit_meta"))
     return(res1)
   }
   pdf_fun <- function(i) {

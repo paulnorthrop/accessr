@@ -27,18 +27,18 @@ respective \code{.Rmd} file.  If \code{x} is missing then a PDF file is
 created from each of the \code{.Rmd} files in the current working
 directory.}
 
-\item{doc}{An optional character vector to specify template Word documents
-on which to base the style of the respective output Word documents. This
-determines what is passed as the argument\code{reference_docx} to
-\code{\link[rmarkdown]{word_document}}. Different templates may be used
-for different files. \code{rep_len(doc, length(x))} is used to force
-\code{length(doc)} to have the same length as \code{x}.A component equal
-to \code{"default"} specifies \code{word_document}'s default Word
-template. A component equal to \code{"accessr"} specifies \code{accessr}'s
-internal template file, which has narrower margins and darker blue fonts
-for titles and hyperlinks, to avoid contrast issues.  To use your own
-template(s), provide their filenames.  See \strong{Details} for
-more information.}
+\item{doc}{An optional character vector (including the file extension) to
+specify template Word documents on which to base the style of the
+respective output Word documents. This determines what is passed as the
+argument \code{reference_docx} to \code{\link[rmarkdown]{word_document}}.
+Different templates may be used for different files.
+\code{rep_len(doc, length(x))} is used to force \code{length(doc)} to have
+the same length as \code{x}. A component equal to \code{"default"}
+specifies \code{word_document}'s default Word template. A component equal
+to \code{"accessr"} specifies \code{accessr}'s internal template file,
+which has narrower margins and darker blue fonts for titles and
+hyperlinks, to avoid contrast issues.  To use your own template(s),
+provide their filenames.  See \strong{Details} for more information.}
 
 \item{dir}{A path to the directory in which the file \code{OfficeToPDF.exe}
 sits.  This is not needed if this file sits in the current working
