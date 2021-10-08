@@ -151,7 +151,7 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
                        officedown::rdocx_document(
                          page_margins = do.call(officer::page_mar, page_mar),
                          page_size = do.call(officer::page_size, page_size),
-                         reference_docx = "default", ...),
+                         reference_docx = doc[i], ...),
                        quiet = quiet)
     return(res1)
   }
