@@ -16,10 +16,10 @@
 #'   directory.
 #' @param doc An optional character vector to specify template Word documents
 #'   on which to base the style of the respective output Word documents. This
-#'   determines what is passed as the argument\code{reference_docx} to
+#'   determines what is passed as the argument \code{reference_docx} to
 #'   \code{\link[rmarkdown]{word_document}}. Different templates may be used
 #'   for different files. \code{rep_len(doc, length(x))} is used to force
-#'   \code{length(doc)} to have the same length as \code{x}.A component equal
+#'   \code{length(doc)} to have the same length as \code{x}. A component equal
 #'   to \code{"default"} specifies \code{word_document}'s default Word
 #'   template. A component equal to \code{"accessr"} specifies \code{accessr}'s
 #'   internal template file, which has narrower margins and darker blue fonts
@@ -151,7 +151,7 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
                        officedown::rdocx_document(
                          page_margins = do.call(officer::page_mar, page_mar),
                          page_size = do.call(officer::page_size, page_size),
-                         reference_docx = doc[i], ...),
+                         reference_docx = "default", ...),
                        quiet = quiet)
     return(res1)
   }
