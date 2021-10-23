@@ -17,14 +17,18 @@
 #' @param doc An optional character vector (including the file extension) to
 #'   specify template Word documents on which to base the style of the
 #'   respective output Word documents. This determines what is passed as the
-#'   argument \code{reference_docx} to \code{\link[rmarkdown]{word_document}}.
+#'   argument \code{reference_docx} to \code{\link[rmarkdown]{word_document}},
+#'   via \code{\link[officedown]{rdocx_document}}.
 #'   Different templates may be used for different files.
 #'   \code{rep_len(doc, length(x))} is used to force \code{length(doc)} to have
-#'   the same length as \code{x}. A component equal to \code{"default"}
-#'   specifies \code{word_document}'s default Word template. A component equal
-#'   to \code{"accessr"} specifies \code{accessr}'s internal template file,
-#'   which has narrower margins and darker blue fonts for titles and
-#'   hyperlinks, to avoid contrast issues.  To use your own template(s),
+#'   the same length as \code{x}.
+#'   A component equal to \code{"officedown"} specifies
+#'   \code{\link[officedown]{rdocx_document}}'s default.
+#'   A component equal to \code{"rmarkdown"} specifies
+#'   \code{\link[rmarkdown]{word_document}}'s default.
+#'   A component equal to \code{"accessr"} specifies \code{accessr}'s internal
+#'   template file, which has narrower margins and darker blue fonts for titles
+#'   and hyperlinks, to avoid contrast issues.  To use your own template(s),
 #'   provide their filenames.  See \strong{Details} for more information.
 #' @param dir A path to the directory in which the file \code{OfficeToPDF.exe}
 #'   sits.  This is not needed if this file sits in the current working
@@ -51,6 +55,12 @@
 #' @param inc_word A logical scalar.  If \code{inc_word = TRUE} then the Word
 #'   files are included in the zip file created.  Otherwise, they are not
 #'   included.
+#' @param tidy A logical scalar.  In cases where \code{doc} is not equal to
+#'   \code{"default"} an \code{.md} file and a \code{.pandoc} config file
+#'   (to specify the argument reference-doc) are created when the Word document
+#'   is produced using \code{\link[knitr]{pandoc}}.  If \code{tidy = TRUE} then
+#'   these files are deleted.  Otherwise, they remain the directory of the
+#'   corresponding input \code{.Rmd} file.
 #' @param ... Additional arguments to be passed to
 #'   \code{\link[rmarkdown]{word_document}}.
 #' @details Information such as \code{title}, \code{author}, \code{lang} etc in
@@ -106,8 +116,9 @@
 #' @export
 rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
                      quiet = TRUE, rm_word = FALSE, rm_pdf = FALSE,
-                     inc_word = FALSE, ...) {
+                     inc_word = FALSE, tidy = TRUE, ...) {
   # If x is missing then find all the .Rmd files in the working directory
+  # x is the filepath without extension
   if (missing(x)) {
     rmd_files <- list.files(pattern = "Rmd")
     word_files <- sub(".Rmd", ".docx", rmd_files)
@@ -126,8 +137,8 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
   }
   # If doc contains any instances of "accessr" then set the correct path
   # to accessr's template.docx file
-  accessr_doc_path <- system.file(package = "accessr", "rmarkdown",
-                                  "templates", "my_template", "template.docx")
+  accessr_doc_path <- system.file(package = "accessr", "examples",
+                                  "template.docx")
   doc <- ifelse(doc == "accessr", accessr_doc_path, doc)
   # Make doc the same length as x
   lenx <- length(x)
@@ -144,36 +155,83 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
       res1 <- rmarkdown::render(input = rmd_files[i], output_format =
                                   officedown::rdocx_document(...),
                                 quiet = quiet)
+    } else if (doc[i] == "rmarkdown") {
+      res1 <- rmarkdown::render(input = rmd_files[i], output_format =
+                                  officedown::rdocx_document(...),
+                                quiet = quiet, run_pandoc = FALSE)
+      # Rename the output .md file (get rid of the .knit bit)
+      old_md <- paste0(x[i], ".knit.md")
+      new_md <- paste0(x[i], ".md")
+      file.rename(old_md, new_md)
+      if (quiet) {
+        suppressMessages(knitr::pandoc(new_md, format = "docx"))
+      } else {
+        knitr::pandoc(new_md, format = "docx")
+      }
     } else {
       odoc <- officer::read_docx(doc[i])
       ddim <- officer::docx_dim(odoc)
       page_mar <- as.list(ddim$margins)
       page_size <- list(width = ddim$page["width"], height = ddim$page["height"],
                         orient = ifelse(ddim$landscape, "landscape", "portrait"))
-#      print(page_mar)
-#      print(page_size)
-#      print(ls(odoc))
-#      print(ls(ddim))
-#      print(odoc$styles)
-      res1 <- rmarkdown::render(input = rmd_files[i], output_format =
-                                  officedown::rdocx_document(
-                                    page_margins = do.call(officer::page_mar, page_mar),
-                                    page_size = do.call(officer::page_size, page_size),
-                                    reference_docx = doc[i], ...),
-                                quiet = quiet)
+      # Function to check that pandoc is available
+      pandoc2.0 <- function() {
+        rmarkdown::pandoc_available("2.0")
+      }
+      # Function to create arguments to pass to pandoc
+      reference_doc_args <- function(type, doc) {
+        if (is.null(doc) || identical(doc, "default")) return()
+        c(paste0("--reference-", if (pandoc2.0()) "doc" else {
+          match.arg(type, c("docx", "odt", "doc"))
+        }), rmarkdown::pandoc_path_arg(doc))
+      }
+      args <- reference_doc_args("docx", doc[i])
+      res0 <- officedown::rdocx_document(
+        page_margins = do.call(officer::page_mar, page_mar),
+        page_size = do.call(officer::page_size, page_size),
+        reference_docx = doc[i], ...)
+      res0$output_format <- res0$bookdown_output_format
+      res0$output_format <- "rmarkdown::word_document"
+      res0$output_format <- rmarkdown::word_document(reference_docx = doc[i])
+      res0$bookdown_output_format <- NULL
+      res0$pandoc$args[4] <- "word-formatting-exam.docx"
+      # Render to an .md file
+      res1 <- rmarkdown::render(input = rmd_files[i], output_format = res0,
+                                quiet = quiet, run_pandoc = FALSE)
+      # Rename the output .md file (get rid of the .knit bit)
+      old_md <- paste0(x[i], ".knit.md")
+      new_md <- paste0(x[i], ".md")
+      file.rename(old_md, new_md)
+      # Create a .pandoc file to use as the config argument to pandoc()
+      pandoc_config <- paste0(x[i], ".pandoc")
+      fileConn <- file(pandoc_config)
+      config_content <- paste0("reference-doc: ", doc[i])
+      writeLines(config_content, fileConn)
+      close(fileConn)
+      # We don't need to pass config, because we are using the default
+      # filename, but we do it just in case
+      if (quiet) {
+        suppressMessages(knitr::pandoc(new_md, format = "docx",
+                                       config = pandoc_config))
+      } else {
+        knitr::pandoc(new_md, format = "docx", config = pandoc_config)
+      }
+      # Tidy, y removing the .md and .pandoc files, if required
+      if (tidy) {
+        file.remove(pandoc_config)
+        file.remove(new_md)
+      }
     }
-    # Now knit the .md file generated (if run_pandoc = FALSE given to render above)
-#    print(res1)
-#    stop()
-#    res1 <- rmarkdown::render(res1, knit_meta = attr(res1, "knit_meta"))
     return(res1)
   }
+  # Create Word documents
+  files <- sapply(1:lenx, docx_fun)
+  # Convert Word documents to PDF documents
   pdf_fun <- function(i) {
     # Convert Word document to PDF document
     res2 <- system(paste(exefile, word_files[i], pdf_files[i]))
     return(res2)
   }
-  files <- sapply(1:lenx, docx_fun)
   error_codes <- sapply(1:lenx, pdf_fun)
   # Error codes
   # 127 OfficeToPDF.exe could not be found

@@ -14,6 +14,7 @@ rmd2word(
   rm_word = FALSE,
   rm_pdf = FALSE,
   inc_word = FALSE,
+  tidy = TRUE,
   ...
 )
 }
@@ -30,14 +31,18 @@ directory.}
 \item{doc}{An optional character vector (including the file extension) to
 specify template Word documents on which to base the style of the
 respective output Word documents. This determines what is passed as the
-argument \code{reference_docx} to \code{\link[rmarkdown]{word_document}}.
+argument \code{reference_docx} to \code{\link[rmarkdown]{word_document}},
+via \code{\link[officedown]{rdocx_document}}.
 Different templates may be used for different files.
 \code{rep_len(doc, length(x))} is used to force \code{length(doc)} to have
-the same length as \code{x}. A component equal to \code{"default"}
-specifies \code{word_document}'s default Word template. A component equal
-to \code{"accessr"} specifies \code{accessr}'s internal template file,
-which has narrower margins and darker blue fonts for titles and
-hyperlinks, to avoid contrast issues.  To use your own template(s),
+the same length as \code{x}.
+A component equal to \code{"officedown"} specifies
+\code{\link[officedown]{rdocx_document}}'s default.
+A component equal to \code{"rmarkdown"} specifies
+\code{\link[rmarkdown]{word_document}}'s default.
+A component equal to \code{"accessr"} specifies \code{accessr}'s internal
+template file, which has narrower margins and darker blue fonts for titles
+and hyperlinks, to avoid contrast issues.  To use your own template(s),
 provide their filenames.  See \strong{Details} for more information.}
 
 \item{dir}{A path to the directory in which the file \code{OfficeToPDF.exe}
@@ -70,6 +75,13 @@ Otherwise, they are not deleted.}
 \item{inc_word}{A logical scalar.  If \code{inc_word = TRUE} then the Word
 files are included in the zip file created.  Otherwise, they are not
 included.}
+
+\item{tidy}{A logical scalar.  In cases where \code{doc} is not equal to
+\code{"default"} an \code{.md} file and a \code{.pandoc} config file
+(to specify the argument reference-doc) are created when the Word document
+is produced using \code{\link[knitr]{pandoc}}.  If \code{tidy = TRUE} then
+these files are deleted.  Otherwise, they remain the directory of the
+corresponding input \code{.Rmd} file.}
 
 \item{...}{Additional arguments to be passed to
 \code{\link[rmarkdown]{word_document}}.}
