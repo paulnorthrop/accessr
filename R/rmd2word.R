@@ -24,8 +24,6 @@
 #'   the same length as \code{x}.
 #'   A component equal to \code{"officedown"} specifies
 #'   \code{\link[officedown]{rdocx_document}}'s default.
-#'   A component equal to \code{"rmarkdown"} specifies
-#'   \code{\link[rmarkdown]{word_document}}'s default.
 #'   A component equal to \code{"accessr"} specifies \code{accessr}'s internal
 #'   template file, which has narrower margins and darker blue fonts for titles
 #'   and hyperlinks, to avoid contrast issues.  To use your own template(s),
@@ -139,52 +137,14 @@ rmd2word <- function(x, doc = "officedown", dir, zip = TRUE, add = FALSE,
   doc <- rep_len(doc, lenx)
   # Function for Rmd to Word to PDF
   docx_fun <- function(i) {
-    # officedown::rdocx_document() has arguments that will take precedence
-    # over some of the document properties of the argument reference_docx.
-    # We use functions from the officer package to extract these properties
-    # from the reference document and supply them as arguments to
-    # officedown::rdoc_document()
     # Convert .Rmd file to a Word document
     if (doc[i] == "officedown") {
       print("HERE")
       res1 <- rmarkdown::render(input = rmd_files[i], output_format =
                                   officedown::rdocx_document(...),
                                 quiet = quiet)
-    } else if (doc[i] == "rmarkdown") {
-      res1 <- rmarkdown::render(input = rmd_files[i], output_format =
-                                  officedown::rdocx_document(...),
-                                quiet = quiet, run_pandoc = FALSE)
-      # Rename the output .md file (get rid of the .knit bit)
-      old_md <- paste0(x[i], ".knit.md")
-      new_md <- paste0(x[i], ".md")
-      file.rename(old_md, new_md)
-      if (quiet) {
-        suppressMessages(knitr::pandoc(new_md, format = "docx"))
-      } else {
-        knitr::pandoc(new_md, format = "docx")
-      }
     } else {
-      odoc <- officer::read_docx(doc[i])
-      ddim <- officer::docx_dim(odoc)
-      page_mar <- as.list(ddim$margins)
-      page_size <- list(width = ddim$page["width"], height = ddim$page["height"],
-                        orient = ifelse(ddim$landscape, "landscape", "portrait"))
-      # Function to check that pandoc is available
-      pandoc2.0 <- function() {
-        rmarkdown::pandoc_available("2.0")
-      }
-      # Function to create arguments to pass to pandoc
-      reference_doc_args <- function(type, doc) {
-        if (is.null(doc) || identical(doc, "officedown")) return()
-        c(paste0("--reference-", if (pandoc2.0()) "doc" else {
-          match.arg(type, c("docx", "odt", "doc"))
-        }), rmarkdown::pandoc_path_arg(doc))
-      }
-      args <- reference_doc_args("docx", doc[i])
-      res0 <- officedown::rdocx_document(reference_docx = doc[i])
-      res0$pandoc$args[4] <- basename(doc[i])
-      res0$pandoc$from <- "markdown"
-      res0$pandoc$lua_filters <- NULL
+      res0 <- officedown::rdocx_document(reference_docx = doc[i], ...)
       # To allow things like page numbers being taken from doc[i] we need to
       # prevent the line
       #    x <- body_set_default_section(x, default_sect_properties)
@@ -199,7 +159,7 @@ rmd2word <- function(x, doc = "officedown", dir, zip = TRUE, add = FALSE,
       line_to_delete <- which(where_line)
       body(res0$post_processor)[[line_to_delete]] <- substitute(nodefs <- TRUE)
       res1 <- rmarkdown::render(input = rmd_files[i], output_format = res0,
-                                quiet = quiet, run_pandoc = TRUE)
+                                quiet = quiet)
     }
     return(res1)
   }

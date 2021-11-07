@@ -37,8 +37,6 @@ Different templates may be used for different files.
 the same length as \code{x}.
 A component equal to \code{"officedown"} specifies
 \code{\link[officedown]{rdocx_document}}'s default.
-A component equal to \code{"rmarkdown"} specifies
-\code{\link[rmarkdown]{word_document}}'s default.
 A component equal to \code{"accessr"} specifies \code{accessr}'s internal
 template file, which has narrower margins and darker blue fonts for titles
 and hyperlinks, to avoid contrast issues.  To use your own template(s),
