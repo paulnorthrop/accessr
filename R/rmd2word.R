@@ -55,12 +55,6 @@
 #' @param inc_word A logical scalar.  If \code{inc_word = TRUE} then the Word
 #'   files are included in the zip file created.  Otherwise, they are not
 #'   included.
-#' @param tidy A logical scalar.  In cases where \code{doc} is not equal to
-#'   \code{"default"} an \code{.md} file and a \code{.pandoc} config file
-#'   (to specify the argument reference-doc) are created when the Word document
-#'   is produced using \code{\link[knitr]{pandoc}}.  If \code{tidy = TRUE} then
-#'   these files are deleted.  Otherwise, they remain the directory of the
-#'   corresponding input \code{.Rmd} file.
 #' @param ... Additional arguments to be passed to
 #'   \code{\link[rmarkdown]{word_document}}.
 #' @details Information such as \code{title}, \code{author}, \code{lang} etc in
@@ -114,9 +108,9 @@
 #' rmd2word(c("TEST/file1", "TEST/file2"), doc = "template.docx")
 #' }
 #' @export
-rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
+rmd2word <- function(x, doc = "officedown", dir, zip = TRUE, add = FALSE,
                      quiet = TRUE, rm_word = FALSE, rm_pdf = FALSE,
-                     inc_word = FALSE, tidy = TRUE, ...) {
+                     inc_word = FALSE, ...) {
   # If x is missing then find all the .Rmd files in the working directory
   # x is the filepath without extension
   if (missing(x)) {
@@ -151,7 +145,8 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
     # from the reference document and supply them as arguments to
     # officedown::rdoc_document()
     # Convert .Rmd file to a Word document
-    if (doc[i] == "default") {
+    if (doc[i] == "officedown") {
+      print("HERE")
       res1 <- rmarkdown::render(input = rmd_files[i], output_format =
                                   officedown::rdocx_document(...),
                                 quiet = quiet)
@@ -180,47 +175,31 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
       }
       # Function to create arguments to pass to pandoc
       reference_doc_args <- function(type, doc) {
-        if (is.null(doc) || identical(doc, "default")) return()
+        if (is.null(doc) || identical(doc, "officedown")) return()
         c(paste0("--reference-", if (pandoc2.0()) "doc" else {
           match.arg(type, c("docx", "odt", "doc"))
         }), rmarkdown::pandoc_path_arg(doc))
       }
       args <- reference_doc_args("docx", doc[i])
-      res0 <- officedown::rdocx_document(
-        page_margins = do.call(officer::page_mar, page_mar),
-        page_size = do.call(officer::page_size, page_size),
-        reference_docx = doc[i], ...)
-      res0$output_format <- res0$bookdown_output_format
-      res0$output_format <- "rmarkdown::word_document"
-      res0$output_format <- rmarkdown::word_document(reference_docx = doc[i])
-      res0$bookdown_output_format <- NULL
-      res0$pandoc$args[4] <- "word-formatting-exam.docx"
-      # Render to an .md file
+      res0 <- officedown::rdocx_document(reference_docx = doc[i])
+      res0$pandoc$args[4] <- basename(doc[i])
+      res0$pandoc$from <- "markdown"
+      res0$pandoc$lua_filters <- NULL
+      # To allow things like page numbers being taken from doc[i] we need to
+      # prevent the line
+      #    x <- body_set_default_section(x, default_sect_properties)
+      # in res0$post_processor from being executed
+      # We do this by replacing it with a benign line
+      pp_body <- body(res0$post_processor)
+      find_line <- function(i){
+#        "body_set_default_section(x, default_sect_properties)" %in% as.character(pp_body[[i]])
+        !is.na(pmatch("body_set_default_section", as.character(pp_body[[i]])))
+      }
+      where_line <- vapply(1:length(pp_body), find_line, FALSE)
+      line_to_delete <- which(where_line)
+      body(res0$post_processor)[[line_to_delete]] <- substitute(nodefs <- TRUE)
       res1 <- rmarkdown::render(input = rmd_files[i], output_format = res0,
-                                quiet = quiet, run_pandoc = FALSE)
-      # Rename the output .md file (get rid of the .knit bit)
-      old_md <- paste0(x[i], ".knit.md")
-      new_md <- paste0(x[i], ".md")
-      file.rename(old_md, new_md)
-      # Create a .pandoc file to use as the config argument to pandoc()
-      pandoc_config <- paste0(x[i], ".pandoc")
-      fileConn <- file(pandoc_config)
-      config_content <- paste0("reference-doc: ", doc[i])
-      writeLines(config_content, fileConn)
-      close(fileConn)
-      # We don't need to pass config, because we are using the default
-      # filename, but we do it just in case
-      if (quiet) {
-        suppressMessages(knitr::pandoc(new_md, format = "docx",
-                                       config = pandoc_config))
-      } else {
-        knitr::pandoc(new_md, format = "docx", config = pandoc_config)
-      }
-      # Tidy, y removing the .md and .pandoc files, if required
-      if (tidy) {
-        file.remove(pandoc_config)
-        file.remove(new_md)
-      }
+                                quiet = quiet, run_pandoc = TRUE)
     }
     return(res1)
   }

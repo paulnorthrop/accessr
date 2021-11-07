@@ -6,7 +6,7 @@
 \usage{
 rmd2word(
   x,
-  doc = "accessr",
+  doc = "officedown",
   dir,
   zip = TRUE,
   add = FALSE,
@@ -14,7 +14,6 @@ rmd2word(
   rm_word = FALSE,
   rm_pdf = FALSE,
   inc_word = FALSE,
-  tidy = TRUE,
   ...
 )
 }
@@ -75,13 +74,6 @@ Otherwise, they are not deleted.}
 \item{inc_word}{A logical scalar.  If \code{inc_word = TRUE} then the Word
 files are included in the zip file created.  Otherwise, they are not
 included.}
-
-\item{tidy}{A logical scalar.  In cases where \code{doc} is not equal to
-\code{"default"} an \code{.md} file and a \code{.pandoc} config file
-(to specify the argument reference-doc) are created when the Word document
-is produced using \code{\link[knitr]{pandoc}}.  If \code{tidy = TRUE} then
-these files are deleted.  Otherwise, they remain the directory of the
-corresponding input \code{.Rmd} file.}
 
 \item{...}{Additional arguments to be passed to
 \code{\link[rmarkdown]{word_document}}.}
