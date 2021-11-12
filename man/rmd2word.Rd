@@ -6,7 +6,7 @@
 \usage{
 rmd2word(
   x,
-  doc = "officedown",
+  doc = "accessr",
   dir,
   zip = TRUE,
   add = FALSE,

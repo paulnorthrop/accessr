@@ -106,7 +106,7 @@
 #' rmd2word(c("TEST/file1", "TEST/file2"), doc = "template.docx")
 #' }
 #' @export
-rmd2word <- function(x, doc = "officedown", dir, zip = TRUE, add = FALSE,
+rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
                      quiet = TRUE, rm_word = FALSE, rm_pdf = FALSE,
                      inc_word = FALSE, ...) {
   # If x is missing then find all the .Rmd files in the working directory
@@ -132,35 +132,52 @@ rmd2word <- function(x, doc = "officedown", dir, zip = TRUE, add = FALSE,
   accessr_doc_path <- system.file(package = "accessr", "examples",
                                   "template.docx")
   doc <- ifelse(doc == "accessr", accessr_doc_path, doc)
+  # Do the same for any instances of "exam" in doc
+  accessr_exam_path <- system.file(package = "accessr", "examples",
+                                   "word-formatting-exam.docx")
+  doc <- ifelse(doc == "exam", accessr_exam_path, doc)
+  # Do the same for any instances of "officedown" in doc
+  officedown_path <- system.file(package = "officedown", "examples",
+                                   "bookdown", "template.docx")
+  doc <- ifelse(doc == "officedown", officedown_path, doc)
   # Make doc the same length as x
   lenx <- length(x)
   doc <- rep_len(doc, lenx)
   # Function for Rmd to Word to PDF
   docx_fun <- function(i) {
     # Convert .Rmd file to a Word document
-    if (doc[i] == "officedown") {
-      print("HERE")
-      res1 <- rmarkdown::render(input = rmd_files[i], output_format =
-                                  officedown::rdocx_document(...),
-                                quiet = quiet)
-    } else {
-      res0 <- officedown::rdocx_document(reference_docx = doc[i], ...)
-      # To allow things like page numbers being taken from doc[i] we need to
-      # prevent the line
-      #    x <- body_set_default_section(x, default_sect_properties)
-      # in res0$post_processor from being executed
-      # We do this by replacing it with a benign line
-      pp_body <- body(res0$post_processor)
-      find_line <- function(i){
-#        "body_set_default_section(x, default_sect_properties)" %in% as.character(pp_body[[i]])
-        !is.na(pmatch("body_set_default_section", as.character(pp_body[[i]])))
-      }
-      where_line <- vapply(1:length(pp_body), find_line, FALSE)
-      line_to_delete <- which(where_line)
-      body(res0$post_processor)[[line_to_delete]] <- substitute(nodefs <- TRUE)
-      res1 <- rmarkdown::render(input = rmd_files[i], output_format = res0,
-                                quiet = quiet)
+    res0 <- officedown::rdocx_document(reference_docx = doc[i], ...)
+    # Find the page width, height and margins of the reference Word document
+    ref_docx_dim <- officer::docx_dim(officer::read_docx(doc[i]))
+    # To allow things like page numbers being taken from doc[i] we need to
+    # prevent the line
+    #    x <- body_set_default_section(x, default_sect_properties)
+    # in res0$post_processor from being executed
+    # We do this by replacing it with a benign line
+    pp_body <- body(res0$post_processor)
+    find_line <- function(i, text_to_find, x){
+      #        "body_set_default_section(x, default_sect_properties)" %in% as.character(pp_body[[i]])
+      !is.na(pmatch(text_to_find, as.character(x[[i]])))
     }
+    where_line <- vapply(1:length(pp_body), find_line, FALSE,
+                         text_to_find = "body_set_default_section",
+                         x = pp_body)
+    line_to_delete <- which(where_line)
+    body(res0$post_processor)[[line_to_delete]] <- substitute(nodefs <- TRUE)
+    # Use a bespoke version of officer::external_img() to enable the chunk
+    # option out.width to work
+    plot_body <- body(res0$knitr$knit_hooks$plot)
+    where_line <- vapply(1:length(plot_body), find_line, FALSE,
+                         text_to_find = "external_img",
+                         x = plot_body)
+    line_to_modify <- which(where_line)
+    body(res0$knitr$knit_hooks$plot)[[line_to_modify]] <-
+      substitute(img <- ext_img(src = x[1], width = fig.width,
+                                height = fig.height, alt = options$fig.alt,
+                                ref_docx_dim = ref_docx_dim))
+    # Render the Word file
+    res1 <- rmarkdown::render(input = rmd_files[i], output_format = res0,
+                              quiet = quiet)
     return(res1)
   }
   # Create Word documents
