@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Command Line Tools to Produce Accessible PDF Documents using R markdown • accessr</title>
+<title>Command Line Tools to Produce Accessible Documents using R markdown • accessr</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/paper/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Command Line Tools to Produce Accessible PDF Documents using R markdown">
+<script src="pkgdown.js"></script><meta property="og:title" content="Command Line Tools to Produce Accessible Documents using R markdown">
 <meta property="og:description" content="Accessible PDF documents are produced by creating Word documents 
     from R markdown files and then PDF documents from these Word documents.
     The first step uses the render() function from the rmarkdown package
@@ -75,29 +75,37 @@
 <div id="accessr" class="section level2">
 <h2 class="hasAnchor">
 <a href="#accessr" class="anchor"></a>accessr</h2>
-<p>Accessible PDF documents are produced by creating Word documents from R markdown files and then PDF documents from these Word documents. The first step uses the <code>render</code> function from the <a href="https://cran.r-project.org/package=rmarkdown">rmarkdown package</a>. The second step uses <a href="https://github.com/cognidox/OfficeToPDF">OfficetoPDF</a>.</p>
+<p>This package provides functions to produce accessible html and PDF documents from input R markdown files. A main aim is to enable documents of different formats to be produced from a single R markdown source file using a single function call. A zip file containing multiple files can be produced. The option to print html output to (non-accessible) PDF files is also available.</p>
 <div id="installation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></code></pre></div>
-<p>You only need to do this once.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"paulnorthrop/accessr"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="co"># Install package remotes, if necessary</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"paulnorthrop/accessr"</span><span class="op">)</span></code></pre></div>
 <p>If you are using RStudio then it may be a good idea to close RStudio and re-open it.</p>
 </div>
 <div id="getting-started" class="section level3">
 <h3 class="hasAnchor">
 <a href="#getting-started" class="anchor"></a>Getting started</h3>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://paulnorthrop.github.io/accessr/">accessr</a></span><span class="op">)</span>
 <span class="op">?</span><span class="va">accessr</span></code></pre></div>
+<ul>
+<li><code><a href="reference/rmd2html.html">rmd2html()</a></code></li>
+<li><code><a href="reference/rmd2ioslides.html">rmd2ioslides()</a></code></li>
+<li><code><a href="reference/rmd2slidy.html">rmd2slidy()</a></code></li>
+<li><code><a href="reference/rmd2word.html">rmd2word()</a></code></li>
+</ul>
+<p>Each function provides the option to create a zip archive containing the output files.</p>
+<p><a href="https://cran.r-project.org/package=rmarkdown">rmarkdown package</a> <a href="https://cran.r-project.org/package=officedown">officedown package</a></p>
+<p>PDF documents are produced from Word documents using <a href="https://github.com/cognidox/OfficeToPDF">OfficeToPDF</a>, which must be installed if this functionality is required.</p>
 </div>
 <div id="an-example" class="section level3">
 <h3 class="hasAnchor">
 <a href="#an-example" class="anchor"></a>An example</h3>
 <p>Suppose that in your current working directory you have the R markdown files <code>file1.Rmd</code> and <code>file2.Rmd</code>, a template Word file <code>your_template.docx</code> and that the file <code>OfficeToPDF.exe</code> downloaded from <a href="https://github.com/cognidox/OfficeToPDF/releases">OfficeToPDF releases</a> is either in your working directory or in a directory listed in <code><a href="https://rdrr.io/r/base/search.html">searchpaths()</a></code>. Then the following will create files <code>file1.docx</code>, <code>file2.docx</code>, <code>file1.pdf</code> and <code>file2.pdf</code> in your working directory.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">rmd2pdf</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"file1"</span>, <span class="st">"file2"</span><span class="op">)</span>, doc <span class="op">=</span> <span class="st">"your_template.docx"</span><span class="op">)</span></code></pre></div>
 <p>A path to the Word template document can be provided using the <code>doc</code> argument. If <code>doc</code> is not provided then a default template is used. A path to the <code>OfficeToPDF.exe</code> file can be provided using an argument <code>dir</code>.</p>
 </div>

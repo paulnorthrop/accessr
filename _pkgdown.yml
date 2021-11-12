@@ -19,3 +19,4 @@ reference:
       - "rmd2ioslides"
       - "rmd2slidy"
       - "rmd2word"
+      - "ext_img"

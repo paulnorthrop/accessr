@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>accessr: Command Line Tools to Produce Accessible PDF Documents using R
+<title>accessr: Command Line Tools to Produce Accessible Documents using R
 markdown — accessr • accessr</title>
 
 
@@ -40,14 +40,14 @@ markdown — accessr • accessr</title>
 
 
 
-<meta property="og:title" content="accessr: Command Line Tools to Produce Accessible PDF Documents using R
+<meta property="og:title" content="accessr: Command Line Tools to Produce Accessible Documents using R
 markdown — accessr" />
-<meta property="og:description" content="Accessible PDF documents are produced by creating Word documents from R
-markdown files and then PDF documents from these Word documents.  The first
-step uses the render function from the
-rmarkdown package
-The second step uses
-OfficetoPDF." />
+<meta property="og:description" content="This package provides functions to produce accessible html and PDF documents
+from input R markdown files.  A main aim is to enable documents of different
+formats to be produced from a single R markdown source file using a single
+function call.  A zip file containing multiple files can be produced.
+The option to print html output to (non-accessible) PDF files is also
+available." />
 
 
 
@@ -115,19 +115,19 @@ OfficetoPDF." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>accessr: Command Line Tools to Produce Accessible PDF Documents using R
+    <h1>accessr: Command Line Tools to Produce Accessible Documents using R
 markdown</h1>
     <small class="dont-index">Source: <a href='https://github.com/paulnorthrop/accessr/blob/master/R/accessr.R'><code>R/accessr.R</code></a></small>
     <div class="hidden name"><code>accessr.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Accessible PDF documents are produced by creating Word documents from R
-markdown files and then PDF documents from these Word documents.  The first
-step uses the <code><a href='https://pkgs.rstudio.com/rmarkdown/reference/render.html'>render</a></code> function from the
-<a href='https://cran.r-project.org/package=rmarkdown'>rmarkdown package</a>
-The second step uses
-<a href='https://github.com/cognidox/OfficeToPDF'>OfficetoPDF</a>.</p>
+    <p>This package provides functions to produce accessible html and PDF documents
+from input R markdown files.  A main aim is to enable documents of different
+formats to be produced from a single R markdown source file using a single
+function call.  A zip file containing multiple files can be produced.
+The option to print html output to (non-accessible) PDF files is also
+available.</p>
     </div>
 
 
@@ -136,14 +136,26 @@ The second step uses
 
     
 <ul>
-<li></li>
-</ul><p>Create word documents and PDF files.</p><ul>
-<li></li>
-</ul><p>Create html documents.</p><ul>
-<li></li>
-</ul><p>Create isoslides presentations.</p><ul>
-<li></li>
-</ul><p>Create slidy presentations.</p>
+<li><p><code><a href='rmd2html.html'>rmd2html</a></code>: create html documents and perhaps print to
+   (non-accessible) PDF documents.</p></li>
+<li><p><code><a href='rmd2ioslides.html'>rmd2ioslides</a></code>: create isoslides presentations and
+   perhaps print to (non-accessible) PDF documents.</p></li>
+<li><p><code><a href='rmd2slidy.html'>rmd2slidy</a></code>: create slidy presentations and perhaps
+   print to (non-accessible) PDF documents..</p></li>
+<li><p><code><a href='rmd2word.html'>rmd2word</a></code>: create word documents and accessible PDF
+   files.</p></li>
+</ul>
+
+<p>Each function provides the option to create a zip archive containing the
+output files.</p>
+<p>Accessible PDF documents are produced by creating Word documents from R
+markdown files and then PDF documents from these Word documents.  The first
+step uses the <code><a href='https://pkgs.rstudio.com/rmarkdown/reference/render.html'>render</a></code> function from the
+<a href='https://cran.r-project.org/package=rmarkdown'>rmarkdown package</a>
+and the <code><a href='https://davidgohel.github.io/officedown/reference/rdocx_document.html'>rdocx_document</a></code> function from the
+[officedown package](https://cran.r-project.org/package=officedown).
+The second step uses
+<a href='https://github.com/cognidox/OfficeToPDF'>OfficetoPDF</a>.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>JJ Allaire, Yihui Xie, Jonathan McPherson, Javier Luraschi,
