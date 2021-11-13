@@ -23,6 +23,10 @@ available.
    print to (non-accessible) PDF documents..
   \item \code{\link{rmd2word}}: create word documents and accessible PDF
    files.
+  \item \code{\link{ext_img}}: a function to enable the \code{knitr} chunk
+   options \code{out.width} and/or \code{out.height} to work when the output
+   format is a Word document.
+   files.
 }
 
 Each function provides the option to create a zip archive containing the
