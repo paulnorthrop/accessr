@@ -21,6 +21,7 @@ Imports: jpeg,
     png,
     rmarkdown,
     tools,
+    utils,
     zip
 SystemRequirements: OfficeToPDF,
     pandoc (>= 1.14) - http://pandoc.org
