@@ -28,6 +28,9 @@ See the \strong{Value} section of \code{\link[utils]{download.file}}.
 Downloads the executable file \code{OfficeToPDF.exe} from
 \url{https://github.com/cognidox/OfficeToPDF/releases}
 }
+\details{
+\code{mode = "wb"} is used so that binary transfer is used.
+}
 \note{
 \code{OfficeToPDF.exe} is used to create PDFs files from Word
   documents in \code{\link{rmd2word}}.

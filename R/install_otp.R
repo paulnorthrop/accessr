@@ -13,6 +13,7 @@
 #'   \code{getOption("download.file.method")}.
 #' @param ... Additional arguments to be passed to
 #'   \code{\link[utils]{download.file}}.
+#' @details \code{mode = "wb"} is used so that binary transfer is used.
 #' @note \code{OfficeToPDF.exe} is used to create PDFs files from Word
 #'   documents in \code{\link{rmd2word}}.
 #' @return See the \strong{Value} section of \code{\link[utils]{download.file}}.
@@ -31,9 +32,9 @@ install_otp <- function(dir, url, method, quiet = TRUE, ...) {
     method <- getOption("download.file.method")
   }
   val <- download.file(url = url, destfile = dir, method = method,
-                       quiet = quiet, ...)
+                       quiet = quiet, mode = "wb", ...)
   if (val != 0) {
     warning("")
   }
-  return(val)
+  return(invisible(val))
 }
