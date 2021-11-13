@@ -123,7 +123,8 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
   }
   # Path to the OfficeToPDF executable
   if (missing(dir)) {
-    exefile <- "OfficeToPDF.exe"
+    dir <- system.file(package = "accessr", "examples")
+    exefile <- paste0(dir, "/OfficeToPDF.exe")
   } else {
     exefile <- paste0(dir, "/OfficeToPDF.exe")
   }
