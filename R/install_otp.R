@@ -21,7 +21,7 @@
 #' @export
 install_otp <- function(dir, url, method, quiet = TRUE, ...) {
   if (missing(dir)) {
-    dir <- system.file(package = "accessr", "examples")
+    dir <- system.file(package = "accessr", "OfficeToPDF")
   }
   if (missing(url)) {
     url <- "https://github.com/cognidox/OfficeToPDF/releases/download/v1.9.0.2"
