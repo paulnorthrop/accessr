@@ -4,13 +4,17 @@
 #' This package provides functions to produce accessible html and PDF documents
 #' from input R markdown files.  A main aim is to enable documents of different
 #' formats to be produced from a single R markdown source file using a single
-#' function call.  A zip file containing multiple files can be produced.
-#' The option to print html output to (non-accessible) PDF files is also
-#' available.
+#' function call.  The function \code{\link{rmd2word}} enables the use of the
+#' the \code{knitr} chunk options \code{out.width} and/or \code{out.height} to
+#' set the dimensions a figure when the output format is a Word document.  A
+#' zip file containing multiple files can be produced. The option to print html
+#' output to (non-accessible) PDF files is also available.
 #'
-#' @details
+#' @details The functions in \code{accessr} are:
 #'
 #' \itemize{
+#'   \item \code{\link{install_otp}}: convenience function to install
+#'     OfficeToPDF.
 #'   \item \code{\link{rmd2html}}: create html documents and perhaps print to
 #'    (non-accessible) PDF documents.
 #'   \item \code{\link{rmd2ioslides}}: create isoslides presentations and
@@ -22,7 +26,6 @@
 #'   \item \code{\link{ext_img}}: a function to enable the \code{knitr} chunk
 #'    options \code{out.width} and/or \code{out.height} to work when the output
 #'    format is a Word document.
-#'    files.
 #' }
 #'
 #' Each function provides the option to create a zip archive containing the
@@ -41,8 +44,9 @@
 #'   Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang and
 #'   Richard Iannone (2021). rmarkdown: Dynamic Documents for R. R package
 #'   version 2.9. \url{https://rmarkdown.rstudio.com}.
-#' @seealso \code{\link{rmd2word}}, \code{\link{rmd2html}},
-#'   \code{\link{rmd2ioslides}}, \code{\link{rmd2slidy}}.
+#' @seealso \code{\link{install_otp}}, \code{\link{rmd2word}},
+#'   \code{\link{rmd2html}}, \code{\link{rmd2ioslides}},
+#'   \code{\link{rmd2slidy}}, \code{\link{ext_img}}.
 #' @docType package
 #' @name accessr
 NULL
