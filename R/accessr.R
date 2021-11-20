@@ -40,6 +40,9 @@
 #' The second step uses
 #' \href{https://github.com/cognidox/OfficeToPDF}{OfficetoPDF}.
 #'
+#' @references David Gohel and Noam Ross (2021). officedown: Enhanced
+#'   'R Markdown' Format for 'Word' and 'PowerPoint'. R package version 0.2.2.
+#'   \url{https://CRAN.R-project.org/package=officedown}
 #' @references JJ Allaire, Yihui Xie, Jonathan McPherson, Javier Luraschi,
 #'   Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang and
 #'   Richard Iannone (2021). rmarkdown: Dynamic Documents for R. R package
