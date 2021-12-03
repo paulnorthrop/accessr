@@ -173,7 +173,7 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
                          x = plot_body)
     line_to_modify <- which(where_line)
     body(res0$knitr$knit_hooks$plot)[[line_to_modify]] <-
-      substitute(img <- ext_img(src = x[1], width = fig.width,
+      substitute(img <- accessr::ext_img(src = x[1], width = fig.width,
                                 height = fig.height, alt = options$fig.alt,
                                 ref_docx_dim = ref_docx_dim))
     # Render the Word file
