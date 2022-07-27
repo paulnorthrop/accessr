@@ -9,3 +9,5 @@ OfficeToPDF.exe
 *.pdf
 *.pptx
 TEST
+inst/doc
+checks

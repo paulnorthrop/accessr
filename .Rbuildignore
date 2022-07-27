@@ -11,3 +11,5 @@
 ^TEST$
 ^_pkgdown\.yml$
 ^docs$
+^checks$
+^\.github$
