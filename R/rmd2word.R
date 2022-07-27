@@ -150,21 +150,45 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
     res0 <- officedown::rdocx_document(reference_docx = doc[i], ...)
     # Find the page width, height and margins of the reference Word document
     ref_docx_dim <- officer::docx_dim(officer::read_docx(doc[i]))
-    # To allow things like page numbers being taken from doc[i] we need to
-    # prevent the line
-    #    x <- body_set_default_section(x, default_sect_properties)
-    # in res0$post_processor from being executed
-    # We do this by replacing it with a benign line
+    # Hack body(res0$post_processor) to recreate what this was in officedown
+    # v0.2.2, which respected the margins in the template word document doc[i]
+    # but did not include the headers and footers (page numbers).  I have
+    # commented out the line
+    #       x <- body_set_default_section(x, default_sect_properties)
+    # which effectively removed the headers and footers by setting defaults.
+    body(res0$post_processor) <- expression({
+      x <- officer::read_docx(output_file)
+      x <- process_images(x)
+      x <- process_links(x)
+      x <- process_embedded_docx(x)
+      x <- process_par_settings(x)
+      x <- process_list_settings(x, ul_style = lists$ul.style,
+                                 ol_style = lists$ol.style)
+      x <- change_styles(x, mapstyles = mapstyles)
+      default_sect_properties <- prop_section(
+        page_size = page_size(
+          orient = page_size$orient,
+          width = page_size$width,
+          height = page_size$height),
+        type = "continuous",
+        page_margins = page_mar(
+          bottom = page_margins$bottom,
+          top = page_margins$top,
+          right = page_margins$right,
+          left = page_margins$left,
+          header = page_margins$header,
+          footer = page_margins$footer,
+          gutter = page_margins$gutter)
+        )
+#      x <- body_set_default_section(x, default_sect_properties)
+      forget(get_reference_rdocx)
+      print(x, target = output_file)
+      output_file
+    })
     pp_body <- body(res0$post_processor)
     find_line <- function(i, text_to_find, x){
-      #        "body_set_default_section(x, default_sect_properties)" %in% as.character(pp_body[[i]])
       !is.na(pmatch(text_to_find, as.character(x[[i]])))
     }
-    where_line <- vapply(1:length(pp_body), find_line, FALSE,
-                         text_to_find = "body_set_default_section",
-                         x = pp_body)
-    line_to_delete <- which(where_line)
-    body(res0$post_processor)[[line_to_delete]] <- substitute(nodefs <- TRUE)
     # Use a bespoke version of officer::external_img() to enable the chunk
     # option out.width to work
     plot_body <- body(res0$knitr$knit_hooks$plot)
