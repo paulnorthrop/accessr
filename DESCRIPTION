@@ -13,7 +13,7 @@ Description: Accessible PDF documents are produced by creating Word documents
 Depends: R (>= 3.3.0)
 License: GPL (>= 2)
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.0
 Imports: jpeg,
     officer,
     officedown,
@@ -28,3 +28,6 @@ SystemRequirements: OfficeToPDF,
 URL: https://paulnorthrop.github.io/accessr/,
      https://github.com/paulnorthrop/accessr
 BugReports: https://github.com/paulnorthrop/accessr/issues
+Suggests: 
+    knitr
+VignetteBuilder: knitr
