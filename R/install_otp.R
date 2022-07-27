@@ -31,8 +31,8 @@ install_otp <- function(dir, url, method, quiet = TRUE, ...) {
   if (missing(method)) {
     method <- getOption("download.file.method")
   }
-  val <- download.file(url = url, destfile = dir, method = method,
-                       quiet = quiet, mode = "wb", ...)
+  val <- utils::download.file(url = url, destfile = dir, method = method,
+                              quiet = quiet, mode = "wb", ...)
   if (val != 0) {
     warning("")
   }
