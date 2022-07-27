@@ -17,12 +17,8 @@
 #'   numeric vector containing the \code{width} and \code{height}),
 #'   \code{landscape} (a logical vector) and \code{margins} (a named numeric
 #'   vector containing the \code{top}, \code{bottom}, \code{left},
-#'   \code{right}, \code{header} and \code{footer} margins). This can be
-#'   produced using \code{\link[officer]{docx_dim}} and
-#'   \code{\link[officer]{read_docx}} via
-#'   \code{officer::docx_dim(officer::read_docx(doc))}, where \code{doc} is an
-#'   \code{rdocx} object.
-#'
+#'   \code{right}, \code{header} and \code{footer} margins). See
+#'   \strong{Details}.
 #' @details If in the current R code chunk \code{out.width} or
 #'   \code{out.height} have been set then the corresponding values of
 #'   \code{fig.width} and \code{fig.height} are inferred from the dimensions
@@ -32,6 +28,11 @@
 #'   \code{out.width} or \code{out.height} are set then the aspect ratio of the
 #'   figure is preserved.
 #'
+#'   \code{ref_docx_dim} can be produced using
+#'   \code{officer::docx_dim(officer::read_docx(doc))}, where \code{doc} is an
+#'   \code{rdocx} object and \code{\link[officer]{docx_dim}}
+#'   and \code{\link[officer]{read_docx}} are functions in the
+#'   \code{\link{officer}} package.
 #' @note This function has been designed for use inside \code{\link{rmd2word}}
 #'   but the object returned has the same structure as that returned from
 #'   \code{\link[office]{external_img}}.

@@ -1,7 +1,7 @@
 #' Install OfficeToPDF
 #'
 #' Downloads the executable file \code{OfficeToPDF.exe} from
-#' \url{https://github.com/cognidox/OfficeToPDF/releases}
+#' \url{https://github.com/cognidox/OfficeToPDF/releases}.
 #'
 #' @param dir Directory into which to download the \code{OfficeToPDF.exe}.
 #'   If \code{dir} is missing then \code{system.file(package = "accessr")} is
@@ -10,10 +10,10 @@
 #'   missing then
 #'   \url{https://github.com/cognidox/OfficeToPDF/releases/download/v1.9.0.2/OfficeToPDF.exe}
 #'   is used.
-#' @param method,quiet Passed to \code{\link[utils]{download.file}}.  If
-#'   \code{method} is missing then it is inferred using
-#'   \code{getOption("download.file.method")}. \code{quiet} controls whether
-#'   messages are printed during the download.
+#' @param method Passed to \code{\link[utils]{download.file}}.  If
+#'   missing then \code{getOption("download.file.method")} is used to set it.
+#' @param quiet Passed to \code{\link[utils]{download.file}}. \code{quiet}
+#'   controls whether messages are printed during the download.
 #' @param ... Additional arguments to be passed to
 #'   \code{\link[utils]{download.file}}.
 #' @details The argument \code{mode = "wb"} to

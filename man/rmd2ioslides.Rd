@@ -41,7 +41,7 @@ Google Chrome (or an alternative browser specified by the \code{browser}
 argument to \code{\link[pagedown]{chrome_print}}) must be installed prior
 to use of this option.}
 
-\item{zip_pdf}{Works in the same way as \code{zip}, but relates to the
+\item{zip_pdf}{As \code{zip}, but relates to the
 creation of zip archives for any PDF files created. If
 \code{zip_pdf = TRUE} then each archive is named
 \code{accessr_html_pdf.zip}.}

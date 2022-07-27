@@ -35,9 +35,9 @@ via \code{\link[officedown]{rdocx_document}}.
 Different templates may be used for different files.
 \code{rep_len(doc, length(x))} is used to force \code{length(doc)} to have
 the same length as \code{x}.
-A component equal to \code{"officedown"} specifies
+A component equal to \code{"officedown"} chooses
 \code{\link[officedown]{rdocx_document}}'s default.
-A component equal to \code{"accessr"} specifies \code{accessr}'s internal
+A component equal to \code{"accessr"} chooses \code{accessr}'s internal
 template file, which has narrower margins and darker blue fonts for titles
 and hyperlinks, to avoid contrast issues.  To use your own template(s),
 provide their filenames.  See \strong{Details} for more information.}

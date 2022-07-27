@@ -16,10 +16,11 @@ missing then
 \url{https://github.com/cognidox/OfficeToPDF/releases/download/v1.9.0.2/OfficeToPDF.exe}
 is used.}
 
-\item{method, quiet}{Passed to \code{\link[utils]{download.file}}.  If
-\code{method} is missing then it is inferred using
-\code{getOption("download.file.method")}. \code{quiet} controls whether
-messages are printed during the download.}
+\item{method}{Passed to \code{\link[utils]{download.file}}.  If
+missing then \code{getOption("download.file.method")} is used to set it.}
+
+\item{quiet}{Passed to \code{\link[utils]{download.file}}. \code{quiet}
+controls whether messages are printed during the download.}
 
 \item{...}{Additional arguments to be passed to
 \code{\link[utils]{download.file}}.}
@@ -29,7 +30,7 @@ See the \strong{Value} section of \code{\link[utils]{download.file}}.
 }
 \description{
 Downloads the executable file \code{OfficeToPDF.exe} from
-\url{https://github.com/cognidox/OfficeToPDF/releases}
+\url{https://github.com/cognidox/OfficeToPDF/releases}.
 }
 \details{
 The argument \code{mode = "wb"} to

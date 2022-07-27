@@ -3,18 +3,27 @@
 
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/paulnorthrop/stat0002?branch=master&svg=true)](https://ci.appveyor.com/project/paulnorthrop/stat0002)
+[![R-CMD-check](https://github.com/paulnorthrop/accessr/workflows/R-CMD-check/badge.svg)](https://github.com/paulnorthrop/accessr/actions)
 
 ## accessr
 
-This package provides functions to produce accessible html, Word and PDF
-documents from a input R markdown files. A main aim is to enable
-documents of different formats to be produced from a single R markdown
-source file using a single function call. A zip file containing multiple
-files can be produced. When the output format is a Word document the
-`knitr` chunk options `out.width` and/or `out.height` can be used to set
-the dimensions of a figure (R-generated or external image). This
-functionality is not normally available. The option to print html output
-to (non-accessible) PDF files is also available.
+This package provides functions to produce accessible html slides, html,
+Word and PDF documents from input R markdown files. A main aim is to
+enable documents of different formats to be produced from a single R
+markdown source file using a single function call. The `render()`
+function from the [rmarkdown
+package](https://cran.r-project.org/package=rmarkdown) is used to render
+R markdown files. A zip file containing multiple files can be produced
+from afingle function call. A user-supplied template Word document can
+be used to determine the formatting of the output Word document. When
+the output format is a Word document the `knitr` chunk options
+`out.width` and/or `out.height` can be used to set the dimensions of a
+figure (R-generated or external image). This functionality is not
+normally available. Accessible PDF files are produced from Word
+documents using [OfficeToPDF](https://github.com/cognidox/OfficeToPDF).
+A convenience function, `install_otp()` is provided to install this
+software. The option to print html output to (non-accessible) PDF files
+is also available.
 
 ### Installation
 
@@ -34,22 +43,20 @@ library(accessr)
 ?accessr
 ```
 
--   `rmd2html()`
--   `rmd2ioslides()`
--   `rmd2slidy()`
--   `rmd2word()`
+The main functions are:
+
+-   `install_otp`: convenience function to install OfficeToPDF (required
+    to produce an accessible PDF file from a Word document).
+-   `rmd2word()`: create word documents and accessible PDF files.
+-   `rmd2ioslides(), rmd2slidy`: create isoslides/slidy presentations
+    and perhaps print to (non-accessible) PDF documents.
+-   `rmd2html()`: create html documents and perhaps print to
+    (non-accessible) PDF documents.
 
 Each function provides the option to create a zip archive containing the
 output files.
 
-[rmarkdown package](https://cran.r-project.org/package=rmarkdown)
-[officedown package](https://cran.r-project.org/package=officedown)
-
-PDF documents are produced from Word documents using
-[OfficeToPDF](https://github.com/cognidox/OfficeToPDF), which must be
-installed if this functionality is required.
-
-### An example
+### Rmd to Word to PDF
 
 Suppose that in your current working directory you have the R markdown
 files `file1.Rmd` and `file2.Rmd`, a template Word file
@@ -57,13 +64,43 @@ files `file1.Rmd` and `file2.Rmd`, a template Word file
 [OfficeToPDF releases](https://github.com/cognidox/OfficeToPDF/releases)
 is either in your working directory or in a directory listed in
 `searchpaths()`. Then the following will create files `file1.docx`,
-`file2.docx`, `file1.pdf` and `file2.pdf` in your working directory.
+`file2.docx`, `file1.pdf` and `file2.pdf` in your working directory and,
+unless you supply `zip = FALSE`, a zip file `accessr_word.zip`
+containing the two PDF files will also be created.
 
 ``` r
 rmd2pdf(c("file1", "file2"), doc = "your_template.docx")
 ```
 
 A path to the Word template document can be provided using the `doc`
-argument. If `doc` is not provided then a default template is used. A
-path to the `OfficeToPDF.exe` file can be provided using an argument
-`dir`.
+argument. If `doc` is not provided then a default template is used. If
+you include figures then the `knitr` chunk option `fig.alt` can be used
+to set the alternative text. You may find you need to enclose LaTeX
+maths environments in $$ … $$ when typesetting mathematics.
+
+A path to the `OfficeToPDF.exe` file can be provided using an argument
+`dir`. If `dir` is missing then `rmd2word` will look for OfficeToPDF.exe
+in the default installation directory `dir` of `install_otp`.
+
+### Rmd to ioslides
+
+Similarly, the function `rmd2ioslides` produced HTML
+[ioslides](https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html)
+presentations.
+
+``` r
+rmd2ioslides(c("file1", "file2"))
+```
+
+If the argument `pdf = TRUE` is supplied then the `chrome_print`
+function in the `pagedown` package is used to produce (non-accessible)
+PDF files from these slides. This requires a secure internet connection.
+See `?rmd2ioslides`.
+
+`rmd2slidy` and `rmd2html` work in a similar way.
+
+### Suggested workflow
+
+I found that using `rmd2ioslides` to create presentations and then
+`rmd2word` to create (zip files containing) accessible PDF versions of
+these presentations enabled me quickly to upload files to Moodle.

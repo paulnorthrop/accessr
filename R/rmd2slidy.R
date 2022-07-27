@@ -24,10 +24,14 @@
 #'   the number of unique directories, if necessary.
 #' @param pdf A logical scalar.  If \code{pdf = TRUE} then each html file is
 #'   printed to a PDF file using \code{\link[pagedown]{chrome_print}}.
-#'   Google Chrome (or an alternative browser specified by the \code{browser}
-#'   argument to \code{\link[pagedown]{chrome_print}}) must be installed prior
-#'   to use of this option.
-#' @param zip_pdf Works in the same way as \code{zip}, but relates to the
+#'   Google Chrome (or an alternative browser specified in \code{pdf_args} by
+#'   the \code{browser} argument to \code{\link[pagedown]{chrome_print}} must
+#'   be installed prior to use of this option.  An error message like
+#'   \code{Error in servr::random_port(NULL) : Cannot find an available TCP
+#'   port} means that the \code{random_port} function in the \code{servr}
+#'   package could not find an internet connection that Chrome considers
+#'   secure.  Perhaps you are using a coffee shop's wifi.
+#' @param zip_pdf As \code{zip}, but relates to the
 #'   creation of zip archives for any PDF files created. If
 #'   \code{zip_pdf = TRUE} then each archive is named
 #'   \code{accessr_html_pdf.zip}.
