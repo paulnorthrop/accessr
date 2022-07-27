@@ -97,7 +97,10 @@ In addition to creating the Word and PDF files, and perhaps zip
 \description{
 Creates accessible PDF documents by creating Word documents using
 R markdown code and then producing PDF files.  Zip archives of the PDF files
-may be created.
+may be created. To create PDF files the software
+\href{OfficeToPDF}{https://github.com/cognidox/OfficeToPDF} is required.
+The convenience function \code{\link{install_otp}} can be used to install
+this software.
 }
 \details{
 Information such as \code{title}, \code{author}, \code{lang} etc in
@@ -117,7 +120,8 @@ Information such as \code{title}, \code{author}, \code{lang} etc in
   relative to the directory in which the \code{.Rmd} file sits, or an
   absolute path.
 
-  For information on how to create a template Word document
+  For information on how to create a template Word document see Richard
+  Layton's guide
   \href{https://rmarkdown.rstudio.com/articles_docx.html}{Happy collaboration with Rmd to docx}.
 
   The \code{\link[rmarkdown]{render}} function creates a Word file from
@@ -143,4 +147,8 @@ rmd2word(c("TEST/file1", "TEST/file2"), doc = "template.docx")
 Layton, Richard. (2015) Happy collaboration with Rmd to docx.
   R Markdown from RStudio article.
   \url{https://rmarkdown.rstudio.com/articles_docx.html}
+}
+\seealso{
+\code{\link{install_otp}} to install
+  \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF}.
 }

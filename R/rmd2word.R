@@ -4,7 +4,10 @@
 #'
 #' Creates accessible PDF documents by creating Word documents using
 #' R markdown code and then producing PDF files.  Zip archives of the PDF files
-#' may be created.
+#' may be created. To create PDF files the software
+#' \href{OfficeToPDF}{https://github.com/cognidox/OfficeToPDF} is required.
+#' The convenience function \code{\link{install_otp}} can be used to install
+#' this software.
 #'
 #' @param x A character vector containing the names (no extension) of the
 #'   \code{.Rmd} files to convert if they are in the current working
@@ -77,7 +80,8 @@
 #'   relative to the directory in which the \code{.Rmd} file sits, or an
 #'   absolute path.
 #'
-#'   For information on how to create a template Word document
+#'   For information on how to create a template Word document see Richard
+#'   Layton's guide
 #'   \href{https://rmarkdown.rstudio.com/articles_docx.html}{Happy collaboration with Rmd to docx}.
 #'
 #'   The \code{\link[rmarkdown]{render}} function creates a Word file from
@@ -105,6 +109,8 @@
 #' @references Layton, Richard. (2015) Happy collaboration with Rmd to docx.
 #'   R Markdown from RStudio article.
 #'   \url{https://rmarkdown.rstudio.com/articles_docx.html}
+#' @seealso \code{\link{install_otp}} to install
+#'   \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF}.
 #' @examples
 #' \dontrun{
 #' # All files in the current working directory
