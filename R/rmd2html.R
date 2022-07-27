@@ -24,16 +24,20 @@
 #'   unique directories, if necessary.
 #' @param pdf A logical scalar.  If \code{pdf = TRUE} then each html file is
 #'   printed to a PDF file using \code{\link[pagedown]{chrome_print}}.
-#'   Google Chrome (or an alternative browser specified by the \code{browser}
-#'   argument to \code{\link[pagedown]{chrome_print}}) must be installed prior
-#'   to use of this option.
+#'   Google Chrome (or an alternative browser specified in \code{pdf_args} by
+#'   the \code{browser} argument to \code{\link[pagedown]{chrome_print}} must
+#'   be installed prior to use of this option.  An error message like
+#'   \code{Error in servr::random_port(NULL) : Cannot find an available TCP
+#'   port} means that the \code{random_port} function in the \code{servr}
+#'   package could not find an internet connection that Chrome considers
+#'   secure.  Perhaps you are using a coffee shop's wifi.
+#' @param pdf_args A list of arguments to be passed to
+#'   \code{\link[pagedown]{chrome_print}}. \code{input} cannot be passed
+#'   because it is set inside \code{rmd2html}.
 #' @param zip_pdf Works in the same way as \code{zip}, but relates to the
 #'   creation of zip archives for any PDF files created. If
 #'   \code{zip_pdf = TRUE} then each archive is named
 #'   \code{accessr_html_pdf.zip}.
-#' @param pdf_args A list of arguments to be passed to
-#'   \code{\link[pagedown]{chrome_print}}. \code{input} cannot be passed
-#'   because it is set inside \code{rmd2html}.
 #' @param add A logical scalar that determines what happens if an output
 #'   zip file already exists.  If \code{add = TRUE} then files are added to the
 #'   zip file and if \code{add = FALSE} then the zip file is deleted and will
@@ -71,22 +75,26 @@
 #' rmd2html(c("TEST/file1", "TEST/file2"))
 #' }
 #' @export
-rmd2html <- function(x, zip = TRUE, pdf = FALSE, zip_pdf = zip,
-                     pdf_args = list(), add = FALSE, quiet = TRUE,
+rmd2html <- function(x, zip = TRUE, pdf = FALSE, pdf_args = list(),
+                     zip_pdf = zip, add = FALSE, quiet = TRUE,
                      rm_html = FALSE, rm_pdf = FALSE, ...) {
   # If x is missing then find all the .Rmd files in the working directory
+  # If x is a directory then find all the . RMd files in that directory
   if (missing(x)) {
     rmd_files <- list.files(pattern = "Rmd")
     x <- sub(".Rmd", "", rmd_files)
     html_files <- sub(".Rmd", ".html", rmd_files)
+    pdf_files <- sub(".Rmd", ".pdf", rmd_files)
   } else if (length(x) == 1 && dir.exists(x)) {
     rmd_files <- list.files(x, pattern = "Rmd")
     rmd_files <- paste0(x, "/", rmd_files)
     x <- sub(".Rmd", "", rmd_files)
     html_files <- paste0(x, ".html")
+    pdf_files <- paste0(x, ".pdf")
   } else {
     rmd_files <- paste0(x, ".Rmd")
     html_files <- paste0(x, ".html")
+    pdf_files <- paste0(x, ".pdf")
   }
   # Make doc the same length as x
   lenx <- length(x)
@@ -136,7 +144,7 @@ rmd2html <- function(x, zip = TRUE, pdf = FALSE, zip_pdf = zip,
   }
   if (pdf && zip_pdf) {
     res_zip_pdf <- accessr_zip(x, dnames, udnames, zipfile, add,
-                           extension = ".pdf")
+                               extension = ".pdf")
     res <- c(res, list(pdf_zips = res_zip_pdf))
     if (rm_pdf) {
       sapply(pdf_files, file.remove)

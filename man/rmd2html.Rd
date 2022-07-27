@@ -8,8 +8,8 @@ rmd2html(
   x,
   zip = TRUE,
   pdf = FALSE,
-  zip_pdf = zip,
   pdf_args = list(),
+  zip_pdf = zip,
   add = FALSE,
   quiet = TRUE,
   rm_html = FALSE,
@@ -37,18 +37,22 @@ unique directories, if necessary.}
 
 \item{pdf}{A logical scalar.  If \code{pdf = TRUE} then each html file is
 printed to a PDF file using \code{\link[pagedown]{chrome_print}}.
-Google Chrome (or an alternative browser specified by the \code{browser}
-argument to \code{\link[pagedown]{chrome_print}}) must be installed prior
-to use of this option.}
+Google Chrome (or an alternative browser specified in \code{pdf_args} by
+the \code{browser} argument to \code{\link[pagedown]{chrome_print}} must
+be installed prior to use of this option.  An error message like
+\code{Error in servr::random_port(NULL) : Cannot find an available TCP
+port} means that the \code{random_port} function in the \code{servr}
+package could not find an internet connection that Chrome considers
+secure.  Perhaps you are using a coffee shop's wifi.}
+
+\item{pdf_args}{A list of arguments to be passed to
+\code{\link[pagedown]{chrome_print}}. \code{input} cannot be passed
+because it is set inside \code{rmd2html}.}
 
 \item{zip_pdf}{Works in the same way as \code{zip}, but relates to the
 creation of zip archives for any PDF files created. If
 \code{zip_pdf = TRUE} then each archive is named
 \code{accessr_html_pdf.zip}.}
-
-\item{pdf_args}{A list of arguments to be passed to
-\code{\link[pagedown]{chrome_print}}. \code{input} cannot be passed
-because it is set inside \code{rmd2html}.}
 
 \item{add}{A logical scalar that determines what happens if an output
 zip file already exists.  If \code{add = TRUE} then files are added to the
