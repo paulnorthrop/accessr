@@ -119,6 +119,12 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
     word_files <- sub(".Rmd", ".docx", rmd_files)
     pdf_files <- sub(".Rmd", ".pdf", rmd_files)
     x <- sub(".Rmd", "", rmd_files)
+  } else if (length(x) == 1 && dir.exists(x)) {
+    rmd_files <- list.files(x, pattern = "Rmd")
+    rmd_files <- paste0(x, "/", rmd_files)
+    x <- sub(".Rmd", "", rmd_files)
+    word_files <- paste0(x, ".docx")
+    pdf_files <- paste0(x, ".pdf")
   } else {
     rmd_files <- paste0(x, ".Rmd")
     word_files <- paste0(x, ".docx")
