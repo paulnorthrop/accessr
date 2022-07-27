@@ -46,7 +46,9 @@ provide their filenames.  See \strong{Details} for more information.}
 sits.  This is not needed if this file sits in the current working
 directory or a directory in the list returned by \code{searchpaths()}.
 Otherwise, it may be a path relative to the current working directory
-or an absolute path.}
+or an absolute path.  If \code{dir} is missing then \code{rmd2word} will
+look in \code{system.file(package = "accessr")}, which is the default
+installation location of \code{\link{install_otp}}.}
 
 \item{zip}{A logical scalar or character vector indicating whether PDF
 files should be put into a zip archive.  If \code{zip = FALSE} then no
