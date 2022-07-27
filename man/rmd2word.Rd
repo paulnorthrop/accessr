@@ -62,6 +62,10 @@ zip file already exists.  If \code{add = TRUE} then files are added to the
 zip file and if \code{add = FALSE} then the zip file is deleted and will
 only contain newly-created files.}
 
+\item{quiet}{A logical scalar.  Passed to \code{\link[rmarkdown]{render}} as
+the argument \code{quiet}.  The default, \code{quite = TRUE} suppresses
+all printing during rendering of the document.}
+
 \item{rm_word}{A logical scalar.  If \code{rm_word = TRUE} then all the Word
 files created are deleted.  Otherwise, they are not deleted.}
 

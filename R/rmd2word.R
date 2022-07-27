@@ -45,6 +45,9 @@
 #'   zip file already exists.  If \code{add = TRUE} then files are added to the
 #'   zip file and if \code{add = FALSE} then the zip file is deleted and will
 #'   only contain newly-created files.
+#' @param quiet A logical scalar.  Passed to \code{\link[rmarkdown]{render}} as
+#'   the argument \code{quiet}.  The default, \code{quite = TRUE} suppresses
+#'   all printing during rendering of the document.
 #' @param rm_word A logical scalar.  If \code{rm_word = TRUE} then all the Word
 #'   files created are deleted.  Otherwise, they are not deleted.
 #' @param rm_pdf A logical scalar.  If \code{rm_pdf = TRUE} and a zip archive
@@ -239,14 +242,14 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
     zipfile <- rep_len("accessr_word", length(udnames))
   }
   if (zip) {
-    res_zip <- accessr_zip(x, dnames, udnames, zipfile, zipname, add,
+    res_zip <- accessr_zip(x, dnames, udnames, zipfile, add,
                            extension = ".pdf")
     res <- list(error_codes = error_codes, files = files, zips = res_zip)
     if (rm_pdf) {
       sapply(pdf_files, file.remove)
     }
     if (inc_word) {
-      res_zip <- accessr_zip(x, dnames, udnames, zipfile, zipname, add = TRUE,
+      res_zip <- accessr_zip(x, dnames, udnames, zipfile, add = TRUE,
                              extension = ".docx")
     }
   }

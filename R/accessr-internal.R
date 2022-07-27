@@ -65,7 +65,7 @@ rmd2presentation <- function(x, format = c("ioslides", "slidy"), zip = TRUE,
     zipfile <- rep_len(paste0("accessr_", format), length(udnames))
   }
   if (zip) {
-    res_zip <- accessr_zip(x, dnames, udnames, zipfile, zipname, add,
+    res_zip <- accessr_zip(x, dnames, udnames, zipfile, add,
                            extension = ".html")
     res <- c(res, list(zips = res_zip))
     if (rm_html) {
@@ -80,7 +80,7 @@ rmd2presentation <- function(x, format = c("ioslides", "slidy"), zip = TRUE,
     zipfile <- rep_len(paste0("accessr_", format, "_pdf"), length(udnames))
   }
   if (pdf && zip_pdf) {
-    res_zip_pdf <- accessr_zip(x, dnames, udnames, zipfile, zipname, add,
+    res_zip_pdf <- accessr_zip(x, dnames, udnames, zipfile, add,
                                extension = ".pdf")
     res <- c(res, list(pdf_zips = res_zip_pdf))
     if (rm_pdf) {
@@ -92,7 +92,7 @@ rmd2presentation <- function(x, format = c("ioslides", "slidy"), zip = TRUE,
 
 #' @keywords internal
 #' @rdname accessr-internal
-accessr_zip <- function(x, dnames, udnames, zipfile, zipname, add, extension) {
+accessr_zip <- function(x, dnames, udnames, zipfile, add, extension) {
   # Directory identifiers for the files
   which_dir <- charmatch(x = dnames, table = udnames)
   # Function to create a zip file

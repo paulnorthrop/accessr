@@ -120,7 +120,7 @@ rmd2html <- function(x, zip = TRUE, pdf = FALSE, zip_pdf = zip,
     zipfile <- rep_len("accessr_html", length(udnames))
   }
   if (zip) {
-    res_zip <- accessr_zip(x, dnames, udnames, zipfile, zipname, add,
+    res_zip <- accessr_zip(x, dnames, udnames, zipfile, add,
                            extension = ".html")
     res <- c(res, list(zips = res_zip))
     if (rm_html) {
@@ -135,7 +135,7 @@ rmd2html <- function(x, zip = TRUE, pdf = FALSE, zip_pdf = zip,
     zipfile <- rep_len("accessr_html_pdf", length(udnames))
   }
   if (pdf && zip_pdf) {
-    res_zip_pdf <- accessr_zip(x, dnames, udnames, zipfile, zipname, add,
+    res_zip_pdf <- accessr_zip(x, dnames, udnames, zipfile, add,
                            extension = ".pdf")
     res <- c(res, list(pdf_zips = res_zip_pdf))
     if (rm_pdf) {

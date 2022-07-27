@@ -20,7 +20,7 @@ rmd2presentation(
   ...
 )
 
-accessr_zip(x, dnames, udnames, zipfile, zipname, add, extension)
+accessr_zip(x, dnames, udnames, zipfile, add, extension)
 }
 \description{
 Internal accessr functions
