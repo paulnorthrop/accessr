@@ -7,7 +7,9 @@
 install_otp(dir, url, method, quiet = TRUE, ...)
 }
 \arguments{
-\item{dir}{Directory into which to download the \code{OfficeToPDF.exe}.}
+\item{dir}{Directory into which to download the \code{OfficeToPDF.exe}.
+If \code{dir} is missing then \code{system.file(package = "accessr")} is
+used.}
 
 \item{url}{URL from which to download \code{OfficeToPDF.exe}.  If this is
 missing then
@@ -16,7 +18,8 @@ is used.}
 
 \item{method, quiet}{Passed to \code{\link[utils]{download.file}}.  If
 \code{method} is missing then it is inferred using
-\code{getOption("download.file.method")}.}
+\code{getOption("download.file.method")}. \code{quiet} controls whether
+messages are printed during the download.}
 
 \item{...}{Additional arguments to be passed to
 \code{\link[utils]{download.file}}.}
@@ -29,7 +32,9 @@ Downloads the executable file \code{OfficeToPDF.exe} from
 \url{https://github.com/cognidox/OfficeToPDF/releases}
 }
 \details{
-\code{mode = "wb"} is used so that binary transfer is used.
+The argument \code{mode = "wb"} to
+  \code{\link[utils]{download.file}} is hard-coded, so that binary transfer
+  is forced.
 }
 \note{
 \code{OfficeToPDF.exe} is used to create PDFs files from Word

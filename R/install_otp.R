@@ -4,16 +4,21 @@
 #' \url{https://github.com/cognidox/OfficeToPDF/releases}
 #'
 #' @param dir Directory into which to download the \code{OfficeToPDF.exe}.
+#'   If \code{dir} is missing then \code{system.file(package = "accessr")} is
+#'   used.
 #' @param url URL from which to download \code{OfficeToPDF.exe}.  If this is
 #'   missing then
 #'   \url{https://github.com/cognidox/OfficeToPDF/releases/download/v1.9.0.2/OfficeToPDF.exe}
 #'   is used.
 #' @param method,quiet Passed to \code{\link[utils]{download.file}}.  If
 #'   \code{method} is missing then it is inferred using
-#'   \code{getOption("download.file.method")}.
+#'   \code{getOption("download.file.method")}. \code{quiet} controls whether
+#'   messages are printed during the download.
 #' @param ... Additional arguments to be passed to
 #'   \code{\link[utils]{download.file}}.
-#' @details \code{mode = "wb"} is used so that binary transfer is used.
+#' @details The argument \code{mode = "wb"} to
+#'   \code{\link[utils]{download.file}} is hard-coded, so that binary transfer
+#'   is forced.
 #' @note \code{OfficeToPDF.exe} is used to create PDFs files from Word
 #'   documents in \code{\link{rmd2word}}.
 #' @return See the \strong{Value} section of \code{\link[utils]{download.file}}.
