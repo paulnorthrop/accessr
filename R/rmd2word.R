@@ -133,11 +133,9 @@
 #'   \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF}.
 #' @examples
 #' install_otp()
-#' rmd_file <- system.file(package = "accessr", "examples", "example.Rmd")
-#' file.copy(from = rmd_file, to = getwd())
 #'
 #' # Create a PDF file from example.Rmd
-#' rmd2word("example")
+#' rmd2word(system.file(package = "accessr", "examples", "example.Rmd"))
 #'
 #' # Create Word and PDF files from all Rmd files in the work directory
 #' rmd2word(inc_word = TRUE)
