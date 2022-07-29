@@ -5,23 +5,28 @@ date: "29/07/2022"
 lang: "en-gb"
 ---
 
+```{r, include = FALSE}
+knitr::opts_knit$set(echo = TRUE, global.par = TRUE, prompt = TRUE, 
+                     fig.align = 'center')
+```
+
 ## Text, bullets, links
 
-For more information see  the[accessr site](https://paulnorthrop.github.io/accessr/) on GitHub
+```{r knitr}
+library(knitr)
+```
+
+For more information see the [accessr site](https://paulnorthrop.github.io/accessr/) on GitHub
 
 * Bullet 1
 * Bullet 2
 
-## Displayed equations
-
-$$\mbox{var}\left(\,\overline{X}\,\right)=\mbox{var}\left(\frac1n \sum_{i=1}^n X_i\right)=\frac1{n^2}\mbox{var}\left(\sum_{i=1}^n X_i\right) 
-=\frac1{n^2} \sum_{i=1}^n \mbox{var}(X_i)
-= \frac1{n^2} n \sigma^2 = \frac{\sigma^2}{n}.$$
+## Displayed equations {.smaller}
 
 $$
 \begin{eqnarray}
 T = \left\{\begin{array}{ll}
-\overline{X}     & \mbox{ with probability } 1 - 1/n \\
+\overline{X}     & \mbox{ with probability } 1 - 1/n \,,  \\
 \overline{X} + n & \mbox{ with probability } 1/n \,. \\
 \end{array}\right.
 \end{eqnarray}
@@ -32,27 +37,33 @@ $$
 P(X \leq x)
 &= P(F^{-1}(U) \leq x) \\
 &= P(F(F^{-1}(U)) \leq F(x)) \\
-&= P(U \leq F(x)) = F(x)
+&= P(U \leq F(x)) = F(x).
 \end{aligned}
 \]
-
-I haven't looked into the issue of creating equation numbers.
 
 Tips (prompted by pecularities when creating Word output):
 
 * We need to wrap LaTeX maths environments in ```$$ ... $$```.  Otherwise, the maths is ignored.
-* Use ```\text{text in equation}``` or ```\mbox{text in equation}``` to typeset text in an maths environment. (Using ```\rm{text in equation}``` or ```{\rm text in equation}``` causes problems.)
+* Use ```\text{}``` or ```\mbox{}``` for text in an maths environment. (```\rm{}``` causes problems.)
 
 ## R-generated figure
 
-```{r r_figure, fig.alt = "Alt text.", fig.cap = "Figure caption.", echo = TRUE, out.width="50%", fig.align='center'}
+```{r plot_margins, echo = FALSE}
+oldpar <- par(mar = c(4, 4, 1, 1))
+```
+
+```{r r_figure, fig.alt = "Alt text.", fig.cap = "Figure caption.", echo = TRUE, fig.width = 6, fig.height= 4, fig.align='center'}
 plot(1:10, 1:10, pch = 1:10, xlab = "x", ylab = "y")
+```
+
+```{r plot_margins_reset, echo = FALSE}
+par(oldpar)
 ```
 
 ## External figure (png file)
 
 ```{r ext_figure, fig.alt = "Alt text.", fig.cap = "Figure caption.", echo = TRUE, out.width="50%", fig.align='center'}
-knitr::include_graphics(system.file(package = "accessr", "examples", "plot.png"))
+include_graphics(system.file(package = "accessr", "examples", "plot.png"))
 ```
 
 ## Table 
