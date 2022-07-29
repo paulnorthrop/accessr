@@ -86,7 +86,7 @@ in the default installation directory `dir` of `install_otp`.
 
 ### Rmd to ioslides
 
-Similarly, the function `rmd2ioslides` produced HTML
+Similarly, the function `rmd2ioslides` produces HTML
 [ioslides](https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html)
 presentations.
 
@@ -99,7 +99,9 @@ function in the `pagedown` package is used to produce (non-accessible)
 PDF files from these slides. This requires a secure internet connection.
 See `?rmd2ioslides`.
 
-`rmd2slidy` and `rmd2html` work in a similar way.
+`rmd2slidy` (see
+[slidy](https://bookdown.org/yihui/rmarkdown/slidy-presentation.html)
+presentations) and `rmd2html` work in a similar way.
 
 ### A basic example Rmd file
 

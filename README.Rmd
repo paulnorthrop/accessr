@@ -60,7 +60,7 @@ A path to the `OfficeToPDF.exe` file can be provided using an argument `dir`. If
 
 ### Rmd to ioslides 
 
-Similarly, the function `rmd2ioslides` produced HTML [ioslides](https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html) presentations.
+Similarly, the function `rmd2ioslides` produces HTML [ioslides](https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html) presentations.
 
 ```{r, eval = FALSE}
 rmd2ioslides(c("file1", "file2"))
@@ -68,7 +68,7 @@ rmd2ioslides(c("file1", "file2"))
 
 If the argument `pdf = TRUE` is supplied then the `chrome_print` function in the `pagedown` package is used to produce (non-accessible) PDF files from these slides.  This requires a secure internet connection. See `?rmd2ioslides`.
 
-`rmd2slidy` and `rmd2html` work in a similar way.
+`rmd2slidy` (see [slidy](https://bookdown.org/yihui/rmarkdown/slidy-presentation.html) presentations) and `rmd2html` work in a similar way.
 
 ### A basic example Rmd file
 
