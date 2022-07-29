@@ -7,6 +7,7 @@
 rmd2word(
   x,
   doc = "accessr",
+  pdf = TRUE,
   dir,
   zip = TRUE,
   add = FALSE,
@@ -36,6 +37,10 @@ Different templates may be used for different files.
 \code{rep_len(doc, length(x))} is used to force \code{length(doc)} to have
 the same length as \code{x}. See \strong{Details} for some built-in
 options.}
+
+\item{pdf}{A logical scalar.  Should \code{OfficeToPDF.exe} be used to
+create PDF files from the Word documents that are produced?  If
+\code{pdf = FALSE} then any zips archives created contain only Word files.}
 
 \item{dir}{A path to the directory in which the file \code{OfficeToPDF.exe}
 sits.  This is not needed if this file sits in the current working
@@ -81,11 +86,12 @@ included.}
 In addition to creating the Word and PDF files, and perhaps zip
   files, a list containing the following vector components is returned
   invisibly:
-  \item{error_codes }{numeric values returned from \code{\link{system}}.
+  \item{error_codes }{If \code{pdf = TRUE}, numeric values returned from
+  \code{\link{system}}.
   If \code{wait = FALSE} then these values will be 0 (the success value)
   even if some of the PDF files could not be produced.  The error code 17234
   indicates that a PDF file was open in another application.}
-  \item{files }{(absolute) paths and file names of the files added to a zip
+  \item{files }{(absolute) paths and file names of all files added to a zip
     file.}
   \item{zips }{(relative) paths and names of all the zip files.}
 }
@@ -144,19 +150,25 @@ Information such as \code{title}, \code{author}, \code{lang} etc in
   \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF} is used to
   convert the Word file to a PDF file.  The file \code{OfficeToPDF.exe}
   needs to be downloaded from the
-  \href{https://github.com/cognidox/OfficeToPDF/releases}{OfficeToPDF releases}
-  page and placed in the directory specified by the argument \code{dir}, or
-  in a directory that is in the list returned by \code{\link{searchpaths}}.
+  \href{https://github.com/cognidox/OfficeToPDF/releases}{OfficeToPDF
+  releases} page and placed in the directory specified by the argument
+  \code{dir}, or in a directory that is in the list returned by
+  \code{\link{searchpaths}}.
   If \code{OfficeToPDF.exe} cannot be found then an error is thrown.
   A warning will be given if any of the PDF files could not be produced.
   This will occur if there is an existing PDF file of the same name open
   in another application.
 }
 \examples{
-\dontrun{
-# All files in the current working directory
-rmd2word(c("TEST/file1", "TEST/file2"), doc = "template.docx")
-}
+install_otp()
+rmd_file <- system.file(package = "accessr", "examples", "example.Rmd")
+file.copy(from = rmd_file, to = getwd())
+
+# Create a PDF file from example.Rmd
+rmd2word("example")
+
+# Create Word and PDF files from all Rmd files in the work directory
+rmd2word(inc_word = TRUE)
 }
 \references{
 Layton, Richard. (2015) Happy collaboration with Rmd to docx.

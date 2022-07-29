@@ -26,6 +26,9 @@
 #'   \code{rep_len(doc, length(x))} is used to force \code{length(doc)} to have
 #'   the same length as \code{x}. See \strong{Details} for some built-in
 #'   options.
+#' @param pdf A logical scalar.  Should \code{OfficeToPDF.exe} be used to
+#'   create PDF files from the Word documents that are produced?  If
+#'   \code{pdf = FALSE} then any zips archives created contain only Word files.
 #' @param dir A path to the directory in which the file \code{OfficeToPDF.exe}
 #'   sits.  This is not needed if this file sits in the current working
 #'   directory or a directory in the list returned by \code{searchpaths()}.
@@ -104,9 +107,10 @@
 #'   \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF} is used to
 #'   convert the Word file to a PDF file.  The file \code{OfficeToPDF.exe}
 #'   needs to be downloaded from the
-#'   \href{https://github.com/cognidox/OfficeToPDF/releases}{OfficeToPDF releases}
-#'   page and placed in the directory specified by the argument \code{dir}, or
-#'   in a directory that is in the list returned by \code{\link{searchpaths}}.
+#'   \href{https://github.com/cognidox/OfficeToPDF/releases}{OfficeToPDF
+#'   releases} page and placed in the directory specified by the argument
+#'   \code{dir}, or in a directory that is in the list returned by
+#'   \code{\link{searchpaths}}.
 #'   If \code{OfficeToPDF.exe} cannot be found then an error is thrown.
 #'   A warning will be given if any of the PDF files could not be produced.
 #'   This will occur if there is an existing PDF file of the same name open
@@ -114,11 +118,12 @@
 #' @return In addition to creating the Word and PDF files, and perhaps zip
 #'   files, a list containing the following vector components is returned
 #'   invisibly:
-#'   \item{error_codes }{numeric values returned from \code{\link{system}}.
+#'   \item{error_codes }{If \code{pdf = TRUE}, numeric values returned from
+#'   \code{\link{system}}.
 #'   If \code{wait = FALSE} then these values will be 0 (the success value)
 #'   even if some of the PDF files could not be produced.  The error code 17234
 #'   indicates that a PDF file was open in another application.}
-#'   \item{files }{(absolute) paths and file names of the files added to a zip
+#'   \item{files }{(absolute) paths and file names of all files added to a zip
 #'     file.}
 #'   \item{zips }{(relative) paths and names of all the zip files.}
 #' @references Layton, Richard. (2015) Happy collaboration with Rmd to docx.
@@ -127,14 +132,19 @@
 #' @seealso \code{\link{install_otp}} to install
 #'   \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF}.
 #' @examples
-#' \dontrun{
-#' # All files in the current working directory
-#' rmd2word(c("TEST/file1", "TEST/file2"), doc = "template.docx")
-#' }
+#' install_otp()
+#' rmd_file <- system.file(package = "accessr", "examples", "example.Rmd")
+#' file.copy(from = rmd_file, to = getwd())
+#'
+#' # Create a PDF file from example.Rmd
+#' rmd2word("example")
+#'
+#' # Create Word and PDF files from all Rmd files in the work directory
+#' rmd2word(inc_word = TRUE)
 #' @export
-rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
-                     quiet = TRUE, rm_word = FALSE, rm_pdf = FALSE,
-                     inc_word = FALSE, ...) {
+rmd2word <- function(x, doc = "accessr", pdf = TRUE, dir, zip = TRUE,
+                     add = FALSE, quiet = TRUE, rm_word = FALSE,
+                     rm_pdf = FALSE, inc_word = FALSE, ...) {
   # If x is missing then find all the .Rmd files in the working directory
   # x is the filepath without extension
   if (missing(x)) {
@@ -153,12 +163,14 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
     word_files <- paste0(x, ".docx")
     pdf_files <- paste0(x, ".pdf")
   }
-  # Path to the OfficeToPDF executable
-  if (missing(dir)) {
-    dir <- system.file(package = "accessr")
-    exefile <- paste0(dir, "/OfficeToPDF.exe")
-  } else {
-    exefile <- paste0(dir, "/OfficeToPDF.exe")
+  # Path to the OfficeToPDF executable (only if pdf = TRUE)
+  if (pdf) {
+    if (missing(dir)) {
+      dir <- system.file(package = "accessr")
+      exefile <- paste0(dir, "/OfficeToPDF.exe")
+    } else {
+      exefile <- paste0(dir, "/OfficeToPDF.exe")
+    }
   }
   # If doc contains any instances of "accessr" then set the correct path
   # to accessr's template.docx file
@@ -239,25 +251,28 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
   }
   # Create Word documents
   files <- sapply(1:lenx, docx_fun)
+  if (inc_word) {
+    files <- c(files, sub(".docx", ".pdf", files))
+  } else {
+    files <- sub(".docx", ".pdf", files)
+  }
   # Convert Word documents to PDF documents
   pdf_fun <- function(i) {
     # Convert Word document to PDF document
     res2 <- system(paste(exefile, word_files[i], pdf_files[i]))
     return(res2)
   }
-  error_codes <- sapply(1:lenx, pdf_fun)
-  # Error codes
-  # 127 OfficeToPDF.exe could not be found
-  # 17234 file open in another application
-  if (any(error_codes == 127)) {
-    stop("OfficeToPDF.exe could not be found")
-  }
-  if (any(error_codes != 0)) {
-    warning(pdf_files[error_codes != 0], " could not be written")
-  }
-  # Remove the Word files, if requested to do so
-  if (rm_word) {
-    sapply(word_files, file.remove)
+  if (pdf) {
+    error_codes <- sapply(1:lenx, pdf_fun)
+    # Error codes
+    # 127 OfficeToPDF.exe could not be found
+    # 17234 file open in another application
+    if (any(error_codes == 127)) {
+      stop("OfficeToPDF.exe could not be found")
+    }
+    if (any(error_codes != 0)) {
+      warning(pdf_files[error_codes != 0], " could not be written")
+    }
   }
   # Identify the different directories in x
   dnames <- dirname(rmd_files)
@@ -271,16 +286,29 @@ rmd2word <- function(x, doc = "accessr", dir, zip = TRUE, add = FALSE,
     zipfile <- rep_len("accessr_word", length(udnames))
   }
   if (zip) {
-    res_zip <- accessr_zip(x, dnames, udnames, zipfile, add,
-                           extension = ".pdf")
-    res <- list(error_codes = error_codes, files = files, zips = res_zip)
-    if (rm_pdf) {
-      sapply(pdf_files, file.remove)
+    if (pdf) {
+      res_zip <- accessr_zip(x, dnames, udnames, zipfile, add,
+                             extension = ".pdf")
+      res <- list(error_codes = error_codes, files = files, zips = res_zip)
+      if (rm_pdf) {
+        sapply(pdf_files, file.remove)
+      }
+    } else {
+      res <- list(files = files)
     }
-    if (inc_word) {
-      res_zip <- accessr_zip(x, dnames, udnames, zipfile, add = TRUE,
-                             extension = ".docx")
+    if (inc_word || !pdf) {
+      if (pdf) {
+        res_zip <- accessr_zip(x, dnames, udnames, zipfile, add = TRUE,
+                               extension = ".docx")
+      } else {
+        res_zip <- accessr_zip(x, dnames, udnames, zipfile, add = FALSE,
+                               extension = ".docx")
+      }
     }
+  }
+  # Remove the Word files, if requested to do so
+  if (rm_word) {
+    sapply(word_files, file.remove)
   }
   invisible(res)
 }
