@@ -131,6 +131,11 @@
 #'   \url{https://rmarkdown.rstudio.com/articles_docx.html}
 #' @seealso \code{\link{install_otp}} to install
 #'   \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF}.
+#' @seealso \code{\link{rmd2ioslides}}, \code{\link{rmd2slidy}},
+#'   \code{\link{rmd2html}}.
+#' @seealso The \href{https://paulnorthrop.github.io/accessr/}{accessr
+#'   package page on Github}. In particular, the README file suggests copying
+#'   to your working directory the example file \code{example.Rmd} used below.
 #' @examples
 #' # Create a Word file from example.Rmd
 #' got_hux <- requireNamespace("huxtable", quietly = TRUE)

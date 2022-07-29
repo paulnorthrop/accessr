@@ -19,6 +19,9 @@ produced. The option to print html output to (non-accessible) PDF files is
 also available.
 }
 \details{
+See the \href{https://paulnorthrop.github.io/accessr/}{accessr
+  package page on Github} for more information.
+
 The main functions in \code{accessr} are:
 
 \itemize{

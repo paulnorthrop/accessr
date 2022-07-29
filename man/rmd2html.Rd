@@ -120,3 +120,11 @@ rmd2html(c("file1", "file2"))
 rmd2html()
 }
 }
+\seealso{
+\code{\link{rmd2word}}, \code{\link{rmd2ioslides}},
+  \code{\link{rmd2slidy}}.
+
+The \href{https://paulnorthrop.github.io/accessr/}{accessr
+  package page on Github}. In particular, the README file suggests copying
+  to your working directory the example file \code{example.Rmd} used below.
+}

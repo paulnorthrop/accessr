@@ -13,7 +13,10 @@
 #' produced. The option to print html output to (non-accessible) PDF files is
 #' also available.
 #'
-#' @details The main functions in \code{accessr} are:
+#' @details See the \href{https://paulnorthrop.github.io/accessr/}{accessr
+#'   package page on Github} for more information.
+#'
+#' The main functions in \code{accessr} are:
 #'
 #' \itemize{
 #'   \item \code{\link{install_otp}}: convenience function to install

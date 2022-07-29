@@ -131,4 +131,5 @@ Word output.
 
 I found that using `rmd2ioslides` to create presentations and then
 `rmd2word` to create (zip files containing) accessible PDF versions of
-these presentations enabled me quickly to upload files to Moodle.
+these presentations enabled me quickly to upload files to a VLE like
+Moodle.
