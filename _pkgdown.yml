@@ -12,7 +12,7 @@ reference:
     desc: ~
     contents:
       - "accessr"
-  - title: Installing OfficeoPDF
+  - title: Installing OfficeToPDF
     desc: ~
     contents:
       - "install_otp"
