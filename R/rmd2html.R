@@ -72,10 +72,10 @@
 #' @examples
 #' \dontrun{
 #' # Create HTML documents files from file1.Rmd and file2.Rmd
-#' rmd2word(c("file1", "file2"), inc_word = TRUE)
+#' rmd2html(c("file1", "file2"))
 #'
 #' # Create HTML documents from all Rmd files in the working directory
-#' rmd2word()
+#' rmd2html()
 #' }
 #' @export
 rmd2html <- function(x, zip = TRUE, pdf = FALSE, pdf_args = list(),

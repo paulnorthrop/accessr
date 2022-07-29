@@ -103,9 +103,9 @@ Information such as \code{title}, \code{author}, \code{lang} etc in
 \examples{
 \dontrun{
 # Create slidy presentations from file1.Rmd and file2.Rmd
-rmd2word(c("file1", "file2"), inc_word = TRUE)
+rmd2slidy(c("file1", "file2"), inc_word = TRUE)
 
 # Create slidy presentations from all Rmd files in the working directory
-rmd2word()
+rmd2slidy()
 }
 }

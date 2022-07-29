@@ -103,9 +103,9 @@ The simplest setup is to have the \code{.Rmd} files in the current
 \examples{
 \dontrun{
 # Create ioslides presentations from file1.Rmd and file2.Rmd
-rmd2word(c("file1", "file2"), inc_word = TRUE)
+rmd2ioslides(c("file1", "file2"), inc_word = TRUE)
 
 # Create ioslides presentations from all Rmd files in the working directory
-rmd2word()
+rmd2ioslides()
 }
 }

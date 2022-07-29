@@ -72,10 +72,10 @@
 #' @examples
 #' \dontrun{
 #' # Create ioslides presentations from file1.Rmd and file2.Rmd
-#' rmd2word(c("file1", "file2"), inc_word = TRUE)
+#' rmd2ioslides(c("file1", "file2"), inc_word = TRUE)
 #'
 #' # Create ioslides presentations from all Rmd files in the working directory
-#' rmd2word()
+#' rmd2ioslides()
 #' }
 #' @export
 rmd2ioslides <- function(x, zip = TRUE, pdf = FALSE, zip_pdf = zip,
