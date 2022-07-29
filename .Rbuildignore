@@ -13,6 +13,5 @@
 ^docs$
 ^checks$
 ^\.github$
-^example\.*$
 ^\.Rdata$
 ^\.Rhistory$
