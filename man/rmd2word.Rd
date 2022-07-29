@@ -171,7 +171,7 @@ got_tables <- got_hux && got_flex
 if (got_tables) {
   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
   ex_file <- sub(".Rmd", "", ex_file)
-  rmd2word(ex_file)
+  rmd2word(ex_file, pdf = FALSE)
 }
 
 \dontrun{
