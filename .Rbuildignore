@@ -3,11 +3,6 @@
 ^README\.Rmd$
 ^appveyor\.yml$
 ^OfficeToPDF\.exe$
-[.]zip$
-[.]pdf$
-[.]Rmd$
-[.]pptx$
-[.]html$
 ^TEST$
 ^_pkgdown\.yml$
 ^docs$
