@@ -33,11 +33,12 @@ Imports: jpeg,
     tools,
     utils,
     zip
+Suggests: dplyr,
+    knitr,
+    huxtable
+VignetteBuilder: knitr
 SystemRequirements: OfficeToPDF,
     pandoc (>= 1.14) - http://pandoc.org
 URL: https://paulnorthrop.github.io/accessr/,
      https://github.com/paulnorthrop/accessr
 BugReports: https://github.com/paulnorthrop/accessr/issues
-Suggests: 
-    knitr
-VignetteBuilder: knitr
