@@ -13,3 +13,7 @@
 ^docs$
 ^checks$
 ^\.github$
+^*\.zip$
+^example\.*$
+^\.Rdata$
+^\.Rhistory$
