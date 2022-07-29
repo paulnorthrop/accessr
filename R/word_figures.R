@@ -41,11 +41,6 @@
 #'   attributes \code{"dims"} (a named list containing the figure's
 #'   \code{width} and \code{height}) and \code{"alt"} (a character scalar
 #'   containing the alternative text for the figure).
-#'
-#' @seealso \code{\link[officer]{external_img}}, \code{\link{rmd2word}},
-#'   \code{\link[officer]{docx_dim}}, \code{\link[officer]{read_docx}},
-#'   \code{\link[png]{readPNG}} or \code{\link[jpeg]{readJPEG}}.
-#'
 #' @export
 ext_img <- function(src, width = 0.5, height = 0.2, alt = "", ref_docx_dim) {
   check_src <- all(grepl("^rId", src)) || all(file.exists(src))

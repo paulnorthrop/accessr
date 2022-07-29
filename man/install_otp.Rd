@@ -46,6 +46,3 @@ The argument \code{mode = "wb"} to
 \examples{
 install_otp()
 }
-\seealso{
-\code{\link[utils]{download.file}}, \code{\link{rmd2word}}.
-}

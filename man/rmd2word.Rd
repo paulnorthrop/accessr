@@ -192,7 +192,7 @@ Layton, Richard. (2015) Happy collaboration with Rmd to docx.
   \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF}.
 
 \code{\link{rmd2ioslides}}, \code{\link{rmd2slidy}},
-  \code{\link{rmd2html}}.
+  \code{\link{rmd2html}} for other outpur formats.
 
 The \href{https://paulnorthrop.github.io/accessr/}{accessr
   package page on Github}. In particular, the README file suggests copying

@@ -60,7 +60,9 @@ https://github.com/cognidox/OfficeToPDF/releases."><!-- mathjax --><script src="
     <dl><dt>dir</dt>
 <dd><p>Directory into which to download the <code>OfficeToPDF.exe</code>.
 If <code>dir</code> is missing then <code>system.file(package = "accessr")</code> is
-used.</p></dd>
+used. This should enable <code>OfficeToPDF.exe</code> to be found but
+there may be a problem if <code><a href="https://rdrr.io/r/base/libPaths.html" class="external-link">.libPaths</a></code> refers to a cloud
+storage directory, such as OneDrive.</p></dd>
 <dt>url</dt>
 <dd><p>URL from which to download <code>OfficeToPDF.exe</code>.  If this is
 missing then
@@ -96,6 +98,11 @@ controls whether messages are printed during the download.</p></dd>
     <div class="dont-index"><p><code><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></code>, <code><a href="rmd2word.html">rmd2word</a></code>.</p></div>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">install_otp</span><span class="op">(</span><span class="op">)</span></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
