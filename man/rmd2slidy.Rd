@@ -101,6 +101,17 @@ Information such as \code{title}, \code{author}, \code{lang} etc in
   creates the slidy html files.
 }
 \examples{
+# Create a slidy presentation from example.Rmd
+got_hux <- requireNamespace("huxtable", quietly = TRUE)
+got_flex <- requireNamespace("flextable", quietly = TRUE)
+got_tables <- got_hux && got_flex
+# This example needs packages huxtable and flextable
+if (got_tables) {
+  ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
+  ex_file <- sub(".Rmd", "", ex_file)
+  rmd2slidy(ex_file)
+}
+
 \dontrun{
 # Create slidy presentations from file1.Rmd and file2.Rmd
 rmd2slidy(c("file1", "file2"), inc_word = TRUE)

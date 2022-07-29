@@ -101,6 +101,17 @@ The simplest setup is to have the \code{.Rmd} files in the current
   creates the ioslides html files.
 }
 \examples{
+# Create an isoslides presentation from example.Rmd
+got_hux <- requireNamespace("huxtable", quietly = TRUE)
+got_flex <- requireNamespace("flextable", quietly = TRUE)
+got_tables <- got_hux && got_flex
+# This example needs packages huxtable and flextable
+if (got_tables) {
+  ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
+  ex_file <- sub(".Rmd", "", ex_file)
+  rmd2ioslides(ex_file)
+}
+
 \dontrun{
 # Create ioslides presentations from file1.Rmd and file2.Rmd
 rmd2ioslides(c("file1", "file2"), inc_word = TRUE)

@@ -70,6 +70,17 @@
 #'     file.}
 #'   \item{zips }{(relative) paths and names of all the zip files.}
 #' @examples
+#' # Create an HTML document from example.Rmd
+#' got_hux <- requireNamespace("huxtable", quietly = TRUE)
+#' got_flex <- requireNamespace("flextable", quietly = TRUE)
+#' got_tables <- got_hux && got_flex
+#' # This example needs packages huxtable and flextable
+#' if (got_tables) {
+#'   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
+#'   ex_file <- sub(".Rmd", "", ex_file)
+#'   rmd2html(ex_file)
+#' }
+#'
 #' \dontrun{
 #' # Create HTML documents files from file1.Rmd and file2.Rmd
 #' rmd2html(c("file1", "file2"))

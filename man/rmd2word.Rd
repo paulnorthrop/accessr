@@ -160,10 +160,7 @@ Information such as \code{title}, \code{author}, \code{lang} etc in
   in another application.
 }
 \examples{
-# Install OfficeToPDF to create PDF files
-install_otp()
-
-# Create a PDF file from example.Rmd
+# Create a Word file from example.Rmd
 got_hux <- requireNamespace("huxtable", quietly = TRUE)
 got_flex <- requireNamespace("flextable", quietly = TRUE)
 got_tables <- got_hux && got_flex
@@ -175,6 +172,12 @@ if (got_tables) {
 }
 
 \dontrun{
+# Install OfficeToPDF to create PDF files
+install_otp()
+
+# Create PDF documents files from file1.Rmd and file2.Rmd
+rmd2pdf(c("file1", "file2"))
+
 # Create Word and PDF files from all Rmd files in the work directory
 rmd2word(inc_word = TRUE)
 }
