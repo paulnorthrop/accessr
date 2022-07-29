@@ -36,7 +36,6 @@ Imports: jpeg,
 Suggests: dplyr,
     knitr,
     huxtable
-VignetteBuilder: knitr
 SystemRequirements: OfficeToPDF,
     pandoc (>= 1.14) - http://pandoc.org
 URL: https://paulnorthrop.github.io/accessr/,
