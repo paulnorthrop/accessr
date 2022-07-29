@@ -35,6 +35,7 @@ Imports: jpeg,
     zip
 Suggests: dplyr,
     knitr,
+    flextable,
     huxtable
 SystemRequirements: OfficeToPDF,
     pandoc (>= 1.14) - http://pandoc.org
