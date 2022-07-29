@@ -163,7 +163,7 @@ Information such as \code{title}, \code{author}, \code{lang} etc in
 install_otp()
 
 # Create a PDF file from example.Rmd
-rmd2word(system.file(package = "accessr", "examples", "example.Rmd"))
+rmd2word(system.file(package = "accessr", "examples", "example"))
 
 # Create Word and PDF files from all Rmd files in the work directory
 rmd2word(inc_word = TRUE)
