@@ -55,10 +55,10 @@ If in the current R code chunk \code{out.width} or
 \note{
 This function has been designed for use inside \code{\link{rmd2word}}
   but the object returned has the same structure as that returned from
-  \code{\link[office]{external_img}}.
+  \code{\link[officer]{external_img}}.
 }
 \seealso{
-\code{\link[office]{external_img}}, \code{\link{rmd2word}},
+\code{\link[officer]{external_img}}, \code{\link{rmd2word}},
   \code{\link[officer]{docx_dim}}, \code{\link[officer]{read_docx}},
   \code{\link[png]{readPNG}} or \code{\link[jpeg]{readJPEG}}.
 }

@@ -35,14 +35,14 @@
 #'   \code{\link{officer}} package.
 #' @note This function has been designed for use inside \code{\link{rmd2word}}
 #'   but the object returned has the same structure as that returned from
-#'   \code{\link[office]{external_img}}.
+#'   \code{\link[officer]{external_img}}.
 #'
 #' @return An object of class \code{c("external_img", "cot", "run")} with
 #'   attributes \code{"dims"} (a named list containing the figure's
 #'   \code{width} and \code{height}) and \code{"alt"} (a character scalar
 #'   containing the alternative text for the figure).
 #'
-#' @seealso \code{\link[office]{external_img}}, \code{\link{rmd2word}},
+#' @seealso \code{\link[officer]{external_img}}, \code{\link{rmd2word}},
 #'   \code{\link[officer]{docx_dim}}, \code{\link[officer]{read_docx}},
 #'   \code{\link[png]{readPNG}} or \code{\link[jpeg]{readJPEG}}.
 #'
