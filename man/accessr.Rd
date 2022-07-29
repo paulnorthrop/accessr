@@ -38,7 +38,9 @@ The main functions in \code{accessr} are:
 }
 
 Each function provides the option to create a zip archive containing the
-output files.
+output files.  All the .Rmd files in a directory can be processed with one
+function call. Information such as \code{title}, \code{author}, \code{lang}
+etc in the YAML header in the Rmd file are used but \code{output} is ignored.
 
 Accessible PDF documents are produced by creating Word documents from R
 markdown files and then PDF documents from these Word documents.  The first

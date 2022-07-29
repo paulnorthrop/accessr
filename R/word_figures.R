@@ -1,6 +1,6 @@
 # ================================= ext_img ===================================
 
-#' External images for Word ouput
+#' External images for Word output
 #'
 #' This is a modified version of \code{\link[officer]{external_img}} for use in
 #' \code{\link{rmd2word}}.  The modification is to allow the use of the

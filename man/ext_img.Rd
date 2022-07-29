@@ -2,7 +2,7 @@
 % Please edit documentation in R/word_figures.R
 \name{ext_img}
 \alias{ext_img}
-\title{External images for Word ouput}
+\title{External images for Word output}
 \usage{
 ext_img(src, width = 0.5, height = 0.2, alt = "", ref_docx_dim)
 }

@@ -18,10 +18,10 @@ rmd2slidy(
 )
 }
 \arguments{
-\item{x}{A character vector containing the names (no extension) of the
-\code{.Rmd} files to convert  if they are in the current working directory, or
-paths to the files, either absolute or relative to the current working
-directory, e.g., \code{DIRECTORY/file1}.  The \code{.html}
+\item{x}{A character vector containing the names (\strong{no extension}) of
+the \code{.Rmd} files to convert  if they are in the current working
+directory, or paths to the files, either absolute or relative to the
+current working directory, e.g., \code{DIRECTORY/file1}.  The \code{.html}
 files are created in the same directory as their respective \code{.Rmd}
 file.  If \code{x} is missing then an html file is created from each of
 the \code{.Rmd} files in the current working directory.}
@@ -37,9 +37,13 @@ the number of unique directories, if necessary.}
 
 \item{pdf}{A logical scalar.  If \code{pdf = TRUE} then each html file is
 printed to a PDF file using \code{\link[pagedown]{chrome_print}}.
-Google Chrome (or an alternative browser specified by the \code{browser}
-argument to \code{\link[pagedown]{chrome_print}}) must be installed prior
-to use of this option.}
+Google Chrome (or an alternative browser specified in \code{pdf_args} by
+the \code{browser} argument to \code{\link[pagedown]{chrome_print}} must
+be installed prior to use of this option.  An error message like
+\code{Error in servr::random_port(NULL) : Cannot find an available TCP
+port} means that the \code{random_port} function in the \code{servr}
+package could not find an internet connection that Chrome considers
+secure.  Perhaps you are using a coffee shop's wifi.}
 
 \item{zip_pdf}{As \code{zip}, but relates to the
 creation of zip archives for any PDF files created. If

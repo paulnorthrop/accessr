@@ -18,10 +18,10 @@ rmd2html(
 )
 }
 \arguments{
-\item{x}{A character vector containing the names (no extension) of the
-\code{.Rmd} files to convert  if they are in the current working directory, or
-paths to the files, either absolute or relative to the current working
-directory, e.g., \code{DIRECTORY/file1}.  The \code{.html}
+\item{x}{A character vector containing the names (\strong{no extension}) of
+the \code{.Rmd} files to convert  if they are in the current working
+directory, or paths to the files, either absolute or relative to the
+current working directory, e.g., \code{DIRECTORY/file1}.  The \code{.html}
 files are created in the same directory as their respective \code{.Rmd}
 file.  If \code{x} is missing then an html file is created from each of
 the \code{.Rmd} files in the current working directory.}
