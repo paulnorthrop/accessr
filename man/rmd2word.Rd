@@ -160,15 +160,22 @@ Information such as \code{title}, \code{author}, \code{lang} etc in
   in another application.
 }
 \examples{
+# Install OfficeToPDF to create PDF files
 install_otp()
 
 # Create a PDF file from example.Rmd
-ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
-ex_file <- sub(".Rmd", "", ex_file)
-rmd2word(ex_file)
+got_tables <- requireNamespace(c("huxtable", "flextable"), quietly = TRUE)
+# This example needs packages huxtable and flextable
+if (got_tables) {
+  ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
+  ex_file <- sub(".Rmd", "", ex_file)
+  rmd2word(ex_file)
+}
 
+\dontrun{
 # Create Word and PDF files from all Rmd files in the work directory
 rmd2word(inc_word = TRUE)
+}
 }
 \references{
 Layton, Richard. (2015) Happy collaboration with Rmd to docx.
