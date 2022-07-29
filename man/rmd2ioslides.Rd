@@ -102,7 +102,10 @@ The simplest setup is to have the \code{.Rmd} files in the current
 }
 \examples{
 \dontrun{
-# All files in the current working directory
-rmd2ioslides(c("TEST/file1", "TEST/file2"))
+# Create ioslides presentations from file1.Rmd and file2.Rmd
+rmd2word(c("file1", "file2"), inc_word = TRUE)
+
+# Create ioslides presentations from all Rmd files in the working directory
+rmd2word()
 }
 }

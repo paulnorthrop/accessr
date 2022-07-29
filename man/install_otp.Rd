@@ -9,7 +9,9 @@ install_otp(dir, url, method, quiet = TRUE, ...)
 \arguments{
 \item{dir}{Directory into which to download the \code{OfficeToPDF.exe}.
 If \code{dir} is missing then \code{system.file(package = "accessr")} is
-used.}
+used. This should enable \code{OfficeToPDF.exe} to be found but
+there may be a problem if \code{\link{.libPaths}} refers to a cloud
+storage directory, such as OneDrive.}
 
 \item{url}{URL from which to download \code{OfficeToPDF.exe}.  If this is
 missing then

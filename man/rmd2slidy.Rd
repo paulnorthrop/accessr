@@ -102,7 +102,10 @@ Information such as \code{title}, \code{author}, \code{lang} etc in
 }
 \examples{
 \dontrun{
-# All files in the current working directory
-rmd2slidy(c("TEST/file1", "TEST/file2"))
+# Create slidy presentations from file1.Rmd and file2.Rmd
+rmd2word(c("file1", "file2"), inc_word = TRUE)
+
+# Create slidy presentations from all Rmd files in the working directory
+rmd2word()
 }
 }
