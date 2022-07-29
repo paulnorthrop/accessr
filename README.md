@@ -54,7 +54,9 @@ The main functions are:
     (non-accessible) PDF documents.
 
 Each function provides the option to create a zip archive containing the
-output files.
+output files. All the .Rmd files in a directory can be processed with
+one function call. Information such as `title`, `author`, `lang` etc in
+the YAML header in the Rmd file are used but `output` is ignored.
 
 ### Rmd to Word to PDF
 
@@ -98,6 +100,28 @@ PDF files from these slides. This requires a secure internet connection.
 See `?rmd2ioslides`.
 
 `rmd2slidy` and `rmd2html` work in a similar way.
+
+### An example Rmd file
+
+Executing the following code will copy the file `example.Rmd` to the
+working directory an create from it output as a Word document, an html
+document and ioslides and slidy presentations. The default is to produce
+a zip file from each of these four function calls. In the working
+directory there will also be the files `example.docx`, `example.pdf` and
+`example.html`. The latter contains the slidy presentation because the
+final three calls each create `example.html`, which is overwritten.
+
+``` r
+rmd_file <- system.file(package = "accessr", "examples", "example.Rmd")
+file.copy(from = rmd_file, to = getwd())
+rmd2word("example")
+rmd2html("example")
+rmd2ioslides("example")
+rmd2slidy("example")
+```
+
+In particular, there are some tips about potential issues with
+typesetting mathematics when creating Word output.
 
 ### Suggested workflow
 
