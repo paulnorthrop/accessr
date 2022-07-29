@@ -101,7 +101,7 @@ See `?rmd2ioslides`.
 
 `rmd2slidy` and `rmd2html` work in a similar way.
 
-### An example Rmd file
+### A basic example Rmd file
 
 Executing the following code will copy the file `example.Rmd` to the
 working directory an create from it output as a Word document, an html
@@ -120,8 +120,9 @@ rmd2ioslides("example")
 rmd2slidy("example")
 ```
 
-In particular, there are some tips about potential issues with
-typesetting mathematics when creating Word output.
+This example file includes examples of creating figures and tables and
+describes potential issues with typesetting mathematics when creating
+Word output.
 
 ### Suggested workflow
 
