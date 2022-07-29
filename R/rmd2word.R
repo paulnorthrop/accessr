@@ -136,7 +136,9 @@
 #' install_otp()
 #'
 #' # Create a PDF file from example.Rmd
-#' got_tables <- requireNamespace(c("huxtable", "flextable"), quietly = TRUE)
+#' got_hux <- requireNamespace("huxtable", quietly = TRUE)
+#' got_flex <- requireNamespace("flextable", quietly = TRUE)
+#' got_tables <- got_huxt && got_flex
 #' # This example needs packages huxtable and flextable
 #' if (got_tables) {
 #'   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
