@@ -51,10 +51,10 @@ Information such as `title`, `author`, `lang` etc in the YAML header in the Rmd 
 Suppose that in your current working directory you have the R markdown files `file1.Rmd` and `file2.Rmd`, a template Word file `your_template.docx` and that the file `OfficeToPDF.exe` downloaded from [OfficeToPDF releases](https://github.com/cognidox/OfficeToPDF/releases) is either in your working directory or in a directory listed in `searchpaths()`.  Then the following will create files `file1.docx`, `file2.docx`, `file1.pdf` and `file2.pdf` in your working directory and, unless you supply `zip = FALSE`, a zip file `accessr_word.zip` containing the two PDF files will also be created.
 
 ```{r, eval = FALSE}
-rmd2pdf(c("file1", "file2"), doc = "your_template.docx")
+rmd2word(c("file1", "file2"), doc = "your_template.docx")
 ```
 
-A path to the Word template document can be provided using the `doc` argument.  If `doc` is not provided then a default template is used. If you include figures then the `knitr` chunk option `fig.alt` can be used to set the alternative text. You may find you need to enclose LaTeX maths environments in \$\$ ... \$\$ when typesetting mathematics. 
+A path to the Word template document can be provided using the `doc` argument.  If `doc` is not provided then a default template is used. See `?rmd2word` for details. If you include figures then the `knitr` chunk option `fig.alt` can be used to set the alternative text. You may find you need to enclose LaTeX maths environments in \$\$ ... \$\$ when typesetting mathematics. 
 
 A path to the `OfficeToPDF.exe` file can be provided using an argument `dir`. If `dir` is missing then `rmd2word` will look for OfficeToPDF.exe in the default installation directory `dir` of `install_otp`. 
 

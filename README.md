@@ -71,14 +71,15 @@ unless you supply `zip = FALSE`, a zip file `accessr_word.zip`
 containing the two PDF files will also be created.
 
 ``` r
-rmd2pdf(c("file1", "file2"), doc = "your_template.docx")
+rmd2word(c("file1", "file2"), doc = "your_template.docx")
 ```
 
 A path to the Word template document can be provided using the `doc`
-argument. If `doc` is not provided then a default template is used. If
-you include figures then the `knitr` chunk option `fig.alt` can be used
-to set the alternative text. You may find you need to enclose LaTeX
-maths environments in $$ … $$ when typesetting mathematics.
+argument. If `doc` is not provided then a default template is used. See
+`?rmd2word` for details. If you include figures then the `knitr` chunk
+option `fig.alt` can be used to set the alternative text. You may find
+you need to enclose LaTeX maths environments in $$ … $$ when typesetting
+mathematics.
 
 A path to the `OfficeToPDF.exe` file can be provided using an argument
 `dir`. If `dir` is missing then `rmd2word` will look for OfficeToPDF.exe

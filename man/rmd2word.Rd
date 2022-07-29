@@ -26,20 +26,16 @@ files are created in the same directory as their respective \code{.Rmd}
 file.  If \code{x} is missing then an html file is created from each of
 the \code{.Rmd} files in the current working directory.}
 
-\item{doc}{An optional character vector (including the file extension) to
-specify template Word documents on which to base the style of the
-respective output Word documents. This determines what is passed as the
-argument \code{reference_docx} to \code{\link[rmarkdown]{word_document}},
-via \code{\link[officedown]{rdocx_document}}.
+\item{doc}{An optional character vector (\strong{including the file
+extension}) to specify template Word documents on which to base the style
+of the respective output Word documents. This determines what is passed as
+the argument \code{reference_docx} to
+\code{\link[rmarkdown]{word_document}}, via
+\code{\link[officedown]{rdocx_document}}.
 Different templates may be used for different files.
 \code{rep_len(doc, length(x))} is used to force \code{length(doc)} to have
-the same length as \code{x}.
-A component equal to \code{"officedown"} chooses
-\code{\link[officedown]{rdocx_document}}'s default.
-A component equal to \code{"accessr"} chooses \code{accessr}'s internal
-template file, which has narrower margins and darker blue fonts for titles
-and hyperlinks, to avoid contrast issues.  To use your own template(s),
-provide their filenames.  See \strong{Details} for more information.}
+the same length as \code{x}. See \strong{Details} for some built-in
+options.}
 
 \item{dir}{A path to the directory in which the file \code{OfficeToPDF.exe}
 sits.  This is not needed if this file sits in the current working
@@ -121,7 +117,27 @@ Information such as \code{title}, \code{author}, \code{lang} etc in
 
   For information on how to create a template Word document see Richard
   Layton's guide
-  \href{https://rmarkdown.rstudio.com/articles_docx.html}{Happy collaboration with Rmd to docx}.
+  \href{https://rmarkdown.rstudio.com/articles_docx.html}{Happy collaboration
+    with Rmd to docx}.
+
+  There are some built-in template options:
+  \itemize{
+    \item{\code{doc = "officedown"}: }{uses
+      \code{\link[officedown]{rdocx_document}}'s default,}
+    \item{\code{doc = "accessr"}: }{similar to \code{"officedown"} but with
+      narrower margins and darker blue fonts for titles and hyperlinks, to
+      avoid contrast issues,}
+    \item{\code{doc = "exam"}:}{creates a Word file with a header
+      "Examination paper for STAT0002" on the left and "Page x of n" on the
+      right.}
+  }
+  To use your own template(s), provide their filename(s).
+  A component equal to \code{"officedown"} chooses
+  \code{\link[officedown]{rdocx_document}}'s default.
+  A component equal to \code{"accessr"} chooses \code{accessr}'s internal
+  template file, which has narrower margins and darker blue fonts for titles
+  and hyperlinks, to avoid contrast issues.  To use your own template(s),
+  provide their filenames.  See \strong{Details} for more information.
 
   The \code{\link[rmarkdown]{render}} function creates a Word file from
   each input \code{.Rmd} file.  Then

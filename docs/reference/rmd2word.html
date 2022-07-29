@@ -85,20 +85,16 @@ files are created in the same directory as their respective <code>.Rmd</code>
 file.  If <code>x</code> is missing then an html file is created from each of
 the <code>.Rmd</code> files in the current working directory.</p></dd>
 <dt>doc</dt>
-<dd><p>An optional character vector (including the file extension) to
-specify template Word documents on which to base the style of the
-respective output Word documents. This determines what is passed as the
-argument <code>reference_docx</code> to <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/word_document.html" class="external-link">word_document</a></code>,
-via <code><a href="https://davidgohel.github.io/officedown/reference/rdocx_document.html" class="external-link">rdocx_document</a></code>.
+<dd><p>An optional character vector (<strong>including the file
+extension</strong>) to specify template Word documents on which to base the style
+of the respective output Word documents. This determines what is passed as
+the argument <code>reference_docx</code> to
+<code><a href="https://pkgs.rstudio.com/rmarkdown/reference/word_document.html" class="external-link">word_document</a></code>, via
+<code><a href="https://davidgohel.github.io/officedown/reference/rdocx_document.html" class="external-link">rdocx_document</a></code>.
 Different templates may be used for different files.
 <code>rep_len(doc, length(x))</code> is used to force <code>length(doc)</code> to have
-the same length as <code>x</code>.
-A component equal to <code>"officedown"</code> chooses
-<code><a href="https://davidgohel.github.io/officedown/reference/rdocx_document.html" class="external-link">rdocx_document</a></code>'s default.
-A component equal to <code>"accessr"</code> chooses <code>accessr</code>'s internal
-template file, which has narrower margins and darker blue fonts for titles
-and hyperlinks, to avoid contrast issues.  To use your own template(s),
-provide their filenames.  See <strong>Details</strong> for more information.</p></dd>
+the same length as <code>x</code>. See <strong>Details</strong> for some built-in
+options.</p></dd>
 <dt>dir</dt>
 <dd><p>A path to the directory in which the file <code>OfficeToPDF.exe</code>
 sits.  This is not needed if this file sits in the current working
@@ -174,7 +170,23 @@ included.</p></dd>
   absolute path.</p>
 <p>For information on how to create a template Word document see Richard
   Layton's guide
-  <a href="https://rmarkdown.rstudio.com/articles_docx.html" class="external-link">Happy collaboration with Rmd to docx</a>.</p>
+  <a href="https://rmarkdown.rstudio.com/articles_docx.html" class="external-link">Happy collaboration
+    with Rmd to docx</a>.</p>
+<p>There are some built-in template options:</p><ul><li><p><code>doc = "officedown"</code>: uses
+      <code><a href="https://davidgohel.github.io/officedown/reference/rdocx_document.html" class="external-link">rdocx_document</a></code>'s default,</p></li>
+<li><p><code>doc = "accessr"</code>: similar to <code>"officedown"</code> but with
+      narrower margins and darker blue fonts for titles and hyperlinks, to
+      avoid contrast issues,</p></li>
+<li><p><code>doc = "exam"</code>:creates a Word file with a header
+      "Examination paper for STAT0002" on the left and "Page x of n" on the
+      right.</p></li>
+</ul><p>To use your own template(s), provide their filename(s).
+  A component equal to <code>"officedown"</code> chooses
+  <code><a href="https://davidgohel.github.io/officedown/reference/rdocx_document.html" class="external-link">rdocx_document</a></code>'s default.
+  A component equal to <code>"accessr"</code> chooses <code>accessr</code>'s internal
+  template file, which has narrower margins and darker blue fonts for titles
+  and hyperlinks, to avoid contrast issues.  To use your own template(s),
+  provide their filenames.  See <strong>Details</strong> for more information.</p>
 <p>The <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">render</a></code> function creates a Word file from
   each input <code>.Rmd</code> file.  Then
   <a href="https://github.com/cognidox/OfficeToPDF" class="external-link">OfficeToPDF</a> is used to

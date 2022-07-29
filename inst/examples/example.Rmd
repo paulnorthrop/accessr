@@ -76,9 +76,9 @@ got_huxtable <- requireNamespace("huxtable", quietly = TRUE)
 got_both <- got_dplyr && got_huxtable
 ```
 
-```{r table, echo=FALSE, message=FALSE, eval = got_both, fig.cap = "PJN"}
-library(dplyr)
-library(huxtable)
+```{r table, echo = FALSE, message = FALSE, eval = got_both}
+library(dplyr, warn.conflicts = FALSE)
+library(huxtable, warn.conflicts = FALSE)
 row1 <- c("1", "A", "36", "24")
 row2 <- c("", "B", "24", "16")
 row3 <- c("2", "A", "4", "16")
