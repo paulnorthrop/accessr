@@ -1,0 +1,79 @@
+---
+title: "An overview of accessr"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{An overview of accessr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+bibliography: accessr.bib
+csl: taylor-and-francis-chicago-author-date.csl
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(accessr)
+```
+
+Create an example Rmd document.  
+Put it somewhere.
+How best to illustrate it?
+what does officedown/officer do?
+See https://ardata-fr.github.io/officeverse/officedown-for-word.html
+
+Could produce the vignette as 
+
+Word
+PDF from Word
+isoslides, slidy and html (plus printed as PDF)
+
+
+## Mathematics
+
+\mbox{} not {\rm }
+
+equation numbering?
+
+Dollar signs needed for maths environment
+
+## R markdown document
+
+### 
+
+### Figures
+
+knitr::include.graphics()
+
+fig.alt
+
+out.width and out.height
+
+### Tables
+
+huxtable, kable?, base R markdown? flextable?
+
+## Word
+
+templates
+
+## Ioslides presentation
+
+## Slidy presentation
+
+## HTML document
+
+
+
+
+@officedown
+
+@officer
+
+

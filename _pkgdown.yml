@@ -12,11 +12,18 @@ reference:
     desc: ~
     contents:
       - "accessr"
-  - title: Functions
+  - title: Installing OfficeoPDF
+    desc: ~
+    contents:
+      - "install_otp"
+  - title: Main functions
     desc: ~
     contents:
       - "rmd2html"
       - "rmd2ioslides"
       - "rmd2slidy"
       - "rmd2word"
+  - title: External images for Word output
+    desc: ~
+    contents:
       - "ext_img"
