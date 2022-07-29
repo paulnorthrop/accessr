@@ -19,14 +19,17 @@ rmd2presentation <- function(x, format = c("ioslides", "slidy"), zip = TRUE,
     rmd_files <- list.files(pattern = "Rmd")
     x <- sub(".Rmd", "", rmd_files)
     html_files <- sub(".Rmd", ".html", rmd_files)
+    pdf_files <- sub(".Rmd", ".pdf", rmd_files)
   } else if (length(x) == 1 && dir.exists(x)) {
     rmd_files <- list.files(x, pattern = "Rmd")
     rmd_files <- paste0(x, "/", rmd_files)
     x <- sub(".Rmd", "", rmd_files)
     html_files <- paste0(x, ".html")
+    pdf_files <- paste0(x, ".pdf")
   } else {
     rmd_files <- paste0(x, ".Rmd")
     html_files <- paste0(x, ".html")
+    pdf_files <- paste0(x, ".pdf")
   }
   # Make doc the same length as x
   lenx <- length(x)
