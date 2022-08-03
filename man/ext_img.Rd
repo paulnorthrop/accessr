@@ -63,6 +63,5 @@ This function has been designed for use inside \code{\link{rmd2word}}
 # Example from the officer::external_img() documentation
 # Wrap R logo with external_img ----
 srcfile <- file.path( R.home("doc"), "html", "logo.jpg" )
-extimg <- external_img(src = srcfile, height = 1.06/2,
-                       width = 1.39/2)
+extimg <- ext_img(src = srcfile, height = 1.06 / 2, width = 1.39 / 2)
 }
