@@ -41,7 +41,7 @@ P(X \leq x)
 \end{aligned}
 \]
 
-Tips (prompted by pecularities when creating Word output):
+Tips (prompted by issues when creating Word output):
 
 * We need to wrap LaTeX maths environments in ```$$ ... $$```.  Otherwise, the maths is ignored.
 * Use ```\text{}``` or ```\mbox{}``` for text in an maths environment. (```\rm{}``` causes problems.)
@@ -52,7 +52,7 @@ Tips (prompted by pecularities when creating Word output):
 oldpar <- par(mar = c(4, 4, 1, 1))
 ```
 
-```{r r_figure, fig.alt = "Alt text.", fig.cap = "Figure caption.", echo = TRUE, fig.width = 6, fig.height= 4, fig.align='center'}
+```{r r_figure, fig.alt = "Alt text.", fig.cap = "Use knitr chunk options fig.alt (alternative text) and fig.cap (caption).", echo = TRUE, fig.width = 6, fig.height= 4, fig.align='center'}
 plot(1:10, 1:10, pch = 1:10, xlab = "x", ylab = "y")
 ```
 
@@ -62,7 +62,7 @@ par(oldpar)
 
 ## External figure (png file)
 
-```{r ext_figure, fig.alt = "Alt text.", fig.cap = "Figure caption.", echo = TRUE, out.width="50%", fig.align='center'}
+```{r ext_figure, fig.alt = "Alt text.", fig.cap = "Use knitr::include_graphics().", echo = TRUE, out.width="50%", fig.align='center'}
 include_graphics(system.file(package = "accessr", "examples", "plot.png"))
 ```
 

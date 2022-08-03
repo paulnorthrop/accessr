@@ -22,7 +22,9 @@ output to (non-accessible) PDF files is also available.
 }
 \details{
 See the \href{https://paulnorthrop.github.io/accessr/}{accessr
-  package page on Github} for more information.
+  package page on Github} for more information.  An example Rmd file is
+  available at
+  \code{system.file(package = "accessr", "examples", "example.Rmd")}.
 
 The main functions in \code{accessr} are:
 

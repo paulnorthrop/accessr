@@ -126,8 +126,10 @@ rmd2slidy("example")
 ```
 
 This example file includes examples of creating figures and tables and
-describes potential issues with typesetting mathematics when creating
-Word output.
+notes potential issues with typesetting mathematics when creating Word
+output. In particular, the `knitr` chunk options `fig.alt` and `fig.cap`
+can be used to create a separate alternative text and caption for a
+figure.
 
 ### Suggested workflow
 
