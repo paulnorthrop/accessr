@@ -5,20 +5,22 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Command Line Tools to Produce Accessible Documents using R markdown • accessr</title>
+<title>Command Line Tools to Produce Accessible Documents using R Markdown • accessr</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/paper/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Command Line Tools to Produce Accessible Documents using R markdown">
+<script src="pkgdown.js"></script><meta property="og:title" content="Command Line Tools to Produce Accessible Documents using R Markdown">
 <meta property="og:description" content="Provides functions to produce accessible html slides, html, Word 
-    and PDF documents from input R markdown files.  A main aim is to enable 
-    documents of different formats to be produced from a single R markdown 
-    source file using a single function call.  The render() function from the 
-    rmarkdown package &lt;https://cran.r-project.org/package=rmarkdown&gt; is used to 
-    render R markdown files. A zip file containing multiple files can be 
-    produced from a single function call.  A user-supplied template Word 
+    and PDF documents from input R markdown files. One aspect of accessibility 
+    is providing headings that are recognised by a screen reader, providing a 
+    navigational tool for a blind or partially-sighted person. A main aim is to 
+    enable documents of different formats to be produced from a single R 
+    markdown source file using a single function call.  The render() function 
+    from the rmarkdown package &lt;https://cran.r-project.org/package=rmarkdown&gt; 
+    is used to render R markdown files. A zip file containing multiple files 
+    can be produced from a single function call.  A user-supplied template Word 
     document can be used to determine the formatting of the output Word 
     document. When the output format is a Word document the knitr chunk options 
     out.width and/or out.height can be used to set the dimensions of a figure 
@@ -81,7 +83,7 @@
 <div class="section level2">
 <h2 id="accessr">accessr<a class="anchor" aria-label="anchor" href="#accessr"></a>
 </h2>
-<p>This package provides functions to produce accessible html slides, html, Word and PDF documents from input R markdown files. A main aim is to enable documents of different formats to be produced from a single R markdown source file using a single function call. The <code>render()</code> function from the <a href="https://cran.r-project.org/package=rmarkdown" class="external-link">rmarkdown package</a> is used to render R markdown files. A zip file containing multiple files can be produced from afingle function call. A user-supplied template Word document can be used to determine the formatting of the output Word document. When the output format is a Word document the <code>knitr</code> chunk options <code>out.width</code> and/or <code>out.height</code> can be used to set the dimensions of a figure (R-generated or external image). This functionality is not normally available. Accessible PDF files are produced from Word documents using <a href="https://github.com/cognidox/OfficeToPDF" class="external-link">OfficeToPDF</a>. A convenience function, <code><a href="reference/install_otp.html">install_otp()</a></code> is provided to install this software. The option to print html output to (non-accessible) PDF files is also available.</p>
+<p>This package provides functions to produce accessible html slides, html, Word and PDF documents from input R markdown files. One aspect of accessibility is providing headings that are recognised by a screen reader, providing a navigational tool for a blind or partially-sighted person. A main aim is to enable documents of different formats to be produced from a <strong>single</strong> R markdown source file using a single function call. The <code>render()</code> function from the <a href="https://cran.r-project.org/package=rmarkdown" class="external-link">rmarkdown package</a> is used to render R markdown files. A zip file containing multiple files can be produced from a single function call. A user-supplied template Word document can be used to determine the formatting of the output Word document. When the output format is a Word document the <code>knitr</code> chunk options <code>out.width</code> and/or <code>out.height</code> can be used to set the dimensions of a figure (R-generated or external image). This functionality is not normally available. Accessible PDF files are produced from Word documents using <a href="https://github.com/cognidox/OfficeToPDF" class="external-link">OfficeToPDF</a>. A convenience function, <code><a href="reference/install_otp.html">install_otp()</a></code> is provided to install this software. The option to print html output to (non-accessible) PDF files is also available.</p>
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
@@ -104,7 +106,7 @@
 <li>
 <code><a href="reference/rmd2word.html">rmd2word()</a></code>: create word documents and accessible PDF files.</li>
 <li>
-<code>rmd2ioslides(), rmd2slidy</code>: create isoslides/slidy presentations and perhaps print to (non-accessible) PDF documents.</li>
+<code>rmd2ioslides(), rmd2slidy</code>: create ioslides/slidy presentations and perhaps print to (non-accessible) PDF documents.</li>
 <li>
 <code><a href="reference/rmd2html.html">rmd2html()</a></code>: create html documents and perhaps print to (non-accessible) PDF documents.</li>
 </ul>
@@ -139,7 +141,7 @@
 <span class="fu"><a href="reference/rmd2html.html">rmd2html</a></span><span class="op">(</span><span class="st">"example"</span><span class="op">)</span>
 <span class="fu"><a href="reference/rmd2ioslides.html">rmd2ioslides</a></span><span class="op">(</span><span class="st">"example"</span><span class="op">)</span>
 <span class="fu"><a href="reference/rmd2slidy.html">rmd2slidy</a></span><span class="op">(</span><span class="st">"example"</span><span class="op">)</span></code></pre></div>
-<p>This example file includes examples of creating figures and tables and describes potential issues with typesetting mathematics when creating Word output.</p>
+<p>This example file includes examples of creating figures and tables and notes potential issues with typesetting mathematics when creating Word output. In particular, the <code>knitr</code> chunk options <code>fig.alt</code> and <code>fig.cap</code> can be used to create a separate alternative text and caption for a figure.</p>
 </div>
 <div class="section level3">
 <h3 id="suggested-workflow">Suggested workflow<a class="anchor" aria-label="anchor" href="#suggested-workflow"></a>
