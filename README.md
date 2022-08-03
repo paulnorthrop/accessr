@@ -8,10 +8,12 @@ Status](https://ci.appveyor.com/api/projects/status/github/paulnorthrop/stat0002
 ## accessr
 
 This package provides functions to produce accessible html slides, html,
-Word and PDF documents from input R markdown files. A main aim is to
-enable documents of different formats to be produced from a **single** R
-markdown source file using a single function call. The `render()`
-function from the [rmarkdown
+Word and PDF documents from input R markdown files. One aspect of
+accessibility is providing headings that are recognised by a screen
+reader, providing a navigational tool for a blind or partially-sighted
+person. A main aim is to enable documents of different formats to be
+produced from a **single** R markdown source file using a single
+function call. The `render()` function from the [rmarkdown
 package](https://cran.r-project.org/package=rmarkdown) is used to render
 R markdown files. A zip file containing multiple files can be produced
 from afingle function call. A user-supplied template Word document can
