@@ -122,7 +122,7 @@ rmd2html()
 }
 \seealso{
 \code{\link{rmd2word}}, \code{\link{rmd2ioslides}},
-  \code{\link{rmd2slidy}}  for other outpur formats.
+  \code{\link{rmd2slidy}}  for other output formats.
 
 The \href{https://paulnorthrop.github.io/accessr/}{accessr
   package page on Github}. In particular, the README file suggests copying

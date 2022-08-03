@@ -33,7 +33,7 @@ The main functions in \code{accessr} are:
     OfficeToPDF.
   \item \code{\link{rmd2word}}: create word documents and accessible PDF
    files.
-  \item \code{\link{rmd2ioslides}}: create isoslides presentations and
+  \item \code{\link{rmd2ioslides}}: create ioslides presentations and
    perhaps print to (non-accessible) PDF documents.
   \item \code{\link{rmd2slidy}}: create slidy presentations and perhaps
    print to (non-accessible) PDF documents..

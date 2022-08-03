@@ -16,7 +16,7 @@ produced from a **single** R markdown source file using a single
 function call. The `render()` function from the [rmarkdown
 package](https://cran.r-project.org/package=rmarkdown) is used to render
 R markdown files. A zip file containing multiple files can be produced
-from afingle function call. A user-supplied template Word document can
+from a single function call. A user-supplied template Word document can
 be used to determine the formatting of the output Word document. When
 the output format is a Word document the `knitr` chunk options
 `out.width` and/or `out.height` can be used to set the dimensions of a
@@ -50,8 +50,8 @@ The main functions are:
 -   `install_otp`: convenience function to install OfficeToPDF (required
     to produce an accessible PDF file from a Word document).
 -   `rmd2word()`: create word documents and accessible PDF files.
--   `rmd2ioslides(), rmd2slidy`: create isoslides/slidy presentations
-    and perhaps print to (non-accessible) PDF documents.
+-   `rmd2ioslides(), rmd2slidy`: create ioslides/slidy presentations and
+    perhaps print to (non-accessible) PDF documents.
 -   `rmd2html()`: create html documents and perhaps print to
     (non-accessible) PDF documents.
 

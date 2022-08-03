@@ -101,7 +101,7 @@ The simplest setup is to have the \code{.Rmd} files in the current
   creates the ioslides html files.
 }
 \examples{
-# Create an isoslides presentation from example.Rmd
+# Create an ioslides presentation from example.Rmd
 got_hux <- requireNamespace("huxtable", quietly = TRUE)
 got_flex <- requireNamespace("flextable", quietly = TRUE)
 got_tables <- got_hux && got_flex
@@ -122,7 +122,7 @@ rmd2ioslides()
 }
 \seealso{
 \code{\link{rmd2word}}, \code{\link{rmd2slidy}},
-  \code{\link{rmd2html}} for other outpur formats.
+  \code{\link{rmd2html}} for other output formats.
 
 The \href{https://paulnorthrop.github.io/accessr/}{accessr
   package page on Github}. In particular, the README file suggests copying
