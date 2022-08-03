@@ -9,7 +9,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/paulnorthrop/stat0002
 
 This package provides functions to produce accessible html slides, html,
 Word and PDF documents from input R markdown files. A main aim is to
-enable documents of different formats to be produced from a single R
+enable documents of different formats to be produced from a **single** R
 markdown source file using a single function call. The `render()`
 function from the [rmarkdown
 package](https://cran.r-project.org/package=rmarkdown) is used to render

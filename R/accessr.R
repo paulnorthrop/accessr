@@ -3,7 +3,7 @@
 #'
 #' This package provides functions to produce accessible html and PDF documents
 #' from input R markdown files.  A main aim is to enable documents of different
-#' formats to be produced from a single R markdown source file using a single
+#' formats to be produced from a \strong{single} R markdown source file using a single
 #' function call.  The function \code{\link{rmd2word}} enables the use of the
 #' the \code{knitr} chunk options \code{out.width} and/or \code{out.height} to
 #' set the dimensions a figure when the output format is a Word document. A
