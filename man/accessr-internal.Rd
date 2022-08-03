@@ -4,6 +4,7 @@
 \alias{accessr-internal}
 \alias{rmd2presentation}
 \alias{accessr_zip}
+\alias{ext_img}
 \title{Internal accessr functions}
 \usage{
 rmd2presentation(
@@ -21,6 +22,8 @@ rmd2presentation(
 )
 
 accessr_zip(x, dnames, udnames, zipfile, add, extension)
+
+ext_img(src, width = 0.5, height = 0.2, alt = "", ref_docx_dim)
 }
 \description{
 Internal accessr functions

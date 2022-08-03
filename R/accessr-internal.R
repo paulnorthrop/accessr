@@ -162,3 +162,69 @@ accessr_zip <- function(x, dnames, udnames, zipfile, add, extension) {
   res_zip <- sapply(unique(which_dir), zip_fun)
   return(res_zip)
 }
+
+#' @keywords internal
+#' @rdname accessr-internal
+ext_img <- function(src, width = 0.5, height = 0.2, alt = "", ref_docx_dim) {
+  check_src <- all(grepl("^rId", src)) || all(file.exists(src))
+  if (!check_src) {
+    stop("src must be a string starting with 'rId' or an existing image filename")
+  }
+  class(src) <- c("external_img", "cot", "run")
+  # If the chunk options out.width and/or out.height have been set then them/it
+  # to set fig.width and fig.height.
+  # To do this we need to find the dimensions of the
+  #   * reference Word document (contained in the argument ref_docx_dim)
+  #   * (png or jpg) image
+  out_width <- knitr::opts_current$get("out.width")
+  out_height <- knitr::opts_current$get("out.height")
+  # Function to set the width and height
+  find_fig_width_height <- function(imdim) {
+    w <- ref_docx_dim$page["width"]
+    h <- ref_docx_dim$page["height"]
+    mleft <- ref_docx_dim$margins["left"]
+    mright <- ref_docx_dim$margins["right"]
+    mtop <- ref_docx_dim$margins["top"]
+    mbottom <- ref_docx_dim$margins["bottom"]
+    asp <- imdim[1] / imdim[2]
+    if (!is.null(out_width) && !is.null(out_height)) {
+      fw <- (w - mleft - mright) * out_width
+      fh <- (h - mtop - mbottom) * out_height
+    } else if (!is.null(out_width)) {
+      fw <- (w - mleft - mright) * out_width
+      fh <- fw * asp
+    } else if (!is.null(out_height)) {
+      fh <- (h - mtop - mbottom) * out_height
+      fw <- fh / asp
+    }
+    val <- c(fw, fh)
+    names(val) <- c("width", "height")
+    return(val)
+  }
+  # Convert out_width and out_height to decimals (if they are non-NULL)
+  if (!is.null(out_width)) {
+    out_width <- as.numeric(substr(out_width, 1, nchar(out_width) - 1)) / 100
+  }
+  if (!is.null(out_height)) {
+    out_height <- as.numeric(substr(out_height, 1, nchar(out_height) - 1)) / 100
+  }
+  # Only adjust the width and height if out_width and/or out_height are given
+  if (!is.null(out_width) || !is.null(out_height)) {
+    # Find the page dimensions of the reference document
+    ext <- tools::file_ext(src)
+    if (ext == "png") {
+      imdim <- dim(png::readPNG(src))
+      wh <- find_fig_width_height(imdim)
+      width <- wh["width"]
+      height <- wh["height"]
+    } else if (ext == "jpg" || ext == "jpeg") {
+      imdim <- dim(jpeg::readJPEG(src))
+      wh <- find_fig_width_height(imdim)
+      width <- wh["width"]
+      height <- wh["height"]
+    }
+  }
+  attr(src, "dims") <- list(width = width, height = height)
+  attr(src, "alt") <- alt
+  src
+}
