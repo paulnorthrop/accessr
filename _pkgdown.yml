@@ -23,7 +23,7 @@ reference:
       - "rmd2ioslides"
       - "rmd2slidy"
       - "rmd2word"
-  - title: External images for Word output
+  - title: Helper function
     desc: ~
     contents:
       - "ext_img"
