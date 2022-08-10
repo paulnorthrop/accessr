@@ -26,10 +26,8 @@ Depends: R (>= 3.3.0)
 License: GPL (>= 2)
 Encoding: UTF-8
 RoxygenNote: 7.2.0
-Imports: jpeg,
-    officer,
+Imports: officer,
     officedown,
-    png,
     rmarkdown,
     tools,
     utils,
@@ -38,7 +36,9 @@ Suggests: dplyr,
     knitr,
     flextable,
     huxtable,
-    pagedown
+    jpeg,
+    pagedown,
+    png
 SystemRequirements: OfficeToPDF,
     pandoc (>= 1.14) - http://pandoc.org
 URL: https://paulnorthrop.github.io/accessr/,

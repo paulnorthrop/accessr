@@ -96,11 +96,19 @@ ext_img <- function(src, width = 0.5, height = 0.2, alt = "", ref_docx_dim) {
     # Find the page dimensions of the reference document
     ext <- tools::file_ext(src)
     if (ext == "png") {
+      if (!requireNamespace("png", quietly = TRUE)) {
+        stop("The 'png' package is required. Please install it.",
+             call.= FALSE)
+      }
       imdim <- dim(png::readPNG(src))
       wh <- find_fig_width_height(imdim)
       width <- wh["width"]
       height <- wh["height"]
     } else if (ext == "jpg" || ext == "jpeg") {
+      if (!requireNamespace("jpeg", quietly = TRUE)) {
+        stop("The 'jpeg' package is required. Please install it.",
+             call.= FALSE)
+      }
       imdim <- dim(jpeg::readJPEG(src))
       wh <- find_fig_width_height(imdim)
       width <- wh["width"]
