@@ -47,7 +47,7 @@
 #' markdown files and then PDF documents from these Word documents.  The first
 #' step uses the \code{\link[rmarkdown]{render}} function from the
 #' \href{https://cran.r-project.org/package=rmarkdown}{rmarkdown package}
-#' and the \code{\link[officedown]{rdocx_document}} function from the
+#' and the \code{rdocx_document} function from the
 #' [officedown package](https://cran.r-project.org/package=officedown).
 #' The second step uses
 #' \href{https://github.com/cognidox/OfficeToPDF}{OfficetoPDF}.
