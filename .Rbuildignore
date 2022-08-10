@@ -10,3 +10,4 @@
 ^\.github$
 ^\.Rdata$
 ^\.Rhistory$
+^cran-comments\.md$
