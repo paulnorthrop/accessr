@@ -2,6 +2,7 @@
 ^\.Rproj\.user$
 ^README\.Rmd$
 ^appveyor\.yml$
+^cran-comments\.md$
 ^OfficeToPDF\.exe$
 ^TEST$
 ^_pkgdown\.yml$
@@ -10,4 +11,3 @@
 ^\.github$
 ^\.Rdata$
 ^\.Rhistory$
-^cran-comments\.md$
