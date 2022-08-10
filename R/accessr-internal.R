@@ -100,6 +100,11 @@ rmd2presentation <- function(x, format = c("ioslides", "slidy"), zip = TRUE,
 #' @keywords internal
 #' @rdname accessr-internal
 accessr_zip <- function(x, dnames, udnames, zipfile, add, extension) {
+  # The zip package is required
+  if (!requireNamespace("zip", quietly = TRUE)) {
+    stop("The 'zip' package is required. Please install it.",
+         call.= FALSE)
+  }
   # Directory identifiers for the files
   which_dir <- charmatch(x = dnames, table = udnames)
   # Function to create a zip file
