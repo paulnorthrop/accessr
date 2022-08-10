@@ -2,12 +2,12 @@
 
 #' External images for Word output
 #'
-#' This is a modified version of \code{\link[officer]{external_img}} for use in
-#' \code{\link{rmd2word}}.  The modification is to allow the use of the
-#' \code{\link[knitr]{knitr}} chunk options \code{out.width} and/or
-#' \code{out.height} to set the dimensions of a figure (R-generated or
-#' external image) when the output format is a Word document.  This
-#' functionality is not normally available.
+#' This is a modified version of the \code{external_img} function from the
+#' \code{officer} package for use in \code{\link{rmd2word}}.  The modification
+#' is to allow the use of the \code{\link[knitr]{knitr}} chunk options
+#' \code{out.width} and/or \code{out.height} to set the dimensions of a
+#' figure (R-generated or external image) when the output format is a Word
+#' document.  This functionality is not normally available.
 #'
 #' @param src image file path
 #' @param width width in inches
@@ -30,9 +30,8 @@
 #'
 #'   \code{ref_docx_dim} can be produced using
 #'   \code{officer::docx_dim(officer::read_docx(doc))}, where \code{doc} is an
-#'   \code{rdocx} object and \code{\link[officer]{docx_dim}}
-#'   and \code{\link[officer]{read_docx}} are functions in the
-#'   \code{\link{officer}} package.
+#'   \code{rdocx} object and \code{docx_dim} and \code{read_docx} are
+#'   functions in the \code{officer} package.
 #' @note This function has been designed for use inside \code{\link{rmd2word}}
 #'   but the object returned has the same structure as that returned from
 #'   \code{\link[officer]{external_img}}. Outside the context of a
