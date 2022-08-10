@@ -78,19 +78,20 @@
 #' # Create a slidy presentation from example.Rmd
 #' got_hux <- requireNamespace("huxtable", quietly = TRUE)
 #' got_flex <- requireNamespace("flextable", quietly = TRUE)
-#' got_tables <- got_hux && got_flex
+#' got_pandoc <- rmarkdown::pandoc_available("1.14")
+#' got_all <- got_hux && got_flex && got_pandoc
 #' # This example needs packages huxtable and flextable
-#' if (got_tables) {
+#' if (got_all) {
 #'   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
 #'   ex_file <- sub(".Rmd", "", ex_file)
 #'   rmd2slidy(ex_file)
 #' }
 #'
 #' \dontrun{
-#' # Create slidy presentations from file1.Rmd and file2.Rmd
+#' # Create slidy presentations from your files file1.Rmd and file2.Rmd
 #' rmd2slidy(c("file1", "file2"), inc_word = TRUE)
 #'
-#' # Create slidy presentations from all Rmd files in the working directory
+#' # Create slidy presentations from all Rmd files in your working directory
 #' rmd2slidy()
 #' }
 #' @export
