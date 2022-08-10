@@ -146,8 +146,7 @@
 #' if (got_all) {
 #'   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
 #'   ex_file <- sub(".Rmd", "", ex_file)
-#'   install_otp()
-#'   rmd2word(ex_file, pdf = TRUE)
+#'   rmd2word(ex_file, pdf = FALSE)
 #' }
 #'
 #' \dontrun{
