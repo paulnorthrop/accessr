@@ -49,6 +49,10 @@ rmd2presentation <- function(x, format = c("ioslides", "slidy"), zip = TRUE,
   res <- list(files = res)
   # Create pdf files, if required
   if (pdf) {
+    if (!requireNamespace("pagedown", quietly = TRUE)) {
+      stop("The 'pagedown' package is required. Please install it.",
+           call.= FALSE)
+    }
     pdf_fun <- function(i) {
       # Print to pdf
       pdf_args$input <- html_files[i]

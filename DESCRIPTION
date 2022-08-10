@@ -29,7 +29,6 @@ RoxygenNote: 7.2.0
 Imports: jpeg,
     officer,
     officedown,
-    pagedown,
     png,
     rmarkdown,
     tools,
@@ -38,7 +37,8 @@ Imports: jpeg,
 Suggests: dplyr,
     knitr,
     flextable,
-    huxtable
+    huxtable,
+    pagedown
 SystemRequirements: OfficeToPDF,
     pandoc (>= 1.14) - http://pandoc.org
 URL: https://paulnorthrop.github.io/accessr/,
