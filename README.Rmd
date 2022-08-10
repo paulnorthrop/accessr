@@ -72,7 +72,7 @@ If the argument `pdf = TRUE` is supplied then the `chrome_print` function in the
 
 ### A basic example Rmd file
 
-Executing the following code will copy the file `example.Rmd` to the working directory an create from it output as a Word document, an html document and ioslides and slidy presentations. The default is to produce a zip file from each of these four function calls. In the working directory there will also be the files `example.docx`, `example.pdf` and `example.html`. The latter contains the slidy presentation because the final three calls each create `example.html`, which is overwritten.
+Executing the following code will copy the file `example.Rmd` to the working directory and create from it output as a Word document, an html document and ioslides and slidy presentations. The default is to produce a zip file from each of these four function calls. In the working directory there will also be the files `example.docx`, `example.pdf` and `example.html`. The latter contains the slidy presentation because the final three calls each create `example.html`, which is overwritten.
 
 ```{r exampleRmd, eval = FALSE}
 rmd_file <- system.file(package = "accessr", "examples", "example.Rmd")

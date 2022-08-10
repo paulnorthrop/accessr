@@ -109,7 +109,7 @@ presentations) and `rmd2html` work in a similar way.
 ### A basic example Rmd file
 
 Executing the following code will copy the file `example.Rmd` to the
-working directory an create from it output as a Word document, an html
+working directory and create from it output as a Word document, an html
 document and ioslides and slidy presentations. The default is to produce
 a zip file from each of these four function calls. In the working
 directory there will also be the files `example.docx`, `example.pdf` and
