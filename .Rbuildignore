@@ -11,3 +11,7 @@
 ^\.github$
 ^\.Rdata$
 ^\.Rhistory$
+^inst/OfficetoPDF\.exe$
+^inst/examples/example\.docx$
+^inst/examples/accessr_word\.zip$
+^inst/examples/example\.pdf$
