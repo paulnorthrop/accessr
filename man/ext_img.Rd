@@ -31,18 +31,18 @@ An object of class \code{c("external_img", "cot", "run")} with
 \description{
 This is a modified version of the \code{external_img} function from the
 \code{officer} package for use in \code{\link{rmd2word}}.  The modification
-is to allow the use of the \code{\link[knitr]{knitr}} chunk options
-\code{out.width} and/or \code{out.height} to set the dimensions of a
-figure (R-generated or external image) when the output format is a Word
-document.  This functionality is not normally available.
+is to allow the use of the \code{knitr} chunk options \code{out.width}
+and/or \code{out.height} to set the dimensions of a figure (R-generated or
+external image) when the output format is a Word document.  This
+functionality is not normally available.
 }
 \details{
 If in the current R code chunk \code{out.width} or
   \code{out.height} have been set then the corresponding values of
   \code{fig.width} and \code{fig.height} are inferred from the dimensions
   of the figure and the page dimensions of the output Word document.
-  The former are obtained using \code{\link[png]{readPNG}} or
-  \code{\link[jpeg]{readJPEG}} as appropriate.  If only one of
+  The former are obtained using \code{png::readPNG} or
+  \code{jpeg::readJPEG} as appropriate.  If only one of
   \code{out.width} or \code{out.height} are set then the aspect ratio of the
   figure is preserved.
 
