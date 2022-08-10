@@ -94,6 +94,10 @@ ext_img <- function(src, width = 0.5, height = 0.2, alt = "", ref_docx_dim) {
   # Only adjust the width and height if out_width and/or out_height are given
   if (!is.null(out_width) || !is.null(out_height)) {
     # Find the page dimensions of the reference document
+    if (!requireNamespace("tools", quietly = TRUE)) {
+      stop("The 'tools' package is required. Have you removed it?",
+           call.= FALSE)
+    }
     ext <- tools::file_ext(src)
     if (ext == "png") {
       if (!requireNamespace("png", quietly = TRUE)) {
