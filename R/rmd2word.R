@@ -162,6 +162,19 @@
 rmd2word <- function(x, doc = "accessr", pdf = TRUE, dir, zip = TRUE,
                      add = FALSE, quiet = TRUE, rm_word = FALSE,
                      rm_pdf = FALSE, inc_word = FALSE, ...) {
+  # Packages officer and officedown are required
+  got_officer <- requireNamespace("officer", quietly = TRUE)
+  got_officedown <- requireNamespace("officedown", quietly = TRUE)
+  if (!got_officer && !got_officedown) {
+    stop("Packages 'officer' and 'officedown' are needed. Please install them.",
+         call.= FALSE)
+  } else if (!got_officer) {
+    stop("The 'officer' package is required. Please install it.",
+         call.= FALSE)
+  } else if (!got_officedown) {
+    stop("The 'officedown' package is required. Please install it.",
+         call.= FALSE)
+  }
   # If x is missing then find all the .Rmd files in the working directory
   # x is the filepath without extension
   if (missing(x)) {

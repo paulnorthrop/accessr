@@ -26,9 +26,7 @@ Depends: R (>= 3.3.0)
 License: GPL (>= 2)
 Encoding: UTF-8
 RoxygenNote: 7.2.0
-Imports: officer,
-    officedown,
-    rmarkdown,
+Imports: rmarkdown,
     tools,
     utils,
     zip
@@ -37,6 +35,8 @@ Suggests: dplyr,
     flextable,
     huxtable,
     jpeg,
+    officer,
+    officedown,
     pagedown,
     png
 SystemRequirements: OfficeToPDF,
