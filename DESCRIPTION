@@ -39,8 +39,8 @@ Suggests: dplyr,
     tools,
     utils,
     zip
-SystemRequirements: OfficeToPDF,
-    pandoc (>= 1.14) - http://pandoc.org
+SystemRequirements: OfficeToPDF - https://github.com/cognidox/OfficeToPDF,
+    pandoc (>= 1.14) - https://pandoc.org
 URL: https://paulnorthrop.github.io/accessr/,
      https://github.com/paulnorthrop/accessr
 BugReports: https://github.com/paulnorthrop/accessr/issues
