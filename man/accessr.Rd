@@ -7,18 +7,19 @@
 markdown}
 \description{
 This package provides functions to produce accessible html and PDF documents
-from input R markdown files. One aspect of accessibility is providing
-headings that are recognised by a screen reader, providing a navigational
-tool for a blind or partially-sighted person. A main aim is to enable
-documents of different formats to be produced from a \strong{single} R
-markdown source file using a single function call.  The function
-\code{\link{rmd2word}} enables the use of the the \code{knitr} chunk options
-\code{out.width} and/or \code{out.height} to set the dimensions a figure
-when the output format is a Word document. A user-supplied template Word
-document can be used to determine the formatting of the output Word
-document. Similar functions produce html slides and html documents. A zip
-file containing multiple files can be produced. The option to print html
-output to (non-accessible) PDF files is also available.
+from input R markdown files. Currently, **accessr** only provides the option
+to produce accessible PDF files on a Windows Operating System. One aspect of
+accessibility is providing headings that are recognised by a screen reader,
+providing a navigational tool for a blind or partially-sighted person. A
+main aim is to enable documents of different formats to be produced from a
+\strong{single} R markdown source file using a single function call.  The
+function \code{\link{rmd2word}} enables the use of the the \code{knitr}
+chunk options \code{out.width} and/or \code{out.height} to set the
+dimensions a figure when the output format is a Word document. A
+user-supplied template Word document can be used to determine the formatting
+of the output Word document. Similar functions produce html slides and html
+documents. A zip file containing multiple files can be produced. The option
+to print html output to (non-accessible) PDF files is also available.
 }
 \details{
 See the \href{https://paulnorthrop.github.io/accessr/}{accessr
