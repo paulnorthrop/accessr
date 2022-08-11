@@ -36,7 +36,7 @@ the zip archives.  The names are recycled to the length of the number of
 unique directories, if necessary.}
 
 \item{pdf}{A logical scalar.  If \code{pdf = TRUE} then each html file is
-printed to a PDF file using \code{pagedown::chrome_print}.
+printed to a PDF file using \code{\link[pagedown]{chrome_print}}.
 Google Chrome (or an alternative browser specified in \code{pdf_args} by
 the \code{browser} argument to \code{pagedown::chrome_print} must
 be installed prior to use of this option.  An error message like
@@ -46,7 +46,7 @@ package could not find an internet connection that Chrome considers
 secure.  Perhaps you are using a coffee shop's wifi.}
 
 \item{pdf_args}{A list of arguments to be passed to
-\code{pagedown::chrome_print}. \code{input} cannot be passed
+\code{\link[pagedown]{chrome_print}}. \code{input} cannot be passed
 because it is set inside \code{rmd2html}.}
 
 \item{zip_pdf}{As \code{zip}, but relates to the

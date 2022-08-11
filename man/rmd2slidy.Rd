@@ -36,9 +36,9 @@ used to name the zip archives.  The names are recycled to the length of
 the number of unique directories, if necessary.}
 
 \item{pdf}{A logical scalar.  If \code{pdf = TRUE} then each html file is
-printed to a PDF file using \code{pagedown::chrome_print}.
+printed to a PDF file using \code{\link[pagedown]{chrome_print}}.
 Google Chrome (or an alternative browser specified in \code{pdf_args} by
-the \code{browser} argument to \code{pagedown::chrome_print} must
+the \code{browser} argument to \code{\link[pagedown]{chrome_print}} must
 be installed prior to use of this option.  An error message like
 \code{Error in servr::random_port(NULL) : Cannot find an available TCP
 port} means that the \code{random_port} function in the \code{servr}
@@ -51,7 +51,7 @@ creation of zip archives for any PDF files created. If
 \code{accessr_html_pdf.zip}.}
 
 \item{pdf_args}{A list of arguments to be passed to
-\code{pagedown::chrome_print}. \code{input} cannot be passed
+\code{\link[pagedown]{chrome_print}}. \code{input} cannot be passed
 because it is set inside \code{rmd2html}.}
 
 \item{add}{A logical scalar that determines what happens if the output
