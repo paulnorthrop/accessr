@@ -29,12 +29,12 @@ An object of class \code{c("external_img", "cot", "run")} with
   containing the alternative text for the figure).
 }
 \description{
-This is a modified version of the \code{external_img} function from the
-\code{officer} package for use in \code{\link{rmd2word}}.  The modification
-is to allow the use of the \code{knitr} chunk options \code{out.width}
-and/or \code{out.height} to set the dimensions of a figure (R-generated or
-external image) when the output format is a Word document.  This
-functionality is not normally available.
+This is a modified version of the \code{\link[officer]{external_img}}
+function from the \code{officer} package for use in \code{\link{rmd2word}}.
+The modification is to allow the use of the \code{knitr} chunk options
+\code{out.width} and/or \code{out.height} to set the dimensions of a figure
+(R-generated or external image) when the output format is a Word document.
+This functionality is not normally available.
 }
 \details{
 If in the current R code chunk \code{out.width} or
@@ -48,8 +48,9 @@ If in the current R code chunk \code{out.width} or
 
   \code{ref_docx_dim} can be produced using
   \code{officer::docx_dim(officer::read_docx(doc))}, where \code{doc} is an
-  \code{rdocx} object and \code{docx_dim} and \code{read_docx} are
-  functions in the \code{officer} package.
+  \code{\link[officer]{docx_dim}} object and \code{\link[officer]{docx_dim}}
+  and \code{\link[officer]{read_docx}} are functions in the \code{officer}
+  package.
 }
 \note{
 This function has been designed for use inside \code{\link{rmd2word}}
