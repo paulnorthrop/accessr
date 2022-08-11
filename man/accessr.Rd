@@ -50,13 +50,13 @@ output files.  All the .Rmd files in a directory can be processed with one
 function call. Information such as \code{title}, \code{author}, \code{lang}
 etc in the YAML header in the Rmd file are used but \code{output} is ignored.
 
-Accessible PDF documents are produced by creating Word documents from R
-markdown files and then PDF documents from these Word documents.  The first
-step uses the \code{\link[rmarkdown]{render}} function from the
+On a Windows Operating System, Accessible PDF documents are produced by
+creating Word documents from R markdown files and then PDF documents from
+these Word documents.  The first step uses the
+\code{\link[rmarkdown]{render}} function from the
 \href{https://cran.r-project.org/package=rmarkdown}{rmarkdown package}
-and the \code{rdocx_document} function from the
-[officedown package](https://cran.r-project.org/package=officedown).
-The second step uses
+and the \code{\link[officedown]{rdocx_document}} function from the
+officedown package. The second step uses
 \href{https://github.com/cognidox/OfficeToPDF}{OfficetoPDF}.
 }
 \references{

@@ -99,7 +99,7 @@ In addition to creating the Word and PDF files, and perhaps zip
 }
 \description{
 Creates Word documents from input R markdown documents. On a Windows
-Operating System accessible PDF documents may be created from these Word
+Operating System, accessible PDF documents may be created from these Word
 files if the software
 \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF} is installed.
 The convenience function \code{\link{install_otp}} can be used to install
@@ -131,7 +131,7 @@ Information such as \code{title}, \code{author}, \code{lang} etc in
   There are some built-in template options:
   \itemize{
     \item{\code{doc = "officedown"}: }{uses
-      \code{officedown::rdocx_document}'s default,}
+      \code{\link[officedown]{rdocx_document}}'s default,}
     \item{\code{doc = "accessr"}: }{similar to \code{"officedown"} but with
       narrower margins and darker blue fonts for titles and hyperlinks, to
       avoid contrast issues,}
@@ -141,7 +141,7 @@ Information such as \code{title}, \code{author}, \code{lang} etc in
   }
   To use your own template(s), provide their filename(s).
   A component equal to \code{"officedown"} chooses
-  \code{officedown::rdocx_document}'s default.
+  \code{\link[officedown]{rdocx_document}}'s default.
   A component equal to \code{"accessr"} chooses \code{accessr}'s internal
   template file, which has narrower margins and darker blue fonts for titles
   and hyperlinks, to avoid contrast issues.  To use your own template(s),
