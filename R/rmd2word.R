@@ -2,12 +2,12 @@
 
 #' Converts R markdown code to Word and PDF documents
 #'
-#' Creates accessible PDF documents by creating Word documents using
-#' R markdown code and then producing PDF files.  Zip archives of the PDF files
-#' may be created. To create PDF files the software
-#' \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF} is required.
+#' Creates Word documents from input R markdown documents. On a Windows
+#' Operating System accessible PDF documents may be created from these Word
+#' files if the software
+#' \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF} is installed.
 #' The convenience function \code{\link{install_otp}} can be used to install
-#' this software.
+#' this software. Zip archives of the Word and/or PDF files may be created.
 #'
 #' @param x A character vector containing the names (\strong{no extension}) of
 #'   the \code{.Rmd} files to convert  if they are in the current working
@@ -28,7 +28,9 @@
 #'   options.
 #' @param pdf A logical scalar.  Should \code{OfficeToPDF.exe} be used to
 #'   create PDF files from the Word documents that are produced?  If
-#'   \code{pdf = FALSE} then any zips archives created contain only Word files.
+#'   \code{pdf = FALSE} then any zip archives created contain only Word files.
+#'   PDF files will only be produced if the Operating System is
+#'   \code{"windows"}, that is, \code{.Platform$OS.type == "windows"}.
 #' @param dir A path to the directory in which the file \code{OfficeToPDF.exe}
 #'   sits.  This is not needed if this file sits in the current working
 #'   directory or a directory in the list returned by \code{searchpaths()}.
@@ -160,9 +162,15 @@
 #' rmd2word(inc_word = TRUE)
 #' }
 #' @export
-rmd2word <- function(x, doc = "accessr", pdf = TRUE, dir, zip = TRUE,
-                     add = FALSE, quiet = TRUE, rm_word = FALSE,
+rmd2word <- function(x, doc = "accessr",
+                     pdf = isTRUE(.Platform$OS.type == "windows"), dir,
+                     zip = TRUE, add = FALSE, quiet = TRUE, rm_word = FALSE,
                      rm_pdf = FALSE, inc_word = FALSE, ...) {
+  # Warn that PDF files can only be produced on Windows
+  if (pdf && isFALSE(.Platform$OS.type == "windows")) {
+    warning("'pdf' has been set to FALSE because the OS is not ''windows''.")
+    pdf <- FALSE
+  }
   # Packages officer and officedown are required
   got_officer <- requireNamespace("officer", quietly = TRUE)
   got_officedown <- requireNamespace("officedown", quietly = TRUE)

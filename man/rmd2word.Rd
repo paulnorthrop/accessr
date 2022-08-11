@@ -7,7 +7,7 @@
 rmd2word(
   x,
   doc = "accessr",
-  pdf = TRUE,
+  pdf = isTRUE(.Platform$OS.type == "windows"),
   dir,
   zip = TRUE,
   add = FALSE,
@@ -40,7 +40,9 @@ options.}
 
 \item{pdf}{A logical scalar.  Should \code{OfficeToPDF.exe} be used to
 create PDF files from the Word documents that are produced?  If
-\code{pdf = FALSE} then any zips archives created contain only Word files.}
+\code{pdf = FALSE} then any zip archives created contain only Word files.
+PDF files will only be produced if the Operating System is
+\code{"windows"}, that is, \code{.Platform$OS.type == "windows"}.}
 
 \item{dir}{A path to the directory in which the file \code{OfficeToPDF.exe}
 sits.  This is not needed if this file sits in the current working
@@ -96,12 +98,12 @@ In addition to creating the Word and PDF files, and perhaps zip
   \item{zips }{(relative) paths and names of all the zip files.}
 }
 \description{
-Creates accessible PDF documents by creating Word documents using
-R markdown code and then producing PDF files.  Zip archives of the PDF files
-may be created. To create PDF files the software
-\href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF} is required.
+Creates Word documents from input R markdown documents. On a Windows
+Operating System accessible PDF documents may be created from these Word
+files if the software
+\href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF} is installed.
 The convenience function \code{\link{install_otp}} can be used to install
-this software.
+this software. Zip archives of the Word and/or PDF files may be created.
 }
 \details{
 Information such as \code{title}, \code{author}, \code{lang} etc in
