@@ -340,11 +340,12 @@ rmd2word <- function(x, doc = "accessr",
       if (pdf) {
         res_zip <- accessr_zip(x, dnames, udnames, zipfile, add = TRUE,
                                extension = ".docx")
+        res <- list(error_codes = error_codes, files = files, zips = res_zip)
       } else {
         res_zip <- accessr_zip(x, dnames, udnames, zipfile, add = FALSE,
                                extension = ".docx")
+        res <- list(files = files, zips = res_zip)
       }
-      res <- list(error_codes = error_codes, files = files, zips = res_zip)
     }
   } else {
     if (pdf) {
