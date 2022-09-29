@@ -125,9 +125,9 @@
 #'   If \code{wait = FALSE} then these values will be 0 (the success value)
 #'   even if some of the PDF files could not be produced.  The error code 17234
 #'   indicates that a PDF file was open in another application.}
-#'   \item{files }{(absolute) paths and file names of all files added to a zip
-#'     file.}
-#'   \item{zips }{(relative) paths and names of all the zip files.}
+#'   \item{files }{(absolute) paths and file names of all files created .}
+#'   \item{zips }{(relative) paths and names of all zip files created (if
+#'     \code{zip = TRUE}.}
 #' @references Layton, Richard. (2015) Happy collaboration with Rmd to docx.
 #'   R Markdown from RStudio article.
 #'   \url{https://rmarkdown.rstudio.com/articles_docx.html}
@@ -344,6 +344,13 @@ rmd2word <- function(x, doc = "accessr",
         res_zip <- accessr_zip(x, dnames, udnames, zipfile, add = FALSE,
                                extension = ".docx")
       }
+      res <- list(error_codes = error_codes, files = files, zips = res_zip)
+    }
+  } else {
+    if (pdf) {
+      res <- list(error_codes = error_codes, files = files)
+    } else {
+      res <- list(files = files)
     }
   }
   # Remove the Word files, if requested to do so
