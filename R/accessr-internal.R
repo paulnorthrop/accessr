@@ -12,7 +12,7 @@ NULL
 rmd2presentation <- function(x, format = c("ioslides", "slidy"), zip = TRUE,
                              pdf = FALSE, zip_pdf = zip, pdf_args = list(),
                              add = FALSE, quiet = TRUE, rm_html = FALSE,
-                             rm_pdf = FALSE, ...) {
+                             rm_pdf = FALSE, inc_rmd = FALSE, ...) {
   format <- match.arg(format)
   # If x is missing then find all the .Rmd files in the working directory
   if (missing(x)) {
@@ -74,6 +74,13 @@ rmd2presentation <- function(x, format = c("ioslides", "slidy"), zip = TRUE,
   if (zip) {
     res_zip <- accessr_zip(x, dnames, udnames, zipfile, add,
                            extension = ".html")
+    print(res_zip)
+    print(inc_rmd)
+    if (inc_rmd) {
+      res_zip <- accessr_zip(x, dnames, udnames, zipfile, add = TRUE,
+                             extension = ".rmd")
+      print(res_zip)
+    }
     res <- c(res, list(zips = res_zip))
     if (rm_html) {
       sapply(html_files, file.remove)

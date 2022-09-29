@@ -14,6 +14,7 @@ rmd2ioslides(
   quiet = TRUE,
   rm_html = FALSE,
   rm_pdf = FALSE,
+  inc_rmd = FALSE,
   ...
 )
 }
@@ -70,6 +71,10 @@ Otherwise, they are not deleted.}
 \item{rm_pdf}{A logical scalar.  If \code{rm_pdf = TRUE} and a zip archive
 of pdf files is produced then the individual pdf files are deleted.
 Otherwise, they are not deleted.}
+
+\item{inc_rmd}{A logical scalar.  If \code{inc_rmd = TRUE} then the source
+Rmd files are included in the zip file created.  Otherwise, they are not
+included.}
 
 \item{...}{Additional arguments to be passed to
 \code{\link[rmarkdown]{ioslides_presentation}}.}

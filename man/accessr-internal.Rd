@@ -17,6 +17,7 @@ rmd2presentation(
   quiet = TRUE,
   rm_html = FALSE,
   rm_pdf = FALSE,
+  inc_rmd = FALSE,
   ...
 )
 

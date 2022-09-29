@@ -51,6 +51,9 @@
 #' @param rm_pdf A logical scalar.  If \code{rm_pdf = TRUE} and a zip archive
 #'   of pdf files is produced then the individual pdf files are deleted.
 #'   Otherwise, they are not deleted.
+#' @param inc_rmd A logical scalar.  If \code{inc_rmd = TRUE} then the source
+#'   Rmd files are included in the zip file created.  Otherwise, they are not
+#'   included.
 #' @param ... Additional arguments to be passed to
 #'   \code{\link[rmarkdown]{ioslides_presentation}}.
 #' @details Information such as \code{title}, \code{author}, \code{lang} etc in
@@ -97,9 +100,10 @@
 #' @export
 rmd2ioslides <- function(x, zip = TRUE, pdf = FALSE, zip_pdf = zip,
                          pdf_args = list(), add = FALSE, quiet = TRUE,
-                         rm_html = FALSE, rm_pdf = FALSE, ...) {
+                         rm_html = FALSE, rm_pdf = FALSE, inc_rmd = FALSE,
+                         ...) {
   rmd2presentation(x = x, format = "ioslides", zip = zip, pdf = pdf,
                    zip_pdf = zip_pdf, pdf_args= pdf_args, add = add,
-                   quiet = quiet, rm_html = rm_html, ...)
+                   quiet = quiet, rm_html = rm_html, inc_rm = inc_rmd, ...)
 }
 
