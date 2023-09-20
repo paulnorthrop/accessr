@@ -90,7 +90,7 @@
 #'     \item{\code{doc = "officedown"}: }{uses
 #'       \code{\link[officedown]{rdocx_document}}'s default,}
 #'     \item{\code{doc = "accessr"}: }{similar to \code{"officedown"} but with
-#'       narrower margins and darker blue fonts for titles and hyperlinks, to
+#'       narrower margins and black text for titles and darker hyperlinks, to
 #'       avoid contrast issues,}
 #'     \item{\code{doc = "exam"}:}{creates a Word file with a header
 #'       "Examination paper for STAT0002" on the left and "Page x of n" on the
