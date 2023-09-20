@@ -104,6 +104,6 @@ rmd2ioslides <- function(x, zip = TRUE, pdf = FALSE, zip_pdf = zip,
                          ...) {
   rmd2presentation(x = x, format = "ioslides", zip = zip, pdf = pdf,
                    zip_pdf = zip_pdf, pdf_args= pdf_args, add = add,
-                   quiet = quiet, rm_html = rm_html, inc_rm = inc_rmd, ...)
+                   quiet = quiet, rm_html = rm_html, inc_rmd = inc_rmd, ...)
 }
 
