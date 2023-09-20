@@ -239,36 +239,36 @@ rmd2word <- function(x, doc = "accessr",
     # commented out the line
     #       x <- body_set_default_section(x, default_sect_properties)
     # which effectively removed the headers and footers by setting defaults.
-    body(res0$post_processor) <- expression({
-      x <- officer::read_docx(output_file)
-      x <- process_images(x)
-      x <- process_links(x)
-      x <- process_embedded_docx(x)
-      x <- process_par_settings(x)
-      x <- process_list_settings(x, ul_style = lists$ul.style,
-                                 ol_style = lists$ol.style)
-      x <- change_styles(x, mapstyles = mapstyles)
-      default_sect_properties <- prop_section(
-        page_size = page_size(
-          orient = page_size$orient,
-          width = page_size$width,
-          height = page_size$height),
-        type = "continuous",
-        page_margins = page_mar(
-          bottom = page_margins$bottom,
-          top = page_margins$top,
-          right = page_margins$right,
-          left = page_margins$left,
-          header = page_margins$header,
-          footer = page_margins$footer,
-          gutter = page_margins$gutter)
-        )
-#      x <- body_set_default_section(x, default_sect_properties)
-      forget(get_reference_rdocx)
-      print(x, target = output_file)
-      output_file
-    })
-    pp_body <- body(res0$post_processor)
+#    body(res0$post_processor) <- expression({
+#      x <- officer::read_docx(output_file)
+#      x <- process_images(x)
+#      x <- process_links(x)
+#      x <- process_embedded_docx(x)
+#      x <- process_par_settings(x)
+#      x <- process_list_settings(x, ul_style = lists$ul.style,
+#                                 ol_style = lists$ol.style)
+#      x <- change_styles(x, mapstyles = mapstyles)
+#      default_sect_properties <- prop_section(
+#        page_size = page_size(
+#          orient = page_size$orient,
+#          width = page_size$width,
+#          height = page_size$height),
+#        type = "continuous",
+#        page_margins = page_mar(
+#          bottom = page_margins$bottom,
+#          top = page_margins$top,
+#          right = page_margins$right,
+#          left = page_margins$left,
+#          header = page_margins$header,
+#          footer = page_margins$footer,
+#          gutter = page_margins$gutter)
+#        )
+##      x <- body_set_default_section(x, default_sect_properties)
+#      forget(get_reference_rdocx)
+#      print(x, target = output_file)
+#      output_file
+#    })
+#    pp_body <- body(res0$post_processor)
     find_line <- function(i, text_to_find, x){
       !is.na(pmatch(text_to_find, as.character(x[[i]])))
     }
