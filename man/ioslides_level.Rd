@@ -9,8 +9,11 @@ ioslides_level(one = TRUE)
 \arguments{
 \item{one}{A logical scalar. If \code{one = TRUE} then a new Lua filter is
 used that enables \code{slide_level = 1} to set the slide separator as
-the level one header #. If \code{one = FALSE} then the original
-\code{rmarkdown} version is reinstated.}
+the level one header #. A modified \code{default.css} css file is also used
+that adjusts the font sizes for the header levels accordingly, so that the
+level one header has a larger font than the level tow header. If
+\code{one = FALSE} then the original \code{rmarkdown} versions of the Lua
+filter and the css file are reinstated.}
 }
 \value{
 A logical scalar returned from \code{\link[=files]{file.copy}}.
@@ -48,7 +51,11 @@ the \code{ioslides_level} function replaces \code{rmarkdown}'s Lua filter
 \code{ioslides_presentation.lua} with one that has been modified so that
 passing \code{slide_level = 1} will have this effect. For values of
 \code{slide_level} greater than or equal to 2
-\code{\link[rmarkdown]{ioslides_presentation}} will behave as usual.
+\code{\link[rmarkdown]{ioslides_presentation}} will behave as usual, except
+that the default font sizes will be altered owing to the new
+\code{default.css} file. Therefore, it is better to use
+\code{isoslides(one = TRUE)} only the Rmd uses level one headers to separate
+slides.
 }
 \examples{
 ioslides_level()

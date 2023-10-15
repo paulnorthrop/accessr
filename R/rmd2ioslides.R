@@ -55,7 +55,10 @@
 #'   Rmd files are included in the zip file created.  Otherwise, they are not
 #'   included.
 #' @param ... Additional arguments to be passed to
-#'   \code{\link[rmarkdown]{ioslides_presentation}}.
+#'   \code{\link[rmarkdown]{ioslides_presentation}}. If \code{slide_level = 1}
+#'   is passed then \code{\link{ioslides_level}} is called with
+#'   \code{one = TRUE} so that level a one header # creates a new non-segue
+#'   slide.
 #' @details Information such as \code{title}, \code{author}, \code{lang} etc in
 #'   the YAML header in the Rmd file are used but \code{output} is ignored.
 #'
@@ -102,8 +105,21 @@ rmd2ioslides <- function(x, zip = TRUE, pdf = FALSE, zip_pdf = zip,
                          pdf_args = list(), add = FALSE, quiet = TRUE,
                          rm_html = FALSE, rm_pdf = FALSE, inc_rmd = FALSE,
                          ...) {
-  rmd2presentation(x = x, format = "ioslides", zip = zip, pdf = pdf,
-                   zip_pdf = zip_pdf, pdf_args= pdf_args, add = add,
-                   quiet = quiet, rm_html = rm_html, inc_rmd = inc_rmd, ...)
+  dots <- list(...)
+  # If slide_level has been set to 1 then replace rmarkdown's Lua filter and
+  # default css file with ones designed to use level one headers to separate
+  # slides
+  if (!is.null(dots$slide_level) && dots$slide_level == 1) {
+    ioslides_level(one = TRUE)
+  } else {
+    ioslides_level(one = FALSE)
+  }
+  val <- rmd2presentation(x = x, format = "ioslides", zip = zip, pdf = pdf,
+                          zip_pdf = zip_pdf, pdf_args= pdf_args, add = add,
+                          quiet = quiet, rm_html = rm_html, inc_rmd = inc_rmd,
+                          ...)
+  # Return to rmarkdown's defaults
+  ioslides_level(one = FALSE)
+  return(invisible(val))
 }
 

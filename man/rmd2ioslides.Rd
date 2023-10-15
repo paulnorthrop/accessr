@@ -77,7 +77,10 @@ Rmd files are included in the zip file created.  Otherwise, they are not
 included.}
 
 \item{...}{Additional arguments to be passed to
-\code{\link[rmarkdown]{ioslides_presentation}}.}
+\code{\link[rmarkdown]{ioslides_presentation}}. If \code{slide_level = 1}
+is passed then \code{\link{ioslides_level}} is called with
+\code{one = TRUE} so that level a one header # creates a new non-segue
+slide.}
 }
 \value{
 In addition to creating the html files, and perhaps zip files,
