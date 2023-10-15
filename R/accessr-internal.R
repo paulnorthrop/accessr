@@ -74,12 +74,9 @@ rmd2presentation <- function(x, format = c("ioslides", "slidy"), zip = TRUE,
   if (zip) {
     res_zip <- accessr_zip(x, dnames, udnames, zipfile, add,
                            extension = ".html")
-    print(res_zip)
-    print(inc_rmd)
     if (inc_rmd) {
       res_zip <- accessr_zip(x, dnames, udnames, zipfile, add = TRUE,
                              extension = ".rmd")
-      print(res_zip)
     }
     res <- c(res, list(zips = res_zip))
     if (rm_html) {
