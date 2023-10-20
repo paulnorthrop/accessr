@@ -2,7 +2,7 @@ Package: accessr
 Type: Package
 Title: Command Line Tools to Produce Accessible Documents using R Markdown
 Version: 1.0.0
-Date: 2022-07-29
+Date: 2023-10-20
 Authors@R: person(c("Paul", "J."), "Northrop", email = "p.northrop@ucl.ac.uk",
   role = c("aut", "cre", "cph"))
 Description: Provides functions to produce accessible html slides, html, Word 
