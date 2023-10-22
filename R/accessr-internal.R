@@ -12,7 +12,8 @@ NULL
 rmd2presentation <- function(x, format = c("ioslides", "slidy"), zip = TRUE,
                              pdf = FALSE, zip_pdf = zip, pdf_args = list(),
                              add = FALSE, quiet = TRUE, rm_html = FALSE,
-                             rm_pdf = FALSE, inc_rmd = FALSE, ...) {
+                             rm_pdf = FALSE, inc_rmd = FALSE, params = NULL,
+                             ...) {
   format <- match.arg(format)
   # If x is missing then find all the .Rmd files in the working directory
   if (missing(x)) {
@@ -43,6 +44,7 @@ rmd2presentation <- function(x, format = c("ioslides", "slidy"), zip = TRUE,
     # Render the .Rmd file as an ioslides presentation
     rmarkdown::render(input = rmd_files[i],
                       output_format = output_format,
+                      params = params,
                       quiet = quiet)
   }
   res <- sapply(1:lenx, render_fun)

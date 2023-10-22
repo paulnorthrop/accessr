@@ -112,7 +112,7 @@
 rmd2ioslides <- function(x, zip = TRUE, pdf = FALSE, zip_pdf = zip,
                          pdf_args = list(), add = FALSE, quiet = TRUE,
                          rm_html = FALSE, rm_pdf = FALSE, inc_rmd = FALSE,
-                         ...) {
+                         params = NULL, ...) {
   dots <- list(...)
   # If dots contains any instances of "black" then set the correct path
   # to accessr's black.css file
@@ -130,7 +130,8 @@ rmd2ioslides <- function(x, zip = TRUE, pdf = FALSE, zip_pdf = zip,
   # Create a list of arguments to pass to rmd2presentation()
   arguments <- list(x = x, format = "ioslides", zip = zip, pdf = pdf,
                     zip_pdf = zip_pdf, pdf_args= pdf_args, add = add,
-                    quiet = quiet, rm_html = rm_html, inc_rmd = inc_rmd)
+                    quiet = quiet, rm_html = rm_html, inc_rmd = inc_rmd,
+                    params = params)
   arguments <- c(arguments, dots)
   val <- do.call(rmd2presentation, arguments)
 
