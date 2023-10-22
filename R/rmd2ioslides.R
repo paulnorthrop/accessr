@@ -60,6 +60,13 @@
 #'   \code{one = TRUE} so that a level one header # creates a new non-segue
 #'   slide. After rendering, \code{\link{ioslides_level}} is called with
 #'   \code{one = FALSE}, to return to the \code{rmarkdown} defaults.
+#'
+#'   If \code{css = "black"} is passed then \code{accessr}'s css file
+#'   \code{black.css} is used, which results in black text being used in the
+#'   slides.
+#'
+#'   This function is \strong{not} vectorised with respect to arguments in
+#'   \code{...}.
 #' @details Information such as \code{title}, \code{author}, \code{lang} etc in
 #'   the YAML header in the Rmd file are used but \code{output} is ignored.
 #'
@@ -107,6 +114,11 @@ rmd2ioslides <- function(x, zip = TRUE, pdf = FALSE, zip_pdf = zip,
                          rm_html = FALSE, rm_pdf = FALSE, inc_rmd = FALSE,
                          ...) {
   dots <- list(...)
+  # If dots contains any instances of "black" then set the correct path
+  # to accessr's black.css file
+  if (!is.null(dots$css) && dots$css == "black") {
+    dots$css <- system.file(package = "accessr", "examples", "black.css")
+  }
   # If slide_level has been set to 1 then replace rmarkdown's Lua filter and
   # default css file with ones designed to use level one headers to separate
   # slides
@@ -115,10 +127,13 @@ rmd2ioslides <- function(x, zip = TRUE, pdf = FALSE, zip_pdf = zip,
   } else {
     ioslides_level(one = FALSE)
   }
-  val <- rmd2presentation(x = x, format = "ioslides", zip = zip, pdf = pdf,
-                          zip_pdf = zip_pdf, pdf_args= pdf_args, add = add,
-                          quiet = quiet, rm_html = rm_html, inc_rmd = inc_rmd,
-                          ...)
+  # Create a list of arguments to pass to rmd2presentation()
+  arguments <- list(x = x, format = "ioslides", zip = zip, pdf = pdf,
+                    zip_pdf = zip_pdf, pdf_args= pdf_args, add = add,
+                    quiet = quiet, rm_html = rm_html, inc_rmd = inc_rmd)
+  arguments <- c(arguments, dots)
+  val <- do.call(rmd2presentation, arguments)
+
   # Return to rmarkdown's defaults
   ioslides_level(one = FALSE)
   return(invisible(val))
