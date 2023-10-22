@@ -218,7 +218,7 @@ rmd2word <- function(x, doc = "accessr",
   doc <- ifelse(doc == "accessr", accessr_doc_path, doc)
   # Do the same for any instances of "exam" in doc
   accessr_exam_path <- system.file(package = "accessr", "examples",
-                                   "word-formatting-exam.docx")
+                                   "exam.docx")
   doc <- ifelse(doc == "exam", accessr_exam_path, doc)
   # Do the same for any instances of "officedown" in doc
   officedown_path <- system.file(package = "officedown", "examples",
