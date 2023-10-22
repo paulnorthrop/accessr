@@ -135,6 +135,7 @@ Information such as \code{title}, \code{author}, \code{lang} etc in
     \item{\code{doc = "accessr"}: }{similar to \code{"officedown"} but with
       narrower margins and black text for titles and darker hyperlinks, to
       avoid contrast issues,}
+    \item{\code{doc = "18"}: }{like \code{"accessr"} but with 18pt text,}
     \item{\code{doc = "exam"}:}{creates a Word file with a header
       "Examination paper for STAT0002" on the left and "Page x of n" on the
       right.}

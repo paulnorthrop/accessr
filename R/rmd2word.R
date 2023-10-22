@@ -92,6 +92,7 @@
 #'     \item{\code{doc = "accessr"}: }{similar to \code{"officedown"} but with
 #'       narrower margins and black text for titles and darker hyperlinks, to
 #'       avoid contrast issues,}
+#'     \item{\code{doc = "18"}: }{like \code{"accessr"} but with 18pt text,}
 #'     \item{\code{doc = "exam"}:}{creates a Word file with a header
 #'       "Examination paper for STAT0002" on the left and "Page x of n" on the
 #'       right.}
@@ -216,6 +217,10 @@ rmd2word <- function(x, doc = "accessr",
   accessr_doc_path <- system.file(package = "accessr", "examples",
                                   "template.docx")
   doc <- ifelse(doc == "accessr", accessr_doc_path, doc)
+  # Do the same for any instances of "18" in doc
+  accessr_18_path <- system.file(package = "accessr", "examples",
+                                 "template18.docx")
+  doc <- ifelse(doc == "18", accessr_18_path, doc)
   # Do the same for any instances of "exam" in doc
   accessr_exam_path <- system.file(package = "accessr", "examples",
                                    "exam.docx")
