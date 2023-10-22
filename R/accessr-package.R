@@ -64,5 +64,4 @@
 #'   \code{\link{rmd2html}}, \code{\link{rmd2ioslides}},
 #'   \code{\link{rmd2slidy}}, \code{\link{ext_img}}.
 #' @docType package
-#' @name accessr
-NULL
+"_PACKAGE"
