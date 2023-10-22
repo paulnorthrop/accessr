@@ -58,7 +58,8 @@
 #'   \code{\link[rmarkdown]{ioslides_presentation}}. If \code{slide_level = 1}
 #'   is passed then \code{\link{ioslides_level}} is called with
 #'   \code{one = TRUE} so that level a one header # creates a new non-segue
-#'   slide.
+#'   slide. After rendering, \code{\link{ioslides_level}} is called with
+#'   \code{one = FALSE}, to return to the \code{rmarkdown} defaults.
 #' @details Information such as \code{title}, \code{author}, \code{lang} etc in
 #'   the YAML header in the Rmd file are used but \code{output} is ignored.
 #'

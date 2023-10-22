@@ -80,7 +80,8 @@ included.}
 \code{\link[rmarkdown]{ioslides_presentation}}. If \code{slide_level = 1}
 is passed then \code{\link{ioslides_level}} is called with
 \code{one = TRUE} so that level a one header # creates a new non-segue
-slide.}
+slide. After rendering, \code{\link{ioslides_level}} is called with
+\code{one = FALSE}, to return to the \code{rmarkdown} defaults.}
 }
 \value{
 In addition to creating the html files, and perhaps zip files,
