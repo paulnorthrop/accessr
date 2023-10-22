@@ -79,7 +79,7 @@ included.}
 \item{...}{Additional arguments to be passed to
 \code{\link[rmarkdown]{ioslides_presentation}}. If \code{slide_level = 1}
 is passed then \code{\link{ioslides_level}} is called with
-\code{one = TRUE} so that level a one header # creates a new non-segue
+\code{one = TRUE} so that a level one header # creates a new non-segue
 slide. After rendering, \code{\link{ioslides_level}} is called with
 \code{one = FALSE}, to return to the \code{rmarkdown} defaults.}
 }
