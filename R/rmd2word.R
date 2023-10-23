@@ -61,6 +61,8 @@
 #' @param inc_word A logical scalar.  If \code{inc_word = TRUE} then the Word
 #'   files are included in the zip file created.  Otherwise, they are not
 #'   included.
+#' @param params A list of named parameters to pass to pass as the argument
+#'   \code{params} to \code{\link[rmarkdown]{render}}.
 #' @param ... Additional arguments to be passed to
 #'   \code{\link[rmarkdown]{word_document}}.
 #' @details Information such as \code{title}, \code{author}, \code{lang} etc in
@@ -166,7 +168,7 @@
 rmd2word <- function(x, doc = "accessr",
                      pdf = isTRUE(.Platform$OS.type == "windows"), dir,
                      zip = TRUE, add = FALSE, quiet = TRUE, rm_word = FALSE,
-                     rm_pdf = FALSE, inc_word = FALSE, ...) {
+                     rm_pdf = FALSE, inc_word = FALSE, params = NULL, ...) {
   # Warn that PDF files can only be produced on Windows
   if (pdf && isFALSE(.Platform$OS.type == "windows")) {
     warning("'pdf' has been set to FALSE because the OS is not ''windows''.")
@@ -291,7 +293,7 @@ rmd2word <- function(x, doc = "accessr",
                                          ref_docx_dim = ref_docx_dim))
     # Render the Word file
     res1 <- rmarkdown::render(input = rmd_files[i], output_format = res0,
-                              quiet = quiet)
+                              params = params, quiet = quiet)
     return(res1)
   }
   # Create Word documents
