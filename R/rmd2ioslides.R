@@ -34,7 +34,7 @@
 #' @param zip_pdf As \code{zip}, but relates to the
 #'   creation of zip archives for any PDF files created. If
 #'   \code{zip_pdf = TRUE} then each archive is named
-#'   \code{accessr_html_pdf.zip}.
+#'   \code{accessr_ioslides_pdf.zip}.
 #' @param pdf_args A list of arguments to be passed to
 #'   \code{\link[pagedown]{chrome_print}}. \code{input} cannot be passed
 #'   because it is set inside \code{rmd2html}.
