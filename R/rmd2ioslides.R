@@ -54,6 +54,8 @@
 #' @param inc_rmd A logical scalar.  If \code{inc_rmd = TRUE} then the source
 #'   Rmd files are included in the zip file created.  Otherwise, they are not
 #'   included.
+#' @param params A list of named parameters to pass to pass as the argument
+#'   \code{params} to \code{\link[rmarkdown]{render}}.
 #' @param ... Additional arguments to be passed to
 #'   \code{\link[rmarkdown]{ioslides_presentation}}. If \code{slide_level = 1}
 #'   is passed then \code{\link{ioslides_level}} is called with
