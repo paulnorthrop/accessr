@@ -61,7 +61,7 @@
 #' @param inc_word A logical scalar.  If \code{inc_word = TRUE} then the Word
 #'   files are included in the zip file created.  Otherwise, they are not
 #'   included.
-#' @param params A list of named parameters to pass to pass as the argument
+#' @param params A list of named parameters to pass as the argument
 #'   \code{params} to \code{\link[rmarkdown]{render}}.
 #' @param ... Additional arguments to be passed to
 #'   \code{\link[rmarkdown]{word_document}}.

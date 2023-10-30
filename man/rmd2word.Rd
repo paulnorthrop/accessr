@@ -82,7 +82,7 @@ Otherwise, they are not deleted.}
 files are included in the zip file created.  Otherwise, they are not
 included.}
 
-\item{params}{A list of named parameters to pass to pass as the argument
+\item{params}{A list of named parameters to pass as the argument
 \code{params} to \code{\link[rmarkdown]{render}}.}
 
 \item{...}{Additional arguments to be passed to
