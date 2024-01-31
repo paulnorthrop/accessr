@@ -2,31 +2,7 @@
 
 /* Background colour for code blocks */
 .prettyprint {
-  background-color: #FFFFFF;
-}
-
-/*Adjust syntax highlighting */
-
-/* https://github.com/jasonleonhard/css/blob/master/prettyprint_monokai_non-obtrusive-js.html */
-
-.prettyprint .com {
-  color: black;
-}
-
-.prettyprint .str {
-  color: black;
-}
-
-.prettyprint .pln {
-  color: black;
-}
-
-.prettyprint .pun {
-  color: black;
-}
-
-.prettyprint .lit {
-  color: black;
+  background-color: #F5F5F5;
 }
 
 /* Console text output */
