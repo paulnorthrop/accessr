@@ -76,5 +76,5 @@ files
     this is the Word file used to create `lecture?.pdf`.
 }
 \examples{
-lecture(7:8)
+#lecture(7:8)
 }

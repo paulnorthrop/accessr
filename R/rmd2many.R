@@ -47,7 +47,7 @@
 #'     this is the Word file used to create `lecture?.pdf`.
 #' @return Nothing is returned.
 #' @examples
-#' lecture(7:8)
+#' #lecture(7:8)
 #' @export
 rmd2many <- function(x, outputs =  c("ioslides", "word"), slide_level = 1,
                     css = "black", add18 = TRUE, pdf = TRUE,
