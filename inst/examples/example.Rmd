@@ -2,6 +2,8 @@
 title: "A basic example Rmd document"
 author: "Paul Northrop"
 date: "29/07/2022"
+params: 
+    hide: FALSE
 lang: "en-gb"
 ---
 
@@ -10,7 +12,23 @@ knitr::opts_knit$set(echo = TRUE, global.par = TRUE, prompt = TRUE,
                      fig.align = 'center')
 ```
 
-## Text, bullets, links
+# Hiding stuff
+
+```{r, echo = FALSE}
+# hide = TRUE to hide certain parts 
+# hide = FALSE to include them
+hide <- params$hide
+```
+
+```{asis, echo = !hide}
+This text will appear only if `params$hide = FALSE`
+```
+
+```{asis, echo = hide}
+Setting `params$hide = TRUE` can be used to hide content
+```
+
+# Text, bullets, links
 
 ```{r knitr}
 library(knitr)
@@ -21,7 +39,7 @@ For more information see the [accessr site](https://paulnorthrop.github.io/acces
 * Bullet 1
 * Bullet 2
 
-## Displayed equations {.smaller}
+# Displayed equations {.smaller}
 
 $$
 \begin{eqnarray}
@@ -46,7 +64,7 @@ Tips (prompted by issues when creating Word output):
 * We need to wrap LaTeX maths environments in ```$$ ... $$```.  Otherwise, the maths is ignored.
 * Use ```\text{}``` or ```\mbox{}``` for text in an maths environment. (```\rm{}``` causes problems.)
 
-## R-generated figure
+# R-generated figure
 
 ```{r plot_margins, echo = FALSE}
 oldpar <- par(mar = c(4, 4, 1, 1))
@@ -56,17 +74,27 @@ oldpar <- par(mar = c(4, 4, 1, 1))
 plot(1:10, 1:10, pch = 1:10, xlab = "x", ylab = "y")
 ```
 
+# Possibly hidden R-generated figure
+
+```{asis, echo = hide}
+The figure is missing because `params$hide = TRUE`
+```
+
+```{r hidden_r_figure, eval = !hide, fig.alt = "Alt text.", fig.cap = "This figure appears only if params$hide = FALSE. ", echo = TRUE, fig.width = 6, fig.height= 4, fig.align='center'}
+plot(1:10, 1:10, pch = 1:10, xlab = "x", ylab = "y")
+```
+
 ```{r plot_margins_reset, echo = FALSE}
 par(oldpar)
 ```
 
-## External figure (png file)
+# External figure (png file)
 
 ```{r ext_figure, fig.alt = "Alt text.", fig.cap = "Use knitr::include_graphics().", echo = TRUE, out.width="50%", fig.align='center'}
 include_graphics(system.file(package = "accessr", "examples", "plot.png"))
 ```
 
-## Table 
+# Table 
 
 The table will only appear if both of the packages `dplyr` or `huxtable` are installed.  The `huxtable` code is hidden because it is lengthy. Of course, there are many other ways to create tables in R markdown.
 
@@ -99,3 +127,4 @@ x_hux <- x %>%
   set_caption("Table caption")
 x_hux    
 ```
+
