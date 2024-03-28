@@ -44,3 +44,4 @@ SystemRequirements: OfficeToPDF - https://github.com/cognidox/OfficeToPDF,
 URL: https://paulnorthrop.github.io/accessr/,
      https://github.com/paulnorthrop/accessr
 BugReports: https://github.com/paulnorthrop/accessr/issues
+Roxygen: list(markdown = TRUE)
