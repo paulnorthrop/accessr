@@ -2,7 +2,7 @@
 #' markdown
 #'
 #' This package provides functions to produce accessible html and PDF documents
-#' from input R markdown files. Currently, **accessr** only provides the option
+#' from input R markdown files. Currently, \strong{accessr} only provides the option
 #' to produce accessible PDF files on a Windows Operating System. One aspect of
 #' accessibility is providing headings that are recognised by a screen reader,
 #' providing a navigational tool for a blind or partially-sighted person. A
