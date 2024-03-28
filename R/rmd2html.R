@@ -88,7 +88,7 @@
 #' }
 #'
 #' \dontrun{
-#' # Create HTML documents files from your files file1.Rmd and file2.Rmd
+#' # Create HTML documents from your files file1.Rmd and file2.Rmd
 #' rmd2html(c("file1", "file2"))
 #'
 #' # Create HTML documents from all Rmd files in your working directory
