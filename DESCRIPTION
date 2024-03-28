@@ -28,7 +28,8 @@ License: GPL (>= 2)
 Encoding: UTF-8
 RoxygenNote: 7.2.3
 Imports: rmarkdown
-Suggests: knitr,
+Suggests: dplyr,
+    knitr,
     flextable,
     huxtable,
     jpeg,
