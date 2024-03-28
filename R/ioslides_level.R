@@ -8,9 +8,10 @@
 #' used that enables \code{slide_level = 1} to set the slide separator as
 #' the level one header #. A modified \code{default.css} css file is also used
 #' that adjusts the font sizes for the header levels accordingly, so that the
-#' level one header has a larger font than the level tow header. If
+#' level one header has a larger font than the level two header. If
 #' \code{one = FALSE} then the original \code{rmarkdown} versions of the Lua
 #' filter and the css file are reinstated.
+#'
 #' @details The function \code{\link[rmarkdown]{ioslides_presentation}} has an
 #' argument \code{slide_level} that sets the header level used as a slide
 #' separator. The Lua filter \code{ioslides_presentation.lua} in
@@ -40,9 +41,9 @@
 #' \code{slide_level} greater than or equal to 2
 #' \code{\link[rmarkdown]{ioslides_presentation}} will behave as usual, except
 #' that the default font sizes will be altered owing to the new
-#' \code{default.css} file. Therefore, it is better to use
-#' \code{isoslides(one = TRUE)} only the Rmd uses level one headers to separate
-#' slides.
+#' \code{default.css} file. Therefore, it may be better to use
+#' \code{ioslides(one = TRUE)} with an Rmd file in which level one headers are
+#' used to separate slides.
 #'
 #' @return A logical scalar returned from \code{\link[=files]{file.copy}}.
 #' @examples
