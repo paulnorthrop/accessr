@@ -8,7 +8,7 @@
 #' created.
 #'
 #' @param x A character vector containing the names (\strong{no extension}) of
-#'   the \code{.Rmd} files to convert  if they are in the current working
+#'   the \code{.Rmd} files to convert if they are in the current working
 #'   directory, or paths to the files, either absolute or relative to the
 #'   current working directory, e.g., \code{DIRECTORY/file1}.  The \code{.html}
 #'   files are created in the same directory as their respective \code{.Rmd}
