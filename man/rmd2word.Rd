@@ -90,16 +90,16 @@ included.}
 }
 \value{
 In addition to creating the Word and PDF files, and perhaps zip
-  files, a list containing the following vector components is returned
-  invisibly:
-  \item{error_codes }{If \code{pdf = TRUE}, numeric values returned from
-  \code{\link{system}}.
-  If \code{wait = FALSE} then these values will be 0 (the success value)
-  even if some of the PDF files could not be produced.  The error code 17234
-  indicates that a PDF file was open in another application.}
-  \item{files }{(absolute) paths and file names of all files created .}
-  \item{zips }{(relative) paths and names of all zip files created (if
-    \code{zip = TRUE}.}
+files, a list containing the following vector components is returned
+invisibly:
+\item{error_codes }{If \code{pdf = TRUE}, numeric values returned from
+\code{\link{system}}.
+If \code{wait = FALSE} then these values will be 0 (the success value)
+even if some of the PDF files could not be produced.  The error code 17234
+indicates that a PDF file was open in another application.}
+\item{files }{(absolute) paths and file names of all files created .}
+\item{zips }{(relative) paths and names of all zip files created (if
+\code{zip = TRUE}.}
 }
 \description{
 Creates Word documents from input R markdown documents. On a Windows
@@ -111,60 +111,60 @@ this software. Zip archives of the Word and/or PDF files may be created.
 }
 \details{
 Information such as \code{title}, \code{author}, \code{lang} etc in
-  the YAML header in the Rmd file are used but \code{output} is ignored.
+the YAML header in the Rmd file are used but \code{output} is ignored.
 
-  The simplest setup is to have the \code{.Rmd} files and the Word
-  template (if used) and \code{OfficeToPDF.exe} in the current working
-  directory.
+The simplest setup is to have the \code{.Rmd} files and the Word
+template (if used) and \code{OfficeToPDF.exe} in the current working
+directory.
 
-  It is possible to have the \code{.Rmd} files in different
-  directories, but any non-\code{"default"} values in \code{doc} must be
-  such that the \code{reference_docx} argument of
-  \code{\link[rmarkdown]{word_document}} finds a template Word file.
-  If the template is in the same directory as its respective \code{.Rmd}
-  component in  \code{x} then the filename, e.g. \code{"template.docx"} will
-  suffice.  Otherwise, a path to the template should be given, either
-  relative to the directory in which the \code{.Rmd} file sits, or an
-  absolute path.
+It is possible to have the \code{.Rmd} files in different
+directories, but any non-\code{"default"} values in \code{doc} must be
+such that the \code{reference_docx} argument of
+\code{\link[rmarkdown]{word_document}} finds a template Word file.
+If the template is in the same directory as its respective \code{.Rmd}
+component in  \code{x} then the filename, e.g. \code{"template.docx"} will
+suffice.  Otherwise, a path to the template should be given, either
+relative to the directory in which the \code{.Rmd} file sits, or an
+absolute path.
 
-  For information on how to create a template Word document see Richard
-  Layton's guide
-  \href{https://rmarkdown.rstudio.com/articles_docx.html}{Happy collaboration
-    with Rmd to docx}.
+For information on how to create a template Word document see Richard
+Layton's guide
+\href{https://rmarkdown.rstudio.com/articles_docx.html}{Happy collaboration
+with Rmd to docx}.
 
-  There are some built-in template options:
-  \itemize{
-    \item{\code{doc = "officedown"}: }{uses
-      \code{\link[officedown]{rdocx_document}}'s default,}
-    \item{\code{doc = "accessr"}: }{similar to \code{"officedown"} but with
-      narrower margins and black text for titles and darker hyperlinks, to
-      avoid contrast issues,}
-    \item{\code{doc = "18"}: }{like \code{"accessr"} but with 18pt text,}
-    \item{\code{doc = "exam"}:}{creates a Word file with a header
-      "Examination paper for STAT0002" on the left and "Page x of n" on the
-      right.}
-  }
-  To use your own template(s), provide their filename(s).
-  A component equal to \code{"officedown"} chooses
-  \code{\link[officedown]{rdocx_document}}'s default.
-  A component equal to \code{"accessr"} chooses \code{accessr}'s internal
-  template file, which has narrower margins and darker blue fonts for titles
-  and hyperlinks, to avoid contrast issues.  To use your own template(s),
-  provide their filenames.  See \strong{Details} for more information.
+There are some built-in template options:
+\itemize{
+\item{\code{doc = "officedown"}: }{uses
+\code{\link[officedown]{rdocx_document}}'s default,}
+\item{\code{doc = "accessr"}: }{similar to \code{"officedown"} but with
+narrower margins and black text for titles and darker hyperlinks, to
+avoid contrast issues,}
+\item{\code{doc = "18"}: }{like \code{"accessr"} but with 18pt text,}
+\item{\code{doc = "exam"}:}{creates a Word file with a header
+"Examination paper for STAT0002" on the left and "Page x of n" on the
+right.}
+}
+To use your own template(s), provide their filename(s).
+A component equal to \code{"officedown"} chooses
+\code{\link[officedown]{rdocx_document}}'s default.
+A component equal to \code{"accessr"} chooses \code{accessr}'s internal
+template file, which has narrower margins and darker blue fonts for titles
+and hyperlinks, to avoid contrast issues.  To use your own template(s),
+provide their filenames.  See \strong{Details} for more information.
 
-  The \code{\link[rmarkdown]{render}} function creates a Word file from
-  each input \code{.Rmd} file.  Then
-  \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF} is used to
-  convert the Word file to a PDF file.  The file \code{OfficeToPDF.exe}
-  needs to be downloaded from the
-  \href{https://github.com/cognidox/OfficeToPDF/releases}{OfficeToPDF
-  releases} page and placed in the directory specified by the argument
-  \code{dir}, or in a directory that is in the list returned by
-  \code{\link{searchpaths}}.
-  If \code{OfficeToPDF.exe} cannot be found then an error is thrown.
-  A warning will be given if any of the PDF files could not be produced.
-  This will occur if there is an existing PDF file of the same name open
-  in another application.
+The \code{\link[rmarkdown]{render}} function creates a Word file from
+each input \code{.Rmd} file.  Then
+\href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF} is used to
+convert the Word file to a PDF file.  The file \code{OfficeToPDF.exe}
+needs to be downloaded from the
+\href{https://github.com/cognidox/OfficeToPDF/releases}{OfficeToPDF
+releases} page and placed in the directory specified by the argument
+\code{dir}, or in a directory that is in the list returned by
+\code{\link{searchpaths}}.
+If \code{OfficeToPDF.exe} cannot be found then an error is thrown.
+A warning will be given if any of the PDF files could not be produced.
+This will occur if there is an existing PDF file of the same name open
+in another application.
 }
 \examples{
 # Create a Word file from example.Rmd
@@ -192,17 +192,17 @@ rmd2word(inc_word = TRUE)
 }
 \references{
 Layton, Richard. (2015) Happy collaboration with Rmd to docx.
-  R Markdown from RStudio article.
-  \url{https://rmarkdown.rstudio.com/articles_docx.html}
+R Markdown from RStudio article.
+\url{https://rmarkdown.rstudio.com/articles_docx.html}
 }
 \seealso{
 \code{\link{install_otp}} to install
-  \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF}.
+\href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF}.
 
 \code{\link{rmd2ioslides}}, \code{\link{rmd2slidy}},
-  \code{\link{rmd2html}} for other output formats.
+\code{\link{rmd2html}} for other output formats.
 
 The \href{https://paulnorthrop.github.io/accessr/}{accessr
-  package page on Github}. In particular, the README file suggests copying
-  to your working directory the example file \code{example.Rmd} used below.
+package page on Github}. In particular, the README file suggests copying
+to your working directory the example file \code{example.Rmd} used below.
 }

@@ -8,7 +8,7 @@
 markdown}
 \description{
 This package provides functions to produce accessible html and PDF documents
-from input R markdown files. Currently, **accessr** only provides the option
+from input R markdown files. Currently, \strong{accessr} only provides the option
 to produce accessible PDF files on a Windows Operating System. One aspect of
 accessibility is providing headings that are recognised by a screen reader,
 providing a navigational tool for a blind or partially-sighted person. A
@@ -24,26 +24,26 @@ to print html output to (non-accessible) PDF files is also available.
 }
 \details{
 See the \href{https://paulnorthrop.github.io/accessr/}{accessr
-  package page on Github} for more information.  An example Rmd file is
-  available at
-  \code{system.file(package = "accessr", "examples", "example.Rmd")}.
+package page on Github} for more information.  An example Rmd file is
+available at
+\code{system.file(package = "accessr", "examples", "example.Rmd")}.
 
 The main functions in \code{accessr} are:
 
 \itemize{
-  \item \code{\link{install_otp}}: convenience function to install
-    OfficeToPDF.
-  \item \code{\link{rmd2word}}: create word documents and accessible PDF
-   files.
-  \item \code{\link{rmd2ioslides}}: create ioslides presentations and
-   perhaps print to (non-accessible) PDF documents.
-  \item \code{\link{rmd2slidy}}: create slidy presentations and perhaps
-   print to (non-accessible) PDF documents..
-  \item \code{\link{rmd2html}}: create html documents and perhaps print to
-   (non-accessible) PDF documents.
-  \item \code{\link{ext_img}}: a function to enable the \code{knitr} chunk
-   options \code{out.width} and/or \code{out.height} to work when the output
-   format is a Word document.
+\item \code{\link{install_otp}}: convenience function to install
+OfficeToPDF.
+\item \code{\link{rmd2word}}: create word documents and accessible PDF
+files.
+\item \code{\link{rmd2ioslides}}: create ioslides presentations and
+perhaps print to (non-accessible) PDF documents.
+\item \code{\link{rmd2slidy}}: create slidy presentations and perhaps
+print to (non-accessible) PDF documents..
+\item \code{\link{rmd2html}}: create html documents and perhaps print to
+(non-accessible) PDF documents.
+\item \code{\link{ext_img}}: a function to enable the \code{knitr} chunk
+options \code{out.width} and/or \code{out.height} to work when the output
+format is a Word document.
 }
 
 Each function provides the option to create a zip archive containing the
@@ -62,18 +62,18 @@ officedown package. The second step uses
 }
 \references{
 David Gohel and Noam Ross (2021). officedown: Enhanced
-  'R Markdown' Format for 'Word' and 'PowerPoint'. R package version 0.2.2.
-  \url{https://CRAN.R-project.org/package=officedown}
+'R Markdown' Format for 'Word' and 'PowerPoint'. R package version 0.2.2.
+\url{https://CRAN.R-project.org/package=officedown}
 
 JJ Allaire, Yihui Xie, Jonathan McPherson, Javier Luraschi,
-  Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang and
-  Richard Iannone (2021). rmarkdown: Dynamic Documents for R. R package
-  version 2.9. \url{https://rmarkdown.rstudio.com}.
+Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang and
+Richard Iannone (2021). rmarkdown: Dynamic Documents for R. R package
+version 2.9. \url{https://rmarkdown.rstudio.com}.
 }
 \seealso{
 \code{\link{install_otp}}, \code{\link{rmd2word}},
-  \code{\link{rmd2html}}, \code{\link{rmd2ioslides}},
-  \code{\link{rmd2slidy}}, \code{\link{ext_img}}.
+\code{\link{rmd2html}}, \code{\link{rmd2ioslides}},
+\code{\link{rmd2slidy}}, \code{\link{ext_img}}.
 }
 \author{
 \strong{Maintainer}: Paul J. Northrop \email{p.northrop@ucl.ac.uk} [copyright holder]

@@ -43,7 +43,7 @@ Google Chrome (or an alternative browser specified in \code{pdf_args} by
 the \code{browser} argument to \code{\link[pagedown]{chrome_print}} must
 be installed prior to use of this option.  An error message like
 \code{Error in servr::random_port(NULL) : Cannot find an available TCP
-port} means that the \code{random_port} function in the \code{servr}
+  port} means that the \code{random_port} function in the \code{servr}
 package could not find an internet connection that Chrome considers
 secure.  Perhaps you are using a coffee shop's wifi.}
 
@@ -81,26 +81,26 @@ included.}
 \code{params} to \code{\link[rmarkdown]{render}}.}
 
 \item{...}{Additional arguments to be passed to
-  \code{\link[rmarkdown]{ioslides_presentation}}. If \code{slide_level = 1}
-  is passed then \code{\link{ioslides_level}} is called with
-  \code{one = TRUE} so that a level one header # creates a new non-segue
-  slide. After rendering, \code{\link{ioslides_level}} is called with
-  \code{one = FALSE}, to return to the \code{rmarkdown} defaults.
+\code{\link[rmarkdown]{ioslides_presentation}}. If \code{slide_level = 1}
+is passed then \code{\link{ioslides_level}} is called with
+\code{one = TRUE} so that a level one header # creates a new non-segue
+slide. After rendering, \code{\link{ioslides_level}} is called with
+\code{one = FALSE}, to return to the \code{rmarkdown} defaults.
 
-  If \code{css = "black"} is passed then \code{accessr}'s css file
-  \code{black.css} is used, which results in black text being used in the
-  slides.
+If \code{css = "black"} is passed then \code{accessr}'s css file
+\code{black.css} is used, which results in black text being used in the
+slides.
 
-  This function is \strong{not} vectorised with respect to arguments in
-  \code{...}.}
+This function is \strong{not} vectorised with respect to arguments in
+\code{...}.}
 }
 \value{
 In addition to creating the html files, and perhaps zip files,
-  a list containing the following (character vector) components is
-  returned invisibly:
-  \item{files }{(absolute) paths and file names of the files added to a zip
-    file.}
-  \item{zips }{(relative) paths and names of all the zip files.}
+a list containing the following (character vector) components is
+returned invisibly:
+\item{files }{(absolute) paths and file names of the files added to a zip
+file.}
+\item{zips }{(relative) paths and names of all the zip files.}
 }
 \description{
 Creates accessible html ioslides presentations using R markdown's
@@ -110,15 +110,15 @@ created.
 }
 \details{
 Information such as \code{title}, \code{author}, \code{lang} etc in
-  the YAML header in the Rmd file are used but \code{output} is ignored.
+the YAML header in the Rmd file are used but \code{output} is ignored.
 
 The simplest setup is to have the \code{.Rmd} files in the current
-  working directory, but it is possible to have the \code{.Rmd} files in
-  different directories.
+working directory, but it is possible to have the \code{.Rmd} files in
+different directories.
 
-  The \code{\link[rmarkdown]{render}} function, with the argument
-  \code{output_file =} \code{\link[rmarkdown]{ioslides_presentation}}
-  creates the ioslides html files.
+The \code{\link[rmarkdown]{render}} function, with the argument
+\code{output_file =} \code{\link[rmarkdown]{ioslides_presentation}}
+creates the ioslides html files.
 }
 \examples{
 # Create an ioslides presentation from example.Rmd
@@ -143,9 +143,9 @@ rmd2ioslides()
 }
 \seealso{
 \code{\link{rmd2word}}, \code{\link{rmd2slidy}},
-  \code{\link{rmd2html}} for other output formats.
+\code{\link{rmd2html}} for other output formats.
 
 The \href{https://paulnorthrop.github.io/accessr/}{accessr
-  package page on Github}. In particular, the README file suggests copying
-  to your working directory the example file \code{example.Rmd} used below.
+package page on Github}. In particular, the README file suggests copying
+to your working directory the example file \code{example.Rmd} used below.
 }

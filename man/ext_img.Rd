@@ -24,9 +24,9 @@ vector containing the \code{top}, \code{bottom}, \code{left},
 }
 \value{
 An object of class \code{c("external_img", "cot", "run")} with
-  attributes \code{"dims"} (a named list containing the figure's
-  \code{width} and \code{height}) and \code{"alt"} (a character scalar
-  containing the alternative text for the figure).
+attributes \code{"dims"} (a named list containing the figure's
+\code{width} and \code{height}) and \code{"alt"} (a character scalar
+containing the alternative text for the figure).
 }
 \description{
 This is a modified version of the \code{\link[officer]{external_img}}
@@ -38,26 +38,26 @@ document. This functionality is not normally available.
 }
 \details{
 If in the current R code chunk \code{out.width} or
-  \code{out.height} have been set then the corresponding values of
-  \code{fig.width} and \code{fig.height} are inferred from the dimensions
-  of the figure and the page dimensions of the output Word document.
-  The former are obtained using \code{\link[png]{readPNG}} or
-  \code{\link[jpeg]{readJPEG}} as appropriate.  If only one of
-  \code{out.width} or \code{out.height} are set then the aspect ratio of the
-  figure is preserved.
+\code{out.height} have been set then the corresponding values of
+\code{fig.width} and \code{fig.height} are inferred from the dimensions
+of the figure and the page dimensions of the output Word document.
+The former are obtained using \code{\link[png]{readPNG}} or
+\code{\link[jpeg]{readJPEG}} as appropriate.  If only one of
+\code{out.width} or \code{out.height} are set then the aspect ratio of the
+figure is preserved.
 
-  \code{ref_docx_dim} can be produced using
-  \code{officer::docx_dim(officer::read_docx(doc))}, where \code{doc} is an
-  \code{\link[officer]{docx_dim}} object and \code{\link[officer]{docx_dim}}
-  and \code{\link[officer]{read_docx}} are functions in the \code{officer}
-  package.
+\code{ref_docx_dim} can be produced using
+\code{officer::docx_dim(officer::read_docx(doc))}, where \code{doc} is an
+\code{\link[officer]{docx_dim}} object and \code{\link[officer]{docx_dim}}
+and \code{\link[officer]{read_docx}} are functions in the \code{officer}
+package.
 }
 \note{
 This function has been designed for use inside \code{\link{rmd2word}}
-  but the object returned has the same structure as that returned from
-  \code{\link[officer]{external_img}}. Outside the context of a
-  \code{knitr} R code chunk the outputs from \code{external_img} and
-  \code{ext_img} are identical.
+but the object returned has the same structure as that returned from
+\code{\link[officer]{external_img}}. Outside the context of a
+\code{knitr} R code chunk the outputs from \code{external_img} and
+\code{ext_img} are identical.
 }
 \examples{
 # Example from the officer::external_img() documentation

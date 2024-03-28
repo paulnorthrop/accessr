@@ -42,7 +42,7 @@ Google Chrome (or an alternative browser specified in \code{pdf_args} by
 the \code{browser} argument to \code{\link[pagedown]{chrome_print}} must
 be installed prior to use of this option.  An error message like
 \code{Error in servr::random_port(NULL) : Cannot find an available TCP
-port} means that the \code{random_port} function in the \code{servr}
+  port} means that the \code{random_port} function in the \code{servr}
 package could not find an internet connection that Chrome considers
 secure.  Perhaps you are using a coffee shop's wifi.}
 
@@ -81,11 +81,11 @@ included.}
 }
 \value{
 In addition to creating the html files, and perhaps zip files,
-  a list containing the following (character vector) components is
-  returned invisibly:
-  \item{files }{(absolute) paths and file names of the files added to a zip
-    file.}
-  \item{zips }{(relative) paths and names of all the zip files.}
+a list containing the following (character vector) components is
+returned invisibly:
+\item{files }{(absolute) paths and file names of the files added to a zip
+file.}
+\item{zips }{(relative) paths and names of all the zip files.}
 }
 \description{
 Creates accessible html slidy presentations using R markdown's
@@ -95,15 +95,15 @@ created.
 }
 \details{
 Information such as \code{title}, \code{author}, \code{lang} etc in
-  the YAML header in the Rmd file are used but \code{output} is ignored.
+the YAML header in the Rmd file are used but \code{output} is ignored.
 
-  The simplest setup is to have the \code{.Rmd} files in the current
-  working directory, but it is possible to have the \code{.Rmd} files in
-  different directories.
+The simplest setup is to have the \code{.Rmd} files in the current
+working directory, but it is possible to have the \code{.Rmd} files in
+different directories.
 
-  The \code{\link[rmarkdown]{render}} function, with the argument
-  \code{output_file =} \code{\link[rmarkdown]{slidy_presentation}}
-  creates the slidy html files.
+The \code{\link[rmarkdown]{render}} function, with the argument
+\code{output_file =} \code{\link[rmarkdown]{slidy_presentation}}
+creates the slidy html files.
 }
 \examples{
 # Create a slidy presentation from example.Rmd
@@ -128,9 +128,9 @@ rmd2slidy()
 }
 \seealso{
 \code{\link{rmd2word}}, \code{\link{rmd2ioslides}},
-  \code{\link{rmd2html}} for other output formats.
+\code{\link{rmd2html}} for other output formats.
 
 The \href{https://paulnorthrop.github.io/accessr/}{accessr
-  package page on Github}. In particular, the README file suggests copying
-  to your working directory the example file \code{example.Rmd} used below.
+package page on Github}. In particular, the README file suggests copying
+to your working directory the example file \code{example.Rmd} used below.
 }

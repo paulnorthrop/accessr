@@ -17,13 +17,13 @@ rmd2many(
 }
 \arguments{
 \item{x}{A numeric vector. Contains the numbers of the lectures for which
-to create files. Must be a subset of `1:20`.}
+to create files. Must be a subset of \code{1:20}.}
 
 \item{outputs}{A character vector. Specifies the output formats required.
-A subset of `c("word", "isoslides", "slidy", "html")`.}
+A subset of \code{c("word", "isoslides", "slidy", "html")}.}
 
-\item{slide_level}{Passed to [`rmd2ioslides`][accessr::rmd2ioslides] via
-`...`. The default `slide_level = 1` means that a level one header #
+\item{slide_level}{Passed to \code{\link[=rmd2ioslides]{rmd2ioslides}} via
+\code{...}. The default \code{slide_level = 1} means that a level one header #
 create a new non-segue slide for an ioslides presentation.}
 
 \item{css}{The argument \code{css} to be passed to
@@ -31,50 +31,71 @@ create a new non-segue slide for an ioslides presentation.}
 then \code{accessr}'s css file \code{black.css} is used, which results in
 black text being used in the slides.}
 
-\item{add18}{A logical scalar. If `TRUE` then we also create Word documents
+\item{add18}{A logical scalar. If \code{TRUE} then we also create Word documents
 with 18pt text.}
 
-\item{pdf}{A logical scalar. If `TRUE` then we use
-[`chrome_print`][pagedown::chrome_print] to print `lecture?.html` to
-`lecture?slides.pdf`.}
+\item{pdf}{A logical scalar. If \code{TRUE} then we use
+\code{\link[pagedown:chrome_print]{chrome_print}} to print \code{lecture?.html} to
+\code{lecture?slides.pdf}.}
 
 \item{highlight}{A named list, with names a subset of
-`c("word", "isoslides", "slidy", "html")`, providing the respective syntax
+\code{c("word", "isoslides", "slidy", "html")}, providing the respective syntax
 highlighting styles passed to Pandoc for the output formats. Any syntax
-highlighting provided in `css` will take precedence.}
+highlighting provided in \code{css} will take precedence.}
 
 \item{...}{Additional arguments passed to
-  [`rmd2ioslides`][accessr::rmd2ioslides],
-  [`rmd2slidy`][accessr::rmd2slidy],
-  [`rmd2word`][accessr::rmd2word] or
-  [`rmd2html`][accessr::rmd2html].
+\code{\link[=rmd2ioslides]{rmd2ioslides}},
+\code{\link[=rmd2slidy]{rmd2slidy}},
+\code{\link[=rmd2word]{rmd2word}} or
+\code{\link[=rmd2html]{rmd2html}}.
 
-  For example, the argument `params` can passed to
-  \code{\link[rmarkdown]{render}}.}
+For example, the argument \code{params} can passed to
+\code{\link[rmarkdown]{render}}.}
 }
 \value{
 Nothing is returned.
 }
 \description{
 From a single R markdown file create HTML slides, PDF slides, Word
-and PDF documents
+and PDF documents.
 }
 \details{
-The source `.Rmd` files must be in a directory called
-  `lecture` in the current working directory.
+Add details
 
-The default setting creates, for each valid value in `x`, the following
+The source \code{.Rmd} files must be in a directory called
+\code{lecture} in the current working directory.
+
+The default setting creates, for each valid value in \code{x}, the following
 files
-
-  * `lecture?.html`: lecture slides is `ioslides` format.
-  * `lecture?.pdf`: a PDF document containing the content of the lecture
-    slides, produced from a Word file `lecture?.docx`.
-  * `lecture?draft.pdf`: a version of `lecture?.pdf` in which selected
-    content is removed.
-  * `lecture?.docx`: a Word document containing the content of the lecture
-    slides using an 18pt text template Word file. If `add18 = FALSE` then
-    this is the Word file used to create `lecture?.pdf`.
+\itemize{
+\item \code{lecture?.html}: lecture slides is \code{ioslides} format.
+\item \code{lecture?.pdf}: a PDF document containing the content of the lecture
+slides, produced from a Word file \code{lecture?.docx}.
+\item \code{lecture?draft.pdf}: a version of \code{lecture?.pdf} in which selected
+content is removed.
+\item \code{lecture?.docx}: a Word document containing the content of the lecture
+slides using an 18pt text template Word file. If \code{add18 = FALSE} then
+this is the Word file used to create \code{lecture?.pdf}.
+}
 }
 \examples{
-#lecture(7:8)
+# Create an HTML document from example.Rmd
+got_hux <- requireNamespace("huxtable", quietly = TRUE)
+got_flex <- requireNamespace("flextable", quietly = TRUE)
+got_pandoc <- rmarkdown::pandoc_available("1.14")
+got_all <- got_hux && got_flex && got_pandoc
+# This example needs packages huxtable and flextable
+if (got_all) {
+  ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
+  ex_file <- sub(".Rmd", "", ex_file)
+  rmd2html(ex_file)
+}
+
+\dontrun{
+# Create HTML documents files from your files file1.Rmd and file2.Rmd
+rmd2html(c("file1", "file2"))
+
+# Create HTML documents from all Rmd files in your working directory
+rmd2html()
+}
 }
