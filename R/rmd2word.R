@@ -240,42 +240,6 @@ rmd2word <- function(x, doc = "accessr",
     res0 <- officedown::rdocx_document(reference_docx = doc[i], ...)
     # Find the page width, height and margins of the reference Word document
     ref_docx_dim <- officer::docx_dim(officer::read_docx(doc[i]))
-    # Hack body(res0$post_processor) to recreate what this was in officedown
-    # v0.2.2, which respected the margins in the template word document doc[i]
-    # but did not include the headers and footers (page numbers).  I have
-    # commented out the line
-    #       x <- body_set_default_section(x, default_sect_properties)
-    # which effectively removed the headers and footers by setting defaults.
-#    body(res0$post_processor) <- expression({
-#      x <- officer::read_docx(output_file)
-#      x <- process_images(x)
-#      x <- process_links(x)
-#      x <- process_embedded_docx(x)
-#      x <- process_par_settings(x)
-#      x <- process_list_settings(x, ul_style = lists$ul.style,
-#                                 ol_style = lists$ol.style)
-#      x <- change_styles(x, mapstyles = mapstyles)
-#      default_sect_properties <- prop_section(
-#        page_size = page_size(
-#          orient = page_size$orient,
-#          width = page_size$width,
-#          height = page_size$height),
-#        type = "continuous",
-#        page_margins = page_mar(
-#          bottom = page_margins$bottom,
-#          top = page_margins$top,
-#          right = page_margins$right,
-#          left = page_margins$left,
-#          header = page_margins$header,
-#          footer = page_margins$footer,
-#          gutter = page_margins$gutter)
-#        )
-##      x <- body_set_default_section(x, default_sect_properties)
-#      forget(get_reference_rdocx)
-#      print(x, target = output_file)
-#      output_file
-#    })
-#    pp_body <- body(res0$post_processor)
     find_line <- function(i, text_to_find, x){
       !is.na(pmatch(text_to_find, as.character(x[[i]])))
     }
