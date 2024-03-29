@@ -25,7 +25,9 @@
 #'   documents in \code{\link{rmd2word}}.
 #' @return See the \strong{Value} section of \code{\link[utils]{download.file}}.
 #' @examples
+#' \dontrun{
 #' install_otp()
+#' }
 #' @export
 install_otp <- function(dir, url, method, quiet = TRUE, ...) {
   if (missing(dir)) {

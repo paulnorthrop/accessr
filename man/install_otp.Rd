@@ -44,5 +44,7 @@ is forced.
 documents in \code{\link{rmd2word}}.
 }
 \examples{
+\dontrun{
 install_otp()
+}
 }
