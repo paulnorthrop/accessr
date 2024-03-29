@@ -167,8 +167,10 @@
 #' @export
 rmd2word <- function(x, doc = "accessr",
                      pdf = isTRUE(.Platform$OS.type == "windows"), dir,
-                     zip = TRUE, add = FALSE, quiet = TRUE, rm_word = FALSE,
-                     rm_pdf = FALSE, inc_word = FALSE, params = NULL, ...) {
+                     zip = if (length(x) == 1 & !add) FALSE else TRUE,
+                     add = FALSE,
+                     quiet = TRUE, rm_word = FALSE, rm_pdf = FALSE,
+                     inc_word = FALSE, params = NULL, ...) {
   # Warn that PDF files can only be produced on Windows
   if (pdf && isFALSE(.Platform$OS.type == "windows")) {
     warning("'pdf' has been set to FALSE because the OS is not ''windows''.")

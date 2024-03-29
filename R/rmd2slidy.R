@@ -107,10 +107,10 @@
 #' rmd2slidy()
 #' }
 #' @export
-rmd2slidy <- function(x, zip = TRUE, pdf = FALSE, zip_pdf = zip,
-                      pdf_args = list(), add = FALSE, quiet = TRUE,
-                      rm_html = FALSE, rm_pdf = FALSE, inc_rmd = FALSE,
-                      params = NULL, ...) {
+rmd2slidy <- function(x, zip = if (length(x) == 1 & !add) FALSE else TRUE,
+                      pdf = FALSE, zip_pdf = zip, pdf_args = list(),
+                      add = FALSE, quiet = TRUE, rm_html = FALSE,
+                      rm_pdf = FALSE, inc_rmd = FALSE, params = NULL, ...) {
   dots <- list(...)
   # If dots contains any instances of "black" then set the correct path
   # to accessr's black.css file

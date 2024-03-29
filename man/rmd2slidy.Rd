@@ -6,7 +6,7 @@
 \usage{
 rmd2slidy(
   x,
-  zip = TRUE,
+  zip = if (length(x) == 1 & !add) FALSE else TRUE,
   pdf = FALSE,
   zip_pdf = zip,
   pdf_args = list(),

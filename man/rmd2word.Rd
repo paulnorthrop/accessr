@@ -9,7 +9,7 @@ rmd2word(
   doc = "accessr",
   pdf = isTRUE(.Platform$OS.type == "windows"),
   dir,
-  zip = TRUE,
+  zip = if (length(x) == 1 & !add) FALSE else TRUE,
   add = FALSE,
   quiet = TRUE,
   rm_word = FALSE,

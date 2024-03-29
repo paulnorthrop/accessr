@@ -6,7 +6,7 @@
 \usage{
 rmd2html(
   x,
-  zip = TRUE,
+  zip = if (length(x) == 1 & !add) FALSE else TRUE,
   pdf = FALSE,
   pdf_args = list(),
   zip_pdf = zip,

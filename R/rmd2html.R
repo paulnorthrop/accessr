@@ -95,9 +95,10 @@
 #' rmd2html()
 #' }
 #' @export
-rmd2html <- function(x, zip = TRUE, pdf = FALSE, pdf_args = list(),
-                     zip_pdf = zip, add = FALSE, quiet = TRUE,
-                     rm_html = FALSE, rm_pdf = FALSE, ...) {
+rmd2html <- function(x, zip = if (length(x) == 1 & !add) FALSE else TRUE,
+                     pdf = FALSE, pdf_args = list(), zip_pdf = zip,
+                     add = FALSE, quiet = TRUE, rm_html = FALSE,
+                     rm_pdf = FALSE, ...) {
   # If x is missing then find all the .Rmd files in the working directory
   # If x is a directory then find all the . RMd files in that directory
   if (missing(x)) {
