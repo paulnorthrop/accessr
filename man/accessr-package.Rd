@@ -50,7 +50,7 @@ work when the output format is a Word document
 \item \code{\link{rmd2ioslides}}: create ioslides presentations and
 perhaps print to (non-accessible) PDF documents.
 
-\code{\link{isoslides_level}}: enable the use of
+\code{\link{ioslides_level}}: enable the use of
 the level one header # to separate slides in an ioslides presentation
 with no segue slides.
 \item \code{\link{rmd2slidy}}: create slidy presentations and perhaps

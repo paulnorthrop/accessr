@@ -77,6 +77,9 @@ Otherwise, they are not deleted.}
 Rmd files are included in the zip file created.  Otherwise, they are not
 included.}
 
+\item{params}{A list of named parameters to pass as the argument
+\code{params} to \code{\link[rmarkdown]{render}}.}
+
 \item{...}{Additional arguments to be passed to
 \code{\link[rmarkdown]{slidy_presentation}}.}
 }
