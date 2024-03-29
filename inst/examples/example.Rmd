@@ -12,22 +12,6 @@ knitr::opts_knit$set(echo = TRUE, global.par = TRUE, prompt = TRUE,
                      fig.align = 'center')
 ```
 
-# Hiding stuff
-
-```{r, echo = FALSE}
-# hide = TRUE to hide certain parts 
-# hide = FALSE to include them
-hide <- params$hide
-```
-
-```{asis, echo = !hide}
-This text will appear only if `params$hide = FALSE`
-```
-
-```{asis, echo = hide}
-Setting `params$hide = TRUE` can be used to hide content
-```
-
 # Text, bullets, links
 
 ```{r knitr}
@@ -74,20 +58,6 @@ oldpar <- par(mar = c(4, 4, 1, 1))
 plot(1:10, 1:10, pch = 1:10, xlab = "x", ylab = "y")
 ```
 
-# Possibly hidden R-generated figure
-
-```{asis, echo = hide}
-The figure is missing because `params$hide = TRUE`
-```
-
-```{r hidden_r_figure, eval = !hide, fig.alt = "Alt text.", fig.cap = "This figure appears only if params$hide = FALSE. ", echo = TRUE, fig.width = 6, fig.height= 4, fig.align='center'}
-plot(1:10, 1:10, pch = 1:10, xlab = "x", ylab = "y")
-```
-
-```{r plot_margins_reset, echo = FALSE}
-par(oldpar)
-```
-
 # External figure (png file)
 
 ```{r ext_figure, fig.alt = "Alt text.", fig.cap = "Use knitr::include_graphics().", echo = TRUE, out.width="50%", fig.align='center'}
@@ -128,3 +98,32 @@ x_hux <- x %>%
 x_hux    
 ```
 
+# Hiding stuff using chunk option `echo`
+
+```{r, echo = FALSE}
+# hide = TRUE to hide certain parts 
+# hide = FALSE to include them
+hide <- params$hide
+```
+
+```{asis, echo = !hide}
+This text will appear only if `params$hide = FALSE`
+```
+
+```{asis, echo = hide}
+Setting `params$hide = TRUE` can be used to hide content
+```
+
+# Hiding a figure using chunk option `eval`
+
+```{asis, echo = hide}
+The figure is missing because `params$hide = TRUE`
+```
+
+```{r hidden_r_figure, eval = !hide, fig.alt = "Alt text.", fig.cap = "This figure appears only if params$hide = FALSE. ", echo = TRUE, fig.width = 6, fig.height= 4, fig.align='center'}
+plot(1:10, 1:10, pch = 1:10, xlab = "x", ylab = "y")
+```
+
+```{r plot_margins_reset, echo = FALSE}
+par(oldpar)
+```
