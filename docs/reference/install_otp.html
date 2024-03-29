@@ -52,7 +52,7 @@ https://github.com/cognidox/OfficeToPDF/releases."><!-- mathjax --><script src="
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">install_otp</span><span class="op">(</span><span class="va">dir</span>, <span class="va">url</span>, <span class="va">method</span>, quiet <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">install_otp</span><span class="op">(</span><span class="va">dir</span>, <span class="va">url</span>, <span class="va">method</span>, quiet <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -63,40 +63,51 @@ If <code>dir</code> is missing then <code>system.file(package = "accessr")</code
 used. This should enable <code>OfficeToPDF.exe</code> to be found but
 there may be a problem if <code><a href="https://rdrr.io/r/base/libPaths.html" class="external-link">.libPaths</a></code> refers to a cloud
 storage directory, such as OneDrive.</p></dd>
+
+
 <dt>url</dt>
 <dd><p>URL from which to download <code>OfficeToPDF.exe</code>.  If this is
 missing then
 <a href="https://github.com/cognidox/OfficeToPDF/releases/download/v1.9.0.2/OfficeToPDF.exe" class="external-link">https://github.com/cognidox/OfficeToPDF/releases/download/v1.9.0.2/OfficeToPDF.exe</a>
 is used.</p></dd>
+
+
 <dt>method</dt>
 <dd><p>Passed to <code><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></code>.  If
 missing then <code>getOption("download.file.method")</code> is used to set it.</p></dd>
+
+
 <dt>quiet</dt>
 <dd><p>Passed to <code><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></code>. <code>quiet</code>
 controls whether messages are printed during the download.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Additional arguments to be passed to
 <code><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>See the <strong>Value</strong> section of <code><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></code>.</p>
+    
+
+<p>See the <strong>Value</strong> section of <code><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></code>.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
     <p>The argument <code>mode = "wb"</code> to
-  <code><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></code> is hard-coded, so that binary transfer
-  is forced.</p>
+<code><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></code> is hard-coded, so that binary transfer
+is forced.</p>
     </div>
     <div id="note">
     <h2>Note</h2>
-    <p><code>OfficeToPDF.exe</code> is used to create PDFs files from Word
-  documents in <code><a href="rmd2word.html">rmd2word</a></code>.</p>
+    <p><code>OfficeToPDF.exe</code> is used to create PDF files from Word
+documents in <code><a href="rmd2word.html">rmd2word</a></code>.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">install_otp</span><span class="op">(</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">install_otp</span><span class="op">(</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -111,8 +122,7 @@ controls whether messages are printed during the download.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

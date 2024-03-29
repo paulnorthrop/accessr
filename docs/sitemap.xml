@@ -13,6 +13,9 @@
     <loc>/reference/accessr-internal.html</loc>
   </url>
   <url>
+    <loc>/reference/accessr-package.html</loc>
+  </url>
+  <url>
     <loc>/reference/accessr.html</loc>
   </url>
   <url>
@@ -25,10 +28,16 @@
     <loc>/reference/install_otp.html</loc>
   </url>
   <url>
+    <loc>/reference/ioslides_level.html</loc>
+  </url>
+  <url>
     <loc>/reference/rmd2html.html</loc>
   </url>
   <url>
     <loc>/reference/rmd2ioslides.html</loc>
+  </url>
+  <url>
+    <loc>/reference/rmd2many.html</loc>
   </url>
   <url>
     <loc>/reference/rmd2pdf.html</loc>

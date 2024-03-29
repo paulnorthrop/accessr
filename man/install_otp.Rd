@@ -40,7 +40,7 @@ The argument \code{mode = "wb"} to
 is forced.
 }
 \note{
-\code{OfficeToPDF.exe} is used to create PDFs files from Word
+\code{OfficeToPDF.exe} is used to create PDF files from Word
 documents in \code{\link{rmd2word}}.
 }
 \examples{

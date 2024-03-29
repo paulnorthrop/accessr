@@ -21,7 +21,7 @@
 #' @details The argument \code{mode = "wb"} to
 #'   \code{\link[utils]{download.file}} is hard-coded, so that binary transfer
 #'   is forced.
-#' @note \code{OfficeToPDF.exe} is used to create PDFs files from Word
+#' @note \code{OfficeToPDF.exe} is used to create PDF files from Word
 #'   documents in \code{\link{rmd2word}}.
 #' @return See the \strong{Value} section of \code{\link[utils]{download.file}}.
 #' @examples

@@ -19,11 +19,13 @@ reference:
   - title: Main functions
     desc: ~
     contents:
+      - "rmd2many"
       - "rmd2html"
       - "rmd2ioslides"
       - "rmd2slidy"
       - "rmd2word"
-  - title: Helper function
+  - title: Helper functions
     desc: ~
     contents:
       - "ext_img"
+      - "ioslides_level"

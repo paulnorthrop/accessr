@@ -13,10 +13,7 @@ to produce accessible PDF files on a Windows Operating System. One aspect of
 accessibility is providing headings that are recognised by a screen reader,
 providing a navigational tool for a blind or partially-sighted person. A
 main aim is to enable documents of different formats to be produced from a
-\strong{single} R markdown source file using a single function call.  The
-function \code{\link{rmd2word}} enables the use of the the \code{knitr}
-chunk options \code{out.width} and/or \code{out.height} to set the
-dimensions a figure when the output format is a Word document. A
+\strong{single} R markdown source file using a single function call. A
 user-supplied template Word document can be used to determine the formatting
 of the output Word document. Similar functions produce html slides and html
 documents. A zip file containing multiple files can be produced. The option
@@ -28,29 +25,6 @@ package page on Github} for more information.  An example Rmd file is
 available at
 \code{system.file(package = "accessr", "examples", "example.Rmd")}.
 
-The main functions in \code{accessr} are:
-
-\itemize{
-\item \code{\link{install_otp}}: convenience function to install
-OfficeToPDF.
-\item \code{\link{rmd2word}}: create word documents and accessible PDF
-files.
-\item \code{\link{rmd2ioslides}}: create ioslides presentations and
-perhaps print to (non-accessible) PDF documents.
-\item \code{\link{rmd2slidy}}: create slidy presentations and perhaps
-print to (non-accessible) PDF documents..
-\item \code{\link{rmd2html}}: create html documents and perhaps print to
-(non-accessible) PDF documents.
-\item \code{\link{ext_img}}: a function to enable the \code{knitr} chunk
-options \code{out.width} and/or \code{out.height} to work when the output
-format is a Word document.
-}
-
-Each function provides the option to create a zip archive containing the
-output files.  All the .Rmd files in a directory can be processed with one
-function call. Information such as \code{title}, \code{author}, \code{lang}
-etc in the YAML header in the Rmd file are used but \code{output} is ignored.
-
 On a Windows Operating System, Accessible PDF documents are produced by
 creating Word documents from R markdown files and then PDF documents from
 these Word documents.  The first step uses the
@@ -59,6 +33,37 @@ these Word documents.  The first step uses the
 and the \code{\link[officedown]{rdocx_document}} function from the
 officedown package. The second step uses
 \href{https://github.com/cognidox/OfficeToPDF}{OfficetoPDF}.
+
+The main functions in \code{accessr} are:
+
+\itemize{
+\item \code{\link{rmd2many}}: create HTML slides, PDF slides, Word and
+PDF documents from a single R markdown file.
+\item \code{\link{rmd2word}}: create Word documents and accessible PDF
+files.
+
+\code{\link{install_otp}}: convenience function to install
+OfficeToPDF, to create PDF files from Word documents in
+\code{\link{rmd2word}}. \code{\link{ext_img}}: a function to enable the
+\code{knitr} chunk options \code{out.width} and/or \code{out.height} to
+work when the output format is a Word document
+\item \code{\link{rmd2ioslides}}: create ioslides presentations and
+perhaps print to (non-accessible) PDF documents.
+
+\code{\link{isoslides_level}}: enable the use of
+the level one header # to separate slides in an ioslides presentation
+with no segue slides.
+\item \code{\link{rmd2slidy}}: create slidy presentations and perhaps
+print to (non-accessible) PDF documents..
+\item \code{\link{rmd2html}}: create html documents and perhaps print to
+(non-accessible) PDF documents.
+}
+
+The \verb{rmd2?} functions provide the option to create a zip archive containing
+the output files.  All the .Rmd files in a directory can be processed with
+one function call. Information such as \code{title}, \code{author},
+\code{lang} etc in the YAML header in the Rmd file are used but
+\code{output} is ignored.
 }
 \references{
 David Gohel and Noam Ross (2021). officedown: Enhanced
