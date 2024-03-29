@@ -3,8 +3,8 @@
 
 ## accessr
 
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/paulnorthrop/accessr?branch=master&svg=true)](https://ci.appveyor.com/project/paulnorthrop/accessr)
+[![Build
+status](https://ci.appveyor.com/api/projects/status/a314mt4b1b60tms5?svg=true)](https://ci.appveyor.com/project/paulnorthrop/accessr)
 [![R-CMD-check](https://github.com/paulnorthrop/accessr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/paulnorthrop/accessr/actions/workflows/R-CMD-check.yaml)
 [![Coverage
 Status](https://codecov.io/github/paulnorthrop/accessr/coverage.svg?branch=master)](https://app.codecov.io/github/paulnorthrop/accessr?branch=master)
