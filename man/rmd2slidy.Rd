@@ -15,6 +15,7 @@ rmd2slidy(
   rm_html = FALSE,
   rm_pdf = FALSE,
   inc_rmd = FALSE,
+  params = NULL,
   ...
 )
 }
