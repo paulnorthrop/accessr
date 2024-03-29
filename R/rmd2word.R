@@ -88,17 +88,17 @@
 #'     with Rmd to docx}.
 #'
 #'   There are some built-in template options:
-#'   \itemize{
-#'     \item{\code{doc = "officedown"}: }{uses
-#'       \code{\link[officedown]{rdocx_document}}'s default,}
-#'     \item{\code{doc = "accessr"}: }{similar to \code{"officedown"} but with
+#'
+#'   * \code{doc = "officedown"}: uses
+#'     \code{\link[officedown]{rdocx_document}}'s default,
+#'   * \code{doc = "accessr"}: similar to \code{"officedown"} but with
 #'       narrower margins and black text for titles and darker hyperlinks, to
-#'       avoid contrast issues,}
-#'     \item{\code{doc = "18"}: }{like \code{"accessr"} but with 18pt text,}
-#'     \item{\code{doc = "exam"}:}{creates a Word file with a header
+#'       avoid contrast issues,
+#'   * \code{doc = "18"}: like \code{"accessr"} but with 18pt text,
+#'   * \code{doc = "exam"}: creates a Word file with a header
 #'       "Examination paper for STAT0002" on the left and "Page x of n" on the
-#'       right.}
-#'   }
+#'       right.
+#'
 #'   To use your own template(s), provide their filename(s).
 #'   A component equal to \code{"officedown"} chooses
 #'   \code{\link[officedown]{rdocx_document}}'s default.
