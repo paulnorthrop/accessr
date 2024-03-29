@@ -12,22 +12,30 @@ rmd2many(
   add18 = TRUE,
   pdf = TRUE,
   highlight = list(word = "monochrome", ioslides = NULL, slidy = NULL, html = NULL),
+  params = NULL,
+  zip = TRUE,
   ...
 )
 }
 \arguments{
-\item{x}{A numeric vector. Contains the numbers of the lectures for which
-to create files. Must be a subset of \code{1:20}.}
+\item{x}{A character vector containing the names (\strong{no extension}) of
+the \code{.Rmd} files to convert if they are in the current working
+directory, or paths to the files, either absolute or relative to the
+current working directory, e.g., \code{DIRECTORY/file1}.  The output
+files are created in the same directory as their respective \code{.Rmd}
+file.}
 
 \item{outputs}{A character vector. Specifies the output formats required.
-A subset of \code{c("word", "isoslides", "slidy", "html")}.}
+A subset of \code{c("word", "ioslides", "slidy", "html")}.}
 
 \item{slide_level}{Passed to \code{\link[=rmd2ioslides]{rmd2ioslides}} via
 \code{...}. The default \code{slide_level = 1} means that a level one header #
 create a new non-segue slide for an ioslides presentation.}
 
 \item{css}{The argument \code{css} to be passed to
-\code{\link[rmarkdown]{ioslides_presentation}}. If \code{css = "black"}
+\code{\link[rmarkdown]{ioslides_presentation}},
+\code{\link[rmarkdown]{slidy_presentation}} or
+\code{\link[rmarkdown]{html_document}}. If \code{css = "black"}
 then \code{accessr}'s css file \code{black.css} is used, which results in
 black text being used in the slides.}
 
@@ -35,47 +43,57 @@ black text being used in the slides.}
 with 18pt text.}
 
 \item{pdf}{A logical scalar. If \code{TRUE} then we use
-\code{\link[pagedown:chrome_print]{chrome_print}} to print \code{lecture?.html} to
-\code{lecture?slides.pdf}.}
+\code{\link[pagedown:chrome_print]{chrome_print}} to print PDF versions of HTML
+files produced using the output \code{"ioslides"} or \code{"slidy"}.}
 
 \item{highlight}{A named list, with names a subset of
-\code{c("word", "isoslides", "slidy", "html")}, providing the respective syntax
+\code{c("word", "ioslides", "slidy", "html")}, providing the respective syntax
 highlighting styles passed to Pandoc for the output formats. Any syntax
-highlighting provided in \code{css} will take precedence.}
+highlighting provided in \code{css} will take precedence. If more than one of
+\code{"ioslides"}, \code{"slidy"} and \code{"html"} are present then only
+one of these is used with the order of preference \code{"ioslides"},
+\code{"slidy"} then \code{"html"}.}
+
+\item{params}{A list of named parameters to pass as the argument
+\code{params} to \code{\link[rmarkdown]{render}}.}
+
+\item{zip}{A logical scalar or character vector indicating whether PDF
+files should be put into a zip archive.  If \code{zip = FALSE} then no
+zip archive is created.  Otherwise, an archive is created in each unique
+directory involved in \code{x}.  If \code{zip = TRUE} then any archive
+created is named after the first filename in \code{x} from the relevant
+directory. If \code{zip} is a character vector of zip file names (no
+extension) then these names are used to name the zip archives.  The names
+are recycled to the length of the number of unique directories if
+necessary.}
 
 \item{...}{Additional arguments passed to
 \code{\link[=rmd2ioslides]{rmd2ioslides}},
 \code{\link[=rmd2slidy]{rmd2slidy}},
 \code{\link[=rmd2word]{rmd2word}} or
-\code{\link[=rmd2html]{rmd2html}}.
-
-For example, the argument \code{params} can passed to
-\code{\link[rmarkdown]{render}}.}
+\code{\link[=rmd2html]{rmd2html}}.}
 }
 \value{
-Nothing is returned.
+A list containing the following components:
+\item{files }{names of all the files created.}
+\item{zips }{names of all zip files created (if \code{zip = TRUE}).}
 }
 \description{
 From a single R markdown file create HTML slides, PDF slides, Word
 and PDF documents.
 }
 \details{
-Add details
-
-The source \code{.Rmd} files must be in a directory called
-\code{lecture} in the current working directory.
-
-The default setting creates, for each valid value in \code{x}, the following
-files
+The default setting creates, for each valid \code{filename} in \code{x}, the
+following files
 \itemize{
-\item \code{lecture?.html}: lecture slides is \code{ioslides} format.
-\item \code{lecture?.pdf}: a PDF document containing the content of the lecture
-slides, produced from a Word file \code{lecture?.docx}.
-\item \code{lecture?draft.pdf}: a version of \code{lecture?.pdf} in which selected
-content is removed.
-\item \code{lecture?.docx}: a Word document containing the content of the lecture
-slides using an 18pt text template Word file. If \code{add18 = FALSE} then
-this is the Word file used to create \code{lecture?.pdf}.
+\item \code{filename.html}: lecture slides in \code{ioslides} format.
+\item \code{filename_slides.pdf}: a PDF document containing the content in
+\code{filename.html}.
+\item \code{filename.pdf}: a PDF document created from a Word document produced by
+\code{rmd2word}.
+\item \code{filename.docx}: a Word document. If \code{add18 = TRUE} then the template
+Word document has 18pt bold text.
+\item \code{filename.zip}: a zip file containing all the files produced.
 }
 }
 \examples{
@@ -88,14 +106,11 @@ got_all <- got_hux && got_flex && got_pandoc
 if (got_all) {
   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
   ex_file <- sub(".Rmd", "", ex_file)
-  rmd2html(ex_file)
+  rmd2many(ex_file, params = list(hide = TRUE), zip = TRUE)
 }
 
 \dontrun{
-# Create HTML documents files from your files file1.Rmd and file2.Rmd
-rmd2html(c("file1", "file2"))
-
-# Create HTML documents from all Rmd files in your working directory
-rmd2html()
+# Create multiple documents files from your files file1.Rmd and file2.Rmd
+rmd2many(c("file1", "file2"))
 }
 }
