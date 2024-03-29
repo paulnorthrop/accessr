@@ -22,11 +22,12 @@ Description: Provides functions to produce accessible html slides, html, Word
     function, install_otp() is provided to install this software. The option to 
     print html output to (non-accessible) PDF files is also available.  
 Depends: R (>= 3.3.0)
-License: GPL (>= 2)
+License: GPL (>= 3)
 Encoding: UTF-8
 RoxygenNote: 7.2.3
 Imports: rmarkdown
-Suggests: dplyr,
+Suggests: 
+    dplyr,
     knitr,
     flextable,
     huxtable,
@@ -37,10 +38,12 @@ Suggests: dplyr,
     png,
     tools,
     utils,
-    zip
+    zip,
+    testthat (>= 3.0.0)
 SystemRequirements: OfficeToPDF - https://github.com/cognidox/OfficeToPDF,
     pandoc (>= 1.14) - https://pandoc.org
 URL: https://paulnorthrop.github.io/accessr/,
      https://github.com/paulnorthrop/accessr
 BugReports: https://github.com/paulnorthrop/accessr/issues
 Roxygen: list(markdown = TRUE)
+Config/testthat/edition: 3
