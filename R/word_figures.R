@@ -59,6 +59,10 @@ ext_img <- function(src, width = 0.5, height = 0.2, alt = "", ref_docx_dim) {
   # To do this we need to find the dimensions of the
   #   * reference Word document (contained in the argument ref_docx_dim)
   #   * (png or jpg) image
+  if (!requireNamespace("knitr", quietly = TRUE)) {
+    stop("The 'knitr' package is required. Please install it.",
+         call.= FALSE)
+  }
   out_width <- knitr::opts_current$get("out.width")
   out_height <- knitr::opts_current$get("out.height")
   # Function to set the width and height
