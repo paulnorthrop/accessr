@@ -17,7 +17,7 @@
 #'   missing then \code{getOption("download.file.method")} is used to set it.
 #' @param quiet Passed to \code{\link[utils]{download.file}}. \code{quiet}
 #'   controls whether messages are printed during the download.
-#' @param ... Additional arguments to be passed to
+#' @param ... Additional arguments passed to
 #'   \code{\link[utils]{download.file}}.
 #' @details The argument \code{mode = "wb"} to
 #'   \code{\link[utils]{download.file}} is hard-coded, so that binary transfer

@@ -35,7 +35,7 @@ one of these is used with the order of preference \code{"ioslides"},
 \code{...}. The default \code{slide_level = 1} means that a level one header #
 create a new non-segue slide for an ioslides presentation.}
 
-\item{css}{The argument \code{css} to be passed to
+\item{css}{The argument \code{css} passed to
 \code{\link[rmarkdown]{ioslides_presentation}} or
 \code{\link[rmarkdown]{slidy_presentation}}. If \code{css = "black"}
 then \code{accessr}'s css file \code{black.css} is used, which results in

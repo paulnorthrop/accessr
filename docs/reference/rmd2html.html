@@ -97,8 +97,8 @@ unique directories, if necessary.</p></dd>
 <dd><p>A logical scalar.  If <code>pdf = TRUE</code> then each html file is
 printed to a PDF file using <code><a href="https://rdrr.io/pkg/pagedown/man/chrome_print.html" class="external-link">chrome_print</a></code>.
 Google Chrome (or an alternative browser specified in <code>pdf_args</code> by
-the <code>browser</code> argument to <code><a href="https://rdrr.io/pkg/pagedown/man/chrome_print.html" class="external-link">pagedown::chrome_print</a></code> must
-be installed prior to use of this option.  An error message like
+the <code>browser</code> argument to <code><a href="https://rdrr.io/pkg/pagedown/man/chrome_print.html" class="external-link">chrome_print</a></code> must
+be installed prior to use of this option. An error message like
 <code>Error in servr::random_port(NULL) : Cannot find an available TCP
   port</code> means that the <code>random_port</code> function in the <code>servr</code>
 package could not find an internet connection that Chrome considers
@@ -106,7 +106,7 @@ secure.  Perhaps you are using a coffee shop's wifi.</p></dd>
 
 
 <dt>pdf_args</dt>
-<dd><p>A list of arguments to be passed to
+<dd><p>A list of arguments passed to
 <code><a href="https://rdrr.io/pkg/pagedown/man/chrome_print.html" class="external-link">chrome_print</a></code>. <code>input</code> cannot be passed
 because it is set inside <code>rmd2html</code>.</p></dd>
 
@@ -144,7 +144,7 @@ Otherwise, they are not deleted.</p></dd>
 
 
 <dt>...</dt>
-<dd><p>Additional arguments to be passed to
+<dd><p>Additional arguments passed to
 <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/html_document.html" class="external-link">html_document</a></code> or <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">render</a></code>.</p></dd>
 
 </dl></div>

@@ -24,7 +24,7 @@ missing then \code{getOption("download.file.method")} is used to set it.}
 \item{quiet}{Passed to \code{\link[utils]{download.file}}. \code{quiet}
 controls whether messages are printed during the download.}
 
-\item{...}{Additional arguments to be passed to
+\item{...}{Additional arguments passed to
 \code{\link[utils]{download.file}}.}
 }
 \value{

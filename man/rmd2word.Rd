@@ -85,7 +85,7 @@ included.}
 \item{params}{A list of named parameters to pass as the argument
 \code{params} to \code{\link[rmarkdown]{render}}.}
 
-\item{...}{Additional arguments to be passed to
+\item{...}{Additional arguments passed to
 \code{\link[rmarkdown]{word_document}}.}
 }
 \value{

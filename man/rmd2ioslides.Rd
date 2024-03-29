@@ -52,7 +52,7 @@ creation of zip archives for any PDF files created. If
 \code{zip_pdf = TRUE} then each archive is named
 \code{accessr_ioslides_pdf.zip}.}
 
-\item{pdf_args}{A list of arguments to be passed to
+\item{pdf_args}{A list of arguments passed to
 \code{\link[pagedown]{chrome_print}}. \code{input} cannot be passed
 because it is set inside \code{rmd2html}.}
 
@@ -80,7 +80,7 @@ included.}
 \item{params}{A list of named parameters to pass as the argument
 \code{params} to \code{\link[rmarkdown]{render}}.}
 
-\item{...}{Additional arguments to be passed to
+\item{...}{Additional arguments passed to
 \code{\link[rmarkdown]{ioslides_presentation}}. If \code{slide_level = 1}
 is passed then \code{\link{ioslides_level}} is called with
 \code{one = TRUE} so that a level one header # creates a new non-segue

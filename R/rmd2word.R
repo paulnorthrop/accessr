@@ -63,7 +63,7 @@
 #'   included.
 #' @param params A list of named parameters to pass as the argument
 #'   \code{params} to \code{\link[rmarkdown]{render}}.
-#' @param ... Additional arguments to be passed to
+#' @param ... Additional arguments passed to
 #'   \code{\link[rmarkdown]{word_document}}.
 #' @details Information such as \code{title}, \code{author}, \code{lang} etc in
 #'   the YAML header in the Rmd file are used but \code{output} is ignored.

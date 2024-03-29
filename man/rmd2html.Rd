@@ -38,14 +38,14 @@ unique directories, if necessary.}
 \item{pdf}{A logical scalar.  If \code{pdf = TRUE} then each html file is
 printed to a PDF file using \code{\link[pagedown]{chrome_print}}.
 Google Chrome (or an alternative browser specified in \code{pdf_args} by
-the \code{browser} argument to \code{pagedown::chrome_print} must
-be installed prior to use of this option.  An error message like
+the \code{browser} argument to \code{\link[pagedown]{chrome_print}} must
+be installed prior to use of this option. An error message like
 \code{Error in servr::random_port(NULL) : Cannot find an available TCP
   port} means that the \code{random_port} function in the \code{servr}
 package could not find an internet connection that Chrome considers
 secure.  Perhaps you are using a coffee shop's wifi.}
 
-\item{pdf_args}{A list of arguments to be passed to
+\item{pdf_args}{A list of arguments passed to
 \code{\link[pagedown]{chrome_print}}. \code{input} cannot be passed
 because it is set inside \code{rmd2html}.}
 
@@ -71,7 +71,7 @@ Otherwise, they are not deleted.}
 of pdf files is produced then the individual pdf files are deleted.
 Otherwise, they are not deleted.}
 
-\item{...}{Additional arguments to be passed to
+\item{...}{Additional arguments passed to
 \code{\link[rmarkdown]{html_document}} or \code{\link[rmarkdown]{render}}.}
 }
 \value{
