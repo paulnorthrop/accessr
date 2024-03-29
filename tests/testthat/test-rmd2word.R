@@ -5,9 +5,12 @@
 if (got_all) {
   # rmd2many(), word only
   res <- rmd2many(ex_file, params = list(hide = TRUE), outputs = "word",
-                  add18 = TRUE, pdf = FALSE, zip = FALSE)
+                  add18 = TRUE, pdf = FALSE, zip = TRUE)
   test_that("rmd2many(), word", {
     expect_equal(basename(res$files), c("example18pt.docx", "example.docx"))
+  })
+  test_that("rmd2many(), word, zips", {
+    expect_equal(basename(res$zips), "example.zip")
   })
 }
 
