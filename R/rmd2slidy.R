@@ -58,6 +58,13 @@
 #'   \code{params} to \code{\link[rmarkdown]{render}}.
 #' @param ... Additional arguments to be passed to
 #'   \code{\link[rmarkdown]{slidy_presentation}}.
+#'
+#'   If \code{css = "black"} is passed then \code{accessr}'s css file
+#'   \code{black.css} is used, which results in black text being used in the
+#'   slides.
+#'
+#'   This function is \strong{not} vectorised with respect to arguments in
+#'   \code{...}.
 #' @details Information such as \code{title}, \code{author}, \code{lang} etc in
 #'   the YAML header in the Rmd file are used but \code{output} is ignored.
 #'

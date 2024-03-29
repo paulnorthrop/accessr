@@ -81,7 +81,14 @@ included.}
 \code{params} to \code{\link[rmarkdown]{render}}.}
 
 \item{...}{Additional arguments to be passed to
-\code{\link[rmarkdown]{slidy_presentation}}.}
+\code{\link[rmarkdown]{slidy_presentation}}.
+
+If \code{css = "black"} is passed then \code{accessr}'s css file
+\code{black.css} is used, which results in black text being used in the
+slides.
+
+This function is \strong{not} vectorised with respect to arguments in
+\code{...}.}
 }
 \value{
 In addition to creating the html files, and perhaps zip files,
