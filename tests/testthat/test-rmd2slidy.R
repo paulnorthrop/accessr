@@ -5,9 +5,12 @@
 if (got_all) {
   # rmd2many(), slidy only
   res <- rmd2many(ex_file, params = list(hide = TRUE), outputs = "slidy",
-                  add18 = FALSE, pdf = FALSE, zip = FALSE)
+                  add18 = FALSE, pdf = FALSE, zip = TRUE)
   test_that("rmd2many(), slidy", {
     expect_equal(basename(res$files), "example.html")
+  })
+  test_that("rmd2many(), word, zips", {
+    expect_equal(basename(res$zips), "example.zip")
   })
 }
 
