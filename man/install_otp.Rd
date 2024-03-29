@@ -32,7 +32,8 @@ See the \strong{Value} section of \code{\link[utils]{download.file}}.
 }
 \description{
 Downloads the executable file \code{OfficeToPDF.exe} from
-\url{https://github.com/cognidox/OfficeToPDF/releases}.
+\url{https://github.com/cognidox/OfficeToPDF/releases} and copies it to
+a suitable location, by default \code{system.file(package = "accessr")}.
 }
 \details{
 The argument \code{mode = "wb"} to
