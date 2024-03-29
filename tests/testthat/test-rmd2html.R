@@ -1,15 +1,14 @@
 # Check that rmd2html() returns the correct file names
-# Set pdf = FALSE to avoid using OfficeToPDF or pagedown::chrome_print()
+# Set pdf = FALSE to avoid using pagedown::chrome_print()
 
 if (got_all) {
-  # rmd2many(), html only
-  res <- rmd2many(ex_file, params = list(hide = TRUE), outputs = "html",
-                  add18 = FALSE, pdf = FALSE, zip = TRUE)
-  test_that("rmd2many(), html", {
+  # rmd2html()
+  res <- rmd2html(ex_file, params = list(hide = TRUE), pdf = FALSE, zip = TRUE)
+  test_that("rmd2html()", {
     expect_equal(basename(res$files), "example.html")
   })
-  test_that("rmd2many(), word, zips", {
-    expect_equal(basename(res$zips), "example.zip")
+  test_that("rmd2html(), zips", {
+    expect_equal(basename(res$zips), "accessr_html.zip")
   })
 }
 

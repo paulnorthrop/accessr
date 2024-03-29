@@ -1,15 +1,15 @@
-# Check that rmd2html() returns the correct file names
-# Set pdf = FALSE to avoid using OfficeToPDF or pagedown::chrome_print()
+# Check that rmd2ioslides() returns the correct file names
+# Set pdf = FALSE to avoid using pagedown::chrome_print()
 
+# This example needs packages huxtable and flextable
 if (got_all) {
-  # rmd2many(), isoslides only
-  res <- rmd2many(ex_file, params = list(hide = TRUE), outputs = "ioslides",
-                  add18 = FALSE, pdf = FALSE, zip = TRUE)
-  test_that("rmd2many(), ioslides", {
+  # rmd2ioslides()
+  res <- rmd2ioslides(ex_file, params = list(hide = TRUE), pdf = FALSE, zip = TRUE)
+  test_that("rmd2ioslides()", {
     expect_equal(basename(res$files), "example.html")
   })
-  test_that("rmd2many(), word, zips", {
-    expect_equal(basename(res$zips), "example.zip")
+  test_that("rmd2ioslides(), zips", {
+    expect_equal(basename(res$zips), "accessr_ioslides.zip")
   })
 }
 
