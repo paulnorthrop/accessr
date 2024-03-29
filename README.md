@@ -1,19 +1,24 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/paulnorthrop/stat0002?branch=master&svg=true)](https://ci.appveyor.com/project/paulnorthrop/stat0002)
-[![R-CMD-check](https://github.com/paulnorthrop/accessr/workflows/R-CMD-check/badge.svg)](https://github.com/paulnorthrop/accessr/actions)
-
 ## accessr
 
+[![AppVeyor Build
+Status](https://ci.appveyor.com/api/projects/status/github/paulnorthrop/accessr?branch=master&svg=true)](https://ci.appveyor.com/project/paulnorthrop/accessr)
+[![R-CMD-check](https://github.com/paulnorthrop/accessr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/paulnorthrop/accessr/actions/workflows/R-CMD-check.yaml)
+[![Coverage
+Status](https://codecov.io/github/paulnorthrop/accessr/coverage.svg?branch=master)](https://app.codecov.io/github/paulnorthrop/accessr?branch=master)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/accessr)](https://cran.r-project.org/package=accessr)
+
 This package provides functions to produce accessible html slides, html,
-Word and PDF documents from input R markdown files. One aspect of
-accessibility is providing headings that are recognised by a screen
-reader, providing a navigational tool for a blind or partially-sighted
-person. A main aim is to enable documents of different formats to be
-produced from a **single** R markdown source file using a single
-function call. The `render()` function from the [rmarkdown
+Word and PDF documents from input R markdown files. Currently,
+**accessr** only provides the option to produce accessible PDF files on
+a Windows Operating System. One aspect of accessibility is providing
+headings that are recognised by a screen reader, providing a
+navigational tool for a blind or partially-sighted person. A main aim is
+to enable documents of different formats to be produced from a
+**single** R markdown source file using a single function call. The
+`render()` function from the [rmarkdown
 package](https://cran.r-project.org/package=rmarkdown) is used to render
 R markdown files. A zip file containing multiple files can be produced
 from a single function call. A user-supplied template Word document can
@@ -47,13 +52,13 @@ library(accessr)
 
 The main functions are:
 
--   `install_otp`: convenience function to install OfficeToPDF (required
-    to produce an accessible PDF file from a Word document).
--   `rmd2word()`: create word documents and accessible PDF files.
--   `rmd2ioslides(), rmd2slidy`: create ioslides/slidy presentations and
-    perhaps print to (non-accessible) PDF documents.
--   `rmd2html()`: create html documents and perhaps print to
-    (non-accessible) PDF documents.
+- `install_otp`: convenience function to install OfficeToPDF (required
+  to produce an accessible PDF file from a Word document).
+- `rmd2word()`: create word documents and accessible PDF files.
+- `rmd2ioslides(), rmd2slidy`: create ioslides/slidy presentations and
+  perhaps print to (non-accessible) PDF documents.
+- `rmd2html()`: create html documents and perhaps print to
+  (non-accessible) PDF documents.
 
 Each function provides the option to create a zip archive containing the
 output files. All the .Rmd files in a directory can be processed with
@@ -80,8 +85,8 @@ A path to the Word template document can be provided using the `doc`
 argument. If `doc` is not provided then a default template is used. See
 `?rmd2word` for details. If you include figures then the `knitr` chunk
 option `fig.alt` can be used to set the alternative text. You may find
-you need to enclose LaTeX maths environments in $$ … $$ when typesetting
-mathematics.
+you need to enclose LaTeX maths environments in \$\$ … \$\$ when
+typesetting mathematics.
 
 A path to the `OfficeToPDF.exe` file can be provided using an argument
 `dir`. If `dir` is missing then `rmd2word` will look for OfficeToPDF.exe
