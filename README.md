@@ -98,9 +98,8 @@ presentations) and `rmd2html` work in a similar way.
 
 Executing the following code will copy the file `example.Rmd` to the
 working directory and create from it output as a Word document, an html
-document and ioslides and slidy presentations. The default is to produce
-a zip file from each of these four function calls. In the working
-directory there will also be the files `example.docx`, `example.pdf` and
+document and ioslides and slidy presentations. In the working directory
+there will also be the files `example.docx`, `example.pdf` and
 `example.html`. The latter contains the slidy presentation because the
 final three calls each create `example.html`, which is overwritten.
 
