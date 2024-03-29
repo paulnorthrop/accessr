@@ -55,7 +55,10 @@ one of these is used with the order of preference \code{"ioslides"},
 \code{"slidy"} then \code{"html"}.}
 
 \item{params}{A list of named parameters to pass as the argument
-\code{params} to \code{\link[rmarkdown]{render}}.}
+\code{params} to \code{\link[rmarkdown]{render}}. In the example below,
+the file \code{example.Rmd} has a parameter \code{hide}. If \code{hide = TRUE} then
+parts of the output are hidden using the \code{knitr} chunk options \code{echo} and
+\code{eval}.}
 
 \item{zip}{A logical scalar or character vector indicating whether PDF
 files should be put into a zip archive.  If \code{zip = FALSE} then no
@@ -103,6 +106,7 @@ got_flex <- requireNamespace("flextable", quietly = TRUE)
 got_pandoc <- rmarkdown::pandoc_available("1.14")
 got_all <- got_hux && got_flex && got_pandoc
 # This example needs packages huxtable and flextable
+#
 if (got_all) {
   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
   ex_file <- sub(".Rmd", "", ex_file)
