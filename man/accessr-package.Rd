@@ -32,7 +32,7 @@ these Word documents.  The first step uses the
 \href{https://cran.r-project.org/package=rmarkdown}{rmarkdown package}
 and the \code{\link[officedown]{rdocx_document}} function from the
 officedown package. The second step uses
-\href{https://github.com/cognidox/OfficeToPDF}{OfficetoPDF}.
+\href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF}.
 
 The main functions in \code{accessr} are:
 
