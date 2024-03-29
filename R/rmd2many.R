@@ -10,16 +10,19 @@
 #'   files are created in the same directory as their respective \code{.Rmd}
 #'   file.
 #' @param outputs A character vector. Specifies the output formats required.
-#'   A subset of `c("word", "ioslides", "slidy", "html")`.
+#'   A subset of `c("word", "ioslides", "slidy", "html")`. If more than one of
+#'   \code{"ioslides"}, \code{"slidy"} and \code{"html"} are present then only
+#'   one of these is used with the order of preference \code{"ioslides"},
+#'   \code{"slidy"} then \code{"html"}.
 #' @param slide_level Passed to [`rmd2ioslides`][accessr::rmd2ioslides] via
 #'   `...`. The default `slide_level = 1` means that a level one header #
 #'   create a new non-segue slide for an ioslides presentation.
 #' @param css The argument \code{css} to be passed to
-#'   \code{\link[rmarkdown]{ioslides_presentation}},
-#'   \code{\link[rmarkdown]{slidy_presentation}} or
-#'   \code{\link[rmarkdown]{html_document}}. If \code{css = "black"}
+#'   \code{\link[rmarkdown]{ioslides_presentation}} or
+#'   \code{\link[rmarkdown]{slidy_presentation}}. If \code{css = "black"}
 #'   then \code{accessr}'s css file \code{black.css} is used, which results in
 #'   black text being used in the slides.
+#'   `css` is not used if `outputs = html`.
 #' @param add18  A logical scalar. If `TRUE` then we also create Word documents
 #'   with 18pt text.
 #' @param pdf A logical scalar. If `TRUE` then we use
@@ -28,12 +31,10 @@
 #'   \code{OfficeToPDF.exe} to create PDF files from any Word documents that
 #'   are produced.
 #' @param highlight A named list, with names a subset of
-#'   `c("word", "ioslides", "slidy", "html")`, providing the respective syntax
+#'   `c("word", "ioslides", "slidy")`, providing the respective syntax
 #'   highlighting styles passed to Pandoc for the output formats. Any syntax
-#'   highlighting provided in `css` will take precedence. If more than one of
-#'   \code{"ioslides"}, \code{"slidy"} and \code{"html"} are present then only
-#'   one of these is used with the order of preference \code{"ioslides"},
-#'   \code{"slidy"} then \code{"html"}.
+#'   highlighting provided in `css` will take precedence.
+#'   `highlight` is not used if `outputs = html`.
 #' @param params A list of named parameters to pass as the argument
 #'   \code{params} to \code{\link[rmarkdown]{render}}. In the example below,
 #'   the file `example.Rmd` has a parameter `hide`. If `hide = TRUE` then
@@ -61,8 +62,9 @@
 #'     `filename.html`.
 #'   * `filename.pdf`: a PDF document created from a Word document produced by
 #'     `rmd2word`.
-#'   * `filename.docx`: a Word document. If `add18 = TRUE` then the template
-#'     Word document has 18pt bold text.
+#'   * `filename.docx`: a Word document.
+#'   * `filename18pt.docx`: a Word document. If `add18 = TRUE` then a template
+#'     Word document with 18pt bold text is used.
 #'   * `filename.zip`: a zip file containing all the files produced.
 #' @return A list containing the following components:
 #'   \item{files }{names of all the files created.}
@@ -131,23 +133,27 @@ rmd2many <- function(x, outputs =  c("ioslides", "word"), slide_level = 1,
     if (css == "black") {
       css <- system.file(package = "accessr", "examples", "black.css")
     }
-    val <- accessr::rmd2html(x, css = css, highlight = highlight$html,
-                             params = params, zip = FALSE, pdf = pdf, ...)
+    val <- accessr::rmd2html(x, params = params, zip = FALSE, pdf = pdf, ...)
     files <- c(files, val$files)
   }
   # If Word/PDF files are required then create them
   if (is.element("word", outputs)) {
-    val <- accessr::rmd2word(x, pdf = pdf, highlight = highlight$word,
-                             params = params, zip = FALSE,  ...)
-    files <- c(files, val$files)
-    # Perhaps add an 18pt Word file
+    # Perhaps create an 18pt Word file
     # Use pdf = FALSE to avoid writing over the PDF version
     if (add18) {
       val <- accessr::rmd2word(x, doc = "18", pdf = FALSE,
-                               highlight = highlight$word,
-                               params = params, zip = FALSE, ...)
-      files <- c(files, sub(".pdf", ".docx", val$files))
+                               highlight = highlight$word, params = params,
+                               zip = FALSE, ...)
+      # Append "18pt" to the filename
+      filename <- tools::file_path_sans_ext(val$files)
+      from <- paste0(filename, ".docx")
+      to <- paste0(filename, "18pt.docx")
+      file.rename(from = from, to = to)
+      files <- c(files, to)
     }
+    val <- accessr::rmd2word(x, pdf = pdf, highlight = highlight$word,
+                             params = params, zip = FALSE,  ...)
+    files <- c(files, val$files)
   }
   # If a zip file is required then create it
   if (!requireNamespace("zip", quietly = TRUE)) {

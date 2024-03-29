@@ -26,18 +26,21 @@ files are created in the same directory as their respective \code{.Rmd}
 file.}
 
 \item{outputs}{A character vector. Specifies the output formats required.
-A subset of \code{c("word", "ioslides", "slidy", "html")}.}
+A subset of \code{c("word", "ioslides", "slidy", "html")}. If more than one of
+\code{"ioslides"}, \code{"slidy"} and \code{"html"} are present then only
+one of these is used with the order of preference \code{"ioslides"},
+\code{"slidy"} then \code{"html"}.}
 
 \item{slide_level}{Passed to \code{\link[=rmd2ioslides]{rmd2ioslides}} via
 \code{...}. The default \code{slide_level = 1} means that a level one header #
 create a new non-segue slide for an ioslides presentation.}
 
 \item{css}{The argument \code{css} to be passed to
-\code{\link[rmarkdown]{ioslides_presentation}},
-\code{\link[rmarkdown]{slidy_presentation}} or
-\code{\link[rmarkdown]{html_document}}. If \code{css = "black"}
+\code{\link[rmarkdown]{ioslides_presentation}} or
+\code{\link[rmarkdown]{slidy_presentation}}. If \code{css = "black"}
 then \code{accessr}'s css file \code{black.css} is used, which results in
-black text being used in the slides.}
+black text being used in the slides.
+\code{css} is not used if \code{outputs = html}.}
 
 \item{add18}{A logical scalar. If \code{TRUE} then we also create Word documents
 with 18pt text.}
@@ -49,12 +52,10 @@ files produced using the output \code{"ioslides"} or \code{"slidy"}. and/or
 are produced.}
 
 \item{highlight}{A named list, with names a subset of
-\code{c("word", "ioslides", "slidy", "html")}, providing the respective syntax
+\code{c("word", "ioslides", "slidy")}, providing the respective syntax
 highlighting styles passed to Pandoc for the output formats. Any syntax
-highlighting provided in \code{css} will take precedence. If more than one of
-\code{"ioslides"}, \code{"slidy"} and \code{"html"} are present then only
-one of these is used with the order of preference \code{"ioslides"},
-\code{"slidy"} then \code{"html"}.}
+highlighting provided in \code{css} will take precedence.
+\code{highlight} is not used if \code{outputs = html}.}
 
 \item{params}{A list of named parameters to pass as the argument
 \code{params} to \code{\link[rmarkdown]{render}}. In the example below,
@@ -96,8 +97,9 @@ following files
 \code{filename.html}.
 \item \code{filename.pdf}: a PDF document created from a Word document produced by
 \code{rmd2word}.
-\item \code{filename.docx}: a Word document. If \code{add18 = TRUE} then the template
-Word document has 18pt bold text.
+\item \code{filename.docx}: a Word document.
+\item \code{filename18pt.docx}: a Word document. If \code{add18 = TRUE} then a template
+Word document with 18pt bold text is used.
 \item \code{filename.zip}: a zip file containing all the files produced.
 }
 }
