@@ -63,7 +63,7 @@
 #'   \item{files }{names of all the files created.}
 #'   \item{zips }{names of all zip files created (if \code{zip = TRUE}).}
 #' @examples
-#' # Create an HTML document from example.Rmd
+#' # Create documents from example.Rmd
 #' got_hux <- requireNamespace("huxtable", quietly = TRUE)
 #' got_flex <- requireNamespace("flextable", quietly = TRUE)
 #' got_pandoc <- rmarkdown::pandoc_available("1.14")
