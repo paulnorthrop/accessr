@@ -33,7 +33,10 @@
 #'   one of these is used with the order of preference \code{"ioslides"},
 #'   \code{"slidy"} then \code{"html"}.
 #' @param params A list of named parameters to pass as the argument
-#'   \code{params} to \code{\link[rmarkdown]{render}}.
+#'   \code{params} to \code{\link[rmarkdown]{render}}. In the example below,
+#'   the file `example.Rmd` has a parameter `hide`. If `hide = TRUE` then
+#'   parts of the output are hidden using the `knitr` chunk options `echo` and
+#'   `eval`.
 #' @param zip A logical scalar or character vector indicating whether PDF
 #'   files should be put into a zip archive.  If \code{zip = FALSE} then no
 #'   zip archive is created.  Otherwise, an archive is created in each unique
@@ -69,6 +72,7 @@
 #' got_pandoc <- rmarkdown::pandoc_available("1.14")
 #' got_all <- got_hux && got_flex && got_pandoc
 #' # This example needs packages huxtable and flextable
+#' #
 #' if (got_all) {
 #'   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
 #'   ex_file <- sub(".Rmd", "", ex_file)
@@ -124,12 +128,12 @@ rmd2many <- function(x, outputs =  c("ioslides", "word"), slide_level = 1,
       css <- system.file(package = "accessr", "examples", "black.css")
     }
     val <- accessr::rmd2html(x, css = css, highlight = highlight$html,
-                             params = params, zip = FALSE, ...)
+                             params = params, zip = FALSE, pdf = pdf, ...)
     files <- c(files, val$files)
   }
   # If Word/PDF files are required then create them
   if (is.element("word", outputs)) {
-    val <- accessr::rmd2word(x, highlight = highlight$word,
+    val <- accessr::rmd2word(x, pdf = pdf, highlight = highlight$word,
                              params = params, zip = FALSE,  ...)
     files <- c(files, val$files)
     # Perhaps add an 18pt Word file
