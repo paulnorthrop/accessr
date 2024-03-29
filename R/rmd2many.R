@@ -24,7 +24,9 @@
 #'   with 18pt text.
 #' @param pdf A logical scalar. If `TRUE` then we use
 #'   [`chrome_print`][pagedown::chrome_print] to print PDF versions of HTML
-#'   files produced using the output `"ioslides"` or `"slidy"`.
+#'   files produced using the output `"ioslides"` or `"slidy"`. and/or
+#'   \code{OfficeToPDF.exe} to create PDF files from any Word documents that
+#'   are produced.
 #' @param highlight A named list, with names a subset of
 #'   `c("word", "ioslides", "slidy", "html")`, providing the respective syntax
 #'   highlighting styles passed to Pandoc for the output formats. Any syntax
@@ -72,11 +74,13 @@
 #' got_pandoc <- rmarkdown::pandoc_available("1.14")
 #' got_all <- got_hux && got_flex && got_pandoc
 #' # This example needs packages huxtable and flextable
+#' # We pass pdf = FALSE because OfficeToPDF is needed to convert Word to PDF
+#' # and this is only relevant on  Windows Operating System.
 #' #
 #' if (got_all) {
 #'   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
 #'   ex_file <- sub(".Rmd", "", ex_file)
-#'   rmd2many(ex_file, params = list(hide = TRUE), zip = TRUE)
+#'   rmd2many(ex_file, params = list(hide = TRUE), pdf = FALSE, zip = TRUE)
 #' }
 #'
 #' \dontrun{

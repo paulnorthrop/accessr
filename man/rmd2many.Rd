@@ -44,7 +44,9 @@ with 18pt text.}
 
 \item{pdf}{A logical scalar. If \code{TRUE} then we use
 \code{\link[pagedown:chrome_print]{chrome_print}} to print PDF versions of HTML
-files produced using the output \code{"ioslides"} or \code{"slidy"}.}
+files produced using the output \code{"ioslides"} or \code{"slidy"}. and/or
+\code{OfficeToPDF.exe} to create PDF files from any Word documents that
+are produced.}
 
 \item{highlight}{A named list, with names a subset of
 \code{c("word", "ioslides", "slidy", "html")}, providing the respective syntax
@@ -106,11 +108,13 @@ got_flex <- requireNamespace("flextable", quietly = TRUE)
 got_pandoc <- rmarkdown::pandoc_available("1.14")
 got_all <- got_hux && got_flex && got_pandoc
 # This example needs packages huxtable and flextable
+# We pass pdf = FALSE because OfficeToPDF is needed to convert Word to PDF
+# and this is only relevant on  Windows Operating System.
 #
 if (got_all) {
   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
   ex_file <- sub(".Rmd", "", ex_file)
-  rmd2many(ex_file, params = list(hide = TRUE), zip = TRUE)
+  rmd2many(ex_file, params = list(hide = TRUE), pdf = FALSE, zip = TRUE)
 }
 
 \dontrun{
