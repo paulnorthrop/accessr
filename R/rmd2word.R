@@ -128,7 +128,7 @@
 #'   If \code{wait = FALSE} then these values will be 0 (the success value)
 #'   even if some of the PDF files could not be produced.  The error code 17234
 #'   indicates that a PDF file was open in another application.}
-#'   \item{files }{(absolute) paths and file names of all files created .}
+#'   \item{files }{(absolute) paths and file names of all files created.}
 #'   \item{zips }{(relative) paths and names of all zip files created (if
 #'     \code{zip = TRUE}).}
 #' @references Layton, Richard. (2015) Happy collaboration with Rmd to docx.
