@@ -13,15 +13,15 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Command Line Tools to Produce Accessible Documents using R Markdown">
 <meta property="og:description" content="Provides functions to produce accessible html slides, html, Word 
-    and PDF documents from input R markdown files. Currently, the option to 
-    produce an accessible PDF file is only available on a Windows Operating 
-    System. One aspect of accessibility is providing headings that are 
-    recognised by a screen reader, providing a navigational tool for a blind or 
-    partially-sighted person. A main aim is to enable documents of different 
-    formats to be produced from a single R markdown source file using a single 
-    function call.  The render() function from the rmarkdown package 
+    and PDF documents from input R markdown files. Accessible PDF files are 
+    produced only on a Windows Operating System. One aspect of accessibility is 
+    providing headings that are recognised by a screen reader, providing a 
+    navigational tool for a blind or partially-sighted person. A main aim is to 
+    enable documents of different formats to be produced from a single R 
+    markdown source file using one function call.  The render() function 
+    from the rmarkdown package 
     &lt;https://cran.r-project.org/package=rmarkdown&gt; is used to render R markdown 
-    files. A zip file containing multiple files can be produced from a single 
+    files. A zip file containing multiple files can be produced from one 
     function call.  A user-supplied template Word document can be used to 
     determine the formatting of the output Word document. Accessible PDF files 
     are produced from Word documents using OfficeToPDF 
@@ -77,78 +77,68 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-
-
+<div class="section level1">
+<div class="page-header"><h1 id="accessr">accessr<a class="anchor" aria-label="anchor" href="#accessr"></a>
+</h1></div>
+<p><a href="https://ci.appveyor.com/project/paulnorthrop/accessr" class="external-link"><img src="https://ci.appveyor.com/api/projects/status/a314mt4b1b60tms5?svg=true" alt="Build status"></a> <a href="https://github.com/paulnorthrop/accessr/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/paulnorthrop/accessr/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <a href="https://app.codecov.io/github/paulnorthrop/accessr?branch=master" class="external-link"><img src="https://codecov.io/github/paulnorthrop/accessr/coverage.svg?branch=master" alt="Coverage Status"></a> <a href="https://cran.r-project.org/package=accessr" class="external-link"><img src="https://www.r-pkg.org/badges/version/accessr" alt="CRAN_Status_Badge"></a></p>
 <div class="section level2">
-<h2 id="accessr">accessr<a class="anchor" aria-label="anchor" href="#accessr"></a>
+<h2 id="command-line-tools-to-produce-accessible-documents-using-r-markdown">Command Line Tools to Produce Accessible Documents using R Markdown<a class="anchor" aria-label="anchor" href="#command-line-tools-to-produce-accessible-documents-using-r-markdown"></a>
 </h2>
-<p>This package provides functions to produce accessible html slides, html, Word and PDF documents from input R markdown files. One aspect of accessibility is providing headings that are recognised by a screen reader, providing a navigational tool for a blind or partially-sighted person. A main aim is to enable documents of different formats to be produced from a <strong>single</strong> R markdown source file using a single function call. The <code>render()</code> function from the <a href="https://cran.r-project.org/package=rmarkdown" class="external-link">rmarkdown package</a> is used to render R markdown files. A zip file containing multiple files can be produced from a single function call. A user-supplied template Word document can be used to determine the formatting of the output Word document. When the output format is a Word document the <code>knitr</code> chunk options <code>out.width</code> and/or <code>out.height</code> can be used to set the dimensions of a figure (R-generated or external image). This functionality is not normally available. Accessible PDF files are produced from Word documents using <a href="https://github.com/cognidox/OfficeToPDF" class="external-link">OfficeToPDF</a>. A convenience function, <code><a href="reference/install_otp.html">install_otp()</a></code> is provided to install this software. The option to print html output to (non-accessible) PDF files is also available.</p>
-<div class="section level3">
-<h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
-</h3>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Install package remotes, if necessary</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"paulnorthrop/accessr"</span><span class="op">)</span></span></code></pre></div>
-<p>If you are using RStudio then it may be a good idea to close RStudio and re-open it.</p>
+<p>This package provides functions to produce accessible html slides, html, Word and PDF documents from input R markdown files. Accessible PDF files are produced only on a Windows Operating System. One aspect of accessibility is providing headings that are recognised by a screen reader, providing a navigational tool for a blind or partially-sighted person. A main aim is to enable documents of different formats to be produced from a <strong>single</strong> R markdown source file using one function call. The <code>render()</code> function from the <a href="https://cran.r-project.org/package=rmarkdown" class="external-link">rmarkdown package</a> is used to render R markdown files. A zip file containing multiple files can be produced from one function call. A user-supplied template Word document can be used to determine the formatting of the output Word document. Accessible PDF files are produced from Word documents using <a href="https://github.com/cognidox/OfficeToPDF" class="external-link">OfficeToPDF</a>. A convenience function, <code><a href="reference/install_otp.html">install_otp()</a></code> is provided to install this software. The option to print html output to (non-accessible) PDF files is also available.</p>
+<p><strong>Additional features</strong>. When the output format is a Word document the function <code><a href="reference/ext_img.html">ext_img()</a></code> enables the knitr chunk options <code>out.width</code> and/or <code>out.height</code> to be used to set the dimensions of a figure (R-generated or external image). The function <code><a href="reference/ioslides_level.html">ioslides_level()</a></code> enables the use of the level one header # to separate slides in an ioslides presentation without producing no segue slides.</p>
 </div>
-<div class="section level3">
-<h3 id="getting-started">Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
-</h3>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://paulnorthrop.github.io/accessr/" class="external-link">accessr</a></span><span class="op">)</span></span>
-<span><span class="op">?</span><span class="va">accessr</span></span></code></pre></div>
+<div class="section level2">
+<h2 id="the-main-functions">The main functions<a class="anchor" aria-label="anchor" href="#the-main-functions"></a>
+</h2>
 <p>The main functions are:</p>
 <ul>
 <li>
-<code>install_otp</code>: convenience function to install OfficeToPDF (required to produce an accessible PDF file from a Word document).</li>
-<li>
 <code><a href="reference/rmd2word.html">rmd2word()</a></code>: create word documents and accessible PDF files.</li>
 <li>
-<code>rmd2ioslides(), rmd2slidy</code>: create ioslides/slidy presentations and perhaps print to (non-accessible) PDF documents.</li>
+<code>rmd2ioslides(), rmd2slidy()</code>: create ioslides/slidy presentations and perhaps print to (non-accessible) PDF documents.</li>
 <li>
 <code><a href="reference/rmd2html.html">rmd2html()</a></code>: create html documents and perhaps print to (non-accessible) PDF documents.</li>
+<li>
+<code><a href="reference/rmd2many.html">rmd2many()</a></code>: create HTML slides, PDF slides, Word and PDF documents from a single R markdown file.</li>
 </ul>
-<p>Each function provides the option to create a zip archive containing the output files. All the .Rmd files in a directory can be processed with one function call. Information such as <code>title</code>, <code>author</code>, <code>lang</code> etc in the YAML header in the Rmd file are used but <code>output</code> is ignored.</p>
-</div>
 <div class="section level3">
 <h3 id="rmd-to-word-to-pdf">Rmd to Word to PDF<a class="anchor" aria-label="anchor" href="#rmd-to-word-to-pdf"></a>
 </h3>
-<p>Suppose that in your current working directory you have the R markdown files <code>file1.Rmd</code> and <code>file2.Rmd</code>, a template Word file <code>your_template.docx</code> and that the file <code>OfficeToPDF.exe</code> downloaded from <a href="https://github.com/cognidox/OfficeToPDF/releases" class="external-link">OfficeToPDF releases</a> is either in your working directory or in a directory listed in <code><a href="https://rdrr.io/r/base/search.html" class="external-link">searchpaths()</a></code>. Then the following will create files <code>file1.docx</code>, <code>file2.docx</code>, <code>file1.pdf</code> and <code>file2.pdf</code> in your working directory and, unless you supply <code>zip = FALSE</code>, a zip file <code>accessr_word.zip</code> containing the two PDF files will also be created.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<p>Suppose that in your current working directory you have the R markdown files <code>file1.Rmd</code> and <code>file2.Rmd</code>, a template Word file <code>your_template.docx</code> and that the file <code>OfficeToPDF.exe</code> downloaded from <a href="https://github.com/cognidox/OfficeToPDF/releases" class="external-link">OfficeToPDF releases</a> can be accessed. The following code creates files <code>file1.docx</code>, <code>file2.docx</code>, <code>file1.pdf</code> and <code>file2.pdf</code> in your working directory and, unless you supply <code>zip = FALSE</code>, a zip file <code>accessr_word.zip</code> containing the two PDF files will also be created.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/rmd2word.html">rmd2word</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"file1"</span>, <span class="st">"file2"</span><span class="op">)</span>, doc <span class="op">=</span> <span class="st">"your_template.docx"</span><span class="op">)</span></span></code></pre></div>
-<p>A path to the Word template document can be provided using the <code>doc</code> argument. If <code>doc</code> is not provided then a default template is used. See <code><a href="reference/rmd2word.html">?rmd2word</a></code> for details. If you include figures then the <code>knitr</code> chunk option <code>fig.alt</code> can be used to set the alternative text. You may find you need to enclose LaTeX maths environments in <span class="math display">…</span> when typesetting mathematics.</p>
-<p>A path to the <code>OfficeToPDF.exe</code> file can be provided using an argument <code>dir</code>. If <code>dir</code> is missing then <code>rmd2word</code> will look for OfficeToPDF.exe in the default installation directory <code>dir</code> of <code>install_otp</code>.</p>
+<p>A path to the Word template document can be provided using the <code>doc</code> argument. If <code>doc</code> is not provided then a default template is used. See <code><a href="reference/rmd2word.html">?rmd2word</a></code> for details. If you include figures then the <code>knitr</code> chunk option <code>fig.alt</code> can be used to set the alternative text. You may find you need to enclose LaTeX maths environments in $$ … $$ when typesetting mathematics.</p>
+<p>A path to <code>OfficeToPDF.exe</code> can be provided using an argument <code>dir</code>. If <code>dir</code> is missing then <code>rmd2word</code> will look for OfficeToPDF.exe in the default installation directory <code>dir</code> of <code>install_otp</code>.</p>
 </div>
 <div class="section level3">
 <h3 id="rmd-to-ioslides">Rmd to ioslides<a class="anchor" aria-label="anchor" href="#rmd-to-ioslides"></a>
 </h3>
 <p>Similarly, the function <code>rmd2ioslides</code> produces HTML <a href="https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html" class="external-link">ioslides</a> presentations.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/rmd2ioslides.html">rmd2ioslides</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"file1"</span>, <span class="st">"file2"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>If the argument <code>pdf = TRUE</code> is supplied then the <code>chrome_print</code> function in the <code>pagedown</code> package is used to produce (non-accessible) PDF files from these slides. This requires a secure internet connection. See <code><a href="reference/rmd2ioslides.html">?rmd2ioslides</a></code>.</p>
 <p><code>rmd2slidy</code> (see <a href="https://bookdown.org/yihui/rmarkdown/slidy-presentation.html" class="external-link">slidy</a> presentations) and <code>rmd2html</code> work in a similar way.</p>
 </div>
-<div class="section level3">
-<h3 id="a-basic-example-rmd-file">A basic example Rmd file<a class="anchor" aria-label="anchor" href="#a-basic-example-rmd-file"></a>
-</h3>
-<p>Executing the following code will copy the file <code>example.Rmd</code> to the working directory and create from it output as a Word document, an html document and ioslides and slidy presentations. The default is to produce a zip file from each of these four function calls. In the working directory there will also be the files <code>example.docx</code>, <code>example.pdf</code> and <code>example.html</code>. The latter contains the slidy presentation because the final three calls each create <code>example.html</code>, which is overwritten.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+</div>
+<div class="section level2">
+<h2 id="a-basic-example-rmd-file">A basic example Rmd file<a class="anchor" aria-label="anchor" href="#a-basic-example-rmd-file"></a>
+</h2>
+<p>Executing the following code will copy the file <code>example.Rmd</code> to the working directory and create from it output as a Word document, an html document and ioslides and slidy presentations. In the working directory there will also be the files <code>example.docx</code>, <code>example.pdf</code> and <code>example.html</code>. The latter contains the slidy presentation because the final three calls each create <code>example.html</code>, which is overwritten.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rmd_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"accessr"</span>, <span class="st">"examples"</span>, <span class="st">"example.Rmd"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.copy</a></span><span class="op">(</span>from <span class="op">=</span> <span class="va">rmd_file</span>, to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/rmd2word.html">rmd2word</a></span><span class="op">(</span><span class="st">"example"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/rmd2html.html">rmd2html</a></span><span class="op">(</span><span class="st">"example"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/rmd2ioslides.html">rmd2ioslides</a></span><span class="op">(</span><span class="st">"example"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/rmd2slidy.html">rmd2slidy</a></span><span class="op">(</span><span class="st">"example"</span><span class="op">)</span></span></code></pre></div>
-<p>This example file includes examples of creating figures and tables and notes potential issues with typesetting mathematics when creating Word output. In particular, the <code>knitr</code> chunk options <code>fig.alt</code> and <code>fig.cap</code> can be used to create a separate alternative text and caption for a figure.</p>
+<p>This example file includes examples of creating figures and tables and notes potential issues with typesetting mathematics when creating Word output. In particular, the <code>knitr</code> chunk options <code>fig.alt</code> and <code>fig.cap</code> can be used to create a separate alternative text and caption for a figure. It also features the use of an input list <code>params</code> of named parameters, with a component <code>hide</code> that can be used to hide selected parts of the output.</p>
 </div>
-<div class="section level3">
-<h3 id="suggested-workflow">Suggested workflow<a class="anchor" aria-label="anchor" href="#suggested-workflow"></a>
-</h3>
-<p>I found that using <code>rmd2ioslides</code> to create presentations and then <code>rmd2word</code> to create (zip files containing) accessible PDF versions of these presentations enabled me quickly to upload files to a VLE like Moodle.</p>
+<div class="section level2">
+<h2 id="suggested-workflow">Suggested workflow<a class="anchor" aria-label="anchor" href="#suggested-workflow"></a>
+</h2>
+<p>I have used <code>rmd2ioslides</code> to create HTML lecture presentations and <code>rmd2word</code> to create accessible PDF document versions of these presentations for upload, pre- and post- lecture, to a Virtual Learning Environment (Moodle). The default setting of <code>rmd2many</code> produces these files and Word document with 18pt bold text. The latter may be particularly useful for some students. I use <code>params$hide</code> (see above) to hide selected content from the file that I share with the students prior to the lecture.</p>
 </div>
 </div>
-
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -163,7 +153,8 @@
 <div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li>GPL (&gt;= 2)</li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small>GPL (&gt;= 3)</small></li>
 </ul>
 </div>
 

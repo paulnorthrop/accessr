@@ -79,7 +79,10 @@ file.</p></dd>
 
 <dt>outputs</dt>
 <dd><p>A character vector. Specifies the output formats required.
-A subset of <code>c("word", "ioslides", "slidy", "html")</code>.</p></dd>
+A subset of <code>c("word", "ioslides", "slidy", "html")</code>. If more than one of
+<code>"ioslides"</code>, <code>"slidy"</code> and <code>"html"</code> are present then only
+one of these is used with the order of preference <code>"ioslides"</code>,
+<code>"slidy"</code> then <code>"html"</code>.</p></dd>
 
 
 <dt>slide_level</dt>
@@ -90,11 +93,11 @@ create a new non-segue slide for an ioslides presentation.</p></dd>
 
 <dt>css</dt>
 <dd><p>The argument <code>css</code> to be passed to
-<code><a href="https://pkgs.rstudio.com/rmarkdown/reference/ioslides_presentation.html" class="external-link">ioslides_presentation</a></code>,
-<code><a href="https://pkgs.rstudio.com/rmarkdown/reference/slidy_presentation.html" class="external-link">slidy_presentation</a></code> or
-<code><a href="https://pkgs.rstudio.com/rmarkdown/reference/html_document.html" class="external-link">html_document</a></code>. If <code>css = "black"</code>
+<code><a href="https://pkgs.rstudio.com/rmarkdown/reference/ioslides_presentation.html" class="external-link">ioslides_presentation</a></code> or
+<code><a href="https://pkgs.rstudio.com/rmarkdown/reference/slidy_presentation.html" class="external-link">slidy_presentation</a></code>. If <code>css = "black"</code>
 then <code>accessr</code>'s css file <code>black.css</code> is used, which results in
-black text being used in the slides.</p></dd>
+black text being used in the slides.
+<code>css</code> is not used if <code>outputs = html</code>.</p></dd>
 
 
 <dt>add18</dt>
@@ -105,22 +108,25 @@ with 18pt text.</p></dd>
 <dt>pdf</dt>
 <dd><p>A logical scalar. If <code>TRUE</code> then we use
 <code><a href="https://rdrr.io/pkg/pagedown/man/chrome_print.html" class="external-link">chrome_print</a></code> to print PDF versions of HTML
-files produced using the output <code>"ioslides"</code> or <code>"slidy"</code>.</p></dd>
+files produced using the output <code>"ioslides"</code> or <code>"slidy"</code>. and/or
+<code>OfficeToPDF.exe</code> to create PDF files from any Word documents that
+are produced.</p></dd>
 
 
 <dt>highlight</dt>
 <dd><p>A named list, with names a subset of
-<code>c("word", "ioslides", "slidy", "html")</code>, providing the respective syntax
+<code>c("word", "ioslides", "slidy")</code>, providing the respective syntax
 highlighting styles passed to Pandoc for the output formats. Any syntax
-highlighting provided in <code>css</code> will take precedence. If more than one of
-<code>"ioslides"</code>, <code>"slidy"</code> and <code>"html"</code> are present then only
-one of these is used with the order of preference <code>"ioslides"</code>,
-<code>"slidy"</code> then <code>"html"</code>.</p></dd>
+highlighting provided in <code>css</code> will take precedence.
+<code>highlight</code> is not used if <code>outputs = html</code>.</p></dd>
 
 
 <dt>params</dt>
 <dd><p>A list of named parameters to pass as the argument
-<code>params</code> to <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">render</a></code>.</p></dd>
+<code>params</code> to <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">render</a></code>. In the example below,
+the file <code>example.Rmd</code> has a parameter <code>hide</code>. If <code>hide = TRUE</code> then
+parts of the output are hidden using the <code>knitr</code> chunk options <code>echo</code> and
+<code>eval</code>.</p></dd>
 
 
 <dt>zip</dt>
@@ -163,29 +169,32 @@ following files</p><ul><li><p><code>filename.html</code>: lecture slides in <cod
 <code>filename.html</code>.</p></li>
 <li><p><code>filename.pdf</code>: a PDF document created from a Word document produced by
 <code>rmd2word</code>.</p></li>
-<li><p><code>filename.docx</code>: a Word document. If <code>add18 = TRUE</code> then the template
-Word document has 18pt bold text.</p></li>
+<li><p><code>filename.docx</code>: a Word document.</p></li>
+<li><p><code>filename18pt.docx</code>: a Word document. If <code>add18 = TRUE</code> then a template
+Word document with 18pt bold text is used.</p></li>
 <li><p><code>filename.zip</code>: a zip file containing all the files produced.</p></li>
 </ul></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Create an HTML document from example.Rmd</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Create documents from example.Rmd</span></span></span>
 <span class="r-in"><span><span class="va">got_hux</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"huxtable"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">got_flex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"flextable"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">got_pandoc</span> <span class="op">&lt;-</span> <span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_available.html" class="external-link">pandoc_available</a></span><span class="op">(</span><span class="st">"1.14"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">got_all</span> <span class="op">&lt;-</span> <span class="va">got_hux</span> <span class="op">&amp;&amp;</span> <span class="va">got_flex</span> <span class="op">&amp;&amp;</span> <span class="va">got_pandoc</span></span></span>
 <span class="r-in"><span><span class="co"># This example needs packages huxtable and flextable</span></span></span>
+<span class="r-in"><span><span class="co"># We pass pdf = FALSE because OfficeToPDF is needed to convert Word to PDF</span></span></span>
+<span class="r-in"><span><span class="co"># and this is only relevant on  Windows Operating System.</span></span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="va">got_all</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="va">ex_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"accessr"</span>, <span class="st">"examples"</span>, <span class="st">"example.Rmd"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">ex_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">sub</a></span><span class="op">(</span><span class="st">".Rmd"</span>, <span class="st">""</span>, <span class="va">ex_file</span><span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="fu">rmd2many</span><span class="op">(</span><span class="va">ex_file</span>, params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hide <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, zip <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">rmd2many</span><span class="op">(</span><span class="va">ex_file</span>, params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>hide <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, pdf <span class="op">=</span> <span class="cn">FALSE</span>, zip <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $files</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "C:/Users/Paul/AppData/Local/R/win-library/4.2/accessr/examples/example.html"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [2] "C:/Users/Paul/AppData/Local/R/win-library/4.2/accessr/examples/example_slides.pdf"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "C:/Users/Paul/AppData/Local/R/win-library/4.2/accessr/examples/example.pdf"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "C:/Users/Paul/AppData/Local/R/win-library/4.2/accessr/examples/example.docx"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "C:/Users/Paul/AppData/Local/R/win-library/4.2/accessr/examples/example.html"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2] "C:/Users/Paul/AppData/Local/R/win-library/4.2/accessr/examples/example18pt.docx"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "C:/Users/Paul/AppData/Local/R/win-library/4.2/accessr/examples/example.docx"    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $zips</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "C:/Users/Paul/AppData/Local/R/win-library/4.2/accessr/examples/example.zip"</span>

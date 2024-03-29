@@ -58,7 +58,7 @@ created.</p>
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">rmd2slidy</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  zip <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  zip <span class="op">=</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="op">!</span><span class="va">add</span><span class="op">)</span> <span class="cn">FALSE</span> <span class="kw">else</span> <span class="cn">TRUE</span>,</span>
 <span>  pdf <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  zip_pdf <span class="op">=</span> <span class="va">zip</span>,</span>
 <span>  pdf_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -151,9 +151,19 @@ Rmd files are included in the zip file created.  Otherwise, they are not
 included.</p></dd>
 
 
+<dt>params</dt>
+<dd><p>A list of named parameters to pass as the argument
+<code>params</code> to <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">render</a></code>.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Additional arguments to be passed to
-<code><a href="https://pkgs.rstudio.com/rmarkdown/reference/slidy_presentation.html" class="external-link">slidy_presentation</a></code>.</p></dd>
+<code><a href="https://pkgs.rstudio.com/rmarkdown/reference/slidy_presentation.html" class="external-link">slidy_presentation</a></code>.</p>
+<p>If <code>css = "black"</code> is passed then <code>accessr</code>'s css file
+<code>black.css</code> is used, which results in black text being used in the
+slides.</p>
+<p>This function is <strong>not</strong> vectorised with respect to arguments in
+<code>...</code>.</p></dd>
 
 </dl></div>
     <div id="value">

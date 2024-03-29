@@ -58,7 +58,7 @@ created.</p>
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">rmd2ioslides</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  zip <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  zip <span class="op">=</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="op">!</span><span class="va">add</span><span class="op">)</span> <span class="cn">FALSE</span> <span class="kw">else</span> <span class="cn">TRUE</span>,</span>
 <span>  pdf <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  zip_pdf <span class="op">=</span> <span class="va">zip</span>,</span>
 <span>  pdf_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
