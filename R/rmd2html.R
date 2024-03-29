@@ -52,7 +52,7 @@
 #'   of pdf files is produced then the individual pdf files are deleted.
 #'   Otherwise, they are not deleted.
 #' @param ... Additional arguments to be passed to
-#'   \code{\link[rmarkdown]{html_document}}.
+#'   \code{\link[rmarkdown]{html_document}} or \code{\link[rmarkdown]{render}}.
 #' @details Information such as \code{title}, \code{author}, \code{lang} etc in
 #'   the YAML header in the Rmd file are used but \code{output} is ignored.
 #'
@@ -123,7 +123,7 @@ rmd2html <- function(x, zip = TRUE, pdf = FALSE, pdf_args = list(),
     # Render the .Rmd file as an html document
     rmarkdown::render(input = rmd_files[i],
                       output_format = rmarkdown::html_document(...),
-                      quiet = quiet)
+                      quiet = quiet, ...)
   }
   res <- sapply(1:lenx, render_fun)
   res <- list(files = res)

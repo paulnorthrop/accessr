@@ -72,7 +72,7 @@ of pdf files is produced then the individual pdf files are deleted.
 Otherwise, they are not deleted.}
 
 \item{...}{Additional arguments to be passed to
-\code{\link[rmarkdown]{html_document}}.}
+\code{\link[rmarkdown]{html_document}} or \code{\link[rmarkdown]{render}}.}
 }
 \value{
 In addition to creating the html files, and perhaps zip files,
