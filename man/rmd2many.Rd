@@ -97,7 +97,7 @@ Word document has 18pt bold text.
 }
 }
 \examples{
-# Create an HTML document from example.Rmd
+# Create documents from example.Rmd
 got_hux <- requireNamespace("huxtable", quietly = TRUE)
 got_flex <- requireNamespace("flextable", quietly = TRUE)
 got_pandoc <- rmarkdown::pandoc_available("1.14")
