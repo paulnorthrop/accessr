@@ -131,7 +131,7 @@ rmd2ioslides <- function(x, zip = TRUE, pdf = FALSE, zip_pdf = zip,
   }
   # Create a list of arguments to pass to rmd2presentation()
   arguments <- list(x = x, format = "ioslides", zip = zip, pdf = pdf,
-                    zip_pdf = zip_pdf, pdf_args= pdf_args, add = add,
+                    zip_pdf = zip_pdf, pdf_args = pdf_args, add = add,
                     quiet = quiet, rm_html = rm_html, inc_rmd = inc_rmd,
                     params = params)
   arguments <- c(arguments, dots)
