@@ -174,6 +174,6 @@ rmd2html <- function(x, zip = TRUE, pdf = FALSE, pdf_args = list(),
       sapply(pdf_files, file.remove)
     }
   }
-  invisible(res)
+  return(invisible(res))
 }
 

@@ -100,7 +100,7 @@ rmd2presentation <- function(x, format = c("ioslides", "slidy"), zip = TRUE,
       sapply(pdf_files, file.remove)
     }
   }
-  invisible(res)
+  return(invisible(res))
 }
 
 #' @keywords internal
