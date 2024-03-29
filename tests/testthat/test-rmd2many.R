@@ -16,11 +16,23 @@ if (got_all) {
   test_that("rmd2many(), ioslides", {
     expect_equal(basename(res$files), "example.html")
   })
+  # slidy only
+  res <- rmd2many(ex_file, params = list(hide = TRUE), outputs = "slidy",
+                  add18 = FALSE, pdf = FALSE, zip = FALSE)
+  test_that("rmd2many(), slidy", {
+    expect_equal(basename(res$files), "example.html")
+  })
+  # html only
+  res <- rmd2many(ex_file, params = list(hide = TRUE), outputs = "html",
+                  add18 = FALSE, pdf = FALSE, zip = FALSE)
+  test_that("rmd2many(), html", {
+    expect_equal(basename(res$files), "example.html")
+  })
   # word only
   res <- rmd2many(ex_file, params = list(hide = TRUE), outputs = "word",
-                  add18 = FALSE, pdf = FALSE, zip = FALSE)
+                  add18 = TRUE, pdf = FALSE, zip = FALSE)
   test_that("rmd2many(), word", {
-    expect_equal(basename(res$files), "example.docx")
+    expect_equal(basename(res$files), c("example18pt.docx", "example.docx"))
   })
 }
 
