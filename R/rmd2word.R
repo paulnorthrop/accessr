@@ -262,9 +262,9 @@ rmd2word <- function(x, doc = "accessr",
   }
   # Create Word documents
   files <- sapply(1:lenx, docx_fun)
-  if (inc_word) {
+  if (inc_word & pdf) {
     files <- c(files, sub(".docx", ".pdf", files))
-  } else {
+  } else if (pdf) {
     files <- sub(".docx", ".pdf", files)
   }
   # Convert Word documents to PDF documents
@@ -329,6 +329,6 @@ rmd2word <- function(x, doc = "accessr",
   if (rm_word) {
     sapply(word_files, file.remove)
   }
-  invisible(res)
+  return(invisible(res))
 }
 
