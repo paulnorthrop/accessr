@@ -60,7 +60,7 @@ the level one header #.</p>
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>one</dt>
-<dd><p>A logical scalar. If <code>one = TRUE</code> then a new Lua filter is
+<dd><p>A logical scalar. If <code>one = TRUE</code> a new Lua filter is
 used that enables <code>slide_level = 1</code> to set the slide separator as
 the level one header #. A modified <code>default.css</code> css file is also used
 that adjusts the font sizes for the header levels accordingly, so that the
@@ -95,8 +95,8 @@ fully accessibility requirements if the headings in the document start at
 level one.</p>
 <p>In rmarkdown version 2.25, passing <code>slide_level= 1</code> to
 <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/ioslides_presentation.html" class="external-link">ioslides_presentation</a></code> does <strong>not</strong> force a new
-non-segue slide when a level one header # is used: it still attempts to
-place all content between # and the next ## on a grey segue slide and the
+non-segue slide when a level one header # is used: it places
+all content between # and the next ## on a grey segue slide and the
 behaviour content of the resulting slides is not desirable. Executing
 the <code>ioslides_level</code> function replaces <code>rmarkdown</code>'s Lua filter
 <code>ioslides_presentation.lua</code> with one that has been modified so that
