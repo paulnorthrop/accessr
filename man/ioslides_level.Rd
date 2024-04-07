@@ -7,7 +7,7 @@
 ioslides_level(one = TRUE)
 }
 \arguments{
-\item{one}{A logical scalar. If \code{one = TRUE} then a new Lua filter is
+\item{one}{A logical scalar. If \code{one = TRUE} a new Lua filter is
 used that enables \code{slide_level = 1} to set the slide separator as
 the level one header #. A modified \code{default.css} css file is also used
 that adjusts the font sizes for the header levels accordingly, so that the
@@ -44,8 +44,8 @@ level one.
 
 In rmarkdown version 2.25, passing \code{slide_level= 1} to
 \code{\link[rmarkdown]{ioslides_presentation}} does \strong{not} force a new
-non-segue slide when a level one header # is used: it still attempts to
-place all content between # and the next ## on a grey segue slide and the
+non-segue slide when a level one header # is used: it places
+all content between # and the next ## on a grey segue slide and the
 behaviour content of the resulting slides is not desirable. Executing
 the \code{ioslides_level} function replaces \code{rmarkdown}'s Lua filter
 \code{ioslides_presentation.lua} with one that has been modified so that

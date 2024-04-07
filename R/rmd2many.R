@@ -49,7 +49,7 @@
 #'   extension) then these names are used to name the zip archives.  The names
 #'   are recycled to the length of the number of unique directories if
 #'   necessary.
-#' @param ... Additional arguments passed to
+#' @param ... Additional arguments to be passed to
 #'   [`rmd2ioslides`][accessr::rmd2ioslides],
 #'   [`rmd2slidy`][accessr::rmd2slidy],
 #'   [`rmd2word`][accessr::rmd2word] or
@@ -69,6 +69,10 @@
 #' @return A list containing the following components:
 #'   \item{files }{names of all the files created.}
 #'   \item{zips }{names of all zip files created (if \code{zip = TRUE}).}
+#' @seealso \code{\link{install_otp}} to install
+#'   \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF}.
+#' @seealso \code{\link{rmd2word}}, \code{\link{rmd2ioslides}},
+#'   \code{\link{rmd2slidy}}, \code{\link{rmd2html}}.
 #' @examples
 #' # Create documents from example.Rmd
 #' got_hux <- requireNamespace("huxtable", quietly = TRUE)

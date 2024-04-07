@@ -8,15 +8,15 @@ Authors@R: person(c("Paul", "J."), "Northrop", email = "p.northrop@ucl.ac.uk",
 Description: Provides functions to produce accessible HTML slides, HTML, Word 
     and PDF documents from input R markdown files. Accessible PDF files are 
     produced only on a Windows Operating System. One aspect of accessibility is 
-    providing headings that are recognised by a screen reader, providing a 
-    navigational tool for a blind or partially-sighted person. A main aim is to 
-    enable documents of different formats to be produced from a single R 
-    markdown source file using one function call.  The render() function 
-    from the 'rmarkdown' package 
-    <https://cran.r-project.org/package=rmarkdown> is used to render R markdown 
-    files. A zip file containing multiple files can be produced from one 
+    providing a headings structure that is recognised by a screen reader, 
+    providing a navigational tool for a blind or partially-sighted person. A 
+    key aim is to produce documents of different formats easily 
+    from each of a collection of R markdown source files.  Input R markdown 
+    files are rendered using the render() function from the 'rmarkdown' 
+    package <https://cran.r-project.org/package=rmarkdown>. 
+    A zip file containing multiple output files can be produced from one 
     function call.  A user-supplied template Word document can be used to 
-    determine the formatting of the output Word document. Accessible PDF files 
+    determine the formatting of an output Word document. Accessible PDF files 
     are produced from Word documents using 'OfficeToPDF' 
     <https://github.com/cognidox/OfficeToPDF>.  A convenience
     function, install_otp() is provided to install this software. The option to 

@@ -8,16 +8,17 @@
 markdown}
 \description{
 This package provides functions to produce accessible html and PDF documents
-from input R markdown files. Currently, \strong{accessr} only provides the option
-to produce accessible PDF files on a Windows Operating System. One aspect of
-accessibility is providing headings that are recognised by a screen reader,
-providing a navigational tool for a blind or partially-sighted person. A
-main aim is to enable documents of different formats to be produced from a
-\strong{single} R markdown source file using a single function call. A
-user-supplied template Word document can be used to determine the formatting
-of the output Word document. Similar functions produce html slides and html
-documents. A zip file containing multiple files can be produced. The option
-to print html output to (non-accessible) PDF files is also available.
+from input R markdown files. Currently, \strong{accessr} only provides the
+option to produce accessible PDF files on a Windows Operating System. One
+aspect of accessibility is providing a headings structure that is recognised
+by a screen reader, providing a navigational tool for a blind or
+partially-sighted person. A key aim is to produce documents of different
+formats from each of a collection of R markdown source files.
+A user-supplied template Word document can be used to determine the
+formatting of an output Word document. Similar functions produce html
+slides and html documents. A zip file containing multiple files
+can be produced. The option to print html output to (non-accessible) PDF
+files is also available.
 }
 \details{
 See the \href{https://paulnorthrop.github.io/accessr/}{accessr
@@ -76,9 +77,9 @@ Richard Iannone (2021). rmarkdown: Dynamic Documents for R. R package
 version 2.9. \url{https://rmarkdown.rstudio.com}.
 }
 \seealso{
-\code{\link{install_otp}}, \code{\link{rmd2word}},
-\code{\link{rmd2html}}, \code{\link{rmd2ioslides}},
-\code{\link{rmd2slidy}}, \code{\link{ext_img}}.
+\code{\link{install_otp}}, \code{\link{rmd2many}},
+\code{\link{rmd2word}}, \code{\link{rmd2ioslides}},
+\code{\link{rmd2slidy}}, \code{\link{rmd2html}}.
 }
 \author{
 \strong{Maintainer}: Paul J. Northrop \email{p.northrop@ucl.ac.uk} [copyright holder]

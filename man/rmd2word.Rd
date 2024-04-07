@@ -200,8 +200,8 @@ R Markdown from RStudio article.
 \code{\link{install_otp}} to install
 \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF}.
 
-\code{\link{rmd2ioslides}}, \code{\link{rmd2slidy}},
-\code{\link{rmd2html}} for other output formats.
+\code{\link{rmd2word}}, \code{\link{rmd2ioslides}},
+\code{\link{rmd2slidy}}, \code{\link{rmd2html}} for other output formats.
 
 The \href{https://paulnorthrop.github.io/accessr/}{accessr
 package page on Github}. In particular, the README file suggests copying

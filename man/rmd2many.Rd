@@ -73,7 +73,7 @@ extension) then these names are used to name the zip archives.  The names
 are recycled to the length of the number of unique directories if
 necessary.}
 
-\item{...}{Additional arguments passed to
+\item{...}{Additional arguments to be passed to
 \code{\link[=rmd2ioslides]{rmd2ioslides}},
 \code{\link[=rmd2slidy]{rmd2slidy}},
 \code{\link[=rmd2word]{rmd2word}} or
@@ -123,4 +123,11 @@ if (got_all) {
 # Create multiple documents files from your files file1.Rmd and file2.Rmd
 rmd2many(c("file1", "file2"))
 }
+}
+\seealso{
+\code{\link{install_otp}} to install
+\href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF}.
+
+\code{\link{rmd2word}}, \code{\link{rmd2ioslides}},
+\code{\link{rmd2slidy}}, \code{\link{rmd2html}}.
 }

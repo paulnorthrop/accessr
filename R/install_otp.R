@@ -1,6 +1,6 @@
 #' Install OfficeToPDF
 #'
-#' Downloads the executable file \code{OfficeToPDF.exe} from
+#' Downloads \code{OfficeToPDF.exe} from
 #' \url{https://github.com/cognidox/OfficeToPDF/releases} and copies it to
 #' a suitable location, by default `system.file(package = "accessr")`.
 #'
