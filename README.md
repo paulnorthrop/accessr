@@ -42,8 +42,8 @@ without producing no segue slides.
 The main functions are:
 
 - `rmd2word()`: create word documents and accessible PDF files.
-- `rmd2ioslides(), rmd2slidy()`: create ioslides/slidy presentations and
-  perhaps print to (non-accessible) PDF documents.
+- `rmd2ioslides()`, `rmd2slidy()`: create ioslides/slidy presentations
+  and perhaps print to (non-accessible) PDF documents.
 - `rmd2html()`: create html documents and perhaps print to
   (non-accessible) PDF documents.
 - `rmd2many()`: create HTML slides, PDF slides, Word and PDF documents
