@@ -8,8 +8,6 @@ got_flex <- requireNamespace("flextable", quietly = TRUE)
 got_pandoc <- rmarkdown::pandoc_available("1.14")
 got_all <- got_hux && got_flex && got_pandoc
 
-got_all <- TRUE
-
 # Check that rmd2html() returns the correct file names
 # Set pdf = FALSE to avoid using pagedown::chrome_print()
 
