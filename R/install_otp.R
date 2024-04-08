@@ -44,7 +44,7 @@ install_otp <- function(dir, url, method, quiet = TRUE, ...) {
   }
   if (!requireNamespace("utils", quietly = TRUE)) {
     stop("The 'utils' package is required. Have you removed it?",
-         call.= FALSE)
+         call. = FALSE)
   }
   val <- utils::download.file(url = url, destfile = dir, method = method,
                               quiet = quiet, mode = "wb", ...)
