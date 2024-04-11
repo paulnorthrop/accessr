@@ -2,7 +2,6 @@
 
 export(ext_img)
 export(install_otp)
-export(ioslides_level)
 export(rmd2html)
 export(rmd2ioslides)
 export(rmd2many)
