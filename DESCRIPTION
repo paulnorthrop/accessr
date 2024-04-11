@@ -39,6 +39,7 @@ Suggests:
     png,
     tools,
     utils,
+    xfun,
     zip,
     testthat (>= 3.0.0)
 SystemRequirements: OfficeToPDF - https://github.com/cognidox/OfficeToPDF,
