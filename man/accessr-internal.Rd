@@ -19,6 +19,8 @@
 \alias{base64_encode_images}
 \alias{process_images}
 \alias{process_html_res}
+\alias{stop2}
+\alias{normalized_relative_to}
 \title{Internal accessr functions}
 \usage{
 rmd2presentation(
@@ -96,6 +98,10 @@ base64_encode_images(html)
 process_images(html, processor)
 
 process_html_res(html, reg, processor)
+
+stop2(...)
+
+normalized_relative_to(dir, file)
 }
 \description{
 Internal accessr functions

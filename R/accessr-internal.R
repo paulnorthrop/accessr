@@ -226,7 +226,7 @@ ioslides_presentation_accessr <- function(number_sections = FALSE,
   # pagedtables
   if (identical(df_print, "paged")) {
     extra_dependencies <- append(extra_dependencies,
-                                 list(html_dependency_pagedtable()))
+                                 list(rmarkdown::html_dependency_pagedtable()))
 
   }
 
@@ -320,7 +320,9 @@ ioslides_presentation_accessr <- function(number_sections = FALSE,
 
     # number sections
     if (number_sections)
-      args <- c(args, pandoc_lua_filter_args(pkg_file_lua("number-sections.lua")))
+      args <- c(args,
+        rmarkdown::pandoc_lua_filter_args(
+          rmarkdown::pkg_file_lua("number-sections.lua")))
     lua_writer <- file.path(dirname(input_file), "ioslides_presentation.lua")
     # The input directory may not be writable (on e.g. Shiny Server), so write
     # to the output directory in this case. We don't always do this since
@@ -641,4 +643,17 @@ process_html_res <- function(html, reg, processor) {
     )
   })
   html
+}
+
+#' @keywords internal
+#' @rdname accessr-internal
+stop2 <- function(...) stop(..., call. = FALSE)
+
+# A variant of relative_to that normalizes its inputs.
+#' @keywords internal
+#' @rdname accessr-internal
+normalized_relative_to <- function(dir, file) {
+  relative_to(
+    normalize_path(dir, must_work = FALSE),
+    normalize_path(file, must_work = FALSE))
 }
