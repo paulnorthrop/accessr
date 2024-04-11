@@ -291,6 +291,10 @@ ioslides_presentation_accessr <- function(number_sections = FALSE,
       logo_path <- logo
       if (!self_contained) {
         # use same extension as specified logo (default is png if unspecified)
+        if (!requireNamespace("xfun", quietly = TRUE)) {
+          stop("The 'xfun' package is required. Please install it.",
+               call.= FALSE)
+        }
         logo_ext <- xfun::file_ext(logo)
         if (nchar(logo_ext) < 1)
           logo_ext <- "png"
@@ -405,6 +409,10 @@ ioslides_presentation_accessr <- function(number_sections = FALSE,
     if (self_contained) {
       slides_lines <- base64_encode_images(slides_lines)
       if (!is.null(logo)) {
+        if (!requireNamespace("xfun", quietly = TRUE)) {
+          stop("The 'xfun' package is required. Please install it.",
+               call.= FALSE)
+        }
         logo_base64 <- if (grepl("^data:", logo)) logo else xfun::base64_uri(logo)
         output_lines <- gsub(logo_placeholder, logo_base64, output_lines, fixed = TRUE)
       }
@@ -453,6 +461,10 @@ html_dependency_ioslides <- function(slide_level) {
     src_path <- pkg_file("ioslides/ioslides-13.5.1", package = "accessr")
   } else {
     src_path <- pkg_file("rmd/ioslides/ioslides-13.5.1", package = "rmarkdown")
+  }
+  if (!requireNamespace("htmltools", quietly = TRUE)) {
+    stop("The 'htmltools' package is required. Please install it.",
+         call.= FALSE)
   }
   htmltools::htmlDependency(
     name = "ioslides",
@@ -564,6 +576,10 @@ dir_exists <- function(x) {
 citeproc_required <- function(yaml_front_matter,
                               input_lines = NULL) {
   # TODO: remove the hack below after BETS is updated on CRAN https://github.com/nmecsys/BETS/pull/18
+  if (!requireNamespace("xfun", quietly = TRUE)) {
+    stop("The 'xfun' package is required. Please install it.",
+         call.= FALSE)
+  }
   if (tryCatch(xfun::check_old_package('BETS', '0.4.9'), error = function(e) FALSE)) return(FALSE)
   (
     is.null(yaml_front_matter$citeproc) ||
@@ -614,6 +630,10 @@ base64_encode_images <- function(html) {
   encode <- function(img_src, src) {
     in_file <- utils::URLdecode(src)
     if (length(in_file) && file.exists(in_file)) {
+      if (!requireNamespace("xfun", quietly = TRUE)) {
+        stop("The 'xfun' package is required. Please install it.",
+             call.= FALSE)
+      }
       img_src <- sub(src, xfun::base64_uri(in_file), img_src, fixed = TRUE)
     }
     img_src
