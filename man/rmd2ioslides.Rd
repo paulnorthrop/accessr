@@ -130,7 +130,7 @@ got_all <- got_hux && got_flex && got_pandoc
 if (got_all) {
   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
   ex_file <- sub(".Rmd", "", ex_file)
-  rmd2ioslides(ex_file)
+  rmd2ioslides(ex_file, slide_level = 1)
 }
 
 \dontrun{

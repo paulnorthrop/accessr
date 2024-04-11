@@ -100,7 +100,7 @@
 #' if (got_all) {
 #'   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
 #'   ex_file <- sub(".Rmd", "", ex_file)
-#'   rmd2ioslides(ex_file)
+#'   rmd2ioslides(ex_file, slide_level = 1)
 #' }
 #'
 #' \dontrun{
@@ -124,11 +124,11 @@ rmd2ioslides <- function(x, zip = if (length(x) == 1 & !add) FALSE else TRUE,
   # If slide_level has been set to 1 then replace rmarkdown's Lua filter and
   # default css file with ones designed to use level one headers to separate
   # slides
-  if (!is.null(dots$slide_level) && dots$slide_level == 1) {
-    ioslides_level(one = TRUE)
-  } else {
-    ioslides_level(one = FALSE)
-  }
+#  if (!is.null(dots$slide_level) && dots$slide_level == 1) {
+#    ioslides_level(one = TRUE)
+#  } else {
+#    ioslides_level(one = FALSE)
+#  }
   # Create a list of arguments to pass to rmd2presentation()
   arguments <- list(x = x, format = "ioslides", zip = zip, pdf = pdf,
                     zip_pdf = zip_pdf, pdf_args = pdf_args, add = add,
@@ -138,7 +138,7 @@ rmd2ioslides <- function(x, zip = if (length(x) == 1 & !add) FALSE else TRUE,
   val <- do.call(rmd2presentation, arguments)
 
   # Return to rmarkdown's defaults
-  ioslides_level(one = FALSE)
+#  ioslides_level(one = FALSE)
   return(invisible(val))
 }
 
