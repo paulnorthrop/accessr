@@ -4,6 +4,21 @@
 \alias{accessr-internal}
 \alias{rmd2presentation}
 \alias{accessr_zip}
+\alias{ioslides_presentation_accessr}
+\alias{html_dependency_ioslides}
+\alias{check_math_argument}
+\alias{mathjax_to_math}
+\alias{pkg_file}
+\alias{devtools_loaded}
+\alias{dir_exists}
+\alias{citeproc_required}
+\alias{read_utf8}
+\alias{write_utf8}
+\alias{is_windows}
+\alias{pandoc2.0}
+\alias{base64_encode_images}
+\alias{process_images}
+\alias{process_html_res}
 \title{Internal accessr functions}
 \usage{
 rmd2presentation(
@@ -23,6 +38,64 @@ rmd2presentation(
 )
 
 accessr_zip(x, dnames, udnames, zipfile, add, extension)
+
+ioslides_presentation_accessr(
+  number_sections = FALSE,
+  logo = NULL,
+  slide_level = 2,
+  incremental = FALSE,
+  fig_width = 7.5,
+  fig_height = 4.5,
+  fig_retina = 2,
+  fig_caption = TRUE,
+  dev = "png",
+  df_print = "default",
+  smart = TRUE,
+  self_contained = TRUE,
+  widescreen = FALSE,
+  smaller = FALSE,
+  transition = "default",
+  math_method = "mathjax",
+  mathjax = "default",
+  analytics = NULL,
+  template = NULL,
+  css = NULL,
+  includes = NULL,
+  keep_md = FALSE,
+  lib_dir = NULL,
+  md_extensions = NULL,
+  pandoc_args = NULL,
+  extra_dependencies = NULL,
+  ...
+)
+
+html_dependency_ioslides(slide_level)
+
+check_math_argument(math)
+
+mathjax_to_math(mathjax, math)
+
+pkg_file(..., package = "rmarkdown", mustWork = FALSE)
+
+devtools_loaded(x)
+
+dir_exists(x)
+
+citeproc_required(yaml_front_matter, input_lines = NULL)
+
+read_utf8(file)
+
+write_utf8(text, con, ...)
+
+is_windows()
+
+pandoc2.0()
+
+base64_encode_images(html)
+
+process_images(html, processor)
+
+process_html_res(html, reg, processor)
 }
 \description{
 Internal accessr functions
