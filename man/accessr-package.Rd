@@ -50,10 +50,6 @@ OfficeToPDF, to create PDF files from Word documents in
 work when the output format is a Word document
 \item \code{\link{rmd2ioslides}}: create ioslides presentations and
 perhaps print to (non-accessible) PDF documents.
-
-\code{\link{ioslides_level}}: enable the use of
-the level one header # to separate slides in an ioslides presentation
-without producing segue slides.
 \item \code{\link{rmd2slidy}}: create slidy presentations and perhaps
 print to (non-accessible) PDF documents..
 \item \code{\link{rmd2html}}: create html documents and perhaps print to
