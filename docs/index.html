@@ -17,17 +17,17 @@
     produced only on a Windows Operating System. One aspect of accessibility is 
     providing a headings structure that is recognised by a screen reader, 
     providing a navigational tool for a blind or partially-sighted person. A 
-    key aim is to produce documents of different formats easily 
-    from each of a collection of R markdown source files.  Input R markdown 
-    files are rendered using the render() function from the rmarkdown 
-    package &lt;https://cran.r-project.org/package=rmarkdown&gt;. 
-    A zip file containing multiple output files can be produced from one 
-    function call.  A user-supplied template Word document can be used to 
-    determine the formatting of an output Word document. Accessible PDF files 
-    are produced from Word documents using OfficeToPDF 
-    &lt;https://github.com/cognidox/OfficeToPDF&gt;.  A convenience
-    function, install_otp() is provided to install this software. The option to 
-    print HTML output to (non-accessible) PDF files is also available.  ">
+    key aim is to produce documents of different formats easily from each of a 
+    collection of R markdown source files. Input R markdown files are rendered 
+    using the render() function from the rmarkdown package 
+    &lt;https://cran.r-project.org/package=rmarkdown&gt;. A zip file containing 
+    multiple output files can be produced from one function call. A 
+    user-supplied template Word document can be used to determine the 
+    formatting of an output Word document. Accessible PDF files are produced 
+    from Word documents using OfficeToPDF 
+    &lt;https://github.com/cognidox/OfficeToPDF&gt;. A convenience function, 
+    install_otp() is provided to install this software. The option to print 
+    HTML output to (non-accessible) PDF files is also available.  ">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -85,7 +85,7 @@
 <h2 id="command-line-tools-to-produce-accessible-documents-using-r-markdown">Command Line Tools to Produce Accessible Documents using R Markdown<a class="anchor" aria-label="anchor" href="#command-line-tools-to-produce-accessible-documents-using-r-markdown"></a>
 </h2>
 <p>This package provides functions to produce accessible html slides, html, Word and PDF documents from input R markdown files. Accessible PDF files are produced only on a Windows Operating System. One aspect of accessibility is providing headings that are recognised by a screen reader, providing a navigational tool for a blind or partially-sighted person. A main aim is to enable documents of different formats to be produced from a <strong>single</strong> R markdown source file using one function call. The <code>render()</code> function from the <a href="https://cran.r-project.org/package=rmarkdown" class="external-link">rmarkdown package</a> is used to render R markdown files. A zip file containing multiple files can be produced from one function call. A user-supplied template Word document can be used to determine the formatting of the output Word document. Accessible PDF files are produced from Word documents using <a href="https://github.com/cognidox/OfficeToPDF" class="external-link">OfficeToPDF</a>. A convenience function, <code><a href="reference/install_otp.html">install_otp()</a></code> is provided to install this software. The option to print html output to (non-accessible) PDF files is also available.</p>
-<p><strong>Additional features</strong>. When the output format is a Word document the function <code><a href="reference/ext_img.html">ext_img()</a></code> enables the knitr chunk options <code>out.width</code> and/or <code>out.height</code> to be used to set the dimensions of a figure (R-generated or external image). The function <code><a href="reference/ioslides_level.html">ioslides_level()</a></code> enables the use of the level one header # to separate slides in an ioslides presentation without producing no segue slides.</p>
+<p><strong>Additional features</strong>. When the output format is a Word document the function <code><a href="reference/ext_img.html">ext_img()</a></code> enables the knitr chunk options <code>out.width</code> and/or <code>out.height</code> to be used to set the dimensions of a figure (R-generated or external image). Passing <code>slide_level = 1</code> to <code><a href="reference/rmd2ioslides.html">rmd2ioslides()</a></code> enables the use of the level one header # to separate slides in an ioslides presentation without producing grey segue slides.</p>
 </div>
 <div class="section level2">
 <h2 id="the-main-functions">The main functions<a class="anchor" aria-label="anchor" href="#the-main-functions"></a>
