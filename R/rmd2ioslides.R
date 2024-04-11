@@ -57,11 +57,9 @@
 #' @param params A list of named parameters to pass as the argument
 #'   \code{params} to \code{\link[rmarkdown]{render}}.
 #' @param ... Additional arguments passed to
-#'   \code{\link[rmarkdown]{ioslides_presentation}}. If \code{slide_level = 1}
-#'   is passed then \code{\link{ioslides_level}} is called with
-#'   \code{one = TRUE} so that a level one header # creates a new non-segue
-#'   slide. After rendering, \code{\link{ioslides_level}} is called with
-#'   \code{one = FALSE}, to return to the \code{rmarkdown} defaults.
+#'   \code{\link[rmarkdown]{ioslides_presentation}}. Pass
+#'   \code{slide_level = 1} if you want a level one header # to create a new
+#'   non-segue slide.
 #'
 #'   If \code{css = "black"} is passed then \code{accessr}'s css file
 #'   \code{black.css} is used, which results in black text being used in the
@@ -79,6 +77,39 @@
 #'   The \code{\link[rmarkdown]{render}} function, with the argument
 #'   \code{output_file =} \code{\link[rmarkdown]{ioslides_presentation}}
 #'   creates the ioslides html files.
+#'
+#' The function \code{\link[rmarkdown]{ioslides_presentation}} has an
+#' argument \code{slide_level} that sets the header level used as a slide
+#' separator. The Lua filter \code{ioslides_presentation.lua} in
+#' the \code{\link[rmarkdown]{rmarkdown}} package uses
+#' any content between headers of level \code{slide_level} to create a segue
+#' slide, which has a grey background and is intended only to contain a section
+#' heading.
+#'
+#' In particular, under the default, \code{slide_level = 2}, content
+#' between a level one header # and the next level two header ## is formatted
+#' as a separate grey segue slide. If we do not want segue slides then we must
+#' avoid using level one headers. However, for reasons of document
+#' accessibility, we may want to use level one headers to separate slides.
+#' For example, if we wish to create an ioslides presentation and a Word
+#' document from the same source Rmd file then the Word document will only meet
+#' fully accessibility requirements if the headings in the document start at
+#' level one.
+#'
+#' In rmarkdown version 2.25, passing \code{slide_level = 1} to
+#' \code{\link[rmarkdown]{ioslides_presentation}} does \strong{not} force a new
+#' non-segue slide when a level one header # is used: it places
+#' all content between # and the next ## on a grey segue slide and the
+#' behaviour content of the resulting slides is not desirable. Passing
+#' `slide_level = 1` to `rmd2ioslides()` replaces \code{rmarkdown}'s Lua filter
+#' \code{ioslides_presentation.lua} with one that has been modified so that
+#' passing \code{slide_level = 1} **will** start a new non-segue slide.
+#' A modified \code{default.css} css file is also used
+#' that adjusts the font sizes for the header levels accordingly, so that the
+#' level one header has a larger font than the level two header.
+#' For values of \code{slide_level} greater than or equal to 2
+#' \code{\link[rmarkdown]{ioslides_presentation}} will behave as usual.
+#'
 #' @return In addition to creating the html files, and perhaps zip files,
 #'   a list containing the following (character vector) components is
 #'   returned invisibly:
@@ -121,14 +152,6 @@ rmd2ioslides <- function(x, zip = if (length(x) == 1 & !add) FALSE else TRUE,
   if (!is.null(dots$css) && dots$css == "black") {
     dots$css <- system.file(package = "accessr", "examples", "black.css")
   }
-  # If slide_level has been set to 1 then replace rmarkdown's Lua filter and
-  # default css file with ones designed to use level one headers to separate
-  # slides
-#  if (!is.null(dots$slide_level) && dots$slide_level == 1) {
-#    ioslides_level(one = TRUE)
-#  } else {
-#    ioslides_level(one = FALSE)
-#  }
   # Create a list of arguments to pass to rmd2presentation()
   arguments <- list(x = x, format = "ioslides", zip = zip, pdf = pdf,
                     zip_pdf = zip_pdf, pdf_args = pdf_args, add = add,
@@ -136,9 +159,6 @@ rmd2ioslides <- function(x, zip = if (length(x) == 1 & !add) FALSE else TRUE,
                     params = params)
   arguments <- c(arguments, dots)
   val <- do.call(rmd2presentation, arguments)
-
-  # Return to rmarkdown's defaults
-#  ioslides_level(one = FALSE)
   return(invisible(val))
 }
 
