@@ -179,9 +179,9 @@ got_all <- got_hux && got_flex && got_pandoc
 # function accessr::install_otp
 if (got_all) {
   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
-  ex_file <- sub(".Rmd", "", ex_file)
   file.copy(ex_file, tdir <- tempdir(check = TRUE), overwrite = TRUE)
   ex_file <- list.files(tdir, pattern = "example.Rmd", full.names = TRUE)
+  ex_file <- sub(".Rmd", "", ex_file)
   rmd2word(ex_file, pdf = FALSE)
 }
 }
