@@ -13,7 +13,10 @@ install_otp(dir, url, method, quiet = TRUE, ...)
 \code{system.file(package = "accessr")}. This choice should enable
 \code{OfficeToPDF.exe} to be found but there may be a problem if
 \code{\link{.libPaths}} refers to a cloud storage directory, such as
-OneDrive.}
+OneDrive.
+
+If \code{dir} is not supplied, e.g. the call is \code{install_otp()}, then an error
+is thrown and \code{dir = "accessr"} is suggested.}
 
 \item{url}{URL from which to download \code{OfficeToPDF.exe}.  If this is
 missing then
@@ -45,8 +48,4 @@ is forced.
 \note{
 \code{OfficeToPDF.exe} is used to create PDF files from Word
 documents in \code{\link{rmd2word}}.
-}
-\examples{
-# If dir is not supplied install_otp stops and dir = "accessr" is suggested
-install_otp()
 }

@@ -11,6 +11,9 @@
 #'   \code{OfficeToPDF.exe} to be found but there may be a problem if
 #'   \code{\link{.libPaths}} refers to a cloud storage directory, such as
 #'   OneDrive.
+#'
+#'   If `dir` is not supplied, e.g. the call is `install_otp()`, then an error
+#'   is thrown and `dir = "accessr"` is suggested.
 #' @param url URL from which to download \code{OfficeToPDF.exe}.  If this is
 #'   missing then
 #'   \url{https://github.com/cognidox/OfficeToPDF/releases/download/v1.9.0.2/OfficeToPDF.exe}
@@ -27,9 +30,6 @@
 #' @note \code{OfficeToPDF.exe} is used to create PDF files from Word
 #'   documents in \code{\link{rmd2word}}.
 #' @return See the \strong{Value} section of \code{\link[utils]{download.file}}.
-#' @examples
-#' # If dir is not supplied install_otp stops and dir = "accessr" is suggested
-#' install_otp()
 #' @export
 install_otp <- function(dir, url, method, quiet = TRUE, ...) {
   if (missing(dir)) {
