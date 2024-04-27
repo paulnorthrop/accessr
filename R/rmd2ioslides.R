@@ -57,7 +57,7 @@
 #' @param params A list of named parameters to pass as the argument
 #'   \code{params} to \code{\link[rmarkdown]{render}}.
 #' @param ... Additional arguments passed to
-#'   \code{\link[rmarkdown]{ioslides_presentation}}. Pass
+#'   \code{\link[rmarkdown]{ioslides_presentation}}. Pass (the default)
 #'   \code{slide_level = 1} if you want a level one header # to create a new
 #'   non-segue slide.
 #'
@@ -100,15 +100,17 @@
 #' \code{\link[rmarkdown]{ioslides_presentation}} does \strong{not} force a new
 #' non-segue slide when a level one header # is used: it places
 #' all content between # and the next ## on a grey segue slide and the
-#' behaviour content of the resulting slides is not desirable. Passing
+#' behaviour content of the resulting slides is not as intended. Passing
 #' `slide_level = 1` to `rmd2ioslides()` replaces \code{rmarkdown}'s Lua filter
-#' \code{ioslides_presentation.lua} with one that has been modified so that
+#' \code{ioslides_presentation.lua} with one that has been modified, so that
 #' passing \code{slide_level = 1} **will** start a new non-segue slide.
 #' A modified \code{default.css} css file is also used
 #' that adjusts the font sizes for the header levels accordingly, so that the
 #' level one header has a larger font than the level two header.
-#' For values of \code{slide_level} greater than or equal to 2
+#' For values of \code{slide_level} greater than or equal to 2,
 #' \code{\link[rmarkdown]{ioslides_presentation}} will behave as usual.
+#'
+#' If `slide_level` is not supplied then `slide_level = 1` is used.
 #'
 #' @return In addition to creating the html files, and perhaps zip files,
 #'   a list containing the following (character vector) components is
@@ -131,7 +133,7 @@
 #' if (got_all) {
 #'   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
 #'   ex_file <- sub(".Rmd", "", ex_file)
-#'   rmd2ioslides(ex_file, slide_level = 1)
+#'   rmd2ioslides(ex_file)
 #' }
 #'
 #' \dontrun{
@@ -147,6 +149,10 @@ rmd2ioslides <- function(x, zip = if (length(x) == 1 & !add) FALSE else TRUE,
                          add = FALSE, quiet = TRUE, rm_html = FALSE,
                          rm_pdf = FALSE, inc_rmd = FALSE, params = NULL, ...) {
   dots <- list(...)
+  # If slide_level has not been supplied in ... then set slide_level = 1
+  if (is.null(dots$slide_level)) {
+    dots$slide_level <- 1
+  }
   # If dots contains any instances of "black" then set the correct path
   # to accessr's black.css file
   if (!is.null(dots$css) && dots$css == "black") {

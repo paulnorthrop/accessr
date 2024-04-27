@@ -81,7 +81,7 @@ included.}
 \code{params} to \code{\link[rmarkdown]{render}}.}
 
 \item{...}{Additional arguments passed to
-\code{\link[rmarkdown]{ioslides_presentation}}. Pass
+\code{\link[rmarkdown]{ioslides_presentation}}. Pass (the default)
 \code{slide_level = 1} if you want a level one header # to create a new
 non-segue slide.
 
@@ -140,15 +140,17 @@ In rmarkdown version 2.26, passing \code{slide_level = 1} to
 \code{\link[rmarkdown]{ioslides_presentation}} does \strong{not} force a new
 non-segue slide when a level one header # is used: it places
 all content between # and the next ## on a grey segue slide and the
-behaviour content of the resulting slides is not desirable. Passing
+behaviour content of the resulting slides is not as intended. Passing
 \code{slide_level = 1} to \code{rmd2ioslides()} replaces \code{rmarkdown}'s Lua filter
-\code{ioslides_presentation.lua} with one that has been modified so that
+\code{ioslides_presentation.lua} with one that has been modified, so that
 passing \code{slide_level = 1} \strong{will} start a new non-segue slide.
 A modified \code{default.css} css file is also used
 that adjusts the font sizes for the header levels accordingly, so that the
 level one header has a larger font than the level two header.
-For values of \code{slide_level} greater than or equal to 2
+For values of \code{slide_level} greater than or equal to 2,
 \code{\link[rmarkdown]{ioslides_presentation}} will behave as usual.
+
+If \code{slide_level} is not supplied then \code{slide_level = 1} is used.
 }
 \examples{
 # Create an ioslides presentation from example.Rmd
@@ -160,7 +162,7 @@ got_all <- got_hux && got_flex && got_pandoc
 if (got_all) {
   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
   ex_file <- sub(".Rmd", "", ex_file)
-  rmd2ioslides(ex_file, slide_level = 1)
+  rmd2ioslides(ex_file)
 }
 
 \dontrun{

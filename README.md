@@ -33,9 +33,9 @@ available.
 **Additional features**. When the output format is a Word document the
 function `ext_img()` enables the knitr chunk options `out.width` and/or
 `out.height` to be used to set the dimensions of a figure (R-generated
-or external image). Passing `slide_level = 1` to `rmd2ioslides()`
-enables the use of the level one header \# to separate slides in an
-ioslides presentation without producing grey segue slides.
+or external image). Passing (the default) `slide_level = 1` to
+`rmd2ioslides()` enables the use of the level one header \# to separate
+slides in an ioslides presentation without producing grey segue slides.
 
 ## The main functions
 
