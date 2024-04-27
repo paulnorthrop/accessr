@@ -186,8 +186,9 @@ file.</p></dd>
     <p>Information such as <code>title</code>, <code>author</code>, <code>lang</code> etc in
 the YAML header in the Rmd file are used but <code>output</code> is ignored.</p>
 <p>The simplest setup is to have the <code>.Rmd</code> files in the current
-working directory, but it is possible to have the <code>.Rmd</code> files in
-different directories.</p>
+working directory, in which case <code>rmd2slidy()</code> will create slidy
+presentations from all these Rmd files, but the <code>.Rmd</code> files may be
+in different directories.</p>
 <p>The <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">render</a></code> function, with the argument
 <code>output_file =</code> <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/slidy_presentation.html" class="external-link">slidy_presentation</a></code>
 creates the slidy html files.</p>
@@ -214,14 +215,6 @@ to your working directory the example file <code>example.Rmd</code> used below.<
 <span class="r-in"><span>  <span class="va">ex_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span>package <span class="op">=</span> <span class="st">"accessr"</span>, <span class="st">"examples"</span>, <span class="st">"example.Rmd"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">ex_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">sub</a></span><span class="op">(</span><span class="st">".Rmd"</span>, <span class="st">""</span>, <span class="va">ex_file</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="fu">rmd2slidy</span><span class="op">(</span><span class="va">ex_file</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span><span class="co"># Create slidy presentations from your files file1.Rmd and file2.Rmd</span></span></span>
-<span class="r-in"><span><span class="fu">rmd2slidy</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"file1"</span>, <span class="st">"file2"</span><span class="op">)</span>, inc_word <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Create slidy presentations from all Rmd files in your working directory</span></span></span>
-<span class="r-in"><span><span class="fu">rmd2slidy</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>

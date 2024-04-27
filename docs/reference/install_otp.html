@@ -60,11 +60,13 @@ a suitable location, by default <code>system.file(package = "accessr")</code>.</
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dir</dt>
-<dd><p>Directory into which to download the <code>OfficeToPDF.exe</code>.
-If <code>dir</code> is missing then <code>system.file(package = "accessr")</code> is
-used. This should enable <code>OfficeToPDF.exe</code> to be found but
-there may be a problem if <code><a href="https://rdrr.io/r/base/libPaths.html" class="external-link">.libPaths</a></code> refers to a cloud
-storage directory, such as OneDrive.</p></dd>
+<dd><p>Directory into which to download the executable file
+<code>OfficeToPDF.exe</code>. <strong>This argument must be supplied</strong>. Pass
+<code>dir = "accessr"</code> to choose the <code>accessr</code> package directory, that is,
+<code>system.file(package = "accessr")</code>. This choice should enable
+<code>OfficeToPDF.exe</code> to be found but there may be a problem if
+<code><a href="https://rdrr.io/r/base/libPaths.html" class="external-link">.libPaths</a></code> refers to a cloud storage directory, such as
+OneDrive.</p></dd>
 
 
 <dt>url</dt>
@@ -109,9 +111,8 @@ documents in <code><a href="rmd2word.html">rmd2word</a></code>.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># If dir is not supplied install_otp stops and dir = "accessr" is suggested</span></span></span>
 <span class="r-in"><span><span class="fu">install_otp</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
