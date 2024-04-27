@@ -96,7 +96,7 @@
 #' fully accessibility requirements if the headings in the document start at
 #' level one.
 #'
-#' In rmarkdown version 2.25, passing \code{slide_level = 1} to
+#' In rmarkdown version 2.26, passing \code{slide_level = 1} to
 #' \code{\link[rmarkdown]{ioslides_presentation}} does \strong{not} force a new
 #' non-segue slide when a level one header # is used: it places
 #' all content between # and the next ## on a grey segue slide and the
