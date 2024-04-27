@@ -1,3 +1,13 @@
+## Resubmission
+
+In this version I have 
+
+* DESCRIPTION: removed unnecessary spaces and written package, software and 
+API names in single quotes in title and description
+* Removed all instances of \dontrun{}
+* R/install_otp.R, R/ioslides_level: ensured that these functions do not write 
+  by default, or in my examples and tests, in the user's home filespace      
+
 ## R CMD check results
 
 0 errors | 0 warnings | 0 notes
