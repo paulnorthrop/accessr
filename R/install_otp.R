@@ -4,11 +4,13 @@
 #' \url{https://github.com/cognidox/OfficeToPDF/releases} and copies it to
 #' a suitable location, by default `system.file(package = "accessr")`.
 #'
-#' @param dir Directory into which to download the \code{OfficeToPDF.exe}.
-#'   If \code{dir} is missing then \code{system.file(package = "accessr")} is
-#'   used. This should enable \code{OfficeToPDF.exe} to be found but
-#'   there may be a problem if \code{\link{.libPaths}} refers to a cloud
-#'   storage directory, such as OneDrive.
+#' @param dir Directory into which to download the executable file
+#'   \code{OfficeToPDF.exe}. **This argument must be supplied**. Pass
+#'   `dir = "accessr"` to choose the `accessr` package directory, that is,
+#'   \code{system.file(package = "accessr")}. This choice should enable
+#'   \code{OfficeToPDF.exe} to be found but there may be a problem if
+#'   \code{\link{.libPaths}} refers to a cloud storage directory, such as
+#'   OneDrive.
 #' @param url URL from which to download \code{OfficeToPDF.exe}.  If this is
 #'   missing then
 #'   \url{https://github.com/cognidox/OfficeToPDF/releases/download/v1.9.0.2/OfficeToPDF.exe}
@@ -26,12 +28,14 @@
 #'   documents in \code{\link{rmd2word}}.
 #' @return See the \strong{Value} section of \code{\link[utils]{download.file}}.
 #' @examples
-#' \dontrun{
+#' # If dir is not supplied install_otp stops and dir = "accessr" is suggested
 #' install_otp()
-#' }
 #' @export
 install_otp <- function(dir, url, method, quiet = TRUE, ...) {
   if (missing(dir)) {
+    stop("You must supply ''dir''. Perhaps choose dir = ''accessr''.")
+  }
+  if (dir == "accessr") {
     dir <- system.file(package = "accessr")
   }
   if (missing(url)) {
@@ -49,7 +53,7 @@ install_otp <- function(dir, url, method, quiet = TRUE, ...) {
   val <- utils::download.file(url = url, destfile = dir, method = method,
                               quiet = quiet, mode = "wb", ...)
   if (val != 0) {
-    warning("")
+    warning("utils::download.file() returned a non-zero (failure) code")
   }
   return(invisible(val))
 }
