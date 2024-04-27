@@ -118,11 +118,6 @@ if (got_all) {
   ex_file <- sub(".Rmd", "", ex_file)
   rmd2many(ex_file, params = list(hide = TRUE), pdf = FALSE, zip = TRUE)
 }
-
-\dontrun{
-# Create multiple documents files from your files file1.Rmd and file2.Rmd
-rmd2many(c("file1", "file2"))
-}
 }
 \seealso{
 \code{\link{install_otp}} to install

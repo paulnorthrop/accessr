@@ -113,9 +113,10 @@ this software. Zip archives of the Word and/or PDF files may be created.
 Information such as \code{title}, \code{author}, \code{lang} etc in
 the YAML header in the Rmd file are used but \code{output} is ignored.
 
-The simplest setup is to have the \code{.Rmd} files and the Word
-template (if used) and \code{OfficeToPDF.exe} in the current working
-directory.
+The simplest setup is to have the \code{.Rmd} files in the current
+working directory, in which case \code{rmd2word()} will create Word documents
+from all these Rmd files, but the \code{.Rmd} files may be in different
+directories.
 
 It is possible to have the \code{.Rmd} files in different
 directories, but any non-\code{"default"} values in \code{doc} must be
@@ -174,21 +175,12 @@ got_flex <- requireNamespace("flextable", quietly = TRUE)
 got_pandoc <- rmarkdown::pandoc_available("1.14")
 got_all <- got_hux && got_flex && got_pandoc
 # This example needs packages huxtable and flextable
+# If pdf = TRUE then OfficeToPDF must first be installed using the
+# function accessr::install_otp
 if (got_all) {
   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
   ex_file <- sub(".Rmd", "", ex_file)
   rmd2word(ex_file, pdf = FALSE)
-}
-
-\dontrun{
-# Install OfficeToPDF to create PDF files
-install_otp()
-
-# Create PDF documents files from your files file1.Rmd and file2.Rmd
-rmd2pdf(c("file1", "file2"))
-
-# Create Word and PDF files from all Rmd files in your working directory
-rmd2word(inc_word = TRUE)
 }
 }
 \references{

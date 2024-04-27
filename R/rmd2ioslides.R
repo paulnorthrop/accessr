@@ -70,9 +70,10 @@
 #' @details Information such as \code{title}, \code{author}, \code{lang} etc in
 #'   the YAML header in the Rmd file are used but \code{output} is ignored.
 #'
-#' The simplest setup is to have the \code{.Rmd} files in the current
-#'   working directory, but it is possible to have the \code{.Rmd} files in
-#'   different directories.
+#'   The simplest setup is to have the \code{.Rmd} files in the current
+#'   working directory, in which case `rmd2ioslides()` will create ioslides
+#'   presentations from all these Rmd files, but the \code{.Rmd} files may be
+#'   in different directories.
 #'
 #'   The \code{\link[rmarkdown]{render}} function, with the argument
 #'   \code{output_file =} \code{\link[rmarkdown]{ioslides_presentation}}
@@ -134,14 +135,6 @@
 #'   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
 #'   ex_file <- sub(".Rmd", "", ex_file)
 #'   rmd2ioslides(ex_file)
-#' }
-#'
-#' \dontrun{
-#' # Create ioslides presentations from your files file1.Rmd and file2.Rmd
-#' rmd2ioslides(c("file1", "file2"), inc_word = TRUE)
-#'
-#' # Create ioslides presentations from all Rmd files in your working directory
-#' rmd2ioslides()
 #' }
 #' @export
 rmd2ioslides <- function(x, zip = if (length(x) == 1 & !add) FALSE else TRUE,

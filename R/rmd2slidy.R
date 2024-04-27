@@ -69,8 +69,9 @@
 #'   the YAML header in the Rmd file are used but \code{output} is ignored.
 #'
 #'   The simplest setup is to have the \code{.Rmd} files in the current
-#'   working directory, but it is possible to have the \code{.Rmd} files in
-#'   different directories.
+#'   working directory, in which case `rmd2slidy()` will create slidy
+#'   presentations from all these Rmd files, but the \code{.Rmd} files may be
+#'   in different directories.
 #'
 #'   The \code{\link[rmarkdown]{render}} function, with the argument
 #'   \code{output_file =} \code{\link[rmarkdown]{slidy_presentation}}
@@ -98,14 +99,6 @@
 #'   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
 #'   ex_file <- sub(".Rmd", "", ex_file)
 #'   rmd2slidy(ex_file)
-#' }
-#'
-#' \dontrun{
-#' # Create slidy presentations from your files file1.Rmd and file2.Rmd
-#' rmd2slidy(c("file1", "file2"), inc_word = TRUE)
-#'
-#' # Create slidy presentations from all Rmd files in your working directory
-#' rmd2slidy()
 #' }
 #' @export
 rmd2slidy <- function(x, zip = if (length(x) == 1 & !add) FALSE else TRUE,

@@ -93,8 +93,9 @@ Information such as \code{title}, \code{author}, \code{lang} etc in
 the YAML header in the Rmd file are used but \code{output} is ignored.
 
 The simplest setup is to have the \code{.Rmd} files in the current
-working directory, but it is possible to have the \code{.Rmd} files in
-different directories.
+working directory, in which case \code{rmd2html()} will create HTML documents
+from all these Rmd files, the \code{.Rmd} files may be in different
+directories.
 
 The \code{\link[rmarkdown]{render}} function, with the argument
 \code{output_file =} \code{\link[rmarkdown]{html_document}}
@@ -111,14 +112,6 @@ if (got_all) {
   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
   ex_file <- sub(".Rmd", "", ex_file)
   rmd2html(ex_file)
-}
-
-\dontrun{
-# Create HTML documents from your files file1.Rmd and file2.Rmd
-rmd2html(c("file1", "file2"))
-
-# Create HTML documents from all Rmd files in your working directory
-rmd2html()
 }
 }
 \seealso{

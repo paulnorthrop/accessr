@@ -47,7 +47,6 @@ is forced.
 documents in \code{\link{rmd2word}}.
 }
 \examples{
-\dontrun{
+# If dir is not supplied install_otp stops and dir = "accessr" is suggested
 install_otp()
-}
 }
