@@ -97,6 +97,8 @@
 #' # This example needs packages huxtable and flextable
 #' if (got_all) {
 #'   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
+#'   file.copy(ex_file, tdir <- tempdir(check = TRUE), overwrite = TRUE)
+#'   ex_file <- list.files(tdir, pattern = "example.Rmd", full.names = TRUE)
 #'   ex_file <- sub(".Rmd", "", ex_file)
 #'   rmd2slidy(ex_file)
 #' }

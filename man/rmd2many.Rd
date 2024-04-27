@@ -115,6 +115,8 @@ got_all <- got_hux && got_flex && got_pandoc
 #
 if (got_all) {
   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
+  file.copy(ex_file, tdir <- tempdir(check = TRUE), overwrite = TRUE)
+  ex_file <- list.files(tdir, pattern = "example.Rmd", full.names = TRUE)
   ex_file <- sub(".Rmd", "", ex_file)
   rmd2many(ex_file, params = list(hide = TRUE), pdf = FALSE, zip = TRUE)
 }
