@@ -1,26 +1,26 @@
 Package: accessr
 Type: Package
-Title: Command Line Tools to Produce Accessible Documents using R Markdown
+Title: Command Line Tools to Produce Accessible Documents using 'R Markdown'
 Version: 1.0.0
 Date: 2024-04-07
 Authors@R: person(c("Paul", "J."), "Northrop", email = "p.northrop@ucl.ac.uk",
   role = c("aut", "cre", "cph"))
-Description: Provides functions to produce accessible HTML slides, HTML, Word 
-    and PDF documents from input R markdown files. Accessible PDF files are 
-    produced only on a Windows Operating System. One aspect of accessibility is 
-    providing a headings structure that is recognised by a screen reader, 
-    providing a navigational tool for a blind or partially-sighted person. A 
-    key aim is to produce documents of different formats easily from each of a 
-    collection of R markdown source files. Input R markdown files are rendered 
-    using the render() function from the 'rmarkdown' package 
-    <https://cran.r-project.org/package=rmarkdown>. A zip file containing 
-    multiple output files can be produced from one function call. A 
-    user-supplied template Word document can be used to determine the 
-    formatting of an output Word document. Accessible PDF files are produced 
-    from Word documents using 'OfficeToPDF' 
+Description: Provides functions to produce accessible 'HTML' slides, 'HTML', 
+    'Word' and 'PDF' documents from input 'R markdown' files. Accessible 'PDF' 
+    files are produced only on a 'Windows' Operating System. One aspect of 
+    accessibility is providing a headings structure that is recognised by a 
+    screen reader, providing a navigational tool for a blind or 
+    partially-sighted person. A key aim is to produce documents of different 
+    formats easily from each of a collection of 'R markdown' source files. 
+    Input 'R markdown' files are rendered using the render() function from the 
+    'rmarkdown' package <https://cran.r-project.org/package=rmarkdown>. A 'zip' 
+    file containing multiple output files can be produced from one function 
+    call. A user-supplied template 'Word' document can be used to determine the 
+    formatting of an output 'Word' document. Accessible 'PDF' files are 
+    produced from 'Word' documents using 'OfficeToPDF' 
     <https://github.com/cognidox/OfficeToPDF>. A convenience function, 
     install_otp() is provided to install this software. The option to print 
-    HTML output to (non-accessible) PDF files is also available.  
+    'HTML' output to (non-accessible) 'PDF' files is also available.  
 Depends: R (>= 3.3.0)
 License: GPL (>= 3)
 Encoding: UTF-8
