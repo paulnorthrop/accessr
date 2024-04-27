@@ -673,7 +673,7 @@ stop2 <- function(...) stop(..., call. = FALSE)
 #' @keywords internal
 #' @rdname accessr-internal
 normalized_relative_to <- function(dir, file) {
-  relative_to(
-    normalize_path(dir, must_work = FALSE),
-    normalize_path(file, must_work = FALSE))
+  rmarkdown::relative_to(
+    xfun::normalize_path(dir, must_work = FALSE),
+    xfun::normalize_path(file, must_work = FALSE))
 }
