@@ -198,6 +198,5 @@ R Markdown from RStudio article.
 \code{\link{rmd2slidy}}, \code{\link{rmd2html}} for other output formats.
 
 The \href{https://paulnorthrop.github.io/accessr/}{accessr
-package page on Github}. In particular, the README file suggests copying
-to your working directory the example file \code{example.Rmd} used below.
+package page on Github}.
 }

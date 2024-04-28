@@ -73,6 +73,8 @@
 #'   \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF}.
 #' @seealso \code{\link{rmd2word}}, \code{\link{rmd2ioslides}},
 #'   \code{\link{rmd2slidy}}, \code{\link{rmd2html}}.
+#' @seealso The \href{https://paulnorthrop.github.io/accessr/}{accessr
+#'   package page on Github}.
 #' @examples
 #' # Create documents from example.Rmd
 #' got_hux <- requireNamespace("huxtable", quietly = TRUE)

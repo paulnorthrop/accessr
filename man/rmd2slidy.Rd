@@ -138,6 +138,5 @@ if (got_all) {
 formats.
 
 The \href{https://paulnorthrop.github.io/accessr/}{accessr
-package page on Github}. In particular, the README file suggests copying
-to your working directory the example file \code{example.Rmd} used below.
+package page on Github}.
 }

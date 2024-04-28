@@ -74,8 +74,7 @@
 #'   \code{\link{rmd2ioslides}}, \code{\link{rmd2slidy}}  for other output
 #'   formats.
 #' @seealso The \href{https://paulnorthrop.github.io/accessr/}{accessr
-#'   package page on Github}. In particular, the README file suggests copying
-#'   to your working directory the example file \code{example.Rmd} used below.
+#'   package page on Github}.
 #' @examples
 #' # Create an HTML document from example.Rmd
 #' got_hux <- requireNamespace("huxtable", quietly = TRUE)

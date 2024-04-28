@@ -122,8 +122,7 @@
 #' @seealso \code{\link{rmd2many}}, \code{\link{rmd2word}},
 #'   \code{\link{rmd2slidy}}, \code{\link{rmd2html}} for other output formats.
 #' @seealso The \href{https://paulnorthrop.github.io/accessr/}{accessr
-#'   package page on Github}. In particular, the README file suggests copying
-#'   to your working directory the example file \code{example.Rmd} used below.
+#'   package page on Github}.
 #' @examples
 #' # Create an ioslides presentation from example.Rmd
 #' got_hux <- requireNamespace("huxtable", quietly = TRUE)
