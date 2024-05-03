@@ -18,3 +18,8 @@
 ^LICENSE\.md$
 ^inst/examples/example18pt\.docx$
 ^CRAN-SUBMISSION$
+^inst/examples/accessr_html\.zip$
+^inst/examples/accessr_ioslides\.zip$
+^inst/examples/accessr_slidy\.zip$
+^inst/examples/example\.zip$
+^inst/examples/example\.html$
