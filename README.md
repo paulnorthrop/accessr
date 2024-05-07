@@ -130,3 +130,11 @@ files and Word document with 18pt bold text. The latter may be
 particularly useful for some students. I use `params$hide` (see above)
 to hide selected content from the file that I share with the students
 prior to the lecture.
+
+## Installation
+
+To get the current released version from CRAN:
+
+``` r
+install.packages("accessr")
+```
