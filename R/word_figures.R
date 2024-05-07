@@ -103,7 +103,9 @@ ext_img <- function(src, width = 0.5, height = 0.2, alt = "", ref_docx_dim) {
            call.= FALSE)
     }
     ext <- tools::file_ext(src)
-    if (ext == "png") {
+    png_extensions <- c("png", "PNG")
+    jpg_extensions <- c("jpg", "jpeg", "JPG", "JPEG")
+    if (is.element(ext, png_extensions)) {
       if (!requireNamespace("png", quietly = TRUE)) {
         stop("The 'png' package is required. Please install it.",
              call.= FALSE)
@@ -112,7 +114,7 @@ ext_img <- function(src, width = 0.5, height = 0.2, alt = "", ref_docx_dim) {
       wh <- find_fig_width_height(imdim)
       width <- wh["width"]
       height <- wh["height"]
-    } else if (ext == "jpg" || ext == "jpeg") {
+    } else if (is.element(ext, jpg_extensions)) {
       if (!requireNamespace("jpeg", quietly = TRUE)) {
         stop("The 'jpeg' package is required. Please install it.",
              call.= FALSE)
