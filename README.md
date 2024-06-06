@@ -10,9 +10,9 @@ status](https://ci.appveyor.com/api/projects/status/a314mt4b1b60tms5?svg=true)](
 Status](https://codecov.io/github/paulnorthrop/accessr/coverage.svg?branch=master)](https://app.codecov.io/github/paulnorthrop/accessr?branch=master)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/accessr)](https://cran.r-project.org/package=accessr)
 [![Downloads
-(monthly)](https://cranlogs.r-pkg.org/badges/itp?color=brightgreen)](https://cran.r-project.org/package=accessr)
+(monthly)](https://cranlogs.r-pkg.org/badges/accessr?color=brightgreen)](https://cran.r-project.org/package=accessr)
 [![Downloads
-(total)](https://cranlogs.r-pkg.org/badges/grand-total/itp?color=brightgreen)](https://cran.r-project.org/package=accessr)
+(total)](https://cranlogs.r-pkg.org/badges/grand-total/accessr?color=brightgreen)](https://cran.r-project.org/package=accessr)
 
 ## Command Line Tools to Produce Accessible Documents using R Markdown
 
