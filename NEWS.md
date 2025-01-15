@@ -1,5 +1,9 @@
 # accessr 1.0.1.9000
 
+## New features
+
+* In `rmd2word()` the argument `pdf_args` may be used to pass [command line switches](https://github.com/cognidox/OfficeToPDF?tab=readme-ov-file#command-line-switches) to [OfficeToPDF](https://github.com/cognidox/OfficeToPDF) when creating PDF documents.
+
 ## Bug fixes and minor improvements
 
 * `ext_img` now also works if the file extension of an input image is capitalised, that is, "PNG", "JPG" or "JPEG". In version 1.0.1 it only worked for lower case file extensions.

@@ -8,6 +8,7 @@ rmd2word(
   x,
   doc = "accessr",
   pdf = isTRUE(.Platform$OS.type == "windows"),
+  pdf_args = c("/bookmarks"),
   dir,
   zip = if (length(x) == 1 & !add) FALSE else TRUE,
   add = FALSE,
@@ -44,6 +45,14 @@ create PDF files from the Word documents that are produced?  If
 \code{pdf = FALSE} then any zip archives created contain only Word files.
 PDF files will only be produced if the Operating System is
 \code{"windows"}, that is, \code{.Platform$OS.type == "windows"}.}
+
+\item{pdf_args}{A character vector of arguments to be used when calling
+\code{OfficeToPDF.exe}. See
+\href{https://github.com/cognidox/OfficeToPDF?tab=readme-ov-file#command-line-switches}{Command line switches}
+at \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF} for a list
+of optional arguments. Including \code{"/bookmarks"} (the default) in
+\code{pdf_args} will create bookmarks in the PDF using the headings in the
+corresponding Word document, which users may find useful for navigation.}
 
 \item{dir}{A path to the directory in which the file \code{OfficeToPDF.exe}
 sits.  This is not needed if this file sits in the current working

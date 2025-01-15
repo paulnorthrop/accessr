@@ -31,6 +31,13 @@
 #'   \code{pdf = FALSE} then any zip archives created contain only Word files.
 #'   PDF files will only be produced if the Operating System is
 #'   \code{"windows"}, that is, \code{.Platform$OS.type == "windows"}.
+#' @param pdf_args A character vector of arguments to be used when calling
+#'   \code{OfficeToPDF.exe}. See
+#'   \href{https://github.com/cognidox/OfficeToPDF?tab=readme-ov-file#command-line-switches}{Command line switches}
+#'   at \href{https://github.com/cognidox/OfficeToPDF}{OfficeToPDF} for a list
+#'   of optional arguments. Including \code{"/bookmarks"} (the default) in
+#'   \code{pdf_args} will create bookmarks in the PDF using the headings in the
+#'   corresponding Word document, which users may find useful for navigation.
 #' @param dir A path to the directory in which the file \code{OfficeToPDF.exe}
 #'   sits.  This is not needed if this file sits in the current working
 #'   directory or a directory in the list returned by \code{searchpaths()}.
@@ -159,8 +166,9 @@
 #' }
 #' @export
 rmd2word <- function(x, doc = "accessr",
-                     pdf = isTRUE(.Platform$OS.type == "windows"), dir,
-                     zip = if (length(x) == 1 & !add) FALSE else TRUE,
+                     pdf = isTRUE(.Platform$OS.type == "windows"),
+                     pdf_args = c("/bookmarks"),
+                     dir, zip = if (length(x) == 1 & !add) FALSE else TRUE,
                      add = FALSE,
                      quiet = TRUE, rm_word = FALSE, rm_pdf = FALSE,
                      inc_word = FALSE, params = NULL, ...) {
@@ -265,10 +273,12 @@ rmd2word <- function(x, doc = "accessr",
   # Convert Word documents to PDF documents
   pdf_fun <- function(i) {
     # Convert Word document to PDF document
-    res2 <- system(paste(exefile, word_files[i], pdf_files[i]))
+    res2 <- system(paste(exefile, pdf_args, word_files[i], pdf_files[i]))
     return(res2)
   }
   if (pdf) {
+    # Convert pdf_args to a character scalar
+    pdf_args <- paste(pdf_args, collapse = " ")
     error_codes <- sapply(1:lenx, pdf_fun)
     # Error codes
     # 127 OfficeToPDF.exe could not be found
