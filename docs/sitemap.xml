@@ -1,57 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/accessr-internal.html</loc>
-  </url>
-  <url>
-    <loc>/reference/accessr-package.html</loc>
-  </url>
-  <url>
-    <loc>/reference/accessr.html</loc>
-  </url>
-  <url>
-    <loc>/reference/ext_img.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/install_otp.html</loc>
-  </url>
-  <url>
-    <loc>/reference/ioslides_level.html</loc>
-  </url>
-  <url>
-    <loc>/reference/rmd2html.html</loc>
-  </url>
-  <url>
-    <loc>/reference/rmd2ioslides.html</loc>
-  </url>
-  <url>
-    <loc>/reference/rmd2many.html</loc>
-  </url>
-  <url>
-    <loc>/reference/rmd2pdf.html</loc>
-  </url>
-  <url>
-    <loc>/reference/rmd2slidy.html</loc>
-  </url>
-  <url>
-    <loc>/reference/rmd2word.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/LICENSE.html</loc></url>
+<url><loc>/news/index.html</loc></url>
+<url><loc>/reference/accessr-internal.html</loc></url>
+<url><loc>/reference/accessr-package.html</loc></url>
+<url><loc>/reference/ext_img.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/install_otp.html</loc></url>
+<url><loc>/reference/ioslides_level.html</loc></url>
+<url><loc>/reference/rmd2html.html</loc></url>
+<url><loc>/reference/rmd2ioslides.html</loc></url>
+<url><loc>/reference/rmd2many.html</loc></url>
+<url><loc>/reference/rmd2pdf.html</loc></url>
+<url><loc>/reference/rmd2slidy.html</loc></url>
+<url><loc>/reference/rmd2word.html</loc></url>
 </urlset>
+

@@ -6,7 +6,7 @@ created."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/ma
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -20,7 +20,7 @@ created."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/ma
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">accessr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
       </span>
     </div>
 
@@ -34,14 +34,14 @@ created."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/ma
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/paulnorthrop/accessr/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul></div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
@@ -77,7 +77,9 @@ created.</p>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>x</dt>
+
+
+<dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
 <dd><p>A character vector containing the names (<strong>no extension</strong>) of
 the <code>.Rmd</code> files to convert  if they are in the current working
 directory, or paths to the files, either absolute or relative to the
@@ -87,7 +89,7 @@ file.  If <code>x</code> is missing then an html file is created from each of
 the <code>.Rmd</code> files in the current working directory.</p></dd>
 
 
-<dt>zip</dt>
+<dt id="arg-zip">zip<a class="anchor" aria-label="anchor" href="#arg-zip"></a></dt>
 <dd><p>A logical scalar or character vector indicating whether html
 files should be put into a zip archive.  If <code>zip = FALSE</code> then no
 zip archive is created.  Otherwise, an archive is created in each unique
@@ -98,7 +100,7 @@ used to name the zip archives.  The names are recycled to the length of
 the number of unique directories, if necessary.</p></dd>
 
 
-<dt>pdf</dt>
+<dt id="arg-pdf">pdf<a class="anchor" aria-label="anchor" href="#arg-pdf"></a></dt>
 <dd><p>A logical scalar.  If <code>pdf = TRUE</code> then each html file is
 printed to a PDF file using <code><a href="https://rdrr.io/pkg/pagedown/man/chrome_print.html" class="external-link">chrome_print</a></code>.
 Google Chrome (or an alternative browser specified in <code>pdf_args</code> by
@@ -110,56 +112,56 @@ package could not find an internet connection that Chrome considers
 secure.  Perhaps you are using a coffee shop's wifi.</p></dd>
 
 
-<dt>zip_pdf</dt>
+<dt id="arg-zip-pdf">zip_pdf<a class="anchor" aria-label="anchor" href="#arg-zip-pdf"></a></dt>
 <dd><p>As <code>zip</code>, but relates to the
 creation of zip archives for any PDF files created. If
 <code>zip_pdf = TRUE</code> then each archive is named
 <code>accessr_html_pdf.zip</code>.</p></dd>
 
 
-<dt>pdf_args</dt>
+<dt id="arg-pdf-args">pdf_args<a class="anchor" aria-label="anchor" href="#arg-pdf-args"></a></dt>
 <dd><p>A list of arguments passed to
 <code><a href="https://rdrr.io/pkg/pagedown/man/chrome_print.html" class="external-link">chrome_print</a></code>. <code>input</code> cannot be passed
 because it is set inside <code>rmd2html</code>.</p></dd>
 
 
-<dt>add</dt>
+<dt id="arg-add">add<a class="anchor" aria-label="anchor" href="#arg-add"></a></dt>
 <dd><p>A logical scalar that determines what happens if the output
 zip file already exists.  If <code>add = TRUE</code> then files are added to the
 zip file and if <code>add = FALSE</code> then the zip file is deleted and will
 only contain newly-created files.</p></dd>
 
 
-<dt>quiet</dt>
+<dt id="arg-quiet">quiet<a class="anchor" aria-label="anchor" href="#arg-quiet"></a></dt>
 <dd><p>Argument of the same name passed to
 <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">render</a></code> to determine what is printed during
 rendering from knitr.</p></dd>
 
 
-<dt>rm_html</dt>
+<dt id="arg-rm-html">rm_html<a class="anchor" aria-label="anchor" href="#arg-rm-html"></a></dt>
 <dd><p>A logical scalar.  If <code>rm_html = TRUE</code> and a zip archive
 of html files is produced then the individual html files are deleted.
 Otherwise, they are not deleted.</p></dd>
 
 
-<dt>rm_pdf</dt>
+<dt id="arg-rm-pdf">rm_pdf<a class="anchor" aria-label="anchor" href="#arg-rm-pdf"></a></dt>
 <dd><p>A logical scalar.  If <code>rm_pdf = TRUE</code> and a zip archive
 of pdf files is produced then the individual pdf files are deleted.
 Otherwise, they are not deleted.</p></dd>
 
 
-<dt>inc_rmd</dt>
+<dt id="arg-inc-rmd">inc_rmd<a class="anchor" aria-label="anchor" href="#arg-inc-rmd"></a></dt>
 <dd><p>A logical scalar.  If <code>inc_rmd = TRUE</code> then the source
 Rmd files are included in the zip file created.  Otherwise, they are not
 included.</p></dd>
 
 
-<dt>params</dt>
+<dt id="arg-params">params<a class="anchor" aria-label="anchor" href="#arg-params"></a></dt>
 <dd><p>A list of named parameters to pass as the argument
 <code>params</code> to <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">render</a></code>.</p></dd>
 
 
-<dt>...</dt>
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Additional arguments passed to
 <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/slidy_presentation.html" class="external-link">slidy_presentation</a></code>.</p>
 <p>If <code>css = "black"</code> is passed then <code>accessr</code>'s css file
@@ -171,9 +173,7 @@ slides.</p>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p>In addition to creating the html files, and perhaps zip files,
+    <p>In addition to creating the html files, and perhaps zip files,
 a list containing the following (character vector) components is
 returned invisibly:</p>
 <dl><dt>files </dt>
@@ -234,15 +234,15 @@ package page on Github</a>.</p></div>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer></div>
 
-  
 
 
-  
+
+
 
   </body></html>
 
