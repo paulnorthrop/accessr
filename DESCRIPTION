@@ -24,7 +24,7 @@ Description: Provides functions to produce accessible 'HTML' slides, 'HTML',
 Depends: R (>= 3.3.0)
 License: GPL (>= 3)
 Encoding: UTF-8
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Imports: rmarkdown
 Suggests: 
     dplyr,
