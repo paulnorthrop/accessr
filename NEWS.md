@@ -2,7 +2,7 @@
 
 ## New features
 
-* In `rmd2word()` the argument `pdf_args` may be used to pass [command line switches](https://github.com/cognidox/OfficeToPDF?tab=readme-ov-file#command-line-switches) to [OfficeToPDF](https://github.com/cognidox/OfficeToPDF) when creating PDF documents.
+* In `rmd2word()` the argument `pdf_args` may be used to pass [command line switches](https://github.com/cognidox/OfficeToPDF?tab=readme-ov-file#command-line-switches) to [OfficeToPDF](https://github.com/cognidox/OfficeToPDF) when creating PDF documents. The default setting creates bookmarks in the PDF file using the headings in the input Word document.
 
 ## Bug fixes and minor improvements
 
