@@ -8,8 +8,8 @@ lang: "en-gb"
 ---
 
 ```{r, include = FALSE}
-knitr::opts_knit$set(echo = TRUE, global.par = TRUE, prompt = TRUE, 
-                     fig.align = 'center')
+knitr::opts_chunk$set(echo = TRUE, prompt = TRUE, fig.align = 'center')
+knitr::opts_knit$set(global.par = TRUE)
 ```
 
 # Text, bullets, links
