@@ -83,7 +83,7 @@
 #' got_all <- got_hux && got_flex && got_pandoc
 #' # This example needs packages huxtable and flextable
 #' # We pass pdf = FALSE because OfficeToPDF is needed to convert Word to PDF
-#' # and this is only relevant on  Windows Operating System.
+#' # and this is only relevant on a Windows Operating System.
 #' #
 #' if (got_all) {
 #'   ex_file <- system.file(package = "accessr", "examples", "example.Rmd")
