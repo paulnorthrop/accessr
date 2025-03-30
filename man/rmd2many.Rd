@@ -109,7 +109,6 @@ got_hux <- requireNamespace("huxtable", quietly = TRUE)
 got_flex <- requireNamespace("flextable", quietly = TRUE)
 got_pandoc <- rmarkdown::pandoc_available("1.14")
 got_all <- got_hux && got_flex && got_pandoc
-got_all <- FALSE
 # This example needs packages huxtable and flextable
 # We pass pdf = FALSE because OfficeToPDF is needed to convert Word to PDF
 # and this is only relevant on a Windows Operating System.

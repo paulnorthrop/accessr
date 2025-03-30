@@ -1,3 +1,9 @@
+# accessr 1.1.3
+
+## Bug fixes and minor improvements
+
+Revert back (effectively to v1.1.1) now that the issue in officedown::get_fun() has been fixed.
+
 # accessr 1.1.2
 
 ## Bug fixes and minor improvements
