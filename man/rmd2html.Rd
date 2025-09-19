@@ -38,7 +38,7 @@ unique directories, if necessary.}
 \item{pdf}{A logical scalar.  If \code{pdf = TRUE} then each html file is
 printed to a PDF file using \code{\link[pagedown]{chrome_print}}.
 Google Chrome (or an alternative browser specified in \code{pdf_args} by
-the \code{browser} argument to \code{\link[pagedown]{chrome_print}} must
+the \code{browser} argument to \code{\link[pagedown]{chrome_print}}) must
 be installed prior to use of this option. An error message like
 \code{Error in servr::random_port(NULL) : Cannot find an available TCP
   port} means that the \code{random_port} function in the \code{servr}
