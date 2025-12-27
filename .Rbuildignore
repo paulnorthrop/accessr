@@ -1,7 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^README\.Rmd$
-^appveyor\.yml$
 ^cran-comments\.md$
 ^OfficeToPDF\.exe$
 ^TEST$
