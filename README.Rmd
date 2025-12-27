@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# accessr
+# accessr <a href="https://paulnorthrop.github.io/accessr/"><img src="man/figures/accessr_logo.png" align="right" style="float:right; height:150px;" alt="accessr logo"/></a>
 
 [![R-CMD-check](https://github.com/paulnorthrop/accessr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/paulnorthrop/accessr/actions/workflows/R-CMD-check.yaml)
 [![Coverage Status](https://codecov.io/github/paulnorthrop/accessr/coverage.svg?branch=master)](https://app.codecov.io/github/paulnorthrop/accessr?branch=master)
