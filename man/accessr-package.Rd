@@ -80,4 +80,9 @@ for R. R package version 2.26, \url{https://rmarkdown.rstudio.com}.
 \author{
 \strong{Maintainer}: Paul J. Northrop \email{p.northrop@ucl.ac.uk} [copyright holder]
 
+Authors:
+\itemize{
+  \item Paul J. Northrop \email{p.northrop@ucl.ac.uk} [copyright holder]
+}
+
 }

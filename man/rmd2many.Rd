@@ -31,7 +31,7 @@ A subset of \code{c("word", "ioslides", "slidy", "html")}. If more than one of
 one of these is used with the order of preference \code{"ioslides"},
 \code{"slidy"} then \code{"html"}.}
 
-\item{slide_level}{Passed to \code{\link[=rmd2ioslides]{rmd2ioslides}} via
+\item{slide_level}{Passed to \code{\link{rmd2ioslides}} via
 \code{...}. The default \code{slide_level = 1} means that a level one header #
 create a new non-segue slide for an ioslides presentation.}
 
@@ -74,10 +74,10 @@ are recycled to the length of the number of unique directories if
 necessary.}
 
 \item{...}{Additional arguments to be passed to
-\code{\link[=rmd2ioslides]{rmd2ioslides}},
-\code{\link[=rmd2slidy]{rmd2slidy}},
-\code{\link[=rmd2word]{rmd2word}} or
-\code{\link[=rmd2html]{rmd2html}}.}
+\code{\link{rmd2ioslides}},
+\code{\link{rmd2slidy}},
+\code{\link{rmd2word}} or
+\code{\link{rmd2html}}.}
 }
 \value{
 A list containing the following components:

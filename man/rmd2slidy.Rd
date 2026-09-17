@@ -43,7 +43,7 @@ Google Chrome (or an alternative browser specified in \code{pdf_args} by
 the \code{browser} argument to \code{\link[pagedown]{chrome_print}} must
 be installed prior to use of this option.  An error message like
 \code{Error in servr::random_port(NULL) : Cannot find an available TCP
-  port} means that the \code{random_port} function in the \code{servr}
+port} means that the \code{random_port} function in the \code{servr}
 package could not find an internet connection that Chrome considers
 secure.  Perhaps you are using a coffee shop's wifi.}
 

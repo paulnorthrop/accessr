@@ -24,7 +24,6 @@ Description: Provides functions to produce accessible 'HTML' slides, 'HTML',
 Depends: R (>= 3.3.0)
 License: GPL (>= 3)
 Encoding: UTF-8
-RoxygenNote: 7.3.3
 Imports: rmarkdown
 Suggests: 
     dplyr,
@@ -49,3 +48,4 @@ URL: https://paulnorthrop.github.io/accessr/,
 BugReports: https://github.com/paulnorthrop/accessr/issues
 Roxygen: list(markdown = TRUE)
 Config/testthat/edition: 3
+Config/roxygen2/version: 8.0.0
