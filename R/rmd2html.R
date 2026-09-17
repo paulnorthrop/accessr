@@ -3,8 +3,8 @@
 #' Converts R markdown code to html documents
 #'
 #' Creates accessible html documents using either
-#' \code{\link[rmarkdown]{rmarkdown::html_document}} (the default) or
-#' \code{\link[bookdown]{bookdown::html_document2}} as the `output_format`
+#' \code{\link[rmarkdown]{html_document}} (the default) or
+#' \code{\link[bookdown]{html_document2}} as the `output_format`
 #' argument to \code{\link[rmarkdown]{render}}. Zip archives of the html files
 #' may be created.
 #'
@@ -16,9 +16,9 @@
 #'   file.  If \code{x} is missing then an html file is created from each of
 #'   the \code{.Rmd} files in the current working directory.
 #' @param bookdown A logical scalar. If `bookdown = TRUE` then
-#'   \code{\link[bookdown]{bookdown::html_document2}} as the `input` argument
+#'   \code{\link[bookdown]{html_document2}} as the `input` argument
 #'   to \code{\link[rmarkdown]{render}}. Otherwise,
-#'   \code{\link[rmarkdown]{rmarkdown::html_document}} is used.
+#'   \code{\link[rmarkdown]{html_document}} is used.
 #' @param zip A logical scalar or character vector indicating whether html
 #'   files should be put into a zip archive.  If \code{zip = FALSE} then no
 #'   zip archive is created.  Otherwise, an archive is created in each unique
@@ -59,8 +59,8 @@
 #' @param params A list of named parameters to pass as the argument
 #'   \code{params} to \code{\link[rmarkdown]{render}}.
 #' @param ... Additional arguments passed to
-#'   \code{\link[rmarkdown]{rmarkdown::html_document}} or
-#'   \code{\link[bookdown]{bookdown::html_document2}}.
+#'   \code{\link[rmarkdown]{html_document}} or
+#'   \code{\link[bookdown]{html_document2}}.
 #' @details Information such as \code{title}, \code{author}, \code{lang} etc in
 #'   the YAML header in the Rmd file are used but \code{output} is ignored.
 #'

@@ -29,9 +29,9 @@ file.  If \code{x} is missing then an html file is created from each of
 the \code{.Rmd} files in the current working directory.}
 
 \item{bookdown}{A logical scalar. If \code{bookdown = TRUE} then
-\code{\link[bookdown]{bookdown::html_document2}} as the \code{input} argument
+\code{\link[bookdown]{html_document2}} as the \code{input} argument
 to \code{\link[rmarkdown]{render}}. Otherwise,
-\code{\link[rmarkdown]{rmarkdown::html_document}} is used.}
+\code{\link[rmarkdown]{html_document}} is used.}
 
 \item{zip}{A logical scalar or character vector indicating whether html
 files should be put into a zip archive.  If \code{zip = FALSE} then no
@@ -82,8 +82,8 @@ Otherwise, they are not deleted.}
 \code{params} to \code{\link[rmarkdown]{render}}.}
 
 \item{...}{Additional arguments passed to
-\code{\link[rmarkdown]{rmarkdown::html_document}} or
-\code{\link[bookdown]{bookdown::html_document2}}.}
+\code{\link[rmarkdown]{html_document}} or
+\code{\link[bookdown]{html_document2}}.}
 }
 \value{
 In addition to creating the html files, and perhaps zip files,
@@ -95,8 +95,8 @@ file.}
 }
 \description{
 Creates accessible html documents using either
-\code{\link[rmarkdown]{rmarkdown::html_document}} (the default) or
-\code{\link[bookdown]{bookdown::html_document2}} as the \code{output_format}
+\code{\link[rmarkdown]{html_document}} (the default) or
+\code{\link[bookdown]{html_document2}} as the \code{output_format}
 argument to \code{\link[rmarkdown]{render}}. Zip archives of the html files
 may be created.
 }
