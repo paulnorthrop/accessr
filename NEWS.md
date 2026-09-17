@@ -1,3 +1,13 @@
+# accessr 1.1.4
+
+## New features
+
+* In `rmd2html()` the new argument `bookdown` can be used to render using `bookdown::html_document2()`, rather than `rmarkdown::html_document()`.
+
+## Bug fixes and minor improvements
+
+* In `html2html()` the argument `...` in the call to `rmarkdown::render()` has been removed to avoid errors when passing additional arguments to `bookdown::html_document2()` or `rmarkdown::html_document()`.
+
 # accessr 1.1.3
 
 ## Bug fixes and minor improvements

@@ -6,6 +6,7 @@
 \usage{
 rmd2html(
   x,
+  bookdown = FALSE,
   zip = if (length(x) == 1 & !add) FALSE else TRUE,
   pdf = FALSE,
   pdf_args = list(),
@@ -14,6 +15,7 @@ rmd2html(
   quiet = TRUE,
   rm_html = FALSE,
   rm_pdf = FALSE,
+  params = NULL,
   ...
 )
 }
@@ -25,6 +27,11 @@ current working directory, e.g., \code{DIRECTORY/file1}.  The \code{.html}
 files are created in the same directory as their respective \code{.Rmd}
 file.  If \code{x} is missing then an html file is created from each of
 the \code{.Rmd} files in the current working directory.}
+
+\item{bookdown}{A logical scalar. If \code{bookdown = TRUE} then
+\code{\link[bookdown]{bookdown::html_document2}} as the \code{input} argument
+to \code{\link[rmarkdown]{render}}. Otherwise,
+\code{\link[rmarkdown]{rmarkdown::html_document}} is used.}
 
 \item{zip}{A logical scalar or character vector indicating whether html
 files should be put into a zip archive.  If \code{zip = FALSE} then no
@@ -71,8 +78,12 @@ Otherwise, they are not deleted.}
 of pdf files is produced then the individual pdf files are deleted.
 Otherwise, they are not deleted.}
 
+\item{params}{A list of named parameters to pass as the argument
+\code{params} to \code{\link[rmarkdown]{render}}.}
+
 \item{...}{Additional arguments passed to
-\code{\link[rmarkdown]{html_document}} or \code{\link[rmarkdown]{render}}.}
+\code{\link[rmarkdown]{rmarkdown::html_document}} or
+\code{\link[bookdown]{bookdown::html_document2}}.}
 }
 \value{
 In addition to creating the html files, and perhaps zip files,
@@ -83,10 +94,11 @@ file.}
 \item{zips }{(relative) paths and names of all the zip files.}
 }
 \description{
-Creates accessible html documents using R markdown's
-\code{\link[rmarkdown]{html_document}} argument to
-\code{\link[rmarkdown]{render}}. Zip archives of the html files may be
-created.
+Creates accessible html documents using either
+\code{\link[rmarkdown]{rmarkdown::html_document}} (the default) or
+\code{\link[bookdown]{bookdown::html_document2}} as the \code{output_format}
+argument to \code{\link[rmarkdown]{render}}. Zip archives of the html files
+may be created.
 }
 \details{
 Information such as \code{title}, \code{author}, \code{lang} etc in

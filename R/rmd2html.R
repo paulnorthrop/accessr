@@ -2,10 +2,11 @@
 
 #' Converts R markdown code to html documents
 #'
-#' Creates accessible html documents using R markdown's
-#' \code{\link[rmarkdown]{html_document}} argument to
-#' \code{\link[rmarkdown]{render}}. Zip archives of the html files may be
-#' created.
+#' Creates accessible html documents using either
+#' \code{\link[rmarkdown]{rmarkdown::html_document}} (the default) or
+#' \code{\link[bookdown]{bookdown::html_document2}} as the `output_format`
+#' argument to \code{\link[rmarkdown]{render}}. Zip archives of the html files
+#' may be created.
 #'
 #' @param x A character vector containing the names (\strong{no extension}) of
 #'   the \code{.Rmd} files to convert  if they are in the current working
@@ -14,6 +15,10 @@
 #'   files are created in the same directory as their respective \code{.Rmd}
 #'   file.  If \code{x} is missing then an html file is created from each of
 #'   the \code{.Rmd} files in the current working directory.
+#' @param bookdown A logical scalar. If `bookdown = TRUE` then
+#'   \code{\link[bookdown]{bookdown::html_document2}} as the `input` argument
+#'   to \code{\link[rmarkdown]{render}}. Otherwise,
+#'   \code{\link[rmarkdown]{rmarkdown::html_document}} is used.
 #' @param zip A logical scalar or character vector indicating whether html
 #'   files should be put into a zip archive.  If \code{zip = FALSE} then no
 #'   zip archive is created.  Otherwise, an archive is created in each unique
@@ -51,8 +56,11 @@
 #' @param rm_pdf A logical scalar.  If \code{rm_pdf = TRUE} and a zip archive
 #'   of pdf files is produced then the individual pdf files are deleted.
 #'   Otherwise, they are not deleted.
+#' @param params A list of named parameters to pass as the argument
+#'   \code{params} to \code{\link[rmarkdown]{render}}.
 #' @param ... Additional arguments passed to
-#'   \code{\link[rmarkdown]{html_document}} or \code{\link[rmarkdown]{render}}.
+#'   \code{\link[rmarkdown]{rmarkdown::html_document}} or
+#'   \code{\link[bookdown]{bookdown::html_document2}}.
 #' @details Information such as \code{title}, \code{author}, \code{lang} etc in
 #'   the YAML header in the Rmd file are used but \code{output} is ignored.
 #'
@@ -90,10 +98,11 @@
 #'   rmd2html(ex_file)
 #' }
 #' @export
-rmd2html <- function(x, zip = if (length(x) == 1 & !add) FALSE else TRUE,
+rmd2html <- function(x, bookdown = FALSE,
+                     zip = if (length(x) == 1 & !add) FALSE else TRUE,
                      pdf = FALSE, pdf_args = list(), zip_pdf = zip,
                      add = FALSE, quiet = TRUE, rm_html = FALSE,
-                     rm_pdf = FALSE, ...) {
+                     rm_pdf = FALSE, params = NULL, ...) {
   # If x is missing then find all the .Rmd files in the working directory
   # If x is a directory then find all the . RMd files in that directory
   if (missing(x)) {
@@ -114,12 +123,22 @@ rmd2html <- function(x, zip = if (length(x) == 1 & !add) FALSE else TRUE,
   }
   # Make doc the same length as x
   lenx <- length(x)
+  # Set the output_format argument to rmarkdown::render()
+  if (bookdown) {
+    if (!requireNamespace("bookdown", quietly = TRUE)) {
+      stop("The 'bookdown' package is required. Please install it.",
+           call.= FALSE)
+    }
+    output_format_fn <- bookdown::html_document2
+  } else {
+    output_format_fn <- rmarkdown::html_document
+  }
   # Function for Rmd to html
   render_fun <- function(i) {
     # Render the .Rmd file as an html document
     rmarkdown::render(input = rmd_files[i],
-                      output_format = rmarkdown::html_document(...),
-                      quiet = quiet, ...)
+                      output_format = output_format_fn(...),
+                      params = params, quiet = quiet)
   }
   res <- sapply(1:lenx, render_fun)
   res <- list(files = res)
