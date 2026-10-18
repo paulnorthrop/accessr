@@ -45,9 +45,7 @@ files.
 
 \code{\link{install_otp}}: convenience function to install
 OfficeToPDF, to create PDF files from Word documents in
-\code{\link{rmd2word}}. \code{\link{ext_img}}: a function to enable the
-\code{knitr} chunk options \code{out.width} and/or \code{out.height} to
-work when the output format is a Word document
+\code{\link{rmd2word}}.
 \item \code{\link{rmd2ioslides}}: create ioslides presentations and
 perhaps print to (non-accessible) PDF documents.
 \item \code{\link{rmd2slidy}}: create slidy presentations and perhaps
