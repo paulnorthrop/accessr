@@ -22,3 +22,4 @@
 ^inst/examples/accessr_slidy\.zip$
 ^inst/examples/example\.zip$
 ^inst/examples/example\.html$
+^bookdown$
