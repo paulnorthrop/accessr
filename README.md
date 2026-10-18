@@ -80,7 +80,7 @@ default installation directory `dir` of `install_otp`.
 ### Rmd to ioslides
 
 Similarly, the function `rmd2ioslides` produces HTML
-[ioslides](https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html)
+[ioslides](https://pkg.yihui.org/rmarkdown-book/ioslides-presentation.html)
 presentations.
 
 ``` r
@@ -93,7 +93,7 @@ PDF files from these slides. This requires a secure internet connection.
 See `?rmd2ioslides`.
 
 `rmd2slidy` (see
-[slidy](https://bookdown.org/yihui/rmarkdown/slidy-presentation.html)
+[slidy](https://pkg.yihui.org/rmarkdown-book/slidy-presentation.html)
 presentations) and `rmd2html` work in a similar way.
 
 ## A basic example Rmd file
