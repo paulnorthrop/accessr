@@ -3,10 +3,10 @@
 ## New features
 
 * In `rmd2html()` the new argument `bookdown` can be used to render using `bookdown::html_document2()`, rather than `rmarkdown::html_document()`.
-* In `rmd2word()` the call to `accessr::ext_img()` has been removed. The release of `officedown 0.4.3` makes this unnecessary and problematic. See [Issue #2](https://github.com/paulnorthrop/accessr/issues/2).
 
 ## Bug fixes and minor improvements
 
+* In `rmd2word()` the call to `accessr::ext_img()` has been removed. The release of `officedown 0.4.3` makes this unnecessary and problematic. See [Issue #2](https://github.com/paulnorthrop/accessr/issues/2).
 * In `rmd2html()` the argument `...` in the call to `rmarkdown::render()` has been removed to avoid errors when passing additional arguments to `bookdown::html_document2()` or `rmarkdown::html_document()`.
 
 # accessr 1.1.3
