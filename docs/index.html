@@ -13,8 +13,8 @@
     }
   };
 </script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Command Line Tools to Produce Accessible Documents using R Markdown">
 <meta name="description" content="Provides functions to produce accessible HTML slides, HTML, Word and PDF documents from input R markdown files. Accessible PDF files are produced only on a Windows Operating System. One aspect of accessibility is providing a headings structure that is recognised by a screen reader, providing a navigational tool for a blind or partially-sighted person. A key aim is to produce documents of different formats easily from each of a collection of R markdown source files. Input R markdown files are rendered using the render() function from the rmarkdown package &lt;https://cran.r-project.org/package=rmarkdown&gt;. A zip file containing multiple output files can be produced from one function call. A user-supplied template Word document can be used to determine the formatting of an output Word document. Accessible PDF files are produced from Word documents using OfficeToPDF &lt;https://github.com/cognidox/OfficeToPDF&gt;. A convenience function, install_otp() is provided to install this software. The option to print HTML output to (non-accessible) PDF files is also available.">
@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="index.html">accessr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +61,7 @@
 <h2 id="command-line-tools-to-produce-accessible-documents-using-r-markdown">Command Line Tools to Produce Accessible Documents using R Markdown<a class="anchor" aria-label="anchor" href="#command-line-tools-to-produce-accessible-documents-using-r-markdown"></a>
 </h2>
 <p>This package provides functions to produce accessible html slides, html, Word and PDF documents from input R markdown files. Accessible PDF files are produced only on a Windows Operating System. One aspect of accessibility is providing headings that are recognised by a screen reader, providing a navigational tool for a blind or partially-sighted person. A main aim is to enable documents of different formats to be produced from a <strong>single</strong> R markdown source file using one function call. The <code>render()</code> function from the <a href="https://cran.r-project.org/package=rmarkdown" class="external-link">rmarkdown package</a> is used to render R markdown files. A zip file containing multiple files can be produced from one function call. A user-supplied template Word document can be used to determine the formatting of the output Word document. Accessible PDF files are produced from Word documents using <a href="https://github.com/cognidox/OfficeToPDF" class="external-link">OfficeToPDF</a>. A convenience function, <code><a href="reference/install_otp.html">install_otp()</a></code> is provided to install this software. The option to print html output to (non-accessible) PDF files is also available.</p>
-<p><strong>Additional features</strong>. When the output format is a Word document the function <code><a href="reference/ext_img.html">ext_img()</a></code> enables the knitr chunk options <code>out.width</code> and/or <code>out.height</code> to be used to set the dimensions of a figure (R-generated or external image). Passing (the default) <code>slide_level = 1</code> to <code><a href="reference/rmd2ioslides.html">rmd2ioslides()</a></code> enables the use of the level one header # to separate slides in an ioslides presentation without producing grey segue slides.</p>
+<p><strong>Additional features</strong>. When the output format is a Word document the function <code>ext_img()</code> enables the knitr chunk options <code>out.width</code> and/or <code>out.height</code> to be used to set the dimensions of a figure (R-generated or external image). Passing (the default) <code>slide_level = 1</code> to <code><a href="reference/rmd2ioslides.html">rmd2ioslides()</a></code> enables the use of the level one header # to separate slides in an ioslides presentation without producing grey segue slides.</p>
 </div>
 <div class="section level2">
 <h2 id="the-main-functions">The main functions<a class="anchor" aria-label="anchor" href="#the-main-functions"></a>
@@ -89,11 +89,11 @@
 <div class="section level3">
 <h3 id="rmd-to-ioslides">Rmd to ioslides<a class="anchor" aria-label="anchor" href="#rmd-to-ioslides"></a>
 </h3>
-<p>Similarly, the function <code>rmd2ioslides</code> produces HTML <a href="https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html" class="external-link">ioslides</a> presentations.</p>
+<p>Similarly, the function <code>rmd2ioslides</code> produces HTML <a href="https://pkg.yihui.org/rmarkdown-book/ioslides-presentation.html" class="external-link">ioslides</a> presentations.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/rmd2ioslides.html">rmd2ioslides</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"file1"</span>, <span class="st">"file2"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>If the argument <code>pdf = TRUE</code> is supplied then the <code>chrome_print</code> function in the <code>pagedown</code> package is used to produce (non-accessible) PDF files from these slides. This requires a secure internet connection. See <code><a href="reference/rmd2ioslides.html">?rmd2ioslides</a></code>.</p>
-<p><code>rmd2slidy</code> (see <a href="https://bookdown.org/yihui/rmarkdown/slidy-presentation.html" class="external-link">slidy</a> presentations) and <code>rmd2html</code> work in a similar way.</p>
+<p><code>rmd2slidy</code> (see <a href="https://pkg.yihui.org/rmarkdown-book/slidy-presentation.html" class="external-link">slidy</a> presentations) and <code>rmd2html</code> work in a similar way.</p>
 </div>
 </div>
 <div class="section level2">
@@ -165,7 +165,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>
