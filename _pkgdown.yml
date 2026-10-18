@@ -27,7 +27,3 @@ reference:
       - "rmd2ioslides"
       - "rmd2slidy"
       - "rmd2word"
-  - title: Helper functions
-    desc: ~
-    contents:
-      - "ext_img"
